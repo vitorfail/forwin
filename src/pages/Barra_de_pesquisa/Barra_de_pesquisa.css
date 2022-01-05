@@ -1,0 +1,109 @@
+.barra{
+    position: absolute;
+    right: 0%;
+    width: 85vw;
+    height: 100vh;
+    background-color: rgb(224, 224, 224);
+}
+.barra .cabecalho{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 85vw;
+    height: 10vh;
+    background-color: var(--cor--da--barra);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+.barra .cabecalho .barra_de_pesquisa{
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+.barra .cabecalho .barra_de_pesquisa .pesquisa{
+    flex: 3;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.barra .cabecalho .barra_de_pesquisa .pesquisa input[type=text]{
+    border: none;
+    background: whitesmoke;
+    height: 37px;
+    width: 50%;
+    padding: 10px;
+}
+.barra .cabecalho .barra_de_pesquisa .pesquisa .p{
+    width: 37px;
+    height: 37px;
+    border: none;
+    background: whitesmoke;
+
+}
+.barra .cabecalho .barra_de_pesquisa .pesquisa img{
+    width: 30px;
+    height: 30px;
+}
+.barra .cabecalho .barra_de_pesquisa .pesquisa .list{
+    display: none;
+}
+.barra .cabecalho .barra_de_pesquisa .pesquisa .list:active{
+    animation: rot 0.5s linear;
+}
+.barra .cabecalho .barra_de_pesquisa .user{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.barra .cabecalho .barra_de_pesquisa .user .usuario{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.barra .cabecalho .barra_de_pesquisa .user h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border-radius: 50px;
+    background: var(--pagamentos);
+    color: white;
+    width: 40px;
+    height: 40px;
+}
+.barra .cabecalho .barra_de_pesquisa .user h1:hover{
+    cursor: pointer;
+}
+.barra .cabecalho .barra_de_pesquisa .user .usuario img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+@media screen and (max-width:640px){
+    .barra .cabecalho .barra_de_pesquisa .pesquisa .list{
+        margin-left: -35px;
+        margin-right: 15px;
+        display: flex;
+    }
+    .barra .cabecalho .barra_de_pesquisa .user .usuario {
+        width: 40px;
+        height: 30px;
+    }
+    .barra .cabecalho .barra_de_pesquisa .pesquisa input {
+        width: 60%;
+        font-size: 12px;
+    }
+    .barra .cabecalho .barra_de_pesquisa{
+        width: 90%;   
+    }
+}

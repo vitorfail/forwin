@@ -1,0 +1,690 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+:root{
+    --vermelho:crimson;
+    --fundo: #F5F5F5;
+    --cor--barra:#D62929;
+    --letra--padrao:white;
+    --botao--sim:rgb(226, 55, 55);
+    --preencha--borda:rgb(216, 36, 36);
+    --preencha--cor:rgba(236, 21, 21, 0.322);
+    --salvar--info:rgb(2, 158, 10);
+    --botao--sim--popup: rgb(36, 63, 216);
+    --barra--lateral: rgb(226, 55, 83);
+    --preferencia--de--pagamento: rgb(1, 153, 52);
+    --cor--da--barra: white;
+    --pagamentos:rgb(2, 124, 172);
+}
+.tema-azul:root{
+    --vermelho:rgb(20, 67, 220);
+    --fundo: #F5F5F5;
+    --cor--barra:#0d11eb;
+    --letra--padrao:white;
+    --botao--sim:rgb(55, 95, 226);
+    --preencha--borda:rgb(216, 36, 36);
+    --preencha--cor:rgba(236, 21, 21, 0.322);
+    --salvar--info:rgb(172, 126, 0);
+    --botao--sim--popup: rgb(36, 63, 216);
+    --barra--lateral: rgb(58, 55, 226);
+    --preferencia--de--pagamento: rgb(1, 153, 52);
+    --cor--da--barra: white;
+    --pagamentos:rgb(2, 124, 172);
+}
+.tema-roxo:root{
+    --vermelho:rgb(107, 20, 220);
+    --fundo: #F5F5F5;
+    --cor--barra:#4e0a8f;
+    --letra--padrao:white;
+    --botao--sim:rgb(111, 71, 255);
+    --preencha--borda:rgb(216, 36, 36);
+    --preencha--cor:rgba(236, 21, 21, 0.322);
+    --salvar--info:rgb(0, 166, 172);
+    --botao--sim--popup: rgb(12, 144, 177);
+    --barra--lateral: rgb(115, 12, 199);
+    --preferencia--de--pagamento: rgb(2, 167, 57);
+    --cor--da--barra: white;
+    --pagamentos:rgb(2, 124, 172);
+}
+.tema-laranja:root{
+    --vermelho:rgb(192, 132, 3);
+    --fundo: #F5F5F5;
+    --cor--barra:#ca7c05;
+    --letra--padrao:white;
+    --botao--sim:rgb(226, 94, 17);
+    --preencha--borda:rgb(216, 36, 36);
+    --preencha--cor:rgba(236, 21, 21, 0.322);
+    --salvar--info:rgb(172, 0, 14);
+    --botao--sim--popup: rgb(177, 12, 40);
+    --barra--lateral: rgb(199, 96, 12);
+    --preferencia--de--pagamento: rgb(2, 167, 57);
+    --cor--da--barra: white;
+    --pagamentos:rgb(2, 124, 172);
+}
+html
+{
+	float: left;
+	height: 300px;
+	width: 65px;
+	background: #F5F5F5;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+.balao {
+    display:none;
+    z-index: 450000;
+    position: fixed;
+    margin-top: 70px;
+    padding: 2px;
+    margin-left: 5px;
+    padding-left: 17px;
+    padding-top: 25px;
+    color: #000;
+    background: var(--vermelho);
+    border-radius: 20px;
+    width: 240px;
+    height: 164px;
+    color: white;
+    flex-wrap: wrap;
+    -webkit-transition: 0.5s ease-out;
+    -moz-transition: 0.5s ease-out;
+    -o-transition: 0.5s ease-out;
+    transition: 0.5s ease-out;
+    box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.4);
+}
+.balao a{
+    justify-content:center;
+    align-items: center;
+    color: var(--letra--padrao);
+    width: 100px;
+    display: flex;
+}
+.balao img{
+    width: 14px;
+    height: 14px;
+}
+.balao::before{
+    font-size: 30px;
+    position: absolute;
+    margin-left: -5px;
+    margin-top: -32px;
+    content: '40';
+    color: var(--vermelho);
+    background: var(--vermelho);
+    -webkit-transform: rotate(-50deg);
+
+}
+.balao.mostrar{
+    display: flex;
+}
+.force-overflow
+{
+	min-height: 450px;
+}
+#wrapper
+{
+	text-align: center;
+	width: 500px;
+	margin: auto;
+}
+html::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+html::-webkit-scrollbar
+{
+    border-radius: 10px;
+	width: 12px;
+	background-color: #F5F5F5;
+}
+html::-webkit-scrollbar-thumb
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: var(--cor--barra);
+}
+/* Pergunta do cadastro*/
+.modal-confirmar.mostrar{
+    display: flex;
+}
+.modal-container3{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(122, 122, 122, 0.63);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.modal-container3.mostrar{
+    display: flex;
+}
+.mostrar .modal{
+    animation: modal 0.1s;
+}
+
+.modal-container3 .modal{
+    top: 0px;
+    width: 400px;
+    height: 350px;
+    background: var(--letra--padrao);
+    justify-content: center;
+    align-items: center;
+    display: block;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.2);
+}
+.modal-container3 .modal img{
+    align-items: center;
+    width: 100px;
+    margin-left: 140px;
+    height: 100px;
+}
+
+.modal-container3 .modal h3{
+    padding: 15px 55px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(114, 114, 114);
+}
+
+.modal-container3 .modal .botoes{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.modal-container3 .modal .botoes .botao-sim{
+    padding: 5px 15px;
+}
+
+.modal-container3 .modal .botoes .botao-sim .sim{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--vermelho);
+    color: var(--letra--padrao);
+}
+
+.modal-container3 .modal .botoes .botao-sim .sim:hover{
+    background-color: var(--letra--padrao);
+    color: var(--botao--sim);
+    -webkit-transition: 0.1s ease-in;
+    -moz-transition: 0.1s ease-in;
+    -o-transition: 0.1s ease-in;
+    transition: 0.1s ease-in;
+    border: 2px solid var(--botao--sim);
+    -moz-border: 2px solid var(--botao--sim);
+	-webkit-border:  2px solid var(--botao--sim);
+    cursor: pointer;
+}
+.modal-container3 .modal .botoes .botao-nao .nao:hover{
+    background-color: var(--letra--padrao);
+    color: var(--botao--sim);
+    -webkit-transition: 0.1s ease-in;
+    -moz-transition: 0.1s ease-in;
+    -o-transition: 0.1s ease-in;
+    transition: 0.1s ease-in;
+    border: 2px solid var(--botao--sim);
+    -moz-border: 2px solid var(--botao--sim);
+	-webkit-border:  2px solid var(--botao--sim);
+    cursor: pointer;
+}
+.modal-container3 button{
+    border: none;
+    font-size: 17px;
+    width: 80px;
+    height: 50px;
+}
+/* Fim da pergunta do cadastro*/
+
+
+/* Gráficos  */
+ .graphbox{
+    position: relative;
+    display: grid;
+    padding: 20px;
+    width: 99%;
+    grid-template-columns:1fr 2fr;
+    grid-gap: 30px;
+    min-height: 200px;
+}
+.graphbox .box{
+     position:relative;
+     background: #fff;
+     padding:  20px;
+     width:100%;
+     box-shadow: 0 7px 20px rgba(0,0,0,0.08);
+     border-radius: 20px;
+}
+ .graphbox2{
+    position: relative;
+    display: grid;
+    padding: 20px;
+    width: 99%;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-gap: 30px;
+    min-height: 200px;
+}
+.graphbox2 .box{
+     position:relative;
+     background: #fff;
+     padding:  20px;
+     width:100%;
+     box-shadow: 0 7px 20px rgba(0,0,0,0.08);
+     border-radius: 20px;
+}
+#myChart{
+     max-height: 240px;
+}
+#myChart2{
+     max-height: 280px;
+}
+/* Fim Gráficos*/
+
+/* Cadastro positivo*/
+
+/* Fim cadastro positivo*/
+
+/* Adicionar conta*/
+
+.modal-conta.mostrar{
+    display: flex;
+}
+
+.modal-editar.mostrar{
+    display: flex;
+}
+
+.mostrar .modal{
+    animation: modal 0.1s;
+}
+/* Fim adicionar conta*/
+
+
+body{
+    min-width: 100vh;
+}
+a{
+    text-decoration: none;
+}
+
+/* Menu lateral*/
+
+h1, h2{
+    color: rgba(0, 0, 0, 0.774);
+}
+
+/* Fim menu lateral*/
+
+/* Barrra de pesquisa*/
+.escolha-tema{
+    margin-top: 10px;
+    display: flex;
+    min-width: 277px;
+    width: 287px;
+    flex-wrap: wrap;
+}
+.escolha-tema h2{
+    width: 30px;
+    height: 30px;
+}
+.escolha-tema .padrao{
+    display: flex;
+    background: crimson;
+    color: crimson;
+}
+.escolha-tema .azul{
+    display: flex;
+    background: rgb(37, 52, 255);
+    color: rgb(37, 52, 255);
+}
+.escolha-tema .roxo{
+    display: flex;
+    background: rgb(66, 0, 219);
+    color: rgb(66, 0, 219);
+}
+.escolha-tema .laranja{
+    display: flex;
+    background: rgb(219, 117, 0);
+    color: rgb(219, 117, 0);
+}
+.escolha-tema p{
+    margin-left: 5px;
+    margin-right: -5px;
+    width: 79px;
+    display: flex;
+}
+
+
+/* Fim Barrra de pesquisa*/
+
+.btn{
+    text-align: center;
+    background: var(--vermelho);
+    color: white;
+    padding: 4px 8px;
+}
+.btn:hover{
+    color: var(--vermelho);
+    border: 2px solid var(--vermelho);
+    background-color: ivory;
+    -webkit-transition: 0.1s ease-in;
+    -moz-transition: 0.1s ease-in;
+    -o-transition: 0.1s ease-in;
+    transition: 0.1s ease-in;
+    border-radius: 0px 0px 0px 0px;
+	-moz-border-radius: 0px 0px 0px 0px;
+	-webkit-border-radius: 0px 0px 0px 0px;
+    cursor: pointer;
+}
+
+/* Conteudo */
+.barra .conteudo{
+    position: relative;
+    margin-top: 10vh;
+    min-height: 90vh;
+    background: rgb(224, 224, 224);
+}
+
+.barra .conteudo .conteudo-2{
+    min-height: 80vh;
+    padding: 20px 0px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.cad{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 8px 7px;
+}
+/* Conteudo */
+/* Input do cadastro*/
+
+/* Fim Input do cadastro*/
+
+
+
+.clientes-recentes .titulos_contas #meses{
+    height: 30px;
+    font-size: 24px;
+    color: rgb(59, 59, 59);
+    border: none;
+    border-bottom: 2px solid rgba(10, 10, 10, 0.781);
+
+    font-weight: bold;
+}
+.clientes-recentes .titulos_contas #anos{
+  height: 30px;
+  font-size: 24px;
+  color: rgb(59, 59, 59);
+  border: none;
+  border-bottom: 2px solid rgba(10, 10, 10, 0.781);
+  font-weight: bold;
+}
+
+
+
+/* Carrregamento*/
+
+
+
+/* Pesquisa*/
+
+.dre {
+  min-height: 72vh;
+  background: white;
+  flex: 5;
+  margin: 0 25px 25px 25px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+}
+.valor_rs{
+  border-left: 2px solid #363636;
+}
+.dre .titulo_pesquisa{
+  background: var(--vermelho);
+  display: flex;
+  border-bottom: 2px solid rgb(83, 83, 83) ;
+}
+.dre .titulo_dre{
+  display: flex;
+  background: #a5a5a5;
+  border-bottom: 2px solid rgb(83, 83, 83) ;
+}
+.dre .titulo_dre2{
+  display: flex;
+  background: #ffffff;
+  border-bottom: 2px solid rgb(83, 83, 83) ;
+
+}
+.entrada_rs{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  width:405px;
+  color: #252525;
+  padding: 5px 15px;
+}
+.entrada_rs2{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  color: #252525;
+  padding: 5px 15px;
+  border-left: 2px solid #363636;
+}
+.saida_rs{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  width:405px;
+  color: #e20000;
+  padding: 5px 15px;
+}
+.saida_rs2{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  color: #e20000;
+  padding: 5px 15px;
+  border-left: 2px solid #363636;
+}
+.dre .resultado_negativo_dre{
+  display: flex;
+  background: #a53434;
+  border-bottom: 2px solid rgb(83, 83, 83) ;
+}
+.dre .resultado_positivo_dre{
+  display: flex;
+  background: #00bb38;
+  border-bottom: 2px solid rgb(83, 83, 83) ;
+}
+.resultado_rs{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  width:405px;
+  color: #252525;
+  padding: 5px 15px;
+}
+.resultado_rs2{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  color: #252525;
+  padding: 5px 15px;
+  border-left: 2px solid #363636;
+}
+.titulo_pesquisa h1{
+  font-size: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff;
+  padding: 5px 39.5px;
+}
+.titulo_pesquisa select{
+    font-size: 25px;
+    background: var(--vermelho);
+    color: #ffffff;
+    border: none;
+    padding: 1px 5px;
+    font-weight: bold;
+}
+/*.enc h3{
+  font-style: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}*/
+
+/* Animações e responsivo*/
+@media screen and (max-width: 1050px){
+    .barralateral a{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 940px){
+    .modal-container2 .modal input{
+        width: 14vw;
+    }
+    .graphbox{
+        display: block;
+    }
+    #myChart{
+        width: 491px
+    }
+}
+@media screen and (max-width: 1264px){
+    .graphbox2 {
+        display: block;
+    }
+    .graphbox {
+        display: block;
+    }
+}
+@media screen and (max-width: 640px){
+
+    .modal-container2 .modal .pag-nome {
+        max-width: 90px;
+    }
+
+    .modal-container2 .modal {
+      	overflow-x: auto;
+        width: 100%;
+        height: 80%
+    }
+    .modal-container2 .modal .info-cliente{
+      	height: 129vh;
+    }
+    .barra{
+        width: 100vw;   
+    }
+    .barra .cabecalho {
+        background: var(--vermelho);
+        width: 100vw;
+    }
+    
+
+    .dre {
+        width: 48vw;
+    }
+    .dre h1{
+        padding: 5px 3px;
+        font-size: 16px;
+    }
+    .entrada_rs{
+        width: 111px;
+    }
+    .entrada_rs2{
+        width: 111px;
+    }
+    .saida_rs{
+        width: 111px;
+    }
+    .saida_rs2{
+        width: 111px;
+    }
+    .resultado_rs{
+        width: 111px;
+    }
+    .titulo_pesquisa select {
+        font-size:16px;
+    }
+    .dre .titulo_pesquisa {
+        display:block;
+    }
+    .graphbox2{
+        display: block;
+    }
+    .graphbox .box {
+        margin-bottom: 15px;
+    }
+    .graphbox2 .box {
+        margin-bottom: 15px;
+    }
+    #list{
+        font-size: 18px;
+    }
+    
+    .btn {
+        background: white;
+        color: var(--vermelho);
+        font-size: 10px;
+    }
+    
+
+    .modal-container2 .modal input{
+      	font-size: 14px;
+        width: 86vw;
+    }
+  	.novo-input {
+    	height: 199px;
+  	}
+  	.modal-container2 .modal select{
+  		width: 46vw;
+  	}
+    .modal-container2 .modal textarea{
+        width: 330px;
+    }
+    .cad {
+        justify-content: space-evenly;
+        padding: 10px 0px;
+    }
+    
+    .titulos_contas h3{
+        font-size: 10px;
+    }
+    .titulos_contas .vencido{
+        width:45px;
+    }
+    .titulos_contas .pago{
+        width:45px;
+    }
+    .titulos_contas .em_dia{
+        width:45px;
+    }
+    .titulos_contas .prazo_final{
+        width:45px;
+    }
+}
+@keyframes modal{
+    from{
+        transition: transform 0.05s;
+        transform: translateX(0) scale(0.5);    
+    }
+    to{
+        transform: translateX(10px) scale(1.2);
+    }
+}
+@keyframes rot {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+}
