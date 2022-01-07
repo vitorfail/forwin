@@ -11,15 +11,17 @@ export default class Resultado_pesquisa extends Component{
             restultado: [],
             numero: 0,
             pagamentos_mostrar: "modal-pag",
-            cadastro: '0'
+            cadastro: '0',
+            nome: ''
 
         }
         this.resultado = this.resultado.bind(this);
         this.abrir_pagamentos = this.abrir_pagamentos.bind(this)
     }
-    abrir_pagamentos(id){
+    abrir_pagamentos(id, name){
         this.setState({pagamentos_mostrar: "modal-pag mostrar"})
         this.setState({cadastro: id})
+        this.setState({nome: name})
     }
     show_pag(visivel){
         this.setState({ pagamentos_mostrar: visivel })
@@ -71,7 +73,7 @@ export default class Resultado_pesquisa extends Component{
                                                                     <h3 className='tel'>{(res.data[3])[i]}</h3> 
                                                                     <h3 className='sex'>{(res.data[4])[i]}</h3> 
                                                                     <div className='quadro_botoes'>
-                                                                        <button className='pag' id={ident} onClick={(event) => this.abrir_pagamentos(event.target.id)}>Pagamentos</button> 
+                                                                        <button className='pag' id={ident} name={(res.data[0])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
                                                                         <button onClick={this.abrir_editar((res.data[0])[i])} className='editar'>Editar</button> 
                                                                         <button className='excluir' onClick={this.abrir_excluir((res.data[0])[i])}>Excluir</button> 
                                                                         <button className='falar' onClick={this.abrir_excluir((res.data[0])[i])}>Falar<img class='zap' src={Zap}/></button>
@@ -100,7 +102,7 @@ export default class Resultado_pesquisa extends Component{
                 <div className="encontrados">
                     {this.state.resultado}
                 </div>
-                <Modal_pagamentos id={this.state.cadastro} exibir={this.state.pagamentos_mostrar} executar={this.show_pag.bind(this)}></Modal_pagamentos>
+                <Modal_pagamentos id={this.state.cadastro} nome={this.state.nome} exibir={this.state.pagamentos_mostrar} executar={this.show_pag.bind(this)}></Modal_pagamentos>
             </div>
             
         )

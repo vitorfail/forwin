@@ -6,14 +6,24 @@ export default class Modal_pagamentos extends Component{
     constructor(props){
         super(props)
         this.state = {
+            nome:'',
+
+
             pagamentos_mostrar: this.props.exibir,
             preferido: 'Nenhum',
             ranking_pag: "Sem pagamentos",
             resultado: [],
             novo_pag: 'novo-input',
+            
+            valor_novo_input: '',
+            data_novo_input: '',
+            tipo_novo_input: '',
+            procedimento_novo_input:''
         }
         this.pesquisar_pagamentos = this.pesquisar_pagamentos.bind(this)
         this.modal_novo_pagamento = this.modal_novo_pagamento.bind(this)
+        this.inserir_novoPagamento = this. inserir_novoPagamento.bind(this)
+        this.mascara_valor = this.mascara_valor.bind(this)
         this.fecharmodal = this.fecharmodal.bind(this)
     }
     componentWillReceiveProps(props){
@@ -89,11 +99,35 @@ export default class Modal_pagamentos extends Component{
             this.setState({pag: <h3 className="s-pag" >Sem pagamentos encontrados. Recarrege a página</h3>})
         })
     }
-    inserir_novoPagamento(){
+    mascara_valor(e){
+        e = e.replace(/\D/g, "")
+        e = e.replace(/(\d)(\d{2})$/, "$1,$2")
+        e = 'R$ ' + e.replace(/(?=(\d{3})+(\D))\B/g, ".")
+        this.setState({valor_novo_input:e})
+    }
+    inserir_novoPagamento(i, name){
+        var val = this.state.valor_novo_input
+        val = val.replace("R$ ", "")
+        val = val.replace(".", "")
+        val = val.replace(",", ".")
+        val = parseFloat(val)
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.post('', {})
+        Axios.post('adicionar_pagamento.php', {id: i,  
+                                                data: this.state.data_novo_input,
+                                                valor: val,  
+                                                tipo: this.state.tipo_novo_input,
+                                                nome: name,
+                                                procedimento: this.state.procedimento_novo_input})
+        .then(res => {
+            if(res.data == '1'){
+                
+            }
+            else{
+
+            }
+        })
     }
     render(){
         return(<div className={this.props.exibir}  >
@@ -119,10 +153,10 @@ export default class Modal_pagamentos extends Component{
                             </div>
                         </div>
                         <div className={this.state.novo_pag}>
-                            <input className="submit" type='text' placeholder="Valor"/>
-                            <input className="submit-data" type="date"/>
-                            <input className='pro' placeholder="Nome do procedimento"/>
-                            <select id="tipo" className="from_pag">
+                            <input className="submit" type='text' value={this.state.valor_novo_input}  onChange={(event) => this.mascara_valor(event.target.value)} placeholder="Valor"/>
+                            <input className="submit-data" onChange={(event) => this.setState({data_novo_input:event.target.value})} type="date"/>
+                            <input className='pro'  onChange={(event) => this.setState({nome_novo_input:event.target.value})}placeholder="Nome do procedimento"/>
+                            <select id="tipo" onChange={(event) => this.setState({tipo_novo_input:event.target.value})} className="from_pag">
                                 <option value="debito">Débito</option>
                                 <option value="credito">Crédito</option>
                                 <option value="credito-parcelado">Crédito Parcelado</option>
@@ -130,7 +164,7 @@ export default class Modal_pagamentos extends Component{
                                 <option value="boleto">Boleto</option>
                                 <option value="cheque">Cheque</option>
                             </select>
-                            <button className="" onClick='pagamentos_efetuados()'>Inserir</button>
+                            <button className="" onClick={(event) => this.inserir_novoPagamento(this.props.id, this.props.nome)}>Inserir</button>
                         </div>
                         <div className="botoes">
                             <div className="botao-sim">

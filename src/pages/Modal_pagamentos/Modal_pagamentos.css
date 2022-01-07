@@ -236,6 +236,15 @@
     background: var(--salvar--info);
     color:#FFFFFF;
 }
+.novo-input button:hover{
+    border-radius: 4px;
+    font-size: 16px;
+    height: 30px;
+    border: 2px solid var(--salvar--info);
+    background: #FFFFFF;
+    color:var(--salvar--info);
+    cursor: pointer;
+}
 .novo-input select{
     border-radius: 4px;
     margin-top: 10px;
