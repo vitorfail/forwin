@@ -188,10 +188,18 @@
     justify-content: center;
     width: 171px;
 }
+.modal-pag .modal .pag-list .pag-enc{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-pag .modal .pag-list .pag-enc h3{
+    justify-content: center;
+    width: 178px;
+}
 .novo-input{
     border-radius: 4px;
     height: 100px;
-    margin-top: -60px;
     align-items: center;
     justify-content: center;
     background: var(--botao--sim--popup);
@@ -199,6 +207,9 @@
     border-bottom: 2px solid var(--botao--sim--popup);
     display: none;
     flex-wrap: wrap;
+}
+.novo-input.mostrar{
+    display: flex
 }
 .novo-input .submit{
     display:flex;

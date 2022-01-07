@@ -238,15 +238,7 @@
     overflow-y: auto;
     display: block;
 }
-.modal-container2 .modal .pag-list .pag-enc{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.modal-container2 .modal .pag-list .pag-enc h3{
-    justify-content: center;
-    width: 178px;
-}
+
 
 .modal-pag .modal .botoes .botao-salvar .add-info{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

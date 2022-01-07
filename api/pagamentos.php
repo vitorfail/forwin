@@ -2,12 +2,12 @@
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT");
-    header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-
+    header("Access-Control-Allow-Headers: *");
+    $_POST = json_decode(file_get_contents("php://input"), true);
     $id = preg_replace('/[^[:alnum:]_]/', '',$_POST['id']);
     try{
         include('conexao.php');
-        $sql = "SELECT * from pagamentos_{$_SESSION['USER']} where id_cliente ='$id'";
+        $sql = "SELECT * from pagamentos_joao_3 where id_cliente ='$id'";
         $resultado = $conexao->query($sql);
         $pesquisa = $resultado->fetchAll();
         $nome = array();
@@ -18,7 +18,7 @@
         $array = array();
 
 
-        $sql2 = "SELECT id, valor FROM `acumulado_{$_SESSION['USER']}`";
+        $sql2 = "SELECT id, valor FROM `acumulado_joao_3`";
         $resultado2 = $conexao->query($sql2);
         $pesquisa2 = $resultado2->fetchAll();
         $rank = 0;
@@ -64,7 +64,7 @@
             echo $array_encode;
         }
         else{
-            echo 'B';
+            echo '1';
         }
     }
     catch(Exception $ex){
