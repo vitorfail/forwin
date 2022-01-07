@@ -16,21 +16,24 @@ export default class Modal_pagamentos extends Component{
         this.modal_novo_pagamento = this.modal_novo_pagamento.bind(this)
         this.fecharmodal = this.fecharmodal.bind(this)
     }
-    componentDidUpdate(){
-        this.pesquisar_pagamentos()    
+    componentWillReceiveProps(props){
+        this.pesquisar_pagamentos(props.id)
+        console.log(props)
     }
     fecharmodal(){
+        this.setState({ranking_pag: "Sem pagamentos"})
+        this.setState({preferido: "Nenhum"})        
         this.setState({novo_pag:'novo-input'})
         this.props.executar('modal-pag')
     }
     modal_novo_pagamento(){
         this.setState({novo_pag:'novo-input mostrar'})
     }
-    pesquisar_pagamentos(){
+    pesquisar_pagamentos(ident){
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('pagamentos.php', {id: this.props.id})
+        Axios.post('pagamentos.php', {id: ident})
         .then(res => {
             if(res.data == '1' || res.data == '2'){
                 this.setState({resultado: <h3 className="s-pag">Sem pagamentos encontrados</h3>})
