@@ -14,7 +14,7 @@ export default class Modal_pagamentos extends Component{
             ranking_pag: "Sem pagamentos",
             resultado: [],
             novo_pag: 'novo-input',
-            
+            preencha: 'preencha',
             valor_novo_input: '',
             data_novo_input: '',
             tipo_novo_input: '',
@@ -28,12 +28,12 @@ export default class Modal_pagamentos extends Component{
     }
     componentWillReceiveProps(props){
         this.pesquisar_pagamentos(props.id)
-        console.log(props)
     }
     fecharmodal(){
         this.setState({ranking_pag: "Sem pagamentos"})
         this.setState({preferido: "Nenhum"})        
         this.setState({novo_pag:'novo-input'})
+        this.setState({preencha: "preencha"})
         this.props.executar('modal-pag')
     }
     modal_novo_pagamento(){
@@ -111,29 +111,34 @@ export default class Modal_pagamentos extends Component{
         val = val.replace(".", "")
         val = val.replace(",", ".")
         val = parseFloat(val)
-        const Axios = axios.create({
-            baseURL:apis
-        })
-        Axios.post('adicionar_pagamento.php', {id: i,  
-                                                data: this.state.data_novo_input,
-                                                valor: val,  
-                                                tipo: this.state.tipo_novo_input,
-                                                nome: name,
-                                                procedimento: this.state.procedimento_novo_input})
-        .then(res => {
-            if(res.data == '1'){
-                this.setState({novo_pag: 'novo-input'})
-                this.pesquisar_pagamentos(i)
-            }
-            else{
-
-            }
-        })
+        if(this.state.data_novo_input == ''|| val== '' ||this.state.tipo_novo_input == '' || name=='' || this.state.procedimento_novo_inpu == ''){
+            this.setState({preencha: "preencha mostrar"})
+        }
+        else{
+            const Axios = axios.create({
+                baseURL:apis
+            })
+            Axios.post('adicionar_pagamento.php', {id: i,  
+                                                    data: this.state.data_novo_input,
+                                                    valor: val,  
+                                                    tipo: this.state.tipo_novo_input,
+                                                    nome: name,
+                                                    procedimento: this.state.procedimento_novo_input})
+            .then(res => {
+                if(res.data == '1'){
+                    this.setState({novo_pag: 'novo-input'})
+                    this.pesquisar_pagamentos(i)
+                }
+                else{
+    
+                }
+            })
+        }
     }
     render(){
         return(<div className={this.props.exibir}  >
                     <div className="modal">
-                        <h2>Pagamentos {this.props.id}</h2>
+                        <h2>Pagamentos de {this.props.nome}</h2>
                         <div className='pp'>
                             <h3>Tipo de Pagamento preferido:  </h3>
                             <h3 className='pref_p'>{this.state.preferido}</h3>
@@ -142,7 +147,7 @@ export default class Modal_pagamentos extends Component{
                             <h3>Ranking de pagamento: </h3>
                             <h3 className='ranking_pagamento'>{this.state.ranking_pag} </h3>
                         </div>
-                        <p className="preencha">Lista de pagamentos</p>
+                        <p className={this.state.preencha}>Lista de pagamentos</p>
                         <div className="pag-conteiner">
                             <div className="pag-titulo">
                                 <h3>Procedimento</h3>

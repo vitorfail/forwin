@@ -44,7 +44,7 @@
     color: rgb(114, 114, 114);
 }
 .modal-pag .modal .preencha{
-    display: flex;
+    display: none;
     padding: 2px 2px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: rgb(0, 0, 0);
@@ -52,6 +52,9 @@
     border: 2px solid var(--preencha--borda);
     -moz-border: 2px solid var(--preencha--borda);
 	-webkit-border:  2px solid var(--preencha--borda);
+}
+.modal-pag .modal .preencha.mostrar{
+    display: flex;
 }
 .modal-pag .modal h3{
     display: flex;
@@ -180,6 +183,7 @@
 }
 .modal-pag .modal .pag-titulo{
     border-bottom: 2px solid rgb(44, 44, 44);
+    border-top: 2px solid rgb(44, 44, 44);
     display: flex;
     align-items: center;
     justify-content: space-between;

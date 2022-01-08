@@ -214,48 +214,10 @@
     height: 290px;
     display: block;
 }
-.modal-info .modal .info-cliente{
-    border-top: 2px solid rgb(44, 44, 44);
-    height: 62vh;
-    display: flex;
-    flex-wrap: wrap;
-}
-.modal-container2 .modal .info-cliente .bloco{
-    margin-left: 10px;
-}
-.modal-container2 .modal .info-cliente select{
-    border: 1px solid #cccccc;
-    margin-top: 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    height: 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(114, 114, 114);
-}
-
 .modal-container2 .modal .pag-list{
     height: 240px;
     overflow-y: auto;
     display: block;
-}
-
-
-.modal-pag .modal .botoes .botao-salvar .add-info{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--salvar--info);
-    color: white;
-}
-.modal-pag .modal .botoes .botao-salvar .add-info:hover{
-    background-color: ivory;
-    color: var(--salvar--info);
-    -webkit-transition: 0.1s ease-in;
-    -moz-transition: 0.1s ease-in;
-    -o-transition: 0.1s ease-in;
-    transition: 0.1s ease-in;
-    border: 2px solid var(--salvar--info);
-    -moz-border: 2px solid var(--salvar--info);
-	-webkit-border:  2px solid var(--salvar--info);
-    cursor: pointer;
 }
 
 
