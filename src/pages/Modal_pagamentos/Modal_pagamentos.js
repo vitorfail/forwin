@@ -122,7 +122,8 @@ export default class Modal_pagamentos extends Component{
                                                 procedimento: this.state.procedimento_novo_input})
         .then(res => {
             if(res.data == '1'){
-                
+                this.setState({novo_pag: 'novo-input'})
+                this.pesquisar_pagamentos(i)
             }
             else{
 
@@ -155,7 +156,7 @@ export default class Modal_pagamentos extends Component{
                         <div className={this.state.novo_pag}>
                             <input className="submit" type='text' value={this.state.valor_novo_input}  onChange={(event) => this.mascara_valor(event.target.value)} placeholder="Valor"/>
                             <input className="submit-data" onChange={(event) => this.setState({data_novo_input:event.target.value})} type="date"/>
-                            <input className='pro'  onChange={(event) => this.setState({nome_novo_input:event.target.value})}placeholder="Nome do procedimento"/>
+                            <input className='pro'  onChange={(event) => this.setState({procedimento_novo_input:event.target.value})}placeholder="Nome do procedimento"/>
                             <select id="tipo" onChange={(event) => this.setState({tipo_novo_input:event.target.value})} className="from_pag">
                                 <option value="debito">Débito</option>
                                 <option value="credito">Crédito</option>

@@ -60,7 +60,7 @@ export default class Resultado_pesquisa extends Component{
                                                                     <h3 className='tel'>{(res.data[3])[i]}</h3> 
                                                                     <h3 className='sex'>{(res.data[4])[i]}</h3> 
                                                                     <div className='quadro_botoes'> 
-                                                                        <button className='pag' id={ident} onClick={(event) => this.abrir_pagamentos(event.target.id)}>Pagamentos</button> 
+                                                                        <button className='pag' id={ident} name={(res.data[0])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id)}>Pagamentos</button> 
                                                                         <button onClick={this.abrir_editar((res.data[0])[i])} className='editar'>Editar</button> 
                                                                         <button className='excluir' onClick={this.abrir_excluir((res.data[0])[i])}>Excluir</button> 
                                                                         <button className='falar' onClick={this.falar_whats((res.data[3])[i])}>Falar<img className='zap' src={Zap}/></button>
