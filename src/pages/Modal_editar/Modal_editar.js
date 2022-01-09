@@ -6,6 +6,9 @@ export default class Modal_editar extends Component{
     constructor(props){
         super(props)
         this.state = {
+            preencha: 'preencha',
+
+
             nome:"",
             data:'',
             cpf:'',
@@ -23,19 +26,22 @@ export default class Modal_editar extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.get('pesquisa-info.php', {id: ident})
+        Axios.post('pesquisa-info.php', {id: ident})
         .then(res => {
-
+            this.setState({nome: res.data[1]})
         })
         .catch(error => {
             alert("Não foi possível pesquisar o cadastro desse cliente. Por favor tente denovo mais tarde")
         })
     }
+    componentWillReceiveProps(props){
+        this.pesquisar_cadastro(props.id)
+    }
     render(){
         return(
             <div className={this.props.exibir}>
                 <div className="modal">
-                    <p className="preencha">Informações</p>
+                    <p className={this.state.preencha}>Informações</p>
                     <div className="info-cliente">
                         <div className= "bloco">
                             <h3>Nome</h3>

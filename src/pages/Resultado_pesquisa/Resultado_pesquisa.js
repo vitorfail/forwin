@@ -33,6 +33,7 @@ export default class Resultado_pesquisa extends Component{
         this.setState({ editar_mostrar: visivel })
     }
     abrir_editar(id){
+        this.setState({cadastro: id})
         this.setState({editar_mostrar: "modal-editar mostrar"})
     }
     abrir_excluir(id){
@@ -67,7 +68,7 @@ export default class Resultado_pesquisa extends Component{
                                                                     <h3 className='sex'>{(res.data[4])[i]}</h3> 
                                                                     <div className='quadro_botoes'> 
                                                                         <button className='pag' id={ident} name={(res.data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
-                                                                        <button onClick={this.abrir_editar((res.data[0])[i])} className='editar'>Editar</button> 
+                                                                        <button id={(res.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
                                                                         <button className='excluir' onClick={this.abrir_excluir((res.data[0])[i])}>Excluir</button> 
                                                                         <button className='falar' onClick={this.falar_whats((res.data[3])[i])}>Falar<img className='zap' src={Zap}/></button>
                                                                     </div></div>)})
@@ -80,7 +81,7 @@ export default class Resultado_pesquisa extends Component{
                                                                     <h3 className='sex'>{(res.data[4])[i]}</h3> 
                                                                     <div className='quadro_botoes'>
                                                                         <button className='pag' id={ident} name={(res.data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
-                                                                        <button onClick={(evet) => this.abrir_editar((res.data[0])[i])} className='editar'>Editar</button> 
+                                                                        <button id={(res.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
                                                                         <button className='excluir' onClick={this.abrir_excluir((res.data[0])[i])}>Excluir</button> 
                                                                         <button className='falar' onClick={this.abrir_excluir((res.data[0])[i])}>Falar<img class='zap' src={Zap}/></button>
                                                                     </div>
@@ -109,7 +110,7 @@ export default class Resultado_pesquisa extends Component{
                     {this.state.resultado}
                 </div>
                 <Modal_pagamentos id={this.state.cadastro} nome={this.state.nome} exibir={this.state.pagamentos_mostrar} executar={this.show_pag.bind(this)}></Modal_pagamentos>
-                <Modal_editar exibir={this.state.editar_mostrar} executar={this.show_editar.bind(this)} ></Modal_editar>
+                <Modal_editar id={this.state.cadastro} exibir={this.state.editar_mostrar} executar={this.show_editar.bind(this)} ></Modal_editar>
             </div>
             
         )

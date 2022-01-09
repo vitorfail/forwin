@@ -45,7 +45,7 @@
     color: rgb(114, 114, 114);
 }
 .modal-editar .modal .preencha{
-    display: flex;
+    display: none;
     padding: 2px 2px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: rgb(0, 0, 0);
@@ -53,6 +53,9 @@
     border: 2px solid var(--preencha--borda);
     -moz-border: 2px solid var(--preencha--borda);
 	-webkit-border:  2px solid var(--preencha--borda);
+}
+.modal-editar .modal .preencha.mostrar{
+    display:flex;
 }
 .modal-editar .modal h3{
     display: flex;
