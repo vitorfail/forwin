@@ -29,9 +29,47 @@ export default class Modal_editar extends Component{
         Axios.post('pesquisa-info.php', {id: ident})
         .then(res => {
             this.setState({nome: res.data[1]})
+            this.setState({data: res.data[2]})
+            this.setState({cpf: res.data[3]})
+            this.setState({estado_civil: res.data[4]})
+            this.setState({genero: res.data[5]})
+            this.setState({uf: res.data[6]})
+            this.setState({endereco: res.data[7]})
+            this.setState({cidade: res.data[8]})
+            this.setState({telefone: res.data[9]})
+            this.setState({email: res.data[10]})
+            this.setState({notific: res.data[11]})
         })
         .catch(error => {
             alert("Não foi possível pesquisar o cadastro desse cliente. Por favor tente denovo mais tarde")
+        })
+    }
+    atualizar_cadastro(ident){
+        const Axios = axios.create({
+            baseURL:apis
+        })
+        Axios.post('atualizar-cadastro.php', {id: this.props.id, 
+            nome:this.state.nome,
+            data:this.state.data,
+            cpf:this.state.cpf,
+            estado_civil:this.state.estado_civil,
+            genero:this.state.genero,
+            uf:this.state.uf,
+            endereco:this.state.endereco,
+            cidade:this.state.cidade,
+            telefone:this.state.telefone,
+            email:this.state.email,
+            notific:this.state.notific})
+        .then(res =>{
+            if(res.data = '1'){
+                this.props.executar("modal-editar")
+            }
+            else{
+                alert("Não foi possível atualizar esses dados verifique sua internet e tente denovo")
+            }
+        })
+        .catch( error => {
+
         })
     }
     componentWillReceiveProps(props){

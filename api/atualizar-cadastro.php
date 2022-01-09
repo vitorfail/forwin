@@ -2,13 +2,14 @@
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT");
-    header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+    header("Access-Control-Allow-Headers: *");
 
+    $_POST = json_decode(file_get_contents("php://input"), true);
     include_once("conexao.php");
     try
     {
         //insere na BD
-        $sql = "UPDATE clientes_{$_SESSION['USER']} SET nome= :nome, data_nascimento= :data, cpf= :cpf, estado_civil= :estado_civil, genero= :genero, uf= :uf, endereco= :endereco, cidade =  :cidade, telefone= :telefone, email= :email, notific = :notific WHERE id= :id";
+        $sql = "UPDATE clientes_joao_3 SET nome= :nome, data_nascimento= :data, cpf= :cpf, estado_civil= :estado_civil, genero= :genero, uf= :uf, endereco= :endereco, cidade =  :cidade, telefone= :telefone, email= :email, notific = :notific WHERE id= :id";
         $salvar = $conexao->prepare($sql);
       	$salvar->bindValue(':id', $_POST['id']);
       	$salvar->bindValue(':nome', $_POST['nome']);
