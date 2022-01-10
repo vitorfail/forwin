@@ -21,6 +21,7 @@ export default class Modal_editar extends Component{
             email:'',
             notific:''
         }
+        this.atualizar_cadastro = this.atualizar_cadastro.bind(this)
     }
     pesquisar_cadastro(ident){
         const Axios = axios.create({
@@ -48,7 +49,7 @@ export default class Modal_editar extends Component{
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.post('atualizar-cadastro.php', {id: this.props.id, 
+        Axios.post('atualizar-cadastro.php', {id: ident, 
             nome:this.state.nome,
             data:this.state.data,
             cpf:this.state.cpf,
@@ -61,12 +62,13 @@ export default class Modal_editar extends Component{
             email:this.state.email,
             notific:this.state.notific})
         .then(res =>{
-            if(res.data = '1'){
+            //if(res.data = '1'){
+                console.log(res.data)
                 this.props.executar("modal-editar")
-            }
-            else{
-                alert("Não foi possível atualizar esses dados verifique sua internet e tente denovo")
-            }
+            //}
+            //else{
+            //    alert("Não foi possível atualizar esses dados verifique sua internet e tente denovo")
+            //}
         })
         .catch( error => {
 
@@ -165,7 +167,7 @@ export default class Modal_editar extends Component{
                     </div>
                     <div className="botoes">
                         <div className="botao-salvar">
-                            <button className="add-info" name="sim" value="Sim" onclick='inserir_registo()'>Salvar</button>
+                            <button className="add-info" name="sim" value="Sim" onClick={(event) => this.atualizar_cadastro(this.props.id)}>Salvar</button>
                         </div>
                         <div className="botao-fechar">
                             <button className="nao" name="nao" onClick={(event) => this.props.executar("modal-editar")} value="Não" >Fechar</button>
