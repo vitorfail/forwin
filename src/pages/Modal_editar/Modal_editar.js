@@ -22,6 +22,7 @@ export default class Modal_editar extends Component{
             notific:''
         }
         this.atualizar_cadastro = this.atualizar_cadastro.bind(this)
+        this.pesquisar_cadastro = this.pesquisar_cadastro.bind(this)
     }
     pesquisar_cadastro(ident){
         const Axios = axios.create({
@@ -45,30 +46,30 @@ export default class Modal_editar extends Component{
             alert("Não foi possível pesquisar o cadastro desse cliente. Por favor tente denovo mais tarde")
         })
     }
-    atualizar_cadastro(ident){
+    atualizar_cadastro(ident){       
         const Axios = axios.create({
             baseURL:apis
         })
         Axios.post('atualizar-cadastro.php', {id: ident, 
-            nome:this.state.nome,
-            data:this.state.data,
-            cpf:this.state.cpf,
-            estado_civil:this.state.estado_civil,
-            genero:this.state.genero,
-            uf:this.state.uf,
-            endereco:this.state.endereco,
-            cidade:this.state.cidade,
-            telefone:this.state.telefone,
-            email:this.state.email,
-            notific:this.state.notific})
+            nome:this.state.nome.toString(),
+            data:this.state.data.toString(),
+            cpf:this.state.cpf.toString(),
+            estado_civil:this.state.estado_civil.toString(),
+            genero:this.state.genero.toString(),
+            uf:this.state.uf.toString(),
+            endereco:this.state.endereco.toString(),
+            cidade:this.state.cidade.toString(),
+            telefone:this.state.telefone.toString(),
+            email:this.state.email.toString(),
+            notific:this.state.notific.toString()})
         .then(res =>{
-            //if(res.data = '1'){
+            if(res.data = '1'){
                 console.log(res.data)
                 this.props.executar("modal-editar")
-            //}
-            //else{
-            //    alert("Não foi possível atualizar esses dados verifique sua internet e tente denovo")
-            //}
+            }
+            else{
+                alert("Não foi possível atualizar esses dados verifique sua internet e tente denovo")
+            }
         })
         .catch( error => {
 
