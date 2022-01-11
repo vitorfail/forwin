@@ -9,6 +9,25 @@ export default class Modal_excluir extends Component{
         this.state = {
 
         }
+        this.excluir_cadastro = this.excluir_cadastro.bind(this);    
+    }
+    excluir_cadastro(){
+        const Axios = axios.create({
+            baseURL:apis
+        })
+        console.log('passou aqui')
+        Axios.post('deletar_cliente.php', {id: this.props.id})
+        .then(res => {
+            if(res.data == '1'){
+                this.props.executar("modal-excluir")
+            }
+            else{
+                alert("Não foi possível excluir esse cliente. Verifique sua internet e tente novamente")
+            }
+        })
+        .catch( error => {
+            alert("Não foi possível excluir esse cliente. Verifique sua internet e tente novamente")
+        })
     }
     render(){
         return(
@@ -18,7 +37,7 @@ export default class Modal_excluir extends Component{
                     <h3>Tem certeza que quer excluir esse cliente? Ele será excluido permanentemente do banco de dados</h3>
                     <div className="botoes">
                         <div className="botao-sim">
-                            <button id='confirmar-exclusao' className="sim" name="sim" value="Sim">Sim</button>
+                            <button id='confirmar-exclusao' onClick={(event) => this.excluir_cadastro()} className="sim" name="sim" value="Sim">Sim</button>
                         </div>
                         <div class="botao-nao">
                             <button className="nao" name="nao" value="Não" onClick={(event) => this.props.executar("modal-excluir")}>Não</button>

@@ -36,11 +36,11 @@ export default class Resultado_pesquisa extends Component{
         this.setState({ editar_mostrar: visivel })
     }
     abrir_editar(id){
-        alert("alarme")
         this.setState({cadastro: id})
         this.setState({editar_mostrar: "modal-editar mostrar"})
     }
     abrir_excluir(id){
+        this.setState({cadastro: id})
         this.setState({excluir_mostrar: "modal-excluir mostrar"})
     }
     show_excluir(visivel){
@@ -118,7 +118,7 @@ export default class Resultado_pesquisa extends Component{
                 </div>
                 <Modal_pagamentos id={this.state.cadastro} nome={this.state.nome} exibir={this.state.pagamentos_mostrar} executar={this.show_pag.bind(this)}></Modal_pagamentos>
                 <Modal_editar id={this.state.cadastro} exibir={this.state.editar_mostrar} executar={this.show_editar.bind(this)} ></Modal_editar>
-                <Modal_excluir executar={this.show_excluir.bind(this)} exibir={this.state.excluir_mostrar}></Modal_excluir>
+                <Modal_excluir executar={this.show_excluir.bind(this)} id={this.state.cadastro} exibir={this.state.excluir_mostrar}></Modal_excluir>
             </div>
             
         )
