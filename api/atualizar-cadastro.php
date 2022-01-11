@@ -14,8 +14,10 @@
       	$salvar->bindValue(':id', $_POST['id']);
       	$salvar->bindValue(':nome', $_POST['nome']);
         $salvar->bindValue(':data', strval($_POST['data']));
+        $salvar->bindValue(':cpf', $_POST['cpf']);
         $salvar->bindValue(':estado_civil', $_POST['estado_civil']);
         $salvar->bindValue(':genero', $_POST['genero']);
+        $salvar->bindValue(':uf', $_POST['uf']);
         $salvar->bindValue(':endereco', $_POST['endereco']);
         $salvar->bindValue(':cidade', $_POST['cidade']);
       	$salvar->bindValue(':telefone', $_POST['telefone']);
