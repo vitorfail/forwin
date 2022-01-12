@@ -6,10 +6,11 @@ import { Bar } from "react-chartjs-2";
 import Chart from 'chart.js/auto';;
 function pesquisa_de_pagamentos(){
     var dados = {}
+    var data_query = new Date()
     const Axios = axios.create({
         baseURL:apis
     })
-    Axios.post("pagamentos.php")
+    Axios.post("pagamentos_mes.php", {ano: data_query.getFullYear().toString(), mes:(data_query.getMonth()+1).toString()})
     .then(res => {
         if(res.data == '1' || res.data =='2'){
             dados = { janeiro:0, 
@@ -28,18 +29,18 @@ function pesquisa_de_pagamentos(){
         }
         else{
             var d = new Date();
-            var janeiro = 0;
-            var fevereiro = 0;
-            var marco = 0;
-            var abril = 0;
-            var maio = 0;
-            var junho = 0;
-            var julho = 0;
-            var agosto = 0;
-            var setembro = 0;
-            var outubro = 0;
-            var novembro = 0;
-            var dezembro = 0;
+            var janeiro_mes = 0;
+            var fevereiro_mes = 0;
+            var marco_mes = 0;
+            var abril_mes = 0;
+            var maio_mes = 0;
+            var junho_mes = 0;
+            var julho_mes = 0;
+            var agosto_mes = 0;
+            var setembro_mes = 0;
+            var outubro_mes = 0;
+            var novembro_mes = 0;
+            var dezembro_mes = 0;
             var d = new Date();
             var valormes = 0;
             for(var i=0; i< res.data[0].length; i++){
@@ -53,57 +54,57 @@ function pesquisa_de_pagamentos(){
                             valormes = valormes+parseFloat((res.data[1])[i]);
                         }
                         if(newd.getMonth() == 0){
-                            janeiro = janeiro+parseFloat((res.data[1])[i]);
+                            janeiro_mes = janeiro_mes+parseFloat((res.data[1])[i]);
                         }
                         if(newd.getMonth() == 1){
-                            fevereiro = fevereiro+parseFloat((res.data[1])[i]);
+                            fevereiro_mes = fevereiro_mes+parseFloat((res.data[1])[i]);
                         }
                         if(newd.getMonth() == 2){
-                            marco = marco+parseFloat((res.data[1])[i]);
+                            marco_mes = marco_mes+parseFloat((res.data[1])[i]);
                         }
                         if(newd.getMonth() == 3){
-                            abril = abril+parseFloat((res.data[1])[i]);
+                            abril_mes = abril_mes+parseFloat((res.data[1])[i]);
                         }
                         if(newd.getMonth() == 4){
-                            maio = maio+parseFloat((res.data[1])[i]);
+                            maio_mes = maio_mes+parseFloat((res.data[1])[i]);
                         }
                         if(newd.getMonth() == 5){
-                            junho = junho+parseFloat((res.data[1])[i]);
+                            junho_mes = junho_mes+parseFloat((res.data[1])[i]);
                         }
                         if(newd.getMonth() == 6){
-                            julho = julho+parseFloat((res.data[1])[i]);
+                            julho_mes = julho_mes+parseFloat((res.data[1])[i]);
                         }
                         if(newd.getMonth() == 7){
-                            agosto = agosto+parseFloat((res.data[1])[i]);
+                            agosto_mes = agosto_mes+parseFloat((res.data[1])[i]);
                         }
                         if(newd.getMonth() == 8){
-                            setembro = setembro+parseFloat((res.data[1])[i]);
+                            setembro_mes = setembro_mes+parseFloat((res.data[1])[i]);
                         }
                         if(newd.getMonth() == 9){
-                            outubro = outubro+parseFloat((res.data[1])[i]);
+                            outubro_mes = outubro_mes+parseFloat((res.data[1])[i]);
                         }
                         if(newd.getMonth() == 10){
-                            novembro = novembro+parseFloat((res.data[1])[i]);
+                            novembro_mes = novembro_mes+parseFloat((res.data[1])[i]);
                         }
                         if(newd.getMonth() == 11){
-                            dezembro = dezembro+parseFloat((res.data[1])[i]);
+                            dezembro_mes = dezembro_mes+parseFloat((res.data[1])[i]);
                         }
                     }
                 }
                 
             }
-            dados = { janeiro, 
-                fevereiro, 
-                marco, 
-                abril, 
-                maio, 
-                junho, 
-                julho, 
-                agosto, 
-                setembro, 
-                outubro, 
-                novembro, 
-                dezembro
+            dados = { janeiro: janeiro_mes, 
+                fevereiro: fevereiro_mes, 
+                marco: marco_mes, 
+                abril: abril_mes, 
+                maio: maio_mes, 
+                junho: junho_mes, 
+                julho: julho_mes, 
+                agosto: agosto_mes, 
+                setembro: setembro_mes, 
+                outubro: outubro_mes, 
+                novembro: novembro_mes, 
+                dezembro: dezembro_mes
             }
         }
     })
