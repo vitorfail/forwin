@@ -47,7 +47,8 @@ export default class Resultado_pesquisa extends Component{
         this.setState({excluir_mostrar: visivel})
     }
     falar_whats(telefone){
-
+        var link = "http://api.whatsapp.com/send?1=pt_BR&phone=55"+telefone.replace("(", '').replace(")", '').replace(" ", '').replace("-", '')
+        window.open(link)
     }
     resultado(){
         const Axios = axios.create({
@@ -77,7 +78,7 @@ export default class Resultado_pesquisa extends Component{
                                                                         <button className='pag' id={ident} name={(res.data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
                                                                         <button id={(res.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
                                                                         <button id={(res.data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
-                                                                        <button className='falar' onClick={(event) => this.falar_whats((res.data[3])[i])}>Falar<img className='zap' src={Zap}/></button>
+                                                                        <button className='falar' id={(res.data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img className='zap' src={Zap}/></button>
                                                                     </div></div>)})
                     }
                     else{
@@ -90,7 +91,7 @@ export default class Resultado_pesquisa extends Component{
                                                                         <button className='pag' id={ident} name={(res.data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
                                                                         <button id={(res.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
                                                                         <button id={(res.data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
-                                                                        <button className='falar' onClick={(event) => this.falar_whats((res.data[0])[i])}>Falar<img class='zap' src={Zap}/></button>
+                                                                        <button className='falar' id={(res.data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img class='zap' src={Zap}/></button>
                                                                     </div>
                                                                 </div>)
                         })

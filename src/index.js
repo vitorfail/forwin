@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Cadastro from './pages/Cadastro';
 import Pesquisa from './pages/Pesquisa';
+import Graficos from './pages/Graficos';
 import reportWebVitals from './reportWebVitals';
 import {Route, Routes, BrowserRouter} from 'react-router-dom' 
 
@@ -12,6 +13,7 @@ ReactDOM.render(
       <Routes>
         <Route  exact path="/" element={<App/>}/>
         <Route  exact path="/cadastro" element={<Cadastro/>}/>
+        <Route  exact path="/graficos" element={<Graficos/>}/>
         <Route  path="/pesquisa/:nome" element={<Pesquisa/>}/>
       </Routes>
   </ BrowserRouter>,

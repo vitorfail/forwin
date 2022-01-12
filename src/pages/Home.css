@@ -164,46 +164,7 @@ html::-webkit-scrollbar-thumb
 
 
 /* Gráficos  */
- .graphbox{
-    position: relative;
-    display: grid;
-    padding: 20px;
-    width: 99%;
-    grid-template-columns:1fr 2fr;
-    grid-gap: 30px;
-    min-height: 200px;
-}
-.graphbox .box{
-     position:relative;
-     background: #fff;
-     padding:  20px;
-     width:100%;
-     box-shadow: 0 7px 20px rgba(0,0,0,0.08);
-     border-radius: 20px;
-}
- .graphbox2{
-    position: relative;
-    display: grid;
-    padding: 20px;
-    width: 99%;
-    grid-template-columns:1fr 1fr 1fr;
-    grid-gap: 30px;
-    min-height: 200px;
-}
-.graphbox2 .box{
-     position:relative;
-     background: #fff;
-     padding:  20px;
-     width:100%;
-     box-shadow: 0 7px 20px rgba(0,0,0,0.08);
-     border-radius: 20px;
-}
-#myChart{
-     max-height: 240px;
-}
-#myChart2{
-     max-height: 280px;
-}
+
 /* Fim Gráficos*/
 
 /* Cadastro positivo*/
@@ -470,20 +431,6 @@ h1, h2{
     .modal-container2 .modal input{
         width: 14vw;
     }
-    .graphbox{
-        display: block;
-    }
-    #myChart{
-        width: 491px
-    }
-}
-@media screen and (max-width: 1264px){
-    .graphbox2 {
-        display: block;
-    }
-    .graphbox {
-        display: block;
-    }
 }
 @media screen and (max-width: 640px){
 
@@ -535,15 +482,6 @@ h1, h2{
     }
     .dre .titulo_pesquisa {
         display:block;
-    }
-    .graphbox2{
-        display: block;
-    }
-    .graphbox .box {
-        margin-bottom: 15px;
-    }
-    .graphbox2 .box {
-        margin-bottom: 15px;
     }
     #list{
         font-size: 18px;
