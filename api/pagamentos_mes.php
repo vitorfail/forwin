@@ -20,14 +20,28 @@
         $row_mes ='';
         if(count($pesquisa) > 0 ){
             foreach($pesquisa as $row){
-                $row_mes = explode('-',$row['data']);
-                if(sizeof($row_mes) == 3 ){
-                    if($row_mes[1] == $_POST['mes'] && $row_mes[0] == $_POST['ano']){
-                        array_push($data, $row['data']);
-                        array_push($valor, $row['valor']);
-                        array_push($nome, $row['nome']);
-                        array_push($id_cliente, $row['id_cliente']);
-                        array_push($tipo, $row['tipo']);
+                if($_POST['mes'] == 'Todos'){
+                    $row_mes = explode('-',$row['data']);
+                    if(sizeof($row_mes) == 3 ){
+                        if($row_mes[0] == $_POST['ano']){
+                            array_push($data, $row['data']);
+                            array_push($valor, $row['valor']);
+                            array_push($nome, $row['nome']);
+                            array_push($id_cliente, $row['id_cliente']);
+                            array_push($tipo, $row['tipo']);
+                        }
+                    }
+                }
+                else{
+                    $row_mes = explode('-',$row['data']);
+                    if(sizeof($row_mes) == 3 ){
+                        if($row_mes[1] == $_POST['mes'] && $row_mes[0] == $_POST['ano']){
+                            array_push($data, $row['data']);
+                            array_push($valor, $row['valor']);
+                            array_push($nome, $row['nome']);
+                            array_push($id_cliente, $row['id_cliente']);
+                            array_push($tipo, $row['tipo']);
+                        }
                     }
                 }
             }
