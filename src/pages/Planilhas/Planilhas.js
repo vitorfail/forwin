@@ -27,16 +27,79 @@ export default class Planilhas extends Component{
 
 
 
-            variacao1: 'Nenhum',
-            variacao2: 'Nenhum',
-            variacao3: 'Nenhum',
-            variacao4: 'Nenhum',
-            variacao5: 'Nenhum',
+            label1: 'Nenhum',
+            label2: 'Nenhum',
+            label3: 'Nenhum',
+            label4: 'Nenhum',
+            label5: 'Nenhum',
+            label1: 'Nenhum',
+            variacao1: 1,
+            variacao2: 1,
+            variacao3: 1,
+            variacao4: 1,
+            variacao5: 1,
+
         }
         this.pesquisa_de_pagamentos = this.pesquisa_de_pagamentos.bind(this)
+        this.pesquisa_idades = this.pesquisa_idades.bind(this)
+        this.pesquisa_estado_civil = this.pesquisa_estado_civil.bind(this)
     }
     componentWillMount(){
         this.pesquisa_de_pagamentos()
+        this.pesquisa_idades()
+        this.pesquisa_estado_civil()
+    }
+    pesquisa_idades(){
+        const Axios = axios.create({
+            baseURL:apis
+        })
+        Axios.get('idades.php')
+        .then(res =>{
+           if(res.data == '1'){
+
+           }
+           else{
+                var idade = res.data;
+                var min = Math.min.apply(Math, idade)
+                var max = Math.max.apply(Math, idade)
+                var fre = Math.round((max-min)/ 5);
+                var count1= 0;
+                var count2= 0;
+                var count3= 0;
+                var count4= 0;
+                var count5= 0;
+                for(var i=0; i<idade.length; i++){
+                    if(idade[i] <= (min +fre)){
+                        count1++;
+                    }
+                    if(idade[i] <= (min+ (2*fre)) && idade[i] > (min +fre)){
+                        count2++;
+                    }
+                    if(idade[i] <= (min+ (3*fre)) && idade[i] > (min+ (2*fre))){
+                        count3++;
+                    }
+                    if(idade[i] <= (min+ (4*fre)) && idade[i] > (min+ (3*fre))){
+                        count4++;
+                    }                        
+                    if(idade[i] <= (min+ (5*fre)) && idade[i] > (min+ (4*fre))){
+                        count5++;
+                    }
+                }
+                this.setState({label1: min.toString()+"--"+ (min +fre).toString() +'Anos'})
+                this.setState({label2: (min + fre).toString()+"--"+(min + (2*fre)).toString() +'Anos'})
+                this.setState({label3: (min + (2*fre)).toString()+"--"+(min + (3*fre)).toString() +'Anos'})
+                this.setState({label4: (min + (3*fre)).toString()+"--"+(min + (4*fre)).toString() +'Anos'})
+                this.setState({label5: (min + (4*fre)).toString()+"--"+(min + (5*fre)).toString() +'Anos'})
+                this.setState({variacao1: count1})
+                this.setState({variacao2: count2})
+                this.setState({variacao3: count3})
+                this.setState({variacao4: count4})
+                this.setState({variacao5: count5})
+           }
+        })
+        .catch(error => {
+            alert("Não foi passivel")
+        })
     }
     pesquisa_de_pagamentos(){
         var data_query = new Date()
@@ -154,20 +217,33 @@ export default class Planilhas extends Component{
             this.setState({dezembro: 0});
         })
     }
+    pesquisa_estado_civil(){
+        const Axios = axios.create({
+            baseURL:apis
+        })
+        Axios.get("estado_civil.php")
+        .then(res => {
+
+        })
+    }
     render(){
         return(
             <div>
                 <div className="graphbox">
                     <div className="box">
                         <PolarArea data={{labels: [
-                                this.state.variacao1,
-                                this.state.variacao2,
-                                this.state.variacao3,
-                                this.state.variacao4,
-                            this.state.variacao5
+                                this.state.label1,
+                                this.state.label2,
+                                this.state.label3,
+                                this.state.label4,
+                                this.state.label5
                             ],datasets: [{
                                     label: 'Relação das idades ',
-                                    data: [11, 11, 11, 11, 11],
+                                    data: [this.state.variacao1, 
+                                        this.state.variacao2, 
+                                        this.state.variacao3, 
+                                        this.state.variacao4, 
+                                        this.state.variacao5],
                                     backgroundColor: [
                                     'rgb(255, 99, 132)',
                                     'rgb(75, 192, 192)',

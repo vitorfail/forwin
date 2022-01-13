@@ -4,6 +4,7 @@ import Barralateral from './Barralateral/Barralateral';
 import Barra_de_Pesquisa from './Barra_de_pesquisa/Barra_de_pesquisa';
 import Planilhas from './Planilhas/Planilhas';
 import Loading from './Loading/Loading';
+import Blocos from './Blocos/Blocos'
 export default class Graficos extends Component{
     constructor(){
         super()
@@ -18,6 +19,7 @@ export default class Graficos extends Component{
                 <div className="barra">
                     <Barra_de_Pesquisa></Barra_de_Pesquisa>
                     <div className="conteudo">
+                    <Blocos></Blocos>
                         <div className="conteudo-2">
                             <Planilhas></Planilhas>
                         </div>
