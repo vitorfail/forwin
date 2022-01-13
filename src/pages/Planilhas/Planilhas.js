@@ -2,7 +2,7 @@ import { Component } from "react/cjs/react.development";
 import axios from "axios";
 import { apis } from "../../caminho_api.mjs";
 import '../Planilhas/Planilhas.css';
-import { Bar } from "react-chartjs-2";
+import { Bar, PolarArea } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
 import { useEffect, useState } from "react";
 
@@ -23,7 +23,15 @@ export default class Planilhas extends Component{
             setembro: 0,
             outubro: 0,
             novembro: 0,
-            dezembro: 0
+            dezembro: 0,
+
+
+
+            variacao1: 'Nenhum',
+            variacao2: 'Nenhum',
+            variacao3: 'Nenhum',
+            variacao4: 'Nenhum',
+            variacao5: 'Nenhum',
         }
         this.pesquisa_de_pagamentos = this.pesquisa_de_pagamentos.bind(this)
     }
@@ -151,7 +159,23 @@ export default class Planilhas extends Component{
             <div>
                 <div className="graphbox">
                     <div className="box">
-                        <canvas id="myChart2" ></canvas>  
+                        <PolarArea data={{labels: [
+                                this.state.variacao1,
+                                this.state.variacao2,
+                                this.state.variacao3,
+                                this.state.variacao4,
+                            this.state.variacao5
+                            ],datasets: [{
+                                    label: 'Relação das idades ',
+                                    data: [11, 11, 11, 11, 11],
+                                    backgroundColor: [
+                                    'rgb(255, 99, 132)',
+                                    'rgb(75, 192, 192)',
+                                    'rgb(255, 205, 86)',
+                                    'rgb(201, 203, 207)',
+                                    'rgb(54, 162, 235)'
+                                    ]}]
+                                }}/>   
                     </div>
                     <div className="box">
                         <Bar data={{ labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',  'Novembro', 'Dezembro'],
@@ -198,7 +222,7 @@ export default class Planilhas extends Component{
                 </div>
                 <div className="graphbox2">
                     <div className="box">
-                        <canvas id="myChart3" ></canvas>  
+                        <canvas id= "my"></canvas>
                     </div>
                     <div className="box">
                         <canvas id="myChart4" ></canvas>
