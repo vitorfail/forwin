@@ -2,7 +2,7 @@ import { Component } from "react/cjs/react.development";
 import axios from "axios";
 import { apis } from "../../caminho_api.mjs";
 import '../Planilhas/Planilhas.css';
-import { Bar, PolarArea } from "react-chartjs-2";
+import { Bar, PolarArea, Doughnut } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
 import { useEffect, useState } from "react";
 
@@ -25,8 +25,6 @@ export default class Planilhas extends Component{
             novembro: 0,
             dezembro: 0,
 
-
-
             label1: 'Nenhum',
             label2: 'Nenhum',
             label3: 'Nenhum',
@@ -38,6 +36,11 @@ export default class Planilhas extends Component{
             variacao3: 1,
             variacao4: 1,
             variacao5: 1,
+
+            viuva:0,
+            casada:0,
+            solteira:0,
+            divorciada:0,
 
         }
         this.pesquisa_de_pagamentos = this.pesquisa_de_pagamentos.bind(this)
@@ -223,7 +226,37 @@ export default class Planilhas extends Component{
         })
         Axios.get("estado_civil.php")
         .then(res => {
+            if(res.data == '1'){
+                this.setState({viuva:0})
+                this.setState({casada:0})
+                this.setState({solteira:0})
+                this.setState({divorciada:0}) 
 
+            }
+            else{
+                var solteiro =0
+                var casado = 0
+                var viuva =0
+                var divorciado=0
+                for(var i=0; i< res.data.length; i++){
+                    if(res.data[i] == 'solteiro'){
+                        solteiro = solteiro +1
+                    }
+                    if(res.data[i] == 'casado'){
+                        casado = casado +1
+                    }
+                    if(res.data[i] == 'viuva' || res.data[i] == 'viuvo'){
+                        viuva = viuva +1
+                    }
+                    if(res.data[i] == 'divorciado'){
+                        divorciado = divorciado +1
+                    }
+                }
+                this.setState({viuva:viuva})
+                this.setState({casada:casado})
+                this.setState({solteira:solteiro})
+                this.setState({divorciada:divorciado}) 
+            }
         })
     }
     render(){
@@ -298,7 +331,19 @@ export default class Planilhas extends Component{
                 </div>
                 <div className="graphbox2">
                     <div className="box">
-                        <canvas id= "my"></canvas>
+                        <Doughnut data={{
+                            labels: ["Viuvo(a)", "Casado(a)", "Solteiro(a)", "Divorciado(a)"],
+                            datasets: [{
+                                label: "Estado civil",
+                                data: [this.state.viuva, this.state.casada, this.state.solteira, this.state.divorciade],
+                                backgroundColor: [ 'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 205, 86)',
+                                'rgb(255, 55, 86)']
+                            }],
+                            hoverOffset: 4
+                        }}
+                        />
                     </div>
                     <div className="box">
                         <canvas id="myChart4" ></canvas>
