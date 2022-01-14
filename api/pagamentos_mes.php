@@ -56,6 +56,6 @@
     }
     catch(Exception $ex){
         $conexao =null;
-        echo "2";   
+        echo "1";   
     }
 ?>
