@@ -6,8 +6,29 @@ export default class DRE extends Component{
     constructor(){
         super()
         this.state = {
+            receita:0,
 
+            imposto_dre:0,
+            custo_dre:0,
+            despesas_operacionais_dre:0,
+            despesas_venda_dre:0,
+            depesas_financeiras_dre:0,
+            despesas_administracao_dre:0
         }
+        this.pesquisa_financeira = this.pesquisa_financeira.bind(this)
+    }
+    componentWillMount(){
+        var meses = ['Janeiro', 'Fevereiro','Março' , 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro','Dezembro']
+        var data = new Date();
+        var mes =''
+        var ano = data.getFullYear().toString()
+        if(data.getMonth()< 10){
+            mes = '0'+ (data.getMonth() + 1).toString()
+        }
+        else{
+            mes = (data.getMonth() + 1).toString()
+        }
+        this.pesquisa_financeira(mes, ano)
     }
     pesquisa_financeira(m, a){
         const Axios = axios.create({
@@ -21,8 +42,49 @@ export default class DRE extends Component{
             else{
                 var pag =0
                 for(var i=0; i< res.data[0].length;i++ ){
-                    pag = pag + parseFloat(res.data[1]);
+                    pag = pag + parseFloat((res.data[1])[i]);
                 }
+                this.setState({receita: pag})
+            }
+        })
+        Axios.post("constas_dre.php", {mes:m, ano:a})
+        .then(res =>{
+            if(res.data == '1'){
+                
+            }
+            else{
+                var imposto = 0;
+                var custo = 0;
+                var despesas_operacionais = 0;
+                var despesas_venda = 0;
+                var depesas_financeiras = 0;
+                var despesas_administracao = 0;
+                for(var i =0; i< res.data[0].length; i++){
+                    if((res.data[1])[i] == 'imposto'){
+                        imposto = imposto + parseFloat((res.data[0])[i])
+                    }
+                    if((res.data[1])[i] == 'custo'){
+                        custo = custo + parseFloat((res.data[0])[i])
+                    } 
+                    if((res.data[1])[i] == 'despesas-operacionais'){
+                        despesas_operacionais = despesas_operacionais + parseFloat((res.data[0])[i])
+                    } 
+                    if((res.data[1])[i] == 'despesas-venda'){
+                        despesas_venda = despesas_venda + parseFloat((res.data[0])[i])
+                    } 
+                    if((res.data[1])[i] == 'depesas-financeiras'){
+                        depesas_financeiras = depesas_financeiras + parseFloat((res.data[0])[i])
+                    } 
+                    if((res.data[1])[i] == 'despesas-administracao'){
+                        despesas_administracao = despesas_administracao + parseFloat((res.data[0])[i])
+                    }     
+                }
+                this.setState({imposto_dre: imposto})
+                this.setState({custo_dre: custo})
+                this.setState({despesas_operacionais_dre: despesas_operacionais})
+                this.setState({despesas_venda_dre: despesas_venda})
+                this.setState({depesas_financeiras_dre: depesas_financeiras})
+                this.setState({despesas_administracao_dre: despesas_administracao})
             }
         })
     }
@@ -87,11 +149,11 @@ export default class DRE extends Component{
                 </div>
                 <div class='titulo_dre'>
                     <h1 class="entrada_rs">Receita bruta</h1>
-                    <h1 class="entrada_rs2 r">R$ 00,00</h1>
+                    <h1 class="entrada_rs2 r">R$ {this.state.receita}</h1>
                 </div>
                 <div class='titulo_dre2'>
                     <h1 class="saida_rs i">Impostos sobre serviço / mercadoria</h1>
-                    <h1 class="saida_rs2 imp">R$ 00,00</h1>
+                    <h1 class="saida_rs2 imp">R$ {this.state.imposto_dre}</h1>
                 </div>
                 <div class='titulo_dre'>
                     <h1 class="entrada_rs">Receita líquida</h1>
@@ -99,7 +161,7 @@ export default class DRE extends Component{
                 </div>
                 <div class='titulo_dre2'>
                     <h1 class="saida_rs">Custo das mercadorias / Serviços</h1>
-                    <h1 class="saida_rs2 c">R$ 00,00</h1>
+                    <h1 class="saida_rs2 c">R$ {this.state.custo_dre}</h1>
                 </div>
                 <div class='titulo_dre'>
                     <h1 class="entrada_rs">Lucro bruto</h1>
@@ -107,15 +169,15 @@ export default class DRE extends Component{
                 </div>
                 <div class='titulo_dre2'>
                     <h1 class="saida_rs">Despesas operaionais</h1>
-                    <h1 class="saida_rs2 do">R$ 00,00</h1>
+                    <h1 class="saida_rs2 do">R$ {this.state.despesas_operacionais_dre}</h1>
                 </div>
                 <div class='titulo_dre2'>
                     <h1 class="saida_rs">Despesas com vendas</h1>
-                    <h1 class="saida_rs2 dv">R$ 00,00</h1>
+                    <h1 class="saida_rs2 dv">R$ {this.state.despesas_venda_dre}</h1>
                 </div>
                 <div class='titulo_dre2'>
                     <h1 class="saida_rs">Despesas financeiras</h1>
-                    <h1 class="saida_rs2 df">R$ 00,00</h1>
+                    <h1 class="saida_rs2 df">R$ {this.state.depesas_financeiras_dre}</h1>
                 </div>
                 <div class='titulo_dre'>
                     <h1 class="entrada_rs">Receita financeira</h1>
@@ -123,7 +185,7 @@ export default class DRE extends Component{
                 </div>
                 <div class='titulo_dre2'>
                     <h1 class="saida_rs">Despesas de administração</h1>
-                    <h1 class="saida_rs2 da">R$ 00,00</h1>
+                    <h1 class="saida_rs2 da">R$ {this.state.despesas_administracao_dre}</h1>
                 </div>
                 <div class='resultado_positivo_dre'>
                     <h1 class="resultado_rs">Lucro líquido</h1>
