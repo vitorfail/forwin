@@ -13,7 +13,18 @@ export default class DRE extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('pagamentos.php', {mes:m, ano:a})
+        Axios.post('pagamentos_mes.php', {mes:m, ano:a})
+        .then(res => {
+            if(res.data == '1'){
+
+            }
+            else{
+                var pag =0
+                for(var i=0; i< res.data[0].length;i++ ){
+                    pag = pag + parseFloat(res.data[1]);
+                }
+            }
+        })
     }
     render(){
         return(
