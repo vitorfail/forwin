@@ -12,6 +12,7 @@ export default class Planilhas extends Component{
     constructor(){
         super()
         this.state ={
+            ///Pagamentos//////
             janeiro: 0,
             fevereiro: 0,
             marco: 0,
@@ -24,7 +25,7 @@ export default class Planilhas extends Component{
             outubro: 0,
             novembro: 0,
             dezembro: 0,
-
+            ///Idades//////
             label1: 'Nenhum',
             label2: 'Nenhum',
             label3: 'Nenhum',
@@ -36,21 +37,36 @@ export default class Planilhas extends Component{
             variacao3: 1,
             variacao4: 1,
             variacao5: 1,
-
+            ///Estado civil//////
             viuva:0,
             casada:0,
             solteira:0,
             divorciada:0,
+            ///Sexo//////
+            masculino: 0,
+            feminino:0,
+            outros:0,
+            ///Tipo de Pagamento/////
+            debito:0,
+            credito:0,
+            credito_parcelado:0,
+            a_vista:0,
+            boleto:0,
+            cheque:0
 
         }
         this.pesquisa_de_pagamentos = this.pesquisa_de_pagamentos.bind(this)
         this.pesquisa_idades = this.pesquisa_idades.bind(this)
         this.pesquisa_estado_civil = this.pesquisa_estado_civil.bind(this)
+        this.pesquisa_sexo = this.pesquisa_sexo.bind(this)
+        this.pesquisa_pagamentos =this.pesquisa_pagamentos.bind(this)
     }
     componentWillMount(){
         this.pesquisa_de_pagamentos()
         this.pesquisa_idades()
         this.pesquisa_estado_civil()
+        this.pesquisa_sexo()
+        this.pesquisa_pagamentos()
     }
     pesquisa_idades(){
         const Axios = axios.create({
@@ -259,6 +275,92 @@ export default class Planilhas extends Component{
             }
         })
     }
+    pesquisa_sexo(){
+        const Axios = axios.create({
+            baseURL:apis
+        })
+        Axios.get('sexo.php')
+        .then(res => {
+            if(res.data == '1'){
+
+            }
+            else{
+                var m = 0
+                var f =0
+                var o = 0
+                for(var i=0; i < res.data.length; i++){
+                    if(res.data[i] == 'Masculino'){
+                        m = m+1
+                    }
+                    if(res.data[i] == 'Feminino'){
+                        f = f+1
+                    }
+                    if(res.data[i] == 'Outros'){
+                        o= o+1
+                    }
+                }
+                this.setState({masculino: m})
+                this.setState({feminino: f})
+                this.setState({outros: o})
+            }
+        })
+        .catch(error => {
+
+        })
+    }
+    pesquisa_pagamentos(){
+        const Axios = axios.create({
+            baseURL:apis
+        })
+        Axios.get('pagamentos_totais.php', {mes:'Todos'})
+        .then(res => {
+            if(res.data == '1'|| res.data == '2'){
+                this.setState({debito: 1})
+                this.setState({credito: 1})
+                this.setState({credito_parcelado: 1})
+                this.setState({a_vista: 1})
+                this.setState({boleto: 1})
+                this.setState({cheque: 1})
+            }
+            else{
+                var debito_1 = 0
+                var credito_1 = 0
+                var credito_parcelado_1 = 0
+                var a_vista_1 = 0 
+                var boleto_1 = 0
+                var cheque_1 = 0
+                for(var i=0; i < res.data.length; i++){
+                    if(res.data[i] == 'debito'){
+                        debito_1 = debito_1 +1
+                    }
+                    if(res.data[i] == 'credito'){
+                        credito_1 = credito_1 +1
+                    }
+                    if(res.data[i] == 'credito-parcelado'){
+                        credito_parcelado_1 = credito_parcelado_1 +1
+                    }
+                    if(res.data[i] == 'a-vista'){
+                        a_vista_1 = a_vista_1 +1
+                    }
+                    if(res.data[i] == 'boleto'){
+                        boleto_1 = boleto_1 +1
+                    }
+                    if(res.data[i] == 'cheque'){
+                        cheque_1 = cheque_1 +1
+                    }
+                }
+                this.setState({debito: debito_1})
+                this.setState({credito: credito_1})
+                this.setState({credito_parcelado: credito_parcelado_1})
+                this.setState({a_vista: a_vista_1})
+                this.setState({boleto: boleto_1})
+                this.setState({cheque: cheque_1})
+            }
+        })
+        .catch(error => {
+
+        })
+    }
     render(){
         return(
             <div>
@@ -346,10 +448,49 @@ export default class Planilhas extends Component{
                         />
                     </div>
                     <div className="box">
-                        <canvas id="myChart4" ></canvas>
+                        <Doughnut
+                            data={{
+                                labels: ["Masculino", "Feminino", "Outros"],
+                                datasets: [{
+                                    label: "Sexo",
+                                    data:[this.state.masculino, this.state.feminino, this.state.outros],
+                                    backgroundColor: [
+                                        'rgb(255, 99, 132)',
+                                        'rgb(54, 162, 235)',
+                                        'rgb(255, 205, 86)'
+                                    ]
+                                }],
+                                hoverOffset: 4
+                            }}
+                        />
                     </div>
                     <div className="box">
-                        <canvas id="myChart5" ></canvas>
+                        <Doughnut 
+                            data={{
+                                labels:['Débito',
+                                'Crédito',
+                                'Crédito Parcelado',
+                                'A Vista',
+                                'Boleto',
+                                'Cheque'],
+                                datasets:[{
+                                    label:"Pagamentos",
+                                    data:[this.state.debito,
+                                        this.state.credito,
+                                        this.state.credito_parcelado,
+                                        this.state.a_vista,
+                                        this.state.boleto,
+                                        this.state.cheque],
+                                    backgroundColor:['rgb(255, 99, 132)',
+                                    'rgb(54, 162, 235)',
+                                    'rgb(255, 205, 86)',
+                                    'rgb(255, 94, 51)',
+                                    'rgb(88, 206, 219)',
+                                    'rgb(93, 199, 44)']
+                                }],
+                                hoverOffset: 4
+                            }}
+                        />
                     </div>
                 </div>
             </div>
