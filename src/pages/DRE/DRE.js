@@ -66,45 +66,20 @@ export default class DRE extends Component{
                 
             }
             else{
-                var imposto = 0;
-                var custo = 0;
-                var despesas_operacionais = 0;
-                var despesas_venda = 0;
-                var depesas_financeiras = 0;
-                var despesas_administracao = 0;
-                for(var i =0; i< res.data[0].length; i++){
-                    if((res.data[1])[i] == 'imposto'){
-                        imposto = imposto + parseFloat((res.data[0])[i])
-                    }
-                    if((res.data[1])[i] == 'custo'){
-                        custo = custo + parseFloat((res.data[0])[i])
-                    } 
-                    if((res.data[1])[i] == 'despesas-operacionais'){
-                        despesas_operacionais = despesas_operacionais + parseFloat((res.data[0])[i])
-                    } 
-                    if((res.data[1])[i] == 'despesas-venda'){
-                        despesas_venda = despesas_venda + parseFloat((res.data[0])[i])
-                    } 
-                    if((res.data[1])[i] == 'depesas-financeiras'){
-                        depesas_financeiras = depesas_financeiras + parseFloat((res.data[0])[i])
-                    } 
-                    if((res.data[1])[i] == 'despesas-administracao'){
-                        despesas_administracao = despesas_administracao + parseFloat((res.data[0])[i])
-                    }     
-                }
-                this.setState({imposto_dre: imposto})
-                this.setState({custo_dre: custo})
-                this.setState({despesas_operacionais_dre: despesas_operacionais})
-                this.setState({despesas_venda_dre: despesas_venda})
-                this.setState({depesas_financeiras_dre: depesas_financeiras})
-                this.setState({despesas_administracao_dre: despesas_administracao})
+                
+                this.setState({imposto_dre: res.data[0]})
+                this.setState({custo_dre: res.data[1]})
+                this.setState({despesas_operacionais_dre: res.data[2]})
+                this.setState({despesas_venda_dre: res.data[3]})
+                this.setState({depesas_financeiras_dre: res.data[4]})
+                this.setState({despesas_administracao_dre: res.data[5]})
 
                 var receita = this.state.receita
 
-                this.setState({receita_liquida_dre: receita - imposto})
-                this.setState({lucro_bruto_dre: receita - (imposto+custo)})
-                this.setState({receita_financeira: receita -(imposto+custo+despesas_operacionais+despesas_venda+depesas_financeiras)})
-                this.setState({resultado_dre: receita -(imposto+custo+despesas_operacionais+despesas_venda+depesas_financeiras+despesas_administracao)})
+                //this.setState({receita_liquida_dre: receita - imposto})
+                //this.setState({lucro_bruto_dre: receita - (imposto+custo)})
+                //this.setState({receita_financeira: receita -(imposto+custo+despesas_operacionais+despesas_venda+depesas_financeiras)})
+                //this.setState({resultado_dre: receita -(imposto+custo+despesas_operacionais+despesas_venda+depesas_financeiras+despesas_administracao)})
             }
         })
     }
