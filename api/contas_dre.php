@@ -24,7 +24,7 @@
                     }
                 }           
             }
-            array_pus($array, $valor, $tipo);
+            array_push($array, $valor, $tipo);
             $array_encode = json_encode($array, JSON_UNESCAPED_UNICODE);
             echo $array_encode;
         }

@@ -9,7 +9,7 @@
     try{
         $sql = "INSERT into contas_joao_3 (conta, data, valor , situacao, tipo) values ( :conta, :data, :valor, :situacao, :tipo )";
         $salvar = $conexao->prepare($sql);
-      	$salvar->bindValue(':conta', $_POST['conta']);
+      	$salvar->bindValue( ':conta', $_POST['conta']);
         $salvar->bindValue(':data', $_POST['vencimento']);
         $salvar->bindValue(':valor', $_POST['val']);
         $salvar->bindValue(':situacao', 'Aberto');

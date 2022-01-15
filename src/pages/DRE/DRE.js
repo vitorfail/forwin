@@ -6,19 +6,32 @@ export default class DRE extends Component{
     constructor(){
         super()
         this.state = {
+            ////////Data selecionada//////
+            ano:'',
+            mes:'',
+            //////Receita/////
             receita:0,
-
+            //////Entrada///////
             imposto_dre:0,
             custo_dre:0,
             despesas_operacionais_dre:0,
             despesas_venda_dre:0,
             depesas_financeiras_dre:0,
-            despesas_administracao_dre:0
+            despesas_administracao_dre:0,
+            //////Saida//////
+            receita_liquida_dre:0,
+            lucro_bruto_dre:0,
+            receita_financeira_dre:0,
+            /////Resultado/////
+            resultado_dre:0
+
         }
         this.pesquisa_financeira = this.pesquisa_financeira.bind(this)
+        this.trocar1 = this.trocar1.bind(this)
+        this.trocar2 = this.trocar2.bind(this)
+
     }
     componentWillMount(){
-        var meses = ['Janeiro', 'Fevereiro','Março' , 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro','Dezembro']
         var data = new Date();
         var mes =''
         var ano = data.getFullYear().toString()
@@ -47,7 +60,7 @@ export default class DRE extends Component{
                 this.setState({receita: pag})
             }
         })
-        Axios.post("constas_dre.php", {mes:m, ano:a})
+        Axios.post("contas_dre.php", {mes:m, ano:a})
         .then(res =>{
             if(res.data == '1'){
                 
@@ -85,15 +98,31 @@ export default class DRE extends Component{
                 this.setState({despesas_venda_dre: despesas_venda})
                 this.setState({depesas_financeiras_dre: depesas_financeiras})
                 this.setState({despesas_administracao_dre: despesas_administracao})
+
+                var receita = this.state.receita
+
+                this.setState({receita_liquida_dre: receita - imposto})
+                this.setState({lucro_bruto_dre: receita - (imposto+custo)})
+                this.setState({receita_financeira: receita -(imposto+custo+despesas_operacionais+despesas_venda+depesas_financeiras)})
+                this.setState({resultado_dre: receita -(imposto+custo+despesas_operacionais+despesas_venda+depesas_financeiras+despesas_administracao)})
             }
         })
+    }
+    trocar1(m){
+        var meses = ['Janeiro', 'Fevereiro','Março' , 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro','Dezembro']
+        this.setState({mes: (meses.indexOf(m) + 1).toString()})
+        this.pesquisa_financeira(this.state.mes, this.state.ano)
+    }
+    trocar2(a){
+        this.setState({ano:a})
+        this.pesquisa_financeira(this.state.mes, a)
     }
     render(){
         return(
             <div class="dre">
                 <div class="titulo_pesquisa">
                     <h1 id="list"class="tooltip-multiline" data-tooltip="Clique para selecionar o mês e o ano" >D.R.E</h1>
-                    <select id='meses' onchange='mes_atual()'class="tooltip-multiline" data-tooltip="Clique para selecionar o mês">
+                    <select id='meses' onChange={(event) => this.trocar1(event.target.value)} class="tooltip-multiline" data-tooltip="Clique para selecionar o mês">
                         <option value='Janeiro'>JANEIRO</option>
                         <option value='Fevereiro'>FEVEREIRO</option>
                         <option value='Março'>MARÇO</option>
@@ -107,7 +136,15 @@ export default class DRE extends Component{
                         <option value='Novembro'>NOVEMBRO</option>
                         <option value='Dezembro'>DEZEMBRO</option>
                     </select>
-                    <select id='anos'onchange='mes_atual()' class='meses' class="tooltip-multiline" data-tooltip="Clique para selecionar o ano" >
+                    <select id='anos' onChange={(event) => this.trocar2(event.target.value)} class='meses' class="tooltip-multiline" data-tooltip="Clique para selecionar o ano" >
+                        
+                        <option value='2028'>2028</option>
+                        <option value='2027'>2027</option>
+                        <option value='2026'>2026</option>
+                        <option value='2025'>2021</option>
+                        <option value='2024'>2024</option>
+                        <option value='2023'>2023</option>
+                        <option value='2022'>2022</option>
                         <option value='2021'>2021</option>
                         <option value='2020'>2020</option>
                         <option value='2019'>2019</option>
@@ -189,7 +226,7 @@ export default class DRE extends Component{
                 </div>
                 <div class='resultado_positivo_dre'>
                     <h1 class="resultado_rs">Lucro líquido</h1>
-                    <h1 class="resultado_rs2 ll">R$ 00,00</h1>
+                    <h1 class="resultado_rs2 ll">R$ {this.state.resultado_dre}</h1>
                 </div>
             </div>
         )

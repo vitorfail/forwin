@@ -23,6 +23,9 @@ function Barra_de_pesquisa(){
         })
         Axios.post('inserir_contas.php', {val: parseFloat((Valor.replace('R$', '')).replace('.', '').replace(',', '.')), vencimento: Data, conta:Nome_conta, tipo: Tipo})
         .then( res => {
+            if(res.data == '1'){
+                setConta('modal-conta')
+            }
             if(res.data === '2'){
                 alert("Não foi possível inserir essa conta. Cheque sua conexão com a internet e tent novamente")
             }

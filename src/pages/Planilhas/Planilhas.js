@@ -4,9 +4,6 @@ import { apis } from "../../caminho_api.mjs";
 import '../Planilhas/Planilhas.css';
 import { Bar, PolarArea, Doughnut } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
-import { useEffect, useState } from "react";
-
-
 
 export default class Planilhas extends Component{
     constructor(){
