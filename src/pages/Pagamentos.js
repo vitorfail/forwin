@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Barralateral from './Barralateral/Barralateral';
 import Barra_de_Pesquisa from './Barra_de_pesquisa/Barra_de_pesquisa';
 import Blocos from './Blocos/Blocos'
+import Pagamentos_mensais from './Pagamentos_mensais/Pagamentos_mensais';
 import Loading from './Loading/Loading';
 export default class Pagamentos extends Component{
     constructor(){
@@ -19,6 +20,7 @@ export default class Pagamentos extends Component{
                     <div className="conteudo">
                         <Blocos></Blocos>
                         <div className="conteudo-2">
+                            <Pagamentos_mensais></Pagamentos_mensais>
                         </div>
                     </div>
                 </div>
