@@ -29,25 +29,26 @@
                 if(sizeof($data_formatada) == 3){
                     if($data_formatada[1] == $_POST['mes'] && $data_formatada[0] == $_POST['ano']){
                         if($row['tipo'] == 'imposto'){
-                            $imposto = $imposto + floatval($row['valor'])
+                            $imposto = $imposto + $row['valor'];
                         }
                         if($row['tipo'] == 'custo'){
-                            $custo = $custo + floatval($row['valor'])
+                            $custo = $custo + $row['valor'];
                         } 
                         if($row['tipo'] == 'despesas-operacionais'){
-                            $despesas_operacionais = $despesas_operacionais + floatval($row['valor'])
+                            $despesas_operacionais = $despesas_operacionais + $row['valor'];
                         } 
                         if($row['tipo'] == 'despesas-venda'){
-                            $despesas_venda = $despesas_venda + floatval($row['valor'])
+                            $despesas_venda = $despesas_venda + $row['valor'];
                         } 
                         if($row['tipo'] == 'depesas-financeiras'){
-                            $depesas_financeiras = $depesas_financeiras + floatval($row['valor'])
+                            $depesas_financeiras = $depesas_financeiras + $row['valor'];
                         } 
                         if($row['tipo'] == 'despesas-administracao'){
-                            $despesas_administracao = $despesas_administracao + floatval($row['valor'])
+                            $despesas_administracao = $despesas_administracao + $row['valor'];
                         }  
                     }
-                }           
+                }
+                           
             }
             array_push($array, $imposto, $custo, $despesas_operacionais, $despesas_venda, $depesas_financeiras,$despesas_administracao);
             $array_encode = json_encode($array, JSON_UNESCAPED_UNICODE);

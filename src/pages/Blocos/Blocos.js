@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import {apis} from '../../caminho_api.mjs';
 import Clientes from '../../icones/students.png';
 import Aniversariantes from '../../icones/instituicao2.png';
@@ -119,7 +120,8 @@ export default class Blocos extends Component{
                         <img src={Aniversariantes} alt=""/>
                     </div>
                 </div>
-                <div className="card">
+                <div className="card"  >
+                    <Link className='link' to='pagamentos'></Link>
                     <div className="box">
                         <h1 className='valormes'>{this.state.valor_do_mes}</h1>
                         <h3>Pagamentos no mês</h3>

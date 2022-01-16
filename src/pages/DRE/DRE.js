@@ -41,6 +41,8 @@ export default class DRE extends Component{
         else{
             mes = (data.getMonth() + 1).toString()
         }
+        this.setState({mes:mes})
+        this.setState({ano:ano})
         this.pesquisa_financeira(mes, ano)
     }
     pesquisa_financeira(m, a){
@@ -66,7 +68,6 @@ export default class DRE extends Component{
                 
             }
             else{
-                
                 this.setState({imposto_dre: res.data[0]})
                 this.setState({custo_dre: res.data[1]})
                 this.setState({despesas_operacionais_dre: res.data[2]})
@@ -76,17 +77,16 @@ export default class DRE extends Component{
 
                 var receita = this.state.receita
 
-                //this.setState({receita_liquida_dre: receita - imposto})
-                //this.setState({lucro_bruto_dre: receita - (imposto+custo)})
-                //this.setState({receita_financeira: receita -(imposto+custo+despesas_operacionais+despesas_venda+depesas_financeiras)})
-                //this.setState({resultado_dre: receita -(imposto+custo+despesas_operacionais+despesas_venda+depesas_financeiras+despesas_administracao)})
+                this.setState({receita_liquida_dre: (receita - res.data[0])})
+                this.setState({lucro_bruto_dre: (receita - (res.data[0]+res.data[1]))})
+                this.setState({receita_financeira: (receita -(res.data[0]+res.data[1]+res.data[2]+res.data[3]+res.data[4]))})
+                this.setState({resultado_dre: (receita -(res.data[0]+res.data[1]+res.data[2]+res.data[3]+res.data[4]+ res.data[4]))})
             }
         })
     }
     trocar1(m){
-        var meses = ['Janeiro', 'Fevereiro','Março' , 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro','Dezembro']
-        this.setState({mes: (meses.indexOf(m) + 1).toString()})
-        this.pesquisa_financeira(this.state.mes, this.state.ano)
+        this.setState({mes:m})
+        this.pesquisa_financeira(m, this.state.ano)
     }
     trocar2(a){
         this.setState({ano:a})
@@ -98,25 +98,25 @@ export default class DRE extends Component{
                 <div class="titulo_pesquisa">
                     <h1 id="list"class="tooltip-multiline" data-tooltip="Clique para selecionar o mês e o ano" >D.R.E</h1>
                     <select id='meses' onChange={(event) => this.trocar1(event.target.value)} class="tooltip-multiline" data-tooltip="Clique para selecionar o mês">
-                        <option value='Janeiro'>JANEIRO</option>
-                        <option value='Fevereiro'>FEVEREIRO</option>
-                        <option value='Março'>MARÇO</option>
-                        <option value='Abril'>ABRIL</option>
-                        <option value='Maio'>MAIO</option>
-                        <option value='Junho'>JUNHO</option>
-                        <option value='Julho'>JULHO</option>
-                        <option value='Agosto'>AGOSTO</option>
-                        <option value='Setembro'>SETEMBRO</option>
-                        <option value='Outubro'>OUTUBRO</option>
-                        <option value='Novembro'>NOVEMBRO</option>
-                        <option value='Dezembro'>DEZEMBRO</option>
+                        <option value='01'>JANEIRO</option>
+                        <option value='02'>FEVEREIRO</option>
+                        <option value='03'>MARÇO</option>
+                        <option value='04'>ABRIL</option>
+                        <option value='05'>MAIO</option>
+                        <option value='06'>JUNHO</option>
+                        <option value='07'>JULHO</option>
+                        <option value='08'>AGOSTO</option>
+                        <option value='09'>SETEMBRO</option>
+                        <option value='10'>OUTUBRO</option>
+                        <option value='11'>NOVEMBRO</option>
+                        <option value='12'>DEZEMBRO</option>
                     </select>
                     <select id='anos' onChange={(event) => this.trocar2(event.target.value)} class='meses' class="tooltip-multiline" data-tooltip="Clique para selecionar o ano" >
                         
                         <option value='2028'>2028</option>
                         <option value='2027'>2027</option>
                         <option value='2026'>2026</option>
-                        <option value='2025'>2021</option>
+                        <option value='2025'>2025</option>
                         <option value='2024'>2024</option>
                         <option value='2023'>2023</option>
                         <option value='2022'>2022</option>
