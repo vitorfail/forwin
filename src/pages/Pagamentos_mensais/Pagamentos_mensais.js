@@ -17,27 +17,30 @@ export default class Pagamentos_mensais extends Component{
         var data = new Date()
         var mes_ = 0
         var ano_ = data.getFullYear().toString()
-        this.setState({ano: ano_})
-        this.setState({mes: mes_})
         if(data.getMonth() < 10){
-            mes_ = "0"+ data.getMonth().toString()
+            mes_ = "0"+ (data.getMonth()+1).toString()
         }
         else{
-            mes_= data.getMonth().toString()
+            mes_= (data.getMonth() +1).toString()
         }
+        this.setState({ano: ano_})
+        this.setState({mes: mes_})
         this.pesquisa_pagamentos(mes_, ano_)
     }
     pesquisa_pagamentos(mes_, ano_){
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('pagamentos_mes', {mes: mes_, anos:ano_})
+        Axios.post('pagamentos_mes.php', {mes: mes_, ano:ano_})
         .then( res => {
+            console.log(mes_)
+            console.log(ano_)
             if(res.data == '1'){
 
             }
             else{
-                for(var i =0 ;res.data[0].length; i++){
+                this.setState({resultado:[]})
+                for(var i =0 ;i <res.data[0].length; i++){
                     var list = this.state.resultado.concat(<div className='enc p'> <h3 className='n'>{(res.data[2])[i]}</h3> <h3 className='v'>R$ {(res.data[1])[i]}</h3> <h3 className='n'>{(res.data[0])[i]}</h3> </div>)
                     this.setState({resultado: list})
                 }
