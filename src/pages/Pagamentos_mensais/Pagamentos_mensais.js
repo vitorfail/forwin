@@ -2,27 +2,79 @@ import {Component} from 'react';
 import axios from 'axios';
 import {apis} from '../../caminho_api.mjs';
 export default class Pagamentos_mensais extends Component{
-    
+    constructor(){
+        super()
+        this.state = {
+            mes:'',
+            ano:'',
+            resultado:0
+        }
+        this.pesquisa_pagamentos = this.pesquisa_pagamentos.bind(this)
+        this.trocar1 = this.trocar1.bind(this)
+        this.trocar2 = this.trocar2.bind(this)
+    }
+    componentWillMount(){
+        var data = new Date()
+        var mes_ = 0
+        var ano_ = data.getFullYear().toString()
+        this.setState({ano: ano_})
+        this.setState({mes: mes_})
+        if(data.getMonth() < 10){
+            mes_ = "0"+ data.getMonth().toString()
+        }
+        else{
+            mes_= data.getMonth().toString()
+        }
+        this.pesquisa_pagamentos(mes_, ano_)
+    }
+    pesquisa_pagamentos(mes_, ano_){
+        const Axios = axios.create({
+            baseURL: apis
+        })
+        Axios.post('pagamentos_mes', {mes: mes_, anos:ano_})
+        .then( res => {
+            if(res.data == '1'){
+
+            }
+            else{
+                for(var i =0 ;res.data[0].length; i++){
+                    var list = this.state.resultado.concat(<div className='enc p'> <h3 className='n'>{(res.data[2])[i]}</h3> <h3 className='v'>R$ {(res.data[1])[i]}</h3> <h3 className='n'>{(res.data[0])[i]}</h3> </div>)
+                    this.setState({resultado: list})
+                }
+            }
+        })
+        .catch( error  => {
+
+        })
+    }
+    trocar1(m){
+        this.setState({mes: m})
+        this.pesquisa_pagamentos(m, this.state.ano)
+    }
+    trocar2(a){
+        this.setState({ano: a})
+        this.pesquisa_pagamentos(this.state.mes, a)
+    }
     render(){
         return(
-            <div class="clientes_achados">
-                <div class="titulo_pesquisa">
+            <div className="clientes_achados">
+                <div className="titulo_pesquisa">
                     <h1 id="list">Pagamentos de</h1>
-                    <select class='meses' onchange="mes_atual(this.value)">
-                        <option value='Janeiro'>Janeiro</option>
-                        <option value='Fevereiro'>Fevereiro</option>
-                        <option value='Março'>Março</option>
-                        <option value='Abril'>Abril</option>
-                        <option value='Maio'>Maio</option>
-                        <option value='Junho'>Junho</option>
-                        <option value='Julho'>Julho</option>
-                        <option value='Agosto'>Agosto</option>
-                        <option value='Setembro'>Setembro</option>
-                        <option value='Outubro'>Outubro</option>
-                        <option value='Novembro'>Novembro</option>
-                        <option value='Dezembro'>Dezembro</option>
+                    <select className='meses' onChange={(event) => this.trocar1(event.target.value)}>
+                        <option value='01'>Janeiro</option>
+                        <option value='02'>Fevereiro</option>
+                        <option value='03'>Março</option>
+                        <option value='04'>Abril</option>
+                        <option value='05'>Maio</option>
+                        <option value='06'>Junho</option>
+                        <option value='07'>Julho</option>
+                        <option value='08'>Agosto</option>
+                        <option value='09'>Setembro</option>
+                        <option value='10'>Outubro</option>
+                        <option value='11'>Novembro</option>
+                        <option value='12'>Dezembro</option>
                     </select>
-                    <select class='ano' onchange="mes_atual(this.value)">
+                    <select className='ano' onChange={(event) => this.trocar2(event.target.value)}>
                         <option value='2030'>2030</option>
                         <option value='2029'>2029</option>
                         <option value='2028'>2028</option>
@@ -67,8 +119,8 @@ export default class Pagamentos_mensais extends Component{
                         <option value='1988'>1988</option>
                     </select>
                 </div>
-                <div class="encontrados">
-
+                <div className="encontrados">
+                    {this.state.resultado}
                 </div>
             </div>
         )

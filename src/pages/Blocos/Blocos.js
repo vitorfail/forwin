@@ -121,7 +121,7 @@ export default class Blocos extends Component{
                     </div>
                 </div>
                 <div className="card"  >
-                    <Link className='link' to='pagamentos'></Link>
+                    <Link className='link' to='/pagamentos'></Link>
                     <div className="box">
                         <h1 className='valormes'>{this.state.valor_do_mes}</h1>
                         <h3>Pagamentos no mês</h3>
