@@ -8,6 +8,8 @@ import { apis } from '../../caminho_api.mjs';
 import axios from 'axios';
 import Conta  from '../../icones/divida.png'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 function Barra_de_pesquisa(){
     const [abrirConta, setConta] = useState('modal-conta');
     const [abrirNome, setNome] = useState('');
@@ -40,6 +42,15 @@ function Barra_de_pesquisa(){
         e = 'R$ ' + e.replace(/(?=(\d{3})+(\D))\B/g, ".")
         setValor(e)
     }
+    const history = useNavigate();
+    const pesquisa = () =>{
+        if(nomepesquisa == ''){
+            history('/pesquisa/todos');
+        }
+        else{
+            history('/pesquisa/'+nomepesquisa);
+        }
+    }
     const url = 'eai';
     return(
         <div className="cabecalho">
@@ -47,7 +58,7 @@ function Barra_de_pesquisa(){
                 <div className="pesquisa">
                     <img  className='list' src={lista} alt=""/>
                     <input type="text" onChange={(event) => setnomepesquisa(event.target.value)} name="c-pesquisa" placeholder="Pesquise...."/>
-                    <Link to={"/pesquisa/"+nomepesquisa} className='p'><img src={lupa} alt=""/></Link>
+                    <a onClick={(event) => pesquisa()} className='p'><img src={lupa} alt=""/></a>
                 </div>
                 <div className="user">
                     <a  className="btn" onClick={() => setConta('modal-conta mostrar')} >Adicionar Conta</a>

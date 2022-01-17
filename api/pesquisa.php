@@ -7,7 +7,7 @@
     include_once('conexao.php');
     $nome ='';
     $_POST = json_decode(file_get_contents("php://input"), true);
-    if(empty($_POST['nome'])){ 
+    if(empty($_POST['nome']) or $_POST['nome'] == 'todos'){ 
         $nome = '';
     }
     else{
