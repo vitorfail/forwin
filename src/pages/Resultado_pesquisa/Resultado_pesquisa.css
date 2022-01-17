@@ -16,6 +16,15 @@
     color: #ffffff;
     padding: 5px 39.5px;
 }
+.clientes_achados .indexador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.clientes_achados .indexador img{
+    width: 20px;
+    height: 20px;
+}
 .enc{
     padding-top: 5px;
     display: flex;

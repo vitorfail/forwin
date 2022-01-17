@@ -6,6 +6,7 @@ import Zap from "../../icones/whats_branco.png";
 import Modal_pagamentos from "../Modal_pagamentos/Modal_pagamentos.js";
 import Modal_editar from "../Modal_editar/Modal_editar.js";
 import Modal_excluir from "../Modal_excluir/Modal_excluir.js";
+import Seta_direita from "../../icones/seta.png"
 export default class Resultado_pesquisa extends Component{
     constructor(props){
         super(props)
@@ -117,6 +118,13 @@ export default class Resultado_pesquisa extends Component{
                 <div className="encontrados">
                     {this.state.resultado}
                 </div>
+                <div className='indexador'>
+                    <img src={Seta_direita} className="seta"/>
+                    <p className="seta">(</p>
+                    <p>1</p>
+                    <p className="seta">)</p>
+                    <p className="seta">))</p>
+                </div> 
                 <Modal_pagamentos id={this.state.cadastro} nome={this.state.nome} exibir={this.state.pagamentos_mostrar} executar={this.show_pag.bind(this)}></Modal_pagamentos>
                 <Modal_editar id={this.state.cadastro} exibir={this.state.editar_mostrar} executar={this.show_editar.bind(this)} ></Modal_editar>
                 <Modal_excluir executar={this.show_excluir.bind(this)} id={this.state.cadastro} exibir={this.state.excluir_mostrar}></Modal_excluir>
