@@ -17,13 +17,24 @@
     padding: 5px 39.5px;
 }
 .clientes_achados .indexador{
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.clientes_achados .indexador p{
+    font-weight: 600;
+}
 .clientes_achados .indexador img{
+    margin-left: 10px;
+    margin-right: 10px;
     width: 20px;
     height: 20px;
+}
+.clientes_achados .indexador :hover{
+    background-color: #ce3940;
+    border-radius: 50%;
+    cursor:pointer;
 }
 .enc{
     padding-top: 5px;
