@@ -125,8 +125,7 @@ export default class Resultado_pesquisa extends Component{
         this.setState({quantidade: quant})
         var data = this.state.dados;
         for(var i=index; i< quant ; i++){
-            var ident = (data[0])[i]
-            alert((data[1])[i])
+            var ident = (data[0])[i]            
             if((data[2])[i].length> 31){
                 this.setState({resultado: this.state.resultado.concat(<div className='enc'> 
                                                             <h3 className='n'>{(data[1])[i]}</h3>
@@ -144,7 +143,7 @@ export default class Resultado_pesquisa extends Component{
                                                             </div></div>)})
             }
             else{
-                this.setState({resultado: this.state.resultado.concat(<div className='enc'> 
+                var list = this.state.resultado.concat(<div className='enc'> 
                                                             <h3 className='n'>{(data[1])[i]}</h3> 
                                                             <h3 id='e'>{(data[2])[i]}</h3> 
                                                             <h3 className='tel'>{(data[3])[i]}</h3> 
@@ -156,7 +155,7 @@ export default class Resultado_pesquisa extends Component{
                                                                 <button className='falar' id={(data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img class='zap' src={Zap}/></button>
                                                             </div>
                                                         </div>)
-                })
+                this.setState({resultado: list})
                 
             }
 
