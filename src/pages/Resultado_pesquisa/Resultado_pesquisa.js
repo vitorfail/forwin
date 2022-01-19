@@ -13,6 +13,7 @@ import Seta_esquerda_dupla from "../../icones/seta-esquerda-dupla.png";
 export default class Resultado_pesquisa extends Component{
     constructor(props){
         super(props)
+        this.lista =[];
         this.state = {
             dados: [],
             restultado: [],
@@ -23,7 +24,8 @@ export default class Resultado_pesquisa extends Component{
             cadastro: '0',
             nome: '',
             indexador:0,
-            quantidade:50
+            quantidade:50,
+            numerador:0
 
         }
         this.resultado = this.resultado.bind(this);
@@ -68,14 +70,21 @@ export default class Resultado_pesquisa extends Component{
                 this.setState({numero: 0})
             }
             else{
+                var repetidor = 0
                 this.setState({dados: res.data})
                 this.setState({numero: res.data[0].length})
-                var ir  = []
-                this.setState({resultado: ir})
-                for(var i=this.state.indexador; i< this.state.quantidade ; i++){
+                this.setState({numerador: 1})
+                if(this.state.numero> 50){
+                    repetidor = 50
+                }
+                else{
+                    repetidor = this.state.numero
+                }
+                this.lista = [] 
+                for(var i=this.state.indexador; i< repetidor ; i++){
                     var ident = (res.data[0])[i]
                     if((res.data[2])[i].length> 31){
-                        this.setState({resultado: this.state.resultado.concat(<div className='enc'> 
+                        this.lista.push(<div className='enc'> 
                                                                     <h3 className='n'>{(res.data[1])[i]}</h3>
                                                                     <div className='email_caixa'> 
                                                                         <h3 id='e'>{(res.data[2])[i].substr(0, 29)}</h3> 
@@ -88,10 +97,11 @@ export default class Resultado_pesquisa extends Component{
                                                                         <button id={(res.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
                                                                         <button id={(res.data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
                                                                         <button className='falar' id={(res.data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img className='zap' src={Zap}/></button>
-                                                                    </div></div>)})
+                                                                    </div></div>)
                     }
                     else{
-                        this.setState({resultado: this.state.resultado.concat(<div className='enc'> 
+                        console.log('passou aqui')
+                        this.lista.push(<div className='enc'> 
                                                                     <h3 className='n'>{(res.data[1])[i]}</h3> 
                                                                     <h3 id='e'>{(res.data[2])[i]}</h3> 
                                                                     <h3 className='tel'>{(res.data[3])[i]}</h3> 
@@ -103,11 +113,11 @@ export default class Resultado_pesquisa extends Component{
                                                                         <button className='falar' id={(res.data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img class='zap' src={Zap}/></button>
                                                                     </div>
                                                                 </div>)
-                        })
-                        
+                                                
                     }
 
                 }
+                this.setState({resultado: this.lista})
             }
         })
         .catch(error =>{
@@ -118,7 +128,8 @@ export default class Resultado_pesquisa extends Component{
         this.resultado();
     }
     adiantar(){
-        this.setState({resultado: []})
+        this.setState({numerador: (this.state.numerador +1)})
+        this.lista =[]
         var index = this.state.indexador + 50
         var quant = this.state.quantidade + 50
         this.setState({indexador: index})
@@ -127,7 +138,7 @@ export default class Resultado_pesquisa extends Component{
         for(var i=index; i< quant ; i++){
             var ident = (data[0])[i]            
             if((data[2])[i].length> 31){
-                this.setState({resultado: this.state.resultado.concat(<div className='enc'> 
+                this.lista.push(<div className='enc'> 
                                                             <h3 className='n'>{(data[1])[i]}</h3>
                                                             <div className='email_caixa'> 
                                                                 <h3 id='e'>{(data[2])[i].substr(0, 29)}</h3> 
@@ -140,10 +151,10 @@ export default class Resultado_pesquisa extends Component{
                                                                 <button id={(data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
                                                                 <button id={(data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
                                                                 <button className='falar' id={(data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img className='zap' src={Zap}/></button>
-                                                            </div></div>)})
+                                                            </div></div>)
             }
             else{
-                var list = this.state.resultado.concat(<div className='enc'> 
+                  this.lista.push(<div className='enc'> 
                                                             <h3 className='n'>{(data[1])[i]}</h3> 
                                                             <h3 id='e'>{(data[2])[i]}</h3> 
                                                             <h3 className='tel'>{(data[3])[i]}</h3> 
@@ -155,11 +166,10 @@ export default class Resultado_pesquisa extends Component{
                                                                 <button className='falar' id={(data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img class='zap' src={Zap}/></button>
                                                             </div>
                                                         </div>)
-                this.setState({resultado: list})
-                
             }
 
         }
+        this.setState({resultado: this.lista})
     }
     render(){
         return(
@@ -168,12 +178,12 @@ export default class Resultado_pesquisa extends Component{
                     <h1 id="list">{this.state.numero} Clientes Encontrados</h1>
                 </div>
                 <div className="encontrados">
-                    {this.state.resultado}
+                    {this.lista}
                 </div>
                 <div className='indexador'>
                     <img src={Seta_esquerda_dupla}className="seta"/>
                     <img src={Seta_esquerda}className="seta"/>
-                    <p>1</p>
+                    <p>{this.state.numerador}</p>
                     <img src={Seta_direita} className="seta" onClick={(event) => this.adiantar()}/>
                     <img src={Seta_direita_dupla} className="seta"/>
                 </div> 
