@@ -15,6 +15,7 @@ export default class Resultado_pesquisa extends Component{
         super(props)
         this.lista =[];
         this.state = {
+            dados:[],
             restultado: [],
             //////O número de clientes achados que aparece no topo da pagina 
             numero: 0,
