@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.back{
+    background: rgb(194, 48, 77);
+    width:100vw;
+    height:100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.title{
+    margin-top:44px;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+    width:180px;
+}
+.title h1{
+  	text-align:center;
+    border-bottom: 2px solid crimson;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display:flex;
+    color:crimson;
+}
+.back .direitos{
+	position:fixed;
+}
+.back .direitos p{
+  	margin-top: 60px;
+  	color: white;
+	text-align:center;
+}
+.card{
+    margin-top:30px;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+  	min-width:320px;
+    height: 55vh;
+    background: white;
+    display:block;
+    border-radius: 10px;
+}
+.card button{
+    font-size:16px;
+    border-radius:5px;
+    height:35px;
+    width:180px;
+    color:white;
+    background:rgb(20, 157, 220);
+    border:none;
+    margin-top: 13px;
+}
+.card button:hover{
+    border-radius:5px;
+    height:35px;
+    width:180px;
+    color: rgb(20, 157, 220);
+    background: white;
+    border: 2px solid rgb(20, 157, 220);
+    margin-top: 13px;
+    cursor: pointer;
+}
+.input{
+  	height:40vh;
+    align-items: center;
+    width:40px;
+    display:block;
+    padding-left:75px;
+    margin-top:70px;
+}
+.input input{
+    width:180px;
+    height:35px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-seri;
+    margin-top:14px;
+    padding:10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 15px;
+    padding: 10px;
+}
+.input input:focus{
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+@media screen and (max-width: 980px){
+  	
+}

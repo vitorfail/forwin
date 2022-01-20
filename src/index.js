@@ -2,25 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Cadastro from './pages/Cadastro';
-import Pesquisa from './pages/Pesquisa';
-import Graficos from './pages/Graficos';
-import Financeiro from './pages/Financeiro';
-import Pagamentos from'./pages/Pagamentos';
 import reportWebVitals from './reportWebVitals';
 import {Route, Routes, BrowserRouter} from 'react-router-dom' 
 
 ReactDOM.render(
-  <BrowserRouter>
-      <Routes>
-        <Route  exact path="/" element={<App/>}/>
-        <Route  exact path="/cadastro" element={<Cadastro/>}/>
-        <Route  exact path="/graficos" element={<Graficos/>}/>
-        <Route  exact path="/financeiro" element={<Financeiro/>}/>
-        <Route  exact path="/pagamentos" element={<Pagamentos/>}/>
-        <Route  path="/pesquisa/:nome" element={<Pesquisa/>}/>
-      </Routes>
-  </ BrowserRouter>,
+  <App/>,
   document.getElementById('root')
 );
 
