@@ -8,16 +8,8 @@ import Clientes_recentes from './Clientes_recentes/Clientes_recentes';
 import Ranking_pagamentos from './Ranking_pagamento/Ranking_pagamento';
 import Ranking_visitas from './Ranking_visitas/Ranking_visitas';
 import Loading from './Loading/Loading';
+import './Home.css'
 export default class Home extends Component{
-    constructor(){
-        super()
-        this.state = {
-            showModalPopup: false  
-        }
-    }
-    isShowPopup = (status) => {  
-        this.setState({ showModalPopup: status });  
-    }; 
     render(){
         return(
             <div>
