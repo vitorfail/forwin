@@ -5,7 +5,7 @@ import Graficos from './pages/Graficos';
 import Financeiro from './pages/Financeiro';
 import Pagamentos from'./pages/Pagamentos';
 import Login from './Login/Login';
-import Home from './pages/Home'
+import Home from './pages/Home';
 import { BrowserRouter, Route, Routes , Navigate } from "react-router-dom";
 
 import { isAuthenticated } from "./services/auth";
