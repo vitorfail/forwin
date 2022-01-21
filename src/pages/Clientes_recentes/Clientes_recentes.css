@@ -89,6 +89,10 @@
     background: var(--vermelho);
     color: white;
     cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 @media screen and(max-width: 640px) {
     .dados-recentes h3{
