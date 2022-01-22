@@ -31,13 +31,14 @@
                 try{
                     $controll = '\Map\Http\Controllers\\'.$this->class;
                     $response = call_user_func_array(array(new $controll, $this->method), $this->params);
+                    return json_encode(array('data' => $response, 'status' => 'sucess'), JSON_UNESCAPED_UNICODE);
                 }
                 catch(\Exception $e){
-                    return json_encode(array('data' => $e->getMessage(), 'status' => 'error'));
+                    return json_encode(array('data' => $e->getMessage(), 'status' => 'error'), JSON_UNESCAPED_UNICODE);
                 }
             }
             else{
-                return json_encode(array('data' => 'Operação inválida', 'status' => 'error'));
+                return json_encode(array('data' => 'Operação inválida', 'status' => 'error'), JSON_UNESCAPED_UNICODE);
             }
         }
     }

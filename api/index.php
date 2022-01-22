@@ -3,10 +3,9 @@
 
     use Map\Http\Rest;
 
-    if(isset($_REQUEST) && !empty($_REQUEST)){
-        $rest = new Rest($_REQUEST);
-        echo $rest->run();
+    if(isset($_GET) && !empty($_GET)){
+        //$rest = new Rest($_REQUEST);
+        //echo $rest->run();
+        echo var_dump($_GET);
     }
-
-
 ?>
