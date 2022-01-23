@@ -5,6 +5,4 @@
             return array(1=>'Rafael', 2=> 'sucess');
         } 
     }
-
-
 ?>

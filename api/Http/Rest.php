@@ -15,8 +15,9 @@
             $newURL = explode('/', $this->request['url']);
             array_shift($newURL); 
             if(isset($newURL[0])){
-                $this->class = ucfirst($newURL).'Controller';
+                $this->class = ucfirst($newURL[0]).'Controller';
                 array_shift($newURL);
+                return ucfirst($newURL).'Controller';
                 if(isset($newURL[0])){
                     $this->method = $newURL[0];
                     array_shift($newURL);
