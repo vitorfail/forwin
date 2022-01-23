@@ -8,9 +8,15 @@
         //echo $rest->run();
         $req = explode('/', $_GET['url']);
         $class = ucfirst($req[0]).'Controller';
+        array_shift($req);
         if(class_exists('Map\Http\Controllers\\'.$class)){
-            if(method_exists('Map\Http\Controllers\\'.))
-            echo var_dump($_GET);
+            $method = $req[0];
+            if(method_exists('Map\Http\Controllers\\'.$class, $method)){
+                echo var_dump($_GET);
+            }
+            else{
+                echo 'Map\Http\Controllers\\'.'\\'.$class.'\\'.$method;
+            }
         }
         else{
         }

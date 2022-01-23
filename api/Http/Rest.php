@@ -28,7 +28,7 @@
             }
         }
         public function run(){
-            if(class_exists('\Map\Http\Controllers\\', $this->class) && method_exists('\Map\Http\Controllers\\', $this->class, $this->method)){
+            if(class_exists('\Map\Http\Controllers\\'.$this->class) && method_exists('\Map\Http\Controllers\\'. $this->class, $this->method)){
                 try{
                     $controll = '\Map\Http\Controllers\\'.$this->class;
                     $response = call_user_func_array(array(new $controll, $this->method), $this->params);
