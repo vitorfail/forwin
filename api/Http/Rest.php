@@ -1,7 +1,7 @@
 <?php
     namespace Map\Http;
     require_once('Controllers/UsersController.php');
-
+    require_once('Controllers/AuthController.php');
     class Rest{
         private $request;
         private $class;
