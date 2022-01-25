@@ -4,7 +4,7 @@ import Pesquisa from './pages/Pesquisa';
 import Graficos from './pages/Graficos';
 import Financeiro from './pages/Financeiro';
 import Pagamentos from'./pages/Pagamentos';
-import Login from './Login/Login';
+import Login from './pages/Login/Login';
 import Home from './pages/Home';
 import { BrowserRouter, Route, Routes , Navigate } from "react-router-dom";
 

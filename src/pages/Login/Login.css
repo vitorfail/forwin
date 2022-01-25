@@ -34,7 +34,7 @@
   	color: white;
 	text-align:center;
 }
-.card{
+.form{
     margin-top:30px;
     align-items: center;
     justify-content: center;
@@ -45,7 +45,7 @@
     display:block;
     border-radius: 10px;
 }
-.card button{
+.form button{
     font-size:16px;
     border-radius:5px;
     height:35px;
@@ -55,7 +55,7 @@
     border:none;
     margin-top: 13px;
 }
-.card button:hover{
+.form button:hover{
     border-radius:5px;
     height:35px;
     width:180px;
