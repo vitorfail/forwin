@@ -7,6 +7,22 @@
     require_once('Controllers/UsersController.php');
     require_once('Controllers/AuthController.php');
     require_once('./idades.php');
+    require_once('./adicionar_pagamento.php');
+    require_once('./aniversariantes.php');
+    require_once('./atualiza_contas.php');
+    require_once('./atualiza.php');
+    require_once('./atualizar-cadastro.php');
+    require_once('./contas_dre.php');
+    require_once('./deletar_cliente.php');
+    require_once('./estado_civil.php');
+    require_once('./inserir_contas.php');
+    require_once('./nome.php');
+    require_once('./pagamentos_mes.php');
+    require_once('./pagamentos_totais.php');
+    require_once('./pagamentos.php');
+    require_once('./pesquisa_total.php');
+    require_once('./pesquisa-info.php');
+
     class Rest{
         private $request;
         private $class;
