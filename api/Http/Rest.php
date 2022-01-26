@@ -6,6 +6,7 @@
     header("Access-Control-Allow-Headers: *");
     require_once('Controllers/UsersController.php');
     require_once('Controllers/AuthController.php');
+    require_once('./idades.php');
     class Rest{
         private $request;
         private $class;
@@ -42,7 +43,7 @@
                 }
             }
             else{
-                return json_encode(array('data' => $this->class, 'status' => $this->method), JSON_UNESCAPED_UNICODE);
+                return json_encode(array('data' => "Operação inválida", 'status' => 'error'), JSON_UNESCAPED_UNICODE);
             }
         }
     }

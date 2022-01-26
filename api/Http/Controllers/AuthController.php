@@ -71,8 +71,33 @@
                 return 'Operação inválida';
             }
         }
-        public function checkAuth(){
-            
+        public static function checkAuth(){
+            $http_header = apache_request_headers();
+            if(isset($http_header['Authorization']) && $http_header['Authorization'] != null){
+                $bearer = explode(' ', $http_header['Authorization']);
+                $token = explode('.', $bearer[1]);
+                $header = $token[0];
+                $payload = $token[1];
+                $sign = $token[2];
+
+                $valid = hash_hmac('sha256', $header . '.' . $payload, 'KILLLAKILLERUIM', true);
+                $valid = base64_encode($valid);
+                if($sign === $valid ){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+            else{
+                return false;
+            }
+        }
+        public static function dados_de_sql(){
+            $http_header = apache_request_headers();
+            $bearer = explode(' ', $http_header['Authorization']);
+            $decode = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $bearer[1])[1]))));
+            return $decode;
         }
     }
 ?>

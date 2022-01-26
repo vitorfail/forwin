@@ -6,7 +6,12 @@
     header("Access-Control-Allow-Headers: *");
     class UsersController{
         public function get() {
-            return array(1=>'Rafael', 2=> 'sucess');
-        } 
+            if(AuthController::checkAuth()){
+                return array(1=>'Rafael', 2=> 'sucess');
+            }
+            else{
+                return 'Usuário não autenticado';
+            }
+        }
     }
 ?>

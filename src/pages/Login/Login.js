@@ -20,7 +20,7 @@ export default class Login extends Component{
         Axios.post('http://localhost/public_html/mysql_con/index.php?url=auth/login', {user: this.state.usuario, password: this.state.senha})
         .then(res =>{
             console.log(res.data);
-            localStorage.setItem(res.data, 'token_jwt');
+            localStorage.setItem('token_jwt', res.data.data);
         })
         .catch({
 
@@ -30,7 +30,7 @@ export default class Login extends Component{
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.post('http://localhost/public_html/mysql_con/index.php?url=users/get', {headers: {
+        Axios.post('http://localhost/public_html/mysql_con/index.php?url=idades/pesquisa', {user: this.state.usuario, password: this.state.senha},{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}
             )
         .then(res =>{
