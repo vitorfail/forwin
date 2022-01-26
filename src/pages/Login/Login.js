@@ -11,13 +11,28 @@ export default class Login extends Component{
             usuario: ''
         }
         this.login = this.login.bind(this); 
+        this.teste = this.teste.bind(this); 
     }
     login(){
-        alert('Passou aqui')
         const Axios = axios.create({
             baseURL:apis
         })
         Axios.post('http://localhost/public_html/mysql_con/index.php?url=auth/login', {user: this.state.usuario, password: this.state.senha})
+        .then(res =>{
+            console.log(res.data);
+            localStorage.setItem(res.data, 'token_jwt');
+        })
+        .catch({
+
+        })
+    }
+    teste(){
+        const Axios = axios.create({
+            baseURL:apis
+        })
+        Axios.post('http://localhost/public_html/mysql_con/index.php?url=users/get', {headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}
+            )
         .then(res =>{
             console.log(res.data);
         })
@@ -37,6 +52,8 @@ export default class Login extends Component{
                             <input nameName='usuario' onChange={(event) => this.setState({usuario: event.target.value})} placeholder='Usuario'/>
                             <input type='password' name='senha' onChange={(event) => this.setState({senha: event.target.value})} placeholder='Senha'/>
                             <button name='entrar' onClick={(event) =>this.login() } >Passar</button>
+                            <button name='entrar' onClick={(event) =>this.teste() } >Teste</button>
+
                         </div>
                     </div>
                 <div className='direitos'>
