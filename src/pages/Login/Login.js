@@ -28,14 +28,14 @@ function Login(){
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.post('http://localhost/public_html/mysql_con/index.php?url=idades/pesquisa', {user: usuario, password: senha},{headers: {
+        Axios.post('index.php?url=idades/pesquisa', {user: '1', password: '1'},{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}
             )
         .then(res =>{
             console.log(res.data);
         })
-        .catch({
-
+        .catch(error => {
+            console.log("Não foi possivel: "+ error)
         })
     }
     return(
@@ -49,6 +49,8 @@ function Login(){
                         <input nameName='usuario' onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
                         <input type='password' name='senha' onChange={(event) => setsenha(event.target.value)} placeholder='Senha'/>
                         <button name='entrar' onClick={(event) =>login_func() } >Passar</button>
+                        <button name='entrar' onClick={(event) =>teste() } >Teste</button>
+
                     </div>
                 </div>
             <div className='direitos'>

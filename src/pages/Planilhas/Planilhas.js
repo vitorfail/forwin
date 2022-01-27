@@ -69,13 +69,14 @@ export default class Planilhas extends Component{
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.get('idades.php')
-        .then(res =>{
-           if(res.data == '1'){
+        Axios.post('index.php?url=idades/pesquisa', {user: '1', password: '1'},{headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}
+        ).then(res =>{
+           if(res.data.data == '1'){
 
            }
            else{
-                var idade = res.data;
+                var idade = res.data.data;
                 var min = Math.min.apply(Math, idade)
                 var max = Math.max.apply(Math, idade)
                 var fre = Math.round((max-min)/ 5);
@@ -114,7 +115,7 @@ export default class Planilhas extends Component{
            }
         })
         .catch(error => {
-            alert("Não foi passivel")
+            console.log("Não foi possivel: "+ error)
         })
     }
     pesquisa_de_pagamentos(){
@@ -122,9 +123,11 @@ export default class Planilhas extends Component{
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.post("pagamentos_mes.php", {ano: data_query.getFullYear().toString(), mes: 'Todos'})
+        Axios.post("index.php?url=pagamentosmes/pesquisa", {ano: data_query.getFullYear().toString(), mes: 'Todos'},{headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data == '1' || res.data =='2'){
+            console.log(res.data)
+            if(res.data.data == '1' || res.data.data =='2'){
                 this.setState({janeiro: 0});
                 this.setState({fevereiro: 0});
                 this.setState({marco: 0});
@@ -154,51 +157,51 @@ export default class Planilhas extends Component{
                 var dezembro_mes = 0;
                 var d = new Date();
                 var valormes = 0;
-                for(var i=0; i< res.data[0].length; i++){
-                    var newd = new Date((res.data[0])[i]);
+                for(var i=0; i< res.data.data[0].length; i++){
+                    var newd = new Date((res.data.data[0])[i]);
                     if(newd.getFullYear() == ""){
                         
                     }
                     else{
                         if(newd.getFullYear() == d.getFullYear()){
                             if(newd.getMonth() == d.getMonth()){
-                                valormes = valormes+parseFloat((res.data[1])[i]);
+                                valormes = valormes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() == 0){
-                                janeiro_mes = janeiro_mes+parseFloat((res.data[1])[i]);
+                                janeiro_mes = janeiro_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() == 1){
-                                fevereiro_mes = fevereiro_mes+parseFloat((res.data[1])[i]);
+                                fevereiro_mes = fevereiro_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() == 2){
-                                marco_mes = marco_mes+parseFloat((res.data[1])[i]);
+                                marco_mes = marco_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() == 3){
-                                abril_mes = abril_mes+parseFloat((res.data[1])[i]);
+                                abril_mes = abril_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() == 4){
-                                maio_mes = maio_mes+parseFloat((res.data[1])[i]);
+                                maio_mes = maio_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() == 5){
-                                junho_mes = junho_mes+parseFloat((res.data[1])[i]);
+                                junho_mes = junho_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() == 6){
-                                julho_mes = julho_mes+parseFloat((res.data[1])[i]);
+                                julho_mes = julho_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() == 7){
-                                agosto_mes = agosto_mes+parseFloat((res.data[1])[i]);
+                                agosto_mes = agosto_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() == 8){
                                 setembro_mes = setembro_mes+parseFloat((res.data[1])[i]);
                             }
                             if(newd.getMonth() == 9){
-                                outubro_mes = outubro_mes+parseFloat((res.data[1])[i]);
+                                outubro_mes = outubro_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() == 10){
-                                novembro_mes = novembro_mes+parseFloat((res.data[1])[i]);
+                                novembro_mes = novembro_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() == 11){
-                                dezembro_mes = dezembro_mes+parseFloat((res.data[1])[i]);
+                                dezembro_mes = dezembro_mes+parseFloat((res.data.data[1])[i]);
                             }
                         }
                     }

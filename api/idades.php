@@ -29,8 +29,7 @@
                             array_push($array, floor($dias));                  
                         }
             
-                        $array_encode = json_encode($array, JSON_UNESCAPED_UNICODE);
-                        return $array_encode;
+                        return $array;
                     }
                     else{
                         return "1";

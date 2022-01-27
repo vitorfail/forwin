@@ -10,6 +10,7 @@
     require_once('./atualiza.php');
     require_once('./atualiza_contas.php');
     require_once('./rankings.php');
+    require_once('./pagamentos_mes.php');
 
 
     class Rest{
