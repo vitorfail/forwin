@@ -18,8 +18,9 @@ export default class Clientes_recentes extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.get('atualiza.php').then(res =>{
-            if(res.data == 2 || res.data == 0){
+        Axios.post('index.php?url=atualiza/pesquisa', {name: '0', id:'1'}, {headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res =>{
+            if(res.data.data == 2 || res.data.data == 0){
                 var ir = [];
                 this.setState({ lista: ir })
                var l = this.state.lista.concat(<div className="cad"><h3 className="t">Sem clientes cadastrados</h3></div>)
@@ -28,11 +29,11 @@ export default class Clientes_recentes extends Component{
             else{
                 var ir = [];
                 this.setState({ lista: ir })
-                for(var i=0; i< res.data[0].length ; i++){
+                for(var i=0; i< res.data.data[0].length ; i++){
                     var list1 = this.state.lista.concat(<div className="cad">
-                                                            <h3 className="n">{(res.data[0])[i]}</h3> 
-                                                            <h3 className="t">{(res.data[1])[i]}</h3> 
-                                                            <h3 className="s">{(res.data[2])[i]}</h3>
+                                                            <h3 className="n">{(res.data.data[0])[i]}</h3> 
+                                                            <h3 className="t">{(res.data.data[1])[i]}</h3> 
+                                                            <h3 className="s">{(res.data.data[2])[i]}</h3>
                                                         </div>);
                     this.setState({lista: list1})
                 }

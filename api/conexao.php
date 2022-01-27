@@ -3,7 +3,6 @@
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT");
     header("Access-Control-Allow-Headers: *");
-	session_start();
     $hotname = "localhost";
     $user = 'root';
     $password = '';

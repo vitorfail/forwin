@@ -22,7 +22,7 @@ export default class Ranking_pagamentos extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('rankings.php', { passe: 'pagamento'})
+        Axios.post('rankings.php', { passe: 'pagamento'}, {headers: {'Authorization'}})
         .then(res => {
             if(res.data == '1' || res.data == '2'){
                 var lista = this.state.rank.concat(<div className="cad"><h3 className="n">Sem clientes</h3></div>);
