@@ -9,6 +9,7 @@
     require_once('./idades.php');
     require_once('./atualiza.php');
     require_once('./atualiza_contas.php');
+    require_once('./rankings.php');
 
 
     class Rest{

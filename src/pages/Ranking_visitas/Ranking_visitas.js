@@ -21,38 +21,40 @@ export default class Ranking_visitas extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('rankings.php', {
+        Axios.post('index.php?url=rankings/pesquisa', {
             passe: 'visita'
-        })
+        }, {headers: {"Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data =='1' || res.data =='2'){
-                var lista = this.state.visitas.concat(<div className="cad"><h3 className="n">Sem clientes</h3></div>);
+            if(res.data.data =='1' || res.data.data =='2'){
+                var lista = this.state.visitas.concat(<div className="cad">
+                                                            <h3 className="n">Sem clientes</h3>
+                                                        </div>);
                 this.setState({visitas: lista});
             }
             else{
                 var lista = this.state.visitas.concat(<div className="cad">
-                                                        <h3 className="n">{(res.data[0])[0]}</h3> 
-                                                        <h3 className="t">R$ {(res.data[1])[0]}</h3>
+                                                        <h3 className="n">{(res.data.data[0])[0]}</h3> 
+                                                        <h3 className="t">{(res.data.data[1])[0]}</h3>
                                                     </div>);
                 this.setState({visitas: lista});
                 var lista1 = this.state.visitas.concat(<div className="cad">
-                                                            <h3 className="n">{(res.data[0])[1]}</h3> 
-                                                            <h3 className="t">R$ {(res.data[1])[1]}</h3>
+                                                            <h3 className="n">{(res.data.data[0])[1]}</h3> 
+                                                            <h3 className="t">{(res.data.data[1])[1]}</h3>
                                                         </div>);
                 this.setState({visitas: lista1});
                 var lista2 = this.state.visitas.concat(<div className="cad">
-                                                            <h3 className="n">{(res.data[0])[2]}</h3> 
-                                                            <h3 className="t">R$ {(res.data[1])[2]}</h3>
+                                                            <h3 className="n">{(res.data.data[0])[2]}</h3> 
+                                                            <h3 className="t">{(res.data.data[1])[2]}</h3>
                                                         </div>);
                 this.setState({visitas: lista2});
                 var lista3 = this.state.visitas.concat(<div className="cad">
-                                                            <h3 className="n">{(res.data[0])[3]}</h3> 
-                                                            <h3 className="t">R$ {(res.data[1])[3]}</h3>
+                                                            <h3 className="n">{(res.data.data[0])[3]}</h3> 
+                                                            <h3 className="t">{(res.data.data[1])[3]}</h3>
                                                     </div>);
                 this.setState({visitas: lista3});
                 var lista4 = this.state.visitas.concat(<div className="cad">
-                                                            <h3 className="n">{(res.data[0])[4]}</h3> 
-                                                            <h3 className="t">R$ {(res.data[1])[4]}</h3>
+                                                            <h3 className="n">{(res.data.data[0])[4]}</h3> 
+                                                            <h3 className="t">{(res.data.data[1])[4]}</h3>
                                                         </div>);
                 this.setState({visitas: lista4});
             }

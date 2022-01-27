@@ -309,7 +309,8 @@ export default class Planilhas extends Component{
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.get('pagamentos_totais.php', {mes:'Todos'})
+        Axios.get('index.php?url=pagamentostotais/pesquisa', {mes:'Todos'}, {headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
             if(res.data == '1'|| res.data == '2'){
                 this.setState({debito: 1})
