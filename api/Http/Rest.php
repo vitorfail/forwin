@@ -12,6 +12,8 @@
     require_once('./rankings.php');
     require_once('./pagamentos_mes.php');
     require_once('./estado_civil.php');
+    require_once('./sexo.php');
+    require_once('./pagamentos_totais.php');
 
 
     class Rest{

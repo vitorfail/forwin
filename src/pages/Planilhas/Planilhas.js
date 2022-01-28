@@ -279,23 +279,23 @@ export default class Planilhas extends Component{
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.get('sexo.php')
+        Axios.post('index.php?url=sexo/pesquisa', {id:'1'}, {headers: {"Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data == '1'){
+            if(res.data.data == '1'){
 
             }
             else{
                 var m = 0
                 var f =0
                 var o = 0
-                for(var i=0; i < res.data.length; i++){
-                    if(res.data[i] == 'Masculino'){
+                for(var i=0; i < res.data.data.length; i++){
+                    if(res.data.data[i] == 'Masculino'){
                         m = m+1
                     }
-                    if(res.data[i] == 'Feminino'){
+                    if(res.data.data[i] == 'Feminino'){
                         f = f+1
                     }
-                    if(res.data[i] == 'Outros'){
+                    if(res.data.data[i] == 'Outros'){
                         o= o+1
                     }
                 }
@@ -315,7 +315,8 @@ export default class Planilhas extends Component{
         Axios.get('index.php?url=pagamentostotais/pesquisa', {mes:'Todos'}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data == '1'|| res.data == '2'){
+            console.log(res.data)
+            if(res.data.data == '1'|| res.data.data == '2'){
                 this.setState({debito: 1})
                 this.setState({credito: 1})
                 this.setState({credito_parcelado: 1})
@@ -330,23 +331,23 @@ export default class Planilhas extends Component{
                 var a_vista_1 = 0 
                 var boleto_1 = 0
                 var cheque_1 = 0
-                for(var i=0; i < res.data.length; i++){
-                    if(res.data[i] == 'debito'){
+                for(var i=0; i < res.data.data.length; i++){
+                    if(res.data.data[i] == 'debito'){
                         debito_1 = debito_1 +1
                     }
-                    if(res.data[i] == 'credito'){
+                    if(res.data.data[i] == 'credito'){
                         credito_1 = credito_1 +1
                     }
-                    if(res.data[i] == 'credito-parcelado'){
+                    if(res.data.data[i] == 'credito-parcelado'){
                         credito_parcelado_1 = credito_parcelado_1 +1
                     }
-                    if(res.data[i] == 'a-vista'){
+                    if(res.data.data[i] == 'a-vista'){
                         a_vista_1 = a_vista_1 +1
                     }
-                    if(res.data[i] == 'boleto'){
+                    if(res.data.data[i] == 'boleto'){
                         boleto_1 = boleto_1 +1
                     }
-                    if(res.data[i] == 'cheque'){
+                    if(res.data.data[i] == 'cheque'){
                         cheque_1 = cheque_1 +1
                     }
                 }
