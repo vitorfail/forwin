@@ -126,7 +126,6 @@ export default class Planilhas extends Component{
         Axios.post("index.php?url=pagamentosmes/pesquisa", {ano: data_query.getFullYear().toString(), mes: 'Todos'},{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            console.log(res.data)
             if(res.data.data == '1' || res.data.data =='2'){
                 this.setState({janeiro: 0});
                 this.setState({fevereiro: 0});
@@ -240,9 +239,10 @@ export default class Planilhas extends Component{
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.get("estado_civil.php")
+        Axios.post("index.php?url=estadocivil/pesquisa", {id: '1'},{headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data == '1'){
+            if(res.data.data == '1'){
                 this.setState({viuva:0})
                 this.setState({casada:0})
                 this.setState({solteira:0})
@@ -254,17 +254,17 @@ export default class Planilhas extends Component{
                 var casado = 0
                 var viuva =0
                 var divorciado=0
-                for(var i=0; i< res.data.length; i++){
-                    if(res.data[i] == 'solteiro'){
+                for(var i=0; i< res.data.data.length; i++){
+                    if(res.data.data[i] == 'solteiro'){
                         solteiro = solteiro +1
                     }
-                    if(res.data[i] == 'casado'){
+                    if(res.data.data[i] == 'casado'){
                         casado = casado +1
                     }
-                    if(res.data[i] == 'viuva' || res.data[i] == 'viuvo'){
+                    if(res.data.data[i] == 'viuva' || res.data.data[i] == 'viuvo'){
                         viuva = viuva +1
                     }
-                    if(res.data[i] == 'divorciado'){
+                    if(res.data.data[i] == 'divorciado'){
                         divorciado = divorciado +1
                     }
                 }
