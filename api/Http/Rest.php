@@ -14,7 +14,8 @@
     require_once('./estado_civil.php');
     require_once('./sexo.php');
     require_once('./pagamentos_totais.php');
-
+    require_once('./quantidade_clientes.php');
+    require_once('./aniversariantes.php');
 
     class Rest{
         private $request;

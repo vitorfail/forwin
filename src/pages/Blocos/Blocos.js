@@ -38,9 +38,9 @@ export default class Blocos extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('quantidade_clientes.php').then(res =>{
-            this.setState({numero_clientes: res.data})
-            
+        Axios.post('index.php?url=quantidadeclientes/pesquisa', {user: '1'}, {headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res =>{
+            this.setState({numero_clientes: res.data.data})
         }).catch(error =>{
             alert(error.data)
         })
@@ -49,12 +49,13 @@ export default class Blocos extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('aniversariantes.php').then(res => {
-            if(res.data === 'Nenhum' || res.data === '1'){
+        Axios.post('index.php?url=aniversariantes/pesquisa', {user: '1'}, {headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res => {
+            if(res.data.data === 'Nenhum' || res.data.data === '1'){
                 this.setState({aniversariantes: '0'})    
             }
             else{
-                var num = res.data;
+                var num = res.data.data;
                 this.setState({aniversariantes: num[0].length})
             }
         })
@@ -63,16 +64,17 @@ export default class Blocos extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('pagamentos_mes.php', { mes:'12', ano:'2021'}).then(res =>{
-            if(res.data === '1'|| res.data === '2'){
+        Axios.post('index.php?url=pagamentosmes/pesquisa', { mes:'12', ano:'2021'}, {headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res =>{
+            if(res.data.data === '1'|| res.data.data === '2'){
                 this.setState({valor_do_mes: 'R$ 0,00'})
             }
             else{
-                var valor_total = (res.data)[1]
+                var valor_total = (res.data.data)[1]
                 var receita = 0;
 
-                for(var i =0; i< (res.data)[1].length; i++){
-                    receita = receita + parseFloat(((res.data)[1])[i]);
+                for(var i =0; i< (res.data.data)[1].length; i++){
+                    receita = receita + parseFloat(((res.data.data)[1])[i]);
                 }
                 this.setState({valor_do_mes: 'R$ '+receita.toFixed(2)})
             }
