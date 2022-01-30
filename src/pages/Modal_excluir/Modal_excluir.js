@@ -16,9 +16,10 @@ export default class Modal_excluir extends Component{
             baseURL:apis
         })
         console.log('passou aqui')
-        Axios.post('deletar_cliente.php', {id: this.props.id})
+        Axios.post('index.php?url=deletarcliente/pesquisa', {id: this.props.id},{headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data == '1'){
+            if(res.data.data == '1'){
                 this.props.executar("modal-excluir")
             }
             else{

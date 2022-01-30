@@ -36,7 +36,7 @@ export default class Cadastro_cliente extends Component{
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.post('processa.php', {
+        Axios.post('index.php?url=cadastrar/pesquisa', {
             nome_input :this.state.nome,
             data_input: this.state.data_nascimento,
             cpf_input: this.state.cpf,
@@ -48,12 +48,13 @@ export default class Cadastro_cliente extends Component{
             telefone_input: this.state.telefone,
             email_input: this.state.email,
             notific_input: this.state.notific
-        }).then(res => {
-            if(res.data == '1'){
+        },{headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res => {
+            if(res.data.data == '1'){
                 this.fechar_pergunta();
                 this.abrir_sucess();
             }
-            if(res.data == '0'){
+            if(res.data.data == '0'){
                 alert("Houve um erro e não foi possivel cadastrar");
             }
         })

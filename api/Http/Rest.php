@@ -16,6 +16,10 @@
     require_once('./pagamentos_totais.php');
     require_once('./quantidade_clientes.php');
     require_once('./aniversariantes.php');
+    require_once('./cadastrar.php');
+    require_once('./atualizar-cadastro.php');
+    require_once('./pesquisa-info.php');
+    require_once('./deletar_cliente.php');
 
     class Rest{
         private $request;
