@@ -8,6 +8,7 @@ import { useNavigate} from 'react-router-dom';
 function Login(){
     const [senha, setsenha] = useState('');
     const [usuario, setusuario] = useState('');
+    const [ mostrar, setmostrar] = useState('aviso');
     const history = useNavigate();
 
     function login_func(){
@@ -16,12 +17,17 @@ function Login(){
         })
         Axios.post('http://localhost/public_html/mysql_con/index.php?url=auth/login', {user: usuario, password: senha})
         .then(res =>{
-            console.log(res.data);
-            localStorage.setItem('token_jwt', res.data.data);
-            history('/');
+            if(res.data.data == 'Operação inválida' || res.data.data == 'Usuário não encontrado'){
+                setmostrar('aviso mostrar');
+            }
+            else{
+                console.log(res.data);
+                localStorage.setItem('token_jwt', res.data.data);
+                history('/');    
+            }
         })
-        .catch({
-
+        .catch(error => {
+            setmostrar('aviso mostrar')
         })
     }
     function teste(){
@@ -46,11 +52,10 @@ function Login(){
                         <div className='title'>
                             <h1>Login</h1>
                         </div>
+                        <h3 className={mostrar}>Usuário ou senha incorretos</h3>
                         <input nameName='usuario' onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
                         <input type='password' name='senha' onChange={(event) => setsenha(event.target.value)} placeholder='Senha'/>
-                        <button name='entrar' onClick={(event) =>login_func() } >Passar</button>
-                        <button name='entrar' onClick={(event) =>teste() } >Teste</button>
-
+                        <button name='entrar' onClick={(event) =>login_func() } >Entrar</button>
                     </div>
                 </div>
             <div className='direitos'>
