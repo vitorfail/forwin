@@ -49,38 +49,40 @@ export default class DRE extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('pagamentos_mes.php', {mes:m, ano:a})
+        Axios.post('index.php?url=pagamentosmes/pesquisa', {mes:m, ano:a},{headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data == '1'){
+            if(res.data.data == '1'){
 
             }
             else{
                 var pag =0
-                for(var i=0; i< res.data[0].length;i++ ){
-                    pag = pag + parseFloat((res.data[1])[i]);
+                for(var i=0; i< res.data.data[0].length;i++ ){
+                    pag = pag + parseFloat((res.data.data[1])[i]);
                 }
                 this.setState({receita: pag})
             }
         })
-        Axios.post("contas_dre.php", {mes:m, ano:a})
+        Axios.post("index.php?url=contasdre/pesquisa", {mes:m, ano:a} ,{headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res =>{
-            if(res.data == '1'){
+            if(res.data.data == '1'){
                 
             }
             else{
-                this.setState({imposto_dre: res.data[0]})
-                this.setState({custo_dre: res.data[1]})
-                this.setState({despesas_operacionais_dre: res.data[2]})
-                this.setState({despesas_venda_dre: res.data[3]})
-                this.setState({depesas_financeiras_dre: res.data[4]})
-                this.setState({despesas_administracao_dre: res.data[5]})
+                this.setState({imposto_dre: res.data.data[0]})
+                this.setState({custo_dre: res.data.data[1]})
+                this.setState({despesas_operacionais_dre: res.data.data[2]})
+                this.setState({despesas_venda_dre: res.data.data[3]})
+                this.setState({depesas_financeiras_dre: res.data.data[4]})
+                this.setState({despesas_administracao_dre: res.data.data[5]})
 
                 var receita = this.state.receita
 
-                this.setState({receita_liquida_dre: (receita - res.data[0])})
-                this.setState({lucro_bruto_dre: (receita - (res.data[0]+res.data[1]))})
-                this.setState({receita_financeira: (receita -(res.data[0]+res.data[1]+res.data[2]+res.data[3]+res.data[4]))})
-                this.setState({resultado_dre: (receita -(res.data[0]+res.data[1]+res.data[2]+res.data[3]+res.data[4]+ res.data[4]))})
+                this.setState({receita_liquida_dre: (receita - res.data.data[0])})
+                this.setState({lucro_bruto_dre: (receita - (res.data.data[0]+res.data.data[1]))})
+                this.setState({receita_financeira: (receita -(res.data.data[0]+res.data.data[1]+res.data.data[2]+res.data.data[3]+res.data.data[4]))})
+                this.setState({resultado_dre: (receita -(res.data.data[0]+res.data.data[1]+res.data.data[2]+res.data.data[3]+res.data.data[4]+ res.data.data[4]))})
             }
         })
     }

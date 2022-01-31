@@ -23,12 +23,15 @@ function Barra_de_pesquisa(){
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.post('inserir_contas.php', {val: parseFloat((Valor.replace('R$', '')).replace('.', '').replace(',', '.')), vencimento: Data, conta:Nome_conta, tipo: Tipo})
+        Axios.post('index.php?url=inserircontas/pesquisa', {val: parseFloat((Valor.replace('R$', '')).replace('.', '').replace(',', '.')), 
+        vencimento: Data, 
+        conta:Nome_conta, tipo: Tipo} ,{headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then( res => {
-            if(res.data == '1'){
+            if(res.data.data == '1'){
                 setConta('modal-conta')
             }
-            if(res.data === '2'){
+            if(res.data.data === '2'){
                 alert("Não foi possível inserir essa conta. Cheque sua conexão com a internet e tent novamente")
             }
         })
@@ -93,7 +96,7 @@ function Barra_de_pesquisa(){
                     </div>
                     <div className="botoes">
                         <div className="botao-sim">
-                            <button className="sim" name="sim" value="Sim" onClick={troca} >Salvar</button>
+                            <button className="sim" name="sim" value="Sim" onClick={(event) => troca} >Salvar</button>
                         </div>
                         <div className="botao-nao">
                             <button className="nao" name="nao" value="Não" onClick={() => setConta('modal-conta')}>Cancelar</button>
