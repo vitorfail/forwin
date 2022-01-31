@@ -43,9 +43,10 @@ export default class Modal_pagamentos extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('pagamentos.php', {id: ident})
+        Axios.post('index.php?url=pagamentos/pesquisa', {id: ident} ,{headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data == '1' || res.data == '2'){
+            if(res.data.data == '1' || res.data.data == '2'){
                 this.setState({resultado: <h3 className="s-pag">Sem pagamentos encontrados</h3>})
                 this.setState({preferido: "Nenhum"})
                 this.state({ranking_pag: "Sem pagamentos"})
@@ -62,37 +63,37 @@ export default class Modal_pagamentos extends Component{
                 this.setState({resultado: []})
                 var lista_de_pagamentos= [];
                 var list = []
-                for(var i=0; i< (res.data[0]).length; i++){
+                for(var i=0; i< (res.data.data[0]).length; i++){
 
-                    if((res.data[3])[i] =="debito"){
+                    if((res.data.data[3])[i] =="debito"){
                         debito++;
                     }
-                    if((res.data[3])[i] =="credito"){
+                    if((res.data.data[3])[i] =="credito"){
                         credito =credito+1 ;
                     }
-                    if((res.data[3])[i] =="credito-parcelado"){
+                    if((res.data.data[3])[i] =="credito-parcelado"){
                         credito_p++;
                     }
-                    if((res.data[3])[i] =="a-vista"){
+                    if((res.data.data[3])[i] =="a-vista"){
                         avista++;
                     }
-                    if((res.data[3])[i] =="boleto"){
+                    if((res.data.data[3])[i] =="boleto"){
                         boleto++;
                     }
-                    if((res.data[3])[i] =="cheque"){
+                    if((res.data.data[3])[i] =="cheque"){
                         cheque++;
                     }
                     list = this.state.resultado.concat(<div className='pag-enc' >
-                                                    <h3 className='pag-nome'>{(res.data[4])[i]}</h3>
-                                                    <h3>{(res.data[1])[i]}</h3>
-                                                    <h3>R$ {(res.data[2])[i]}</h3>
+                                                    <h3 className='pag-nome'>{(res.data.data[4])[i]}</h3>
+                                                    <h3>{(res.data.data[1])[i]}</h3>
+                                                    <h3>R$ {(res.data.data[2])[i]}</h3>
                                                 </div>)
                     this.setState({resultado: list})
                 }
                 total.push(debito, credito, credito_p, avista, boleto, cheque);
                 var maior = Math.max.apply(null, total);
                 this.setState({preferido: tipo_de_pagamento[total.indexOf(maior)]})
-                this.setState({ranking_pag: "º"+res.data[5]+" lugar"})
+                this.setState({ranking_pag: "º"+res.data.data[5]+" lugar"})
             }
         })
         .catch( error => {
@@ -118,14 +119,15 @@ export default class Modal_pagamentos extends Component{
             const Axios = axios.create({
                 baseURL:apis
             })
-            Axios.post('adicionar_pagamento.php', {id: i,  
+            Axios.post('index.php?url=adicionarpagamento/pesquisa', {id: i,  
                                                     data: this.state.data_novo_input,
                                                     valor: val,  
                                                     tipo: this.state.tipo_novo_input,
                                                     nome: name,
-                                                    procedimento: this.state.procedimento_novo_input})
+                                                    procedimento: this.state.procedimento_novo_input} ,{headers: {
+                                                        "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
             .then(res => {
-                if(res.data == '1'){
+                if(res.data.data == '1'){
                     this.setState({novo_pag: 'novo-input'})
                     this.pesquisar_pagamentos(i)
                 }
