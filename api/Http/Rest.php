@@ -20,6 +20,7 @@
     require_once('./atualizar-cadastro.php');
     require_once('./pesquisa-info.php');
     require_once('./deletar_cliente.php');
+    require_once('./pagamentos.php');
 
     class Rest{
         private $request;

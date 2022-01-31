@@ -1,4 +1,3 @@
-
 <?php
     namespace Map\Http\Controllers;
     header("Access-Control-Allow-Origin: *");
@@ -27,9 +26,9 @@
                     return '2';
                 }            
             }
-            else[
+            else{
                 return '2';
-            ]
+            }
         }
     }
 ?>
