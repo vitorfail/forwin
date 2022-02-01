@@ -76,7 +76,7 @@ export default class Resultado_pesquisa extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post("pesquisa.php", {nome: this.props.nomepesquisa},{headers: {
+        Axios.post("index.php?url=pesquisa/pesquisa", {nome: this.props.nomepesquisa},{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
             if(res.data.data === '1' || res.data.data === '2'){
@@ -119,15 +119,15 @@ export default class Resultado_pesquisa extends Component{
                     }
                     else{
                         this.lista.push(<div className='enc'> 
-                                                                    <h3 className='n'>{(res.data[1])[i]}</h3> 
-                                                                    <h3 id='e'>{(res.data[2])[i]}</h3> 
-                                                                    <h3 className='tel'>{(res.data[3])[i]}</h3> 
-                                                                    <h3 className='sex'>{(res.data[4])[i]}</h3> 
+                                                                    <h3 className='n'>{(res.data.data[1])[i]}</h3> 
+                                                                    <h3 id='e'>{(res.data.data[2])[i]}</h3> 
+                                                                    <h3 className='tel'>{(res.data.data[3])[i]}</h3> 
+                                                                    <h3 className='sex'>{(res.data.data[4])[i]}</h3> 
                                                                     <div className='quadro_botoes'>
-                                                                        <button className='pag' id={ident} name={(res.data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
-                                                                        <button id={(res.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
-                                                                        <button id={(res.data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
-                                                                        <button className='falar' id={(res.data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img class='zap' src={Zap} alt="Imagem de whatsapp"/></button>
+                                                                        <button className='pag' id={ident} name={(res.data.data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
+                                                                        <button id={(res.data.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
+                                                                        <button id={(res.data.data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
+                                                                        <button className='falar' id={(res.data.data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img class='zap' src={Zap} alt="Imagem de whatsapp"/></button>
                                                                     </div>
                                                                 </div>)
                                                 

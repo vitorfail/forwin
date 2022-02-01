@@ -10,8 +10,8 @@ function Inserir_nome(props){
     const [tema_roxo, setTema_roxo] = useState(false);
     const [tema_laranja, setTema_laranja] = useState(false);
     const [nome, setNome] = useState('');
-    return(props.trigger)? (
-        <div className='nameclatura'>
+    return(
+        <div className={props.mostrar}>
             <div className='modal'>
                 <div className='caixa'>
                     <h1 className='nickname'>{nome}</h1>
@@ -24,11 +24,11 @@ function Inserir_nome(props){
                     </div>
                     <div className='menu_nome'>
                         <button className='mudar'>Mudar</button>
-                        <button className='fechar_nome' onClick={() => props.setTrigger(false)}>Fechar</button>
+                        <button className='fechar_nome' onClick={() => props.executar("nameclatura")}>Fechar</button>
                     </div>
                 </div>
             </div>
         </div>
-    ):""
+    )
 }
 export default Inserir_nome;

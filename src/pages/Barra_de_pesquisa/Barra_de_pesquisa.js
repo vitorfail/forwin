@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Barra_de_pesquisa(){
     const [abrirConta, setConta] = useState('modal-conta');
-    const [abrirNome, setNome] = useState('');
+    const [abrirNome, setNome] = useState('nameclatura');
     const [nomepesquisa,setnomepesquisa]= useState('');
     const [Nome_conta, setNome_conta] = useState('');
     const [Data, setData] = useState('');
@@ -37,6 +37,9 @@ function Barra_de_pesquisa(){
         .catch(error => {
             alert('Não foi possível inserir essa conta. Cheque sua conexão com a internet e tent novamente')
         })
+    }
+    function show(visivel){
+        setNome(visivel);
     }
     const mask = (e) =>{
         e = e.replace(/\D/g, "")
@@ -64,12 +67,12 @@ function Barra_de_pesquisa(){
                 </div>
                 <div className="user">
                     <a  className="btn" onClick={() => setConta('modal-conta mostrar')} >Adicionar Conta</a>
-                    <div className="usuario" >
+                    <div className="usuario" onClick={() => setNome('nameclatura mostrar')}>
                         <h1 className='nome_de_usuario'>B</h1>
                     </div>
                 </div>
             </div>
-            <Inserir_nome trigger = {abrirNome} setTrigger={setNome}>
+            <Inserir_nome mostrar = {abrirNome} executar={show.bind(this)}>
             </Inserir_nome>
             <div className={abrirConta}>
                 <div className="modal">

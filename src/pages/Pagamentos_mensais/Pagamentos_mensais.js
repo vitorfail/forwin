@@ -56,7 +56,8 @@ export default class Pagamentos_mensais extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('pagamentos_mes.php', {mes: mes_, ano:ano_})
+        Axios.post('index?url=pagamentosmes/pesquisa', {mes: mes_, ano:ano_}, {headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then( res => {
             console.log(mes_)
             console.log(ano_)

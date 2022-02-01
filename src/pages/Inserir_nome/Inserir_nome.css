@@ -8,6 +8,9 @@
     z-index: 2000;
     align-items: center;
     justify-content: center;
+    display: none;
+}
+.nameclatura.mostrar{
     display: flex;
 }
 .nameclatura .modal{
