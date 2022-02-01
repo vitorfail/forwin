@@ -21,6 +21,8 @@
     require_once('./pesquisa-info.php');
     require_once('./deletar_cliente.php');
     require_once('./pagamentos.php');
+    require_once('./pesquisa.php');
+    require_once('./nome.php');
 
     class Rest{
         private $request;

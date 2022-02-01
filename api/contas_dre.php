@@ -1,9 +1,20 @@
 <?php
+    namespace Map\Http\Controllers;
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT");
     header("Access-Control-Allow-Headers: *");
-    
+
+    class NomeController{
+        public function pesquisa(){
+            if(AuthController::checkAuth()){
+            
+            }
+            else{
+                return '1'
+            }
+        }
+    }
     include('conexao.php');
     try{
         $array = array();

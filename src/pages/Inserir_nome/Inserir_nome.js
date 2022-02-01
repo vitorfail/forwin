@@ -15,7 +15,6 @@ function Inserir_nome(props){
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.post('index.php?url=nome/pesquisa', )
     }
     function troca_de_tema(tema){
         var html = document.querySelector('html');

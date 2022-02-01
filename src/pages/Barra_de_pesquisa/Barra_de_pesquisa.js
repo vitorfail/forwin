@@ -1,6 +1,6 @@
 import lista from '../../icones/list.png';
 import lupa from '../../icones/pesquisa.png';
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Inserir_nome from '../Inserir_nome/Inserir_nome';
 import '../Barra_de_pesquisa/Barra_de_pesquisa.css';
 import '../Barra_de_pesquisa/Popup-conta.css';
@@ -56,12 +56,44 @@ function Barra_de_pesquisa(){
             history('/pesquisa/'+nomepesquisa);
         }
     }
-    const url = 'eai';
+    useEffect = () =>{
+        const Axios = axios.create({
+            baseURL:apis
+        })
+        Axios.post('index.php?url=nome/pesquisa', {i:'1'}, {headers: 
+            {"Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}
+        ).then(res => {
+            if(res.data === '1'){
+
+            }
+            else{
+                if(res.data.data === 'temaazul'){
+                    let html = document.querySelector('html');
+                    html.className = 'tema-azul';
+                }
+                if(res.data.data === 'temapadrao'){
+                    let html = document.querySelector('html');
+                    html.className = 'tema-padrao';
+                }
+                if(res.data.data === 'temaroxo'){
+                    let html = document.querySelector('html');
+                    html.className = 'tema-roxo';
+                }
+                if(res.data.data === 'temalaranja'){
+                    let html = document.querySelector('html');
+                    html.className = 'tema-laranja';
+                }
+            }
+        })
+        .catch(error =>{
+
+        })
+    }
     return(
         <div className="cabecalho">
             <div className="barra_de_pesquisa">
                 <div className="pesquisa">
-                    <img  className='list' src={lista} alt=""/>
+                    <img  className='list' src={lista} alt="Lista"/>
                     <input type="text" onChange={(event) => setnomepesquisa(event.target.value)} name="c-pesquisa" placeholder="Pesquise...."/>
                     <a onClick={(event) => pesquisa()} className='p'><img src={lupa} alt=""/></a>
                 </div>
@@ -76,7 +108,7 @@ function Barra_de_pesquisa(){
             </Inserir_nome>
             <div className={abrirConta}>
                 <div className="modal">
-                    <img src={Conta} width="50px" height="50px"/>
+                    <img src={Conta} width="50px" height="50px" alt='Conta'/>
                     <h2>Divida</h2>
                     <p className="preencha">Preencha todos os dados</p>
                     <div className="entrada">

@@ -52,7 +52,7 @@ export default class DRE extends Component{
         Axios.post('index.php?url=pagamentosmes/pesquisa', {mes:m, ano:a},{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data.data == '1'){
+            if(res.data.data === '1'){
 
             }
             else{
@@ -66,7 +66,7 @@ export default class DRE extends Component{
         Axios.post("index.php?url=contasdre/pesquisa", {mes:m, ano:a} ,{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res =>{
-            if(res.data.data == '1'){
+            if(res.data.data === '1'){
                 
             }
             else{
