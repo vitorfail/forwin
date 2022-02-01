@@ -8,20 +8,7 @@ import Login from './pages/Login/Login';
 import Home from './pages/Home';
 import { BrowserRouter, Route, Routes , Navigate } from "react-router-dom";
 
-import { isAuthenticated } from "./services/auth";
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      isAuthenticated() ? (
-        <Component {...props} />
-      ) : (
-        <Navigate to={{ pathname: "/", state: { from: props.location } }} />
-      )
-    }
-  />
-);
 
 const Rout = () => (
   <BrowserRouter>
