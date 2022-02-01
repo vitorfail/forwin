@@ -197,7 +197,7 @@ export default class Planilhas extends Component{
                             if(newd.getMonth() === 10){
                                 novembro_mes = novembro_mes+parseFloat((res.data.data[1])[i]);
                             }
-                            if(newd.getMonth() == 11){
+                            if(newd.getMonth() === 11){
                                 dezembro_mes = dezembro_mes+parseFloat((res.data.data[1])[i]);
                             }
                         }
@@ -279,7 +279,7 @@ export default class Planilhas extends Component{
         })
         Axios.post('index.php?url=sexo/pesquisa', {id:'1'}, {headers: {"Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data.data == '1'){
+            if(res.data.data === '1'){
 
             }
             else{

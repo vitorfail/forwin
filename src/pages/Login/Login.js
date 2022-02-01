@@ -30,20 +30,6 @@ function Login(){
             setmostrar('aviso mostrar')
         })
     }
-    function teste(){
-        const Axios = axios.create({
-            baseURL:apis
-        })
-        Axios.post('index.php?url=idades/pesquisa', {user: '1', password: '1'},{headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}
-            )
-        .then(res =>{
-            console.log(res.data);
-        })
-        .catch(error => {
-            console.log("Não foi possivel: "+ error)
-        })
-    }
     return(
         <div className='back'>
             <div className='form'>

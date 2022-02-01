@@ -46,7 +46,7 @@ export default class Modal_pagamentos extends Component{
         Axios.post('index.php?url=pagamentos/pesquisa', {id: ident} ,{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data.data == '1' || res.data.data == '2'){
+            if(res.data.data === '1' || res.data.data === '2'){
                 this.setState({resultado: <h3 className="s-pag">Sem pagamentos encontrados</h3>})
                 this.setState({preferido: "Nenhum"})
                 this.state({ranking_pag: "Sem pagamentos"})
@@ -61,26 +61,25 @@ export default class Modal_pagamentos extends Component{
                 var tipo_de_pagamento = ['Debito', 'Credito', 'Credito parcelado', 'A vista' , 'Boleto', 'Cheque']
                 var total = [];
                 this.setState({resultado: []})
-                var lista_de_pagamentos= [];
                 var list = []
                 for(var i=0; i< (res.data.data[0]).length; i++){
 
-                    if((res.data.data[3])[i] =="debito"){
+                    if((res.data.data[3])[i] ==="debito"){
                         debito++;
                     }
-                    if((res.data.data[3])[i] =="credito"){
+                    if((res.data.data[3])[i] ==="credito"){
                         credito =credito+1 ;
                     }
-                    if((res.data.data[3])[i] =="credito-parcelado"){
+                    if((res.data.data[3])[i] ==="credito-parcelado"){
                         credito_p++;
                     }
-                    if((res.data.data[3])[i] =="a-vista"){
+                    if((res.data.data[3])[i] ==="a-vista"){
                         avista++;
                     }
-                    if((res.data.data[3])[i] =="boleto"){
+                    if((res.data.data[3])[i] ==="boleto"){
                         boleto++;
                     }
-                    if((res.data.data[3])[i] =="cheque"){
+                    if((res.data.data[3])[i] ==="cheque"){
                         cheque++;
                     }
                     list = this.state.resultado.concat(<div className='pag-enc' >
@@ -127,7 +126,7 @@ export default class Modal_pagamentos extends Component{
                                                     procedimento: this.state.procedimento_novo_input} ,{headers: {
                                                         "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
             .then(res => {
-                if(res.data.data == '1'){
+                if(res.data.data === '1'){
                     this.setState({novo_pag: 'novo-input'})
                     this.pesquisar_pagamentos(i)
                 }

@@ -152,7 +152,7 @@ export default class Pagamentos_mensais extends Component{
         }
     }
     voltar_final(){
-        if( this.state.voltar_final == true){
+        if( this.state.voltar_final === true){
             this.setState({numerador: 1})
             this.lista =[]
             var index = 0

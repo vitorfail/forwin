@@ -76,17 +76,18 @@ export default class Resultado_pesquisa extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post("pesquisa.php", {nome: this.props.nomepesquisa})
+        Axios.post("pesquisa.php", {nome: this.props.nomepesquisa},{headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data === '1' || res.data === '2'){
+            if(res.data.data === '1' || res.data.data === '2'){
                 this.setState({numero: 0})
             }
             else{
                 var repetidor = 0
-                this.setState({dados: res.data})
-                this.setState({numero: res.data[0].length})
+                this.setState({dados: res.data.data})
+                this.setState({numero: res.data.data[0].length})
                 this.setState({numerador: 1})
-                var verificador = res.data[0].length / 50
+                var verificador = res.data.data[0].length / 50
                 this.setState({pages: verificador})
                 if(this.state.numero> 50){
                     repetidor = 50
@@ -99,21 +100,21 @@ export default class Resultado_pesquisa extends Component{
                 }
                 this.lista = [] 
                 for(var i=this.state.indexador; i< repetidor ; i++){
-                    var ident = (res.data[0])[i]
-                    if((res.data[2])[i].length > 31){
+                    var ident = (res.data.data[0])[i]
+                    if((res.data.data[2])[i].length > 31){
                         this.lista.push(<div className='enc'> 
-                                                                    <h3 className='n'>{(res.data[1])[i]}</h3>
+                                                                    <h3 className='n'>{(res.data.data[1])[i]}</h3>
                                                                     <div className='email_caixa'> 
-                                                                        <h3 id='e'>{(res.data[2])[i].substr(0, 29)}</h3> 
-                                                                        <h3  id='e'>{(res.data[2])[i].substr(29, (res.data[2])[i].length-29)} </h3> 
+                                                                        <h3 id='e'>{(res.data.data[2])[i].substr(0, 29)}</h3> 
+                                                                        <h3  id='e'>{(res.data.data[2])[i].substr(29, (res.data.data[2])[i].length-29)} </h3> 
                                                                     </div> 
-                                                                    <h3 className='tel'>{(res.data[3])[i]}</h3> 
-                                                                    <h3 className='sex'>{(res.data[4])[i]}</h3> 
+                                                                    <h3 className='tel'>{(res.data.data[3])[i]}</h3> 
+                                                                    <h3 className='sex'>{(res.data.data[4])[i]}</h3> 
                                                                     <div className='quadro_botoes'> 
-                                                                        <button className='pag' id={ident} name={(res.data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
-                                                                        <button id={(res.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
-                                                                        <button id={(res.data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
-                                                                        <button className='falar' id={(res.data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img className='zap' src={Zap} alt="Imagem de whatsapp"/></button>
+                                                                        <button className='pag' id={ident} name={(res.data.data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
+                                                                        <button id={(res.data.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
+                                                                        <button id={(res.data.data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
+                                                                        <button className='falar' id={(res.data.data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img className='zap' src={Zap} alt="Imagem de whatsapp"/></button>
                                                                     </div></div>)
                     }
                     else{
@@ -290,7 +291,7 @@ export default class Resultado_pesquisa extends Component{
         }
     }
     voltar_final(){
-        if( this.state.voltar_final == true){
+        if( this.state.voltar_final === true){
             this.setState({numerador: 1})
             this.lista =[]
             var index = 0
