@@ -60,7 +60,7 @@ export default class Pagamentos_mensais extends Component{
         .then( res => {
             console.log(mes_)
             console.log(ano_)
-            if(res.data == '1'){
+            if(res.data === '1'){
 
             }
             else{
@@ -99,7 +99,7 @@ export default class Pagamentos_mensais extends Component{
         this.pesquisa_pagamentos(this.state.mes, a)
     }
     adiantar(){
-        if( this.state.passador == true){
+        if( this.state.passador === true){
             if(this.state.numero > this.state.quantidade ){
                 this.setState({numerador: (this.state.numerador +1)})
                 this.lista =[]
@@ -118,7 +118,7 @@ export default class Pagamentos_mensais extends Component{
         }
     }
     voltar(){
-        if(this.state.indexador !=0){
+        if(this.state.indexador !== 0){
             this.setState({numerador: (this.state.numerador -1)})
             this.lista =[]
             var index = this.state.indexador - 50
@@ -127,9 +127,7 @@ export default class Pagamentos_mensais extends Component{
             this.setState({quantidade: quant})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                for(var i=index; i< quant ; i++){
-                    this.lista.push(<div className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
-                }
+                this.lista.push(<div className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
             }
             this.setState({resultado: this.lista}) 
             this.setState({passador_final: true})   
@@ -137,7 +135,7 @@ export default class Pagamentos_mensais extends Component{
         }
     }
     adiantar_final(){
-        if( this.state.passador_final == true){
+        if( this.state.passador_final === true){
             this.setState({numerador: Math.ceil(this.state.pages)})
             this.lista =[]
             var index = (this.state.pages * 50) - 50
@@ -237,11 +235,11 @@ export default class Pagamentos_mensais extends Component{
                     {this.state.resultado}
                 </div>
                 <div className='indexador'>
-                    <img src={Seta_esquerda_dupla}className="seta" onClick={(event) => this.voltar_final()}/>
-                    <img src={Seta_esquerda}className="seta" onClick={(event) => this.voltar()}/>
+                    <img src={Seta_esquerda_dupla}className="seta" onClick={(event) => this.voltar_final()} alt='Voltar até o final'/>
+                    <img src={Seta_esquerda}className="seta" onClick={(event) => this.voltar()} alt='Voltar'/>
                     <p>{this.state.numerador}</p>
-                    <img src={Seta_direita} className="seta" onClick={(event) => this.adiantar()}/>
-                    <img src={Seta_direita_dupla} className="seta" onClick={(event) => this.adiantar_final()}/>
+                    <img src={Seta_direita} className="seta" onClick={(event) => this.adiantar()} alt='Adiantar'/>
+                    <img src={Seta_direita_dupla} className="seta" onClick={(event) => this.adiantar_final()} alt='Adiantar até o final'/>
                 </div> 
             </div>
         )

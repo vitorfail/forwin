@@ -50,11 +50,11 @@ export default class Cadastro_cliente extends Component{
             notific_input: this.state.notific
         },{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res => {
-            if(res.data.data == '1'){
+            if(res.data.data === '1'){
                 this.fechar_pergunta();
                 this.abrir_sucess();
             }
-            if(res.data.data == '0'){
+            if(res.data.data === '0'){
                 alert("Houve um erro e não foi possivel cadastrar");
             }
         })
@@ -193,7 +193,7 @@ export default class Cadastro_cliente extends Component{
                 </div>
                 <div id="modal-fechar" className={this.state.ModalPergunta}  >
                     <div className="modal">
-                        <img src={Pergunta} width="50px" height="50px"/>
+                        <img src={Pergunta} width="50px" height="50px" alt="Interrogação"/>
                         <h3>Quer cadastrar esse cliente?</h3>
                         <div className="botoes">
                             <div class="botao-sim">
@@ -207,7 +207,7 @@ export default class Cadastro_cliente extends Component{
                 </div>
                 <div id="3" class={this.state.ModalSucess}>
                     <div className="modal">
-                        <img src={Sucesso}/>
+                        <img src={Sucesso} alt="Deu certo"/>
                         <h3>Cliente cadastrado</h3>
                         <div className="botoes">
                             <div className="botao-sim">

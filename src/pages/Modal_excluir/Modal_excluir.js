@@ -18,7 +18,7 @@ export default class Modal_excluir extends Component{
         Axios.post('index.php?url=deletarcliente/pesquisa', {id: this.props.id},{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data.data == '1'){
+            if(res.data.data === '1'){
                 this.props.executar("modal-excluir")
             }
             else{
@@ -33,7 +33,7 @@ export default class Modal_excluir extends Component{
         return(
             <div className={this.props.exibir}>
                 <div className="modal">
-                    <img src={Excluir} width="50px" height="50px"/>
+                    <img src={Excluir} width="50px" height="50px" alt="Excluir"/>
                     <h3>Tem certeza que quer excluir esse cliente? Ele será excluido permanentemente do banco de dados</h3>
                     <div className="botoes">
                         <div className="botao-sim">

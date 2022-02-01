@@ -24,8 +24,8 @@ export default class Ranking_pagamentos extends Component{
         })
         Axios.post('index.php?url=rankings/pesquisa', { passe: 'pagamento'}, {headers: {"Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data.data == '1' || res.data.data == '2'){
-                var lista = this.state.rank.concat(<div className="cad">
+            if(res.data.data === '1' || res.data.data === '2'){
+                let lista = this.state.rank.concat(<div className="cad">
                                                         <h3 className="n">Sem clientes</h3>
                                                     </div>);
                 this.setState({rank: lista});
@@ -70,7 +70,7 @@ export default class Ranking_pagamentos extends Component{
             <div className="ranking r1">
                 <div className="clientes-recentes">
                     <h2>Ranking de pagamento</h2>
-                    <img src={rank}/>
+                    <img src={rank} alt="Ranking"/>
                     <button className="ver_todos">Ver todos</button>
                 </div>
                 <div className="titulos_tabela">

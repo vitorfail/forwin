@@ -22,7 +22,7 @@ export default class Modal_pagamentos extends Component{
         }
         this.pesquisar_pagamentos = this.pesquisar_pagamentos.bind(this)
         this.modal_novo_pagamento = this.modal_novo_pagamento.bind(this)
-        this.inserir_novoPagamento = this. inserir_novoPagamento.bind(this)
+        this.inserir_novoPagamento = this.inserir_novoPagamento.bind(this)
         this.mascara_valor = this.mascara_valor.bind(this)
         this.fecharmodal = this.fecharmodal.bind(this)
     }
@@ -112,7 +112,7 @@ export default class Modal_pagamentos extends Component{
         val = val.replace(".", "")
         val = val.replace(",", ".")
         val = parseFloat(val)
-        if(this.state.data_novo_input == ''|| val== '' ||this.state.tipo_novo_input == '' || name=='' || this.state.procedimento_novo_inpu == ''){
+        if(this.state.data_novo_input === ''|| val===  '' ||this.state.tipo_novo_input === '' || name === '' || this.state.procedimento_novo_inpu === ''){
             this.setState({preencha: "preencha mostrar"})
         }
         else{

@@ -1,4 +1,4 @@
-import React, {Component, useEffect} from 'react';
+import React from 'react';
 import Barralateral from './Barralateral/Barralateral';
 import Barra_de_Pesquisa from './Barra_de_pesquisa/Barra_de_pesquisa';
 import Resultado_pesquisa from './Resultado_pesquisa/Resultado_pesquisa';

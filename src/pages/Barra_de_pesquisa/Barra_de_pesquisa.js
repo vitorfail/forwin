@@ -1,13 +1,12 @@
 import lista from '../../icones/list.png';
 import lupa from '../../icones/pesquisa.png';
-import React, {Component, useState} from "react";
+import React, {useState} from "react";
 import Inserir_nome from '../Inserir_nome/Inserir_nome';
 import '../Barra_de_pesquisa/Barra_de_pesquisa.css';
 import '../Barra_de_pesquisa/Popup-conta.css';
 import { apis } from '../../caminho_api.mjs';
 import axios from 'axios';
 import Conta  from '../../icones/divida.png'
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 function Barra_de_pesquisa(){
@@ -28,7 +27,7 @@ function Barra_de_pesquisa(){
         conta:Nome_conta, tipo: Tipo} ,{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then( res => {
-            if(res.data.data == '1'){
+            if(res.data.data === '1'){
                 setConta('modal-conta')
             }
             if(res.data.data === '2'){
@@ -47,7 +46,7 @@ function Barra_de_pesquisa(){
     }
     const history = useNavigate();
     const pesquisa = () =>{
-        if(nomepesquisa == ''){
+        if(nomepesquisa === ''){
             history('/pesquisa/todos');
         }
         else{

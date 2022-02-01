@@ -1,4 +1,4 @@
-import {Component, useState} from 'react';
+import { useState} from 'react';
 import axios from 'axios';
 import {apis} from '../../caminho_api.mjs';
 import '../Login/Login.css';
@@ -17,7 +17,7 @@ function Login(){
         })
         Axios.post('http://localhost/public_html/mysql_con/index.php?url=auth/login', {user: usuario, password: senha})
         .then(res =>{
-            if(res.data.data == 'Operação inválida' || res.data.data == 'Usuário não encontrado'){
+            if(res.data.data === 'Operação inválida' || res.data.data === 'Usuário não encontrado'){
                 setmostrar('aviso mostrar');
             }
             else{

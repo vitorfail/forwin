@@ -25,8 +25,8 @@ export default class Ranking_visitas extends Component{
             passe: 'visita'
         }, {headers: {"Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data.data =='1' || res.data.data =='2'){
-                var lista = this.state.visitas.concat(<div className="cad">
+            if(res.data.data ==='1' || res.data.data ==='2'){
+                let lista = this.state.visitas.concat(<div className="cad">
                                                             <h3 className="n">Sem clientes</h3>
                                                         </div>);
                 this.setState({visitas: lista});
@@ -68,7 +68,7 @@ export default class Ranking_visitas extends Component{
             <div className="ranking r2">
                 <div className="clientes-recentes">
                     <h2>Ranking de visitas</h2>
-                    <img src={Rank}/>
+                    <img src={Rank} alt="Rankings"/>
                     <button className="ver_todos">Ver todos</button>
                 </div>
                 <div className="titulos_tabela">

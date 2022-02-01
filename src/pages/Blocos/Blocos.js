@@ -70,7 +70,6 @@ export default class Blocos extends Component{
                 this.setState({valor_do_mes: 'R$ 0,00'})
             }
             else{
-                var valor_total = (res.data.data)[1]
                 var receita = 0;
 
                 for(var i =0; i< (res.data.data)[1].length; i++){
@@ -93,7 +92,7 @@ export default class Blocos extends Component{
         if (hora.length === 1){
             hora = '0'+ hora;
         }
-        if (minutos.length == 1){
+        if (minutos.length === 1){
             minutos = '0'+ minutos;
         }
         var hora_atual = hora+ ':'+ minutos;

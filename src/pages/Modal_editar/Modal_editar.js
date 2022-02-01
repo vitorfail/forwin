@@ -65,7 +65,7 @@ export default class Modal_editar extends Component{
             notific:this.state.notific.toString()}, {headers: {
                 "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res =>{
-            if(res.data.data = '1'){
+            if(res.data.data === '1'){
                 this.props.executar("modal-editar")
             }
             else{

@@ -46,7 +46,7 @@ export default class Contas_do_mes extends Component{
             var ir = [];
             this.setState({ lista_contas: ir })
             for(var n =0; n < res.data.data[0].length; n++){
-                if((res.data.data[4])[n] == 'Pago'){
+                if((res.data.data[4])[n] === 'Pago'){
                     var joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
                                                                     <h3>{(res.data.data[1])[n]}</h3> 
                                                                     <h3>R$ {(res.data.data[2])[n]}</h3> 
@@ -73,7 +73,7 @@ export default class Contas_do_mes extends Component{
                                                                     </div>);   
                         this.setState({ lista_contas: joined })
                     }
-                    if((res.data.data[6])[n] ==0){
+                    if((res.data.data[6])[n] === 0){
                         var joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
                                                                         <h3>{(res.data.data[1])[n]}</h3> 
                                                                         <h3>R$ {(res.data.data[2])[n]}</h3> 
@@ -94,10 +94,10 @@ export default class Contas_do_mes extends Component{
             id: e,
             situacao: String(check)
         }).then(res => {
-            if(res.data == '1'){
+            if(res.data === '1'){
                 window.location.reload();
             }
-            if(res.data == '2'){
+            if(res.data === '2'){
                 alert('Não foi possível atualizar essa conta. Verifique sua internet e tente novamente')
             }
         })

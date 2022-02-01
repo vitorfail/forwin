@@ -20,14 +20,14 @@ export default class Clientes_recentes extends Component{
         })
         Axios.post('index.php?url=atualiza/pesquisa', {name: '0', id:'1'}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res =>{
-            if(res.data.data == 2 || res.data.data == 0){
-                var ir = [];
+            if(res.data.data === 2 || res.data.data === 0){
+                let ir = [];
                 this.setState({ lista: ir })
                var l = this.state.lista.concat(<div className="cad"><h3 className="t">Sem clientes cadastrados</h3></div>)
                 this.setState({lista: l})
             }
             else{
-                var ir = [];
+                let ir = [];
                 this.setState({ lista: ir })
                 for(var i=0; i< res.data.data[0].length ; i++){
                     var list1 = this.state.lista.concat(<div className="cad">

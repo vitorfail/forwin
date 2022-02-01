@@ -28,7 +28,6 @@ export default class Planilhas extends Component{
             label3: 'Nenhum',
             label4: 'Nenhum',
             label5: 'Nenhum',
-            label1: 'Nenhum',
             variacao1: 1,
             variacao2: 1,
             variacao3: 1,
@@ -72,7 +71,7 @@ export default class Planilhas extends Component{
         Axios.post('index.php?url=idades/pesquisa', {user: '1', password: '1'},{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}
         ).then(res =>{
-           if(res.data.data == '1'){
+           if(res.data.data === '1'){
 
            }
            else{
@@ -126,7 +125,7 @@ export default class Planilhas extends Component{
         Axios.post("index.php?url=pagamentosmes/pesquisa", {ano: data_query.getFullYear().toString(), mes: 'Todos'},{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data.data == '1' || res.data.data =='2'){
+            if(res.data.data === '1' || res.data.data ==='2'){
                 this.setState({janeiro: 0});
                 this.setState({fevereiro: 0});
                 this.setState({marco: 0});
@@ -154,49 +153,48 @@ export default class Planilhas extends Component{
                 var outubro_mes = 0;
                 var novembro_mes = 0;
                 var dezembro_mes = 0;
-                var d = new Date();
                 var valormes = 0;
                 for(var i=0; i< res.data.data[0].length; i++){
                     var newd = new Date((res.data.data[0])[i]);
-                    if(newd.getFullYear() == ""){
+                    if(newd.getFullYear() === ""){
                         
                     }
                     else{
-                        if(newd.getFullYear() == d.getFullYear()){
-                            if(newd.getMonth() == d.getMonth()){
+                        if(newd.getFullYear() === d.getFullYear()){
+                            if(newd.getMonth() === d.getMonth()){
                                 valormes = valormes+parseFloat((res.data.data[1])[i]);
                             }
-                            if(newd.getMonth() == 0){
+                            if(newd.getMonth() === 0){
                                 janeiro_mes = janeiro_mes+parseFloat((res.data.data[1])[i]);
                             }
-                            if(newd.getMonth() == 1){
+                            if(newd.getMonth() === 1){
                                 fevereiro_mes = fevereiro_mes+parseFloat((res.data.data[1])[i]);
                             }
-                            if(newd.getMonth() == 2){
+                            if(newd.getMonth() === 2){
                                 marco_mes = marco_mes+parseFloat((res.data.data[1])[i]);
                             }
-                            if(newd.getMonth() == 3){
+                            if(newd.getMonth() === 3){
                                 abril_mes = abril_mes+parseFloat((res.data.data[1])[i]);
                             }
-                            if(newd.getMonth() == 4){
+                            if(newd.getMonth() === 4){
                                 maio_mes = maio_mes+parseFloat((res.data.data[1])[i]);
                             }
-                            if(newd.getMonth() == 5){
+                            if(newd.getMonth() === 5){
                                 junho_mes = junho_mes+parseFloat((res.data.data[1])[i]);
                             }
-                            if(newd.getMonth() == 6){
+                            if(newd.getMonth() === 6){
                                 julho_mes = julho_mes+parseFloat((res.data.data[1])[i]);
                             }
-                            if(newd.getMonth() == 7){
+                            if(newd.getMonth() === 7){
                                 agosto_mes = agosto_mes+parseFloat((res.data.data[1])[i]);
                             }
-                            if(newd.getMonth() == 8){
+                            if(newd.getMonth() === 8){
                                 setembro_mes = setembro_mes+parseFloat((res.data[1])[i]);
                             }
-                            if(newd.getMonth() == 9){
+                            if(newd.getMonth() === 9){
                                 outubro_mes = outubro_mes+parseFloat((res.data.data[1])[i]);
                             }
-                            if(newd.getMonth() == 10){
+                            if(newd.getMonth() === 10){
                                 novembro_mes = novembro_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() == 11){
@@ -242,7 +240,7 @@ export default class Planilhas extends Component{
         Axios.post("index.php?url=estadocivil/pesquisa", {id: '1'},{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data.data == '1'){
+            if(res.data.data === '1'){
                 this.setState({viuva:0})
                 this.setState({casada:0})
                 this.setState({solteira:0})
@@ -255,16 +253,16 @@ export default class Planilhas extends Component{
                 var viuva =0
                 var divorciado=0
                 for(var i=0; i< res.data.data.length; i++){
-                    if(res.data.data[i] == 'solteiro'){
+                    if(res.data.data[i] === 'solteiro'){
                         solteiro = solteiro +1
                     }
-                    if(res.data.data[i] == 'casado'){
+                    if(res.data.data[i] === 'casado'){
                         casado = casado +1
                     }
-                    if(res.data.data[i] == 'viuva' || res.data.data[i] == 'viuvo'){
+                    if(res.data.data[i] === 'viuva' || res.data.data[i] === 'viuvo'){
                         viuva = viuva +1
                     }
-                    if(res.data.data[i] == 'divorciado'){
+                    if(res.data.data[i] === 'divorciado'){
                         divorciado = divorciado +1
                     }
                 }
@@ -289,13 +287,13 @@ export default class Planilhas extends Component{
                 var f =0
                 var o = 0
                 for(var i=0; i < res.data.data.length; i++){
-                    if(res.data.data[i] == 'Masculino'){
+                    if(res.data.data[i] === 'Masculino'){
                         m = m+1
                     }
-                    if(res.data.data[i] == 'Feminino'){
+                    if(res.data.data[i] === 'Feminino'){
                         f = f+1
                     }
-                    if(res.data.data[i] == 'Outros'){
+                    if(res.data.data[i] === 'Outros'){
                         o= o+1
                     }
                 }
@@ -316,7 +314,7 @@ export default class Planilhas extends Component{
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
             console.log(res.data)
-            if(res.data.data == '1'|| res.data.data == '2'){
+            if(res.data.data === '1'|| res.data.data === '2'){
                 this.setState({debito: 1})
                 this.setState({credito: 1})
                 this.setState({credito_parcelado: 1})
@@ -332,22 +330,22 @@ export default class Planilhas extends Component{
                 var boleto_1 = 0
                 var cheque_1 = 0
                 for(var i=0; i < res.data.data.length; i++){
-                    if(res.data.data[i] == 'debito'){
+                    if(res.data.data[i] === 'debito'){
                         debito_1 = debito_1 +1
                     }
-                    if(res.data.data[i] == 'credito'){
+                    if(res.data.data[i] === 'credito'){
                         credito_1 = credito_1 +1
                     }
-                    if(res.data.data[i] == 'credito-parcelado'){
+                    if(res.data.data[i] === 'credito-parcelado'){
                         credito_parcelado_1 = credito_parcelado_1 +1
                     }
-                    if(res.data.data[i] == 'a-vista'){
+                    if(res.data.data[i] === 'a-vista'){
                         a_vista_1 = a_vista_1 +1
                     }
-                    if(res.data.data[i] == 'boleto'){
+                    if(res.data.data[i] === 'boleto'){
                         boleto_1 = boleto_1 +1
                     }
-                    if(res.data.data[i] == 'cheque'){
+                    if(res.data.data[i] === 'cheque'){
                         cheque_1 = cheque_1 +1
                     }
                 }

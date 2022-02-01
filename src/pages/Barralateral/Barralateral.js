@@ -14,11 +14,11 @@ export default class Barralateral extends Component{
                     <Link  className='link' to='/'>Forwin</Link>
                 </div>
                 <ul>
-                    <Link className="link" to='/graficos'><img src={Planilha}/>&nbsp;<span>Planilha</span></Link>
-                    <Link  className="link" to='/cadastro' ><img src={Instituicao} />&nbsp;<span>Cadastro</span></Link>
-                    <Link className='link' to='/financeiro' ><img src={DRE}/>&nbsp;<span>DRE</span></Link>
-                    <Link className='link' to='/cadastro' ><img src={Config}/>&nbsp;<span>Ajuda</span></Link>
-                    <Link className='link' to='/cadastro' ><img src={Saida}/>&nbsp;<span>Sair</span></Link>
+                    <Link className="link" to='/graficos'><img src={Planilha} alt='Planilha'/>&nbsp;<span>Planilha</span></Link>
+                    <Link  className="link" to='/cadastro' ><img src={Instituicao} alt='Instituição'/>&nbsp;<span>Cadastro</span></Link>
+                    <Link className='link' to='/financeiro' ><img src={DRE} alt='DRE'/>&nbsp;<span>DRE</span></Link>
+                    <Link className='link' to='/cadastro' ><img src={Config} alt='Config'/>&nbsp;<span>Ajuda</span></Link>
+                    <Link className='link' to='/cadastro' ><img src={Saida} alt='Saida'/>&nbsp;<span>Sair</span></Link>
                 </ul>
             </div>
         )

@@ -113,7 +113,7 @@ export default class DRE extends Component{
                         <option value='11'>NOVEMBRO</option>
                         <option value='12'>DEZEMBRO</option>
                     </select>
-                    <select id='anos' onChange={(event) => this.trocar2(event.target.value)} class='meses' class="tooltip-multiline" data-tooltip="Clique para selecionar o ano" >
+                    <select id='anos' onChange={(event) => this.trocar2(event.target.value)} className='meses'  data-tooltip="Clique para selecionar o ano" >
                         
                         <option value='2028'>2028</option>
                         <option value='2027'>2027</option>
