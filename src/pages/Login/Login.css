@@ -89,6 +89,29 @@
     border-color: #9ecaed;
     box-shadow: 0 0 10px #9ecaed;
 }
+.input .aviso{
+    margin-top: 15px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    width: 180px;
+    border: 2px solid rgb(141, 7, 7);
+    background-color: rgba(255, 82, 82, 0.589);
+    color: rgb(37, 4, 4);
+}
+.input .aviso.mostrar{
+    animation: tremer .4s;
+    display: flex;
+}
+@keyframes tremer{
+    0% {margin-left: 0;}
+    25% {margin-left: 13px;}
+    50% {margin-left: 0;}
+    75% {margin-left: -13px;}
+    100% {margin-left: 0;}
+}
 @media screen and (max-width: 980px){
   	
 }
