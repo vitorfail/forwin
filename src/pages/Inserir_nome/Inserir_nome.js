@@ -2,9 +2,9 @@ import React, {Component, useEffect} from "react";
 import axios from "axios";
 import {apis} from '../../caminho_api.mjs';
 
-import '../Inserir_nome/Inserir_nome.css';
+import './Inserir_nome.css';
 import { useState } from "react/cjs/react.development";
-function Inserir_nome(props){
+function Inserir_Nome(props){
     const [tema_padrao, setTema_padrao] = useState(false);
     const [tema_azul, setTema_azul] = useState(false);
     const [tema_roxo, setTema_roxo] = useState(false);

@@ -1,7 +1,7 @@
 import lista from '../../icones/list.png';
 import lupa from '../../icones/pesquisa.png';
 import React, {useState} from "react";
-import Inserir_nome from '../Inserir_nome/Inserir_nome';
+import Inserir_Nome from '../Inserir_Nome/Inserir_Nome';
 import '../Barra_de_pesquisa/Barra_de_pesquisa.css';
 import '../Barra_de_pesquisa/Popup-conta.css';
 import { apis } from '../../caminho_api.mjs';
