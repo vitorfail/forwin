@@ -36,7 +36,7 @@ export default class Contas_do_mes extends Component{
             baseURL: apis
         })
         var meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-        var data = new Date;
+        var data = new Date();
         var data_hoje = data.getFullYear() + '-'+ (data.getMonth()+1) + '-' + data.getDate();
         Axios.post('index.php?url=atualizacontas/pesquisa', {   
             mes_query:(1+ meses.indexOf(mes)), 
@@ -47,7 +47,7 @@ export default class Contas_do_mes extends Component{
             this.setState({ lista_contas: ir })
             for(var n =0; n < res.data.data[0].length; n++){
                 if((res.data.data[4])[n] === 'Pago'){
-                    var joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
+                    let joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
                                                                     <h3>{(res.data.data[1])[n]}</h3> 
                                                                     <h3>R$ {(res.data.data[2])[n]}</h3> 
                                                                     <h3 id={(res.data.data[0])[n]} className="pago">Pago</h3> 
@@ -57,7 +57,7 @@ export default class Contas_do_mes extends Component{
                 }
                 else{
                     if((res.data.data[6])[n] >0){
-                        var joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
+                        let joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
                                                                         <h3>{(res.data.data[1])[n]}</h3> 
                                                                         <h3>R$ {(res.data.data[2])[n]}</h3> 
                                                                         <h3 id={(res.data.data[0])[n]} className="em_dia"> {(res.data.data[6])[n]} Dias</h3> 
@@ -66,7 +66,7 @@ export default class Contas_do_mes extends Component{
                         this.setState({ lista_contas: joined })
                     }
                     if((res.data.data[6])[n] <0){
-                        var joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
+                        let joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
                                                                         <h3>{(res.data.data[1])[n]}</h3> <h3>R${(res.data.data[2])[n]}</h3> 
                                                                         <h3 id={(res.data.data[0])[n]}  className="vencido">Vencida</h3> 
                                                                         <input type="checkbox" name="checkbox" onChange={(event) => this.atualizar_conta(event.currentTarget.id, event.target.checked)} id={(res.data.data[0])[n]} className="cm-toggle blue"/>

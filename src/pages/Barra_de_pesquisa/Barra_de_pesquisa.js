@@ -62,17 +62,17 @@ function Barra_de_pesquisa(){
                 <div className="pesquisa">
                     <img  className='list' src={lista} alt="Lista"/>
                     <input type="text" onChange={(event) => setnomepesquisa(event.target.value)} name="c-pesquisa" placeholder="Pesquise...."/>
-                    <a onClick={(event) => pesquisa()} href="#" className='p'><img src={lupa} alt=""/></a>
+                    <a href="/#" onClick={(event) => pesquisa()} className='p'><img src={lupa} alt=""/></a>
                 </div>
                 <div className="user">
-                    <a  className="btn" href="#" onClick={() => setConta('modal-conta mostrar')} >Adicionar Conta</a>
+                    <a  className="btn" href="/#"  onClick={() => setConta('modal-conta mostrar')} >Adicionar Conta</a>
                     <div className="usuario" onClick={() => setNome('nameclatura mostrar')}>
                         <h1 className='nome_de_usuario'>B</h1>
                     </div>
                 </div>
             </div>
-            <Inserir_nome mostrar = {abrirNome} executar={show.bind(this)}>
-            </Inserir_nome>
+            <Inserir_Nome mostrar = {abrirNome} executar={show.bind(this)}>
+            </Inserir_Nome>
             <div className={abrirConta}>
                 <div className="modal">
                     <img src={Conta} width="50px" height="50px" alt='Conta'/>
