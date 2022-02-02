@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
-import '../Modal_pagamentos/Modal_pagamentos.css'
+import './ModalPagamentos.css'
 import { apis } from "../../caminho_api.mjs";
-export default class Modal_pagamentos extends Component{
+export default class ModalPagamentos extends Component{
     constructor(props){
         super(props)
         this.state = {

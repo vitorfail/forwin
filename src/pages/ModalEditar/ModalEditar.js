@@ -1,8 +1,8 @@
 import React,{Component} from "react";
 import axios from "axios";
-import '../Modal_editar/Modal_editar.css'
+import './ModalEditar.css'
 import {apis} from '../../caminho_api.mjs'
-export default class Modal_editar extends Component{
+export default class ModalEditar extends Component{
     constructor(props){
         super(props)
         this.state = {

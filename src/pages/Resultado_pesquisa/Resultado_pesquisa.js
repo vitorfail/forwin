@@ -3,8 +3,8 @@ import axios from "axios";
 import { apis } from "../../caminho_api.mjs";
 import '../Resultado_pesquisa/Resultado_pesquisa.css'
 import Zap from "../../icones/whats_branco.png";
-import Modal_pagamentos from "../Modal_pagamentos/Modal_pagamentos.js";
-import Modal_editar from "../Modal_editar/Modal_editar.js";
+import ModalPagamentos from "../ModalPagamentos/ModalPagamentos.js";
+import ModalEditar from "../ModalEditar/ModalEditar.js";
 import Modal_excluir from "../Modal_excluir/Modal_excluir.js";
 import Seta_direita from "../../icones/seta.png";
 import Seta_esquerda from "../../icones/seta-esquerda.png";
@@ -353,8 +353,8 @@ export default class Resultado_pesquisa extends Component{
                     <img src={Seta_direita} className="seta" onClick={(event) => this.adiantar()} alt="Seta" />
                     <img src={Seta_direita_dupla} className="seta" onClick={(event) => this.adiantar_final()} alt="Seta"/>
                 </div> 
-                <Modal_pagamentos id={this.state.cadastro} nome={this.state.nome} exibir={this.state.pagamentos_mostrar} executar={this.show_pag.bind(this)}></Modal_pagamentos>
-                <Modal_editar id={this.state.cadastro} exibir={this.state.editar_mostrar} executar={this.show_editar.bind(this)} ></Modal_editar>
+                <ModalPagamentos id={this.state.cadastro} nome={this.state.nome} exibir={this.state.pagamentos_mostrar} executar={this.show_pag.bind(this)}></ModalPagamentos>
+                <ModalEditar id={this.state.cadastro} exibir={this.state.editar_mostrar} executar={this.show_editar.bind(this)} ></ModalEditar>
                 <Modal_excluir executar={this.show_excluir.bind(this)} id={this.state.cadastro} exibir={this.state.excluir_mostrar}></Modal_excluir>
             </div>
             

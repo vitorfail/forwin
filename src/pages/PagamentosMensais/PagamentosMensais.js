@@ -6,7 +6,7 @@ import Seta_esquerda from "../../icones/seta-esquerda.png";
 import Seta_direita_dupla from "../../icones/seta-direita-dupla.png";
 import Seta_esquerda_dupla from "../../icones/seta-esquerda-dupla.png";
 
-export default class Pagamentos_mensais extends Component{
+export default class PagamentosMensais extends Component{
     constructor(){
         super()
         this.lista =[];
