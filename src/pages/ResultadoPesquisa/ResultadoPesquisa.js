@@ -1,16 +1,16 @@
 import React, {Component} from "react";
 import axios from "axios";
 import { apis } from "../../caminho_api.mjs";
-import '../Resultado_pesquisa/Resultado_pesquisa.css'
+import '../ResultadoPesquisa/ResultadoPesquisa.css'
 import Zap from "../../icones/whats_branco.png";
 import ModalPagamentos from "../ModalPagamentos/ModalPagamentos.js";
 import ModalEditar from "../ModalEditar/ModalEditar.js";
-import Modal_excluir from "../Modal_excluir/Modal_excluir.js";
+import ModalExcluir from "../ModalExcluir/ModalExcluir.js";
 import Seta_direita from "../../icones/seta.png";
 import Seta_esquerda from "../../icones/seta-esquerda.png";
 import Seta_direita_dupla from "../../icones/seta-direita-dupla.png";
 import Seta_esquerda_dupla from "../../icones/seta-esquerda-dupla.png";
-export default class Resultado_pesquisa extends Component{
+export default class ResultadoPesquisa extends Component{
     constructor(props){
         super(props)
         this.lista =[];
@@ -355,7 +355,7 @@ export default class Resultado_pesquisa extends Component{
                 </div> 
                 <ModalPagamentos id={this.state.cadastro} nome={this.state.nome} exibir={this.state.pagamentos_mostrar} executar={this.show_pag.bind(this)}></ModalPagamentos>
                 <ModalEditar id={this.state.cadastro} exibir={this.state.editar_mostrar} executar={this.show_editar.bind(this)} ></ModalEditar>
-                <Modal_excluir executar={this.show_excluir.bind(this)} id={this.state.cadastro} exibir={this.state.excluir_mostrar}></Modal_excluir>
+                <ModalExcluir executar={this.show_excluir.bind(this)} id={this.state.cadastro} exibir={this.state.excluir_mostrar}></ModalExcluir>
             </div>
             
         )

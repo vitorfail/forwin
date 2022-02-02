@@ -2,8 +2,8 @@ import {Component} from 'react';
 import axios from 'axios';
 import {apis}from '../../caminho_api.mjs';
 import Excluir from "../.././icones/exclamacao.png";
-import '../Modal_excluir/Modal_excluir.css';
-export default class Modal_excluir extends Component{
+import './ModalExcluir.css';
+export default class ModalExcluir extends Component{
     constructor(props){
         super(props)
         this.state = {
