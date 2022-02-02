@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import '.././Cadastro_cliente/Cadastro_cliente.css'
+import '.././CadastroCliente/CadastroCliente.css'
 import {apis} from '../../caminho_api.mjs';
 import Pergunta from "../../icones/pergunta.png";
 import Sucesso from '../../icones/correto.png';
-import '.././Cadastro_cliente/Popup-sucesso.css';
-export default class Cadastro_cliente extends Component{
+import './Popup-sucesso.css';
+export default class CadastroCliente extends Component{
     constructor(){
         super()
         this.state = {
@@ -171,7 +171,7 @@ export default class Cadastro_cliente extends Component{
                         </div>
                         <div className="dados_telefone">
                             <h3>Telefone</h3>
-                            <input id="telefone" maxLength={15} type="text" value={this.state.telefone} id="tel" onChange={(event) => this.setState({telefone: this.mask_telefone(event.target.value)})} placeholder="(00) 00000-0000"/>
+                            <input id="telefone" maxLength={15} type="text" value={this.state.telefone} onChange={(event) => this.setState({telefone: this.mask_telefone(event.target.value)})} placeholder="(00) 00000-0000"/>
                         </div>
                         <div className="dados_email">
                             <h3>E-mail</h3>

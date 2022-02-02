@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import Rank from '../../icones/rank1.png';
 import axios from "axios";
 import { apis } from "../../caminho_api.mjs";
-import '../Ranking_visitas/Ranking_visitas.css';
-export default class Ranking_visitas extends Component{
+import './RankingVisitas.css';
+export default class RankingVisitas extends Component{
     constructor(){
         super()
         this.state = {

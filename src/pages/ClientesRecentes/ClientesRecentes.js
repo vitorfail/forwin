@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import axios from "axios";
 import {apis} from "../../caminho_api.mjs";
-import '../Clientes_recentes/Clientes_recentes.css';
+import './ClientesRecentes.css';
 import {Link} from 'react-router-dom'
-export default class Clientes_recentes extends Component{
+export default class ClientesRecentes extends Component{
     constructor(){
         super()
         this.state = {

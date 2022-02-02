@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import Barralateral from './Barralateral/Barralateral';
 import BarradePesquisa from './BarradePesquisa/BarradePesquisa';
-import Cadastro_cliente from './Cadastro_cliente/Cadastro_cliente';
+import CadastroCliente from './CadastroCliente/CadastroCliente';
 import Loading from './Loading/Loading';
 export default class Cadastro extends Component{
     constructor(){
@@ -22,7 +22,7 @@ export default class Cadastro extends Component{
                     <BarradePesquisa></BarradePesquisa>
                     <div className="conteudo">
                         <div className="conteudo-2">
-                            <Cadastro_cliente></Cadastro_cliente>
+                            <CadastroCliente></CadastroCliente>
                         </div>
                     </div>
                 </div>

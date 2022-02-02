@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
 import {apis} from "../../caminho_api.mjs";
-import '../Contas_do_mes/Contas_do_mes.css';
-export default class Contas_do_mes extends Component{
+import './ContasdoMes.css';
+export default class ContasdoMes extends Component{
     constructor(){
         super()
         this.state= {
