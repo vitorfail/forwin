@@ -1,6 +1,6 @@
 import React from 'react';
 import Barralateral from './Barralateral/Barralateral';
-import Barra_de_Pesquisa from './Barra_de_pesquisa/Barra_de_pesquisa';
+import BarradePesquisa from './BarradePesquisa/BarradePesquisa';
 import Resultado_pesquisa from './Resultado_pesquisa/Resultado_pesquisa';
 import Loading from './Loading/Loading';
 import Blocos from './Blocos/Blocos';
@@ -11,7 +11,7 @@ function Pesquisa(props){
         <div>
             <Barralateral></Barralateral>
             <div className="barra">
-                <Barra_de_Pesquisa></Barra_de_Pesquisa>
+                <BarradePesquisa></BarradePesquisa>
                 <div className="conteudo">
                     <Blocos></Blocos>
                     <div className="conteudo-2">

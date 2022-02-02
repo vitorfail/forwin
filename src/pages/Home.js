@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import Barralateral from './Barralateral/Barralateral';
-import Barra_de_Pesquisa from './Barra_de_pesquisa/Barra_de_pesquisa';
+import BarradePesquisa from './BarradePesquisa/BarradePesquisa';
 import Blocos from './Blocos/Blocos';
 import Contas_do_mes from './Contas_do_mes/Contas_do_mes';
 import Clientes_recentes from './Clientes_recentes/Clientes_recentes';
@@ -15,7 +15,7 @@ export default class Home extends Component{
             <div>
                 <Barralateral></Barralateral>
                 <div className="barra">
-                    <Barra_de_Pesquisa></Barra_de_Pesquisa>
+                    <BarradePesquisa></BarradePesquisa>
                     <div className="conteudo">
                         <Blocos></Blocos>
                         <div className="conteudo-2">

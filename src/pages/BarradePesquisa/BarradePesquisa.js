@@ -2,14 +2,14 @@ import lista from '../../icones/list.png';
 import lupa from '../../icones/pesquisa.png';
 import React, {useState} from "react";
 import InserirNome from '../InserirNome/InserirNome';
-import '../Barra_de_pesquisa/Barra_de_pesquisa.css';
-import '../Barra_de_pesquisa/Popup-conta.css';
+import '../BarradePesquisa/BarradePesquisa.css';
+import '../BarradePesquisa/Popup-conta.css';
 import { apis } from '../../caminho_api.mjs';
 import axios from 'axios';
 import Conta  from '../../icones/divida.png'
 import { useNavigate } from 'react-router-dom';
 
-function Barra_de_pesquisa(){
+function BarradePesquisa(){
     const [abrirConta, setConta] = useState('modal-conta');
     const [abrirNome, setNome] = useState('nameclatura');
     const [nomepesquisa,setnomepesquisa]= useState('');
@@ -108,4 +108,4 @@ function Barra_de_pesquisa(){
         </div>
     )
 }
-export default Barra_de_pesquisa;
+export default BarradePesquisa;
