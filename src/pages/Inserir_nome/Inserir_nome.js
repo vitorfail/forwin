@@ -1,21 +1,9 @@
-import React, {Component, useEffect} from "react";
-import axios from "axios";
-import {apis} from '../../caminho_api.mjs';
-
-import './Inserir_nome.css';
+import React from "react";
+import './Inserir_Nome.css';
 import { useState } from "react/cjs/react.development";
 function Inserir_Nome(props){
-    const [tema_padrao, setTema_padrao] = useState(false);
-    const [tema_azul, setTema_azul] = useState(false);
-    const [tema_roxo, setTema_roxo] = useState(false);
-    const [tema_laranja, setTema_laranja] = useState(false);
     const [nome, setNome] = useState('');
 
-    function mudar_conta(){
-        const Axios = axios.create({
-            baseURL:apis
-        })
-    }
     function troca_de_tema(tema){
         var html = document.querySelector('html');
         html.className = tema;
@@ -41,4 +29,4 @@ function Inserir_Nome(props){
         </div>
     )
 }
-export default Inserir_nome;
+export default Inserir_Nome;
