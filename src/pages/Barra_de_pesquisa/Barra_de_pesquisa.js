@@ -1,7 +1,7 @@
 import lista from '../../icones/list.png';
 import lupa from '../../icones/pesquisa.png';
 import React, {useState} from "react";
-import Inserir_Nome from '../Inserir_Nome/Inserir_Nome';
+import InserirNome from '../InserirNome/InserirNome';
 import '../Barra_de_pesquisa/Barra_de_pesquisa.css';
 import '../Barra_de_pesquisa/Popup-conta.css';
 import { apis } from '../../caminho_api.mjs';
@@ -71,8 +71,8 @@ function Barra_de_pesquisa(){
                     </div>
                 </div>
             </div>
-            <Inserir_Nome mostrar = {abrirNome} executar={show.bind(this)}>
-            </Inserir_Nome>
+            <InserirNome mostrar = {abrirNome} executar={show.bind(this)}>
+            </InserirNome>
             <div className={abrirConta}>
                 <div className="modal">
                     <img src={Conta} width="50px" height="50px" alt='Conta'/>

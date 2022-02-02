@@ -1,7 +1,7 @@
 import React from "react";
-import './Inserir_Nome.css';
+import './InserirNome.css';
 import { useState } from "react/cjs/react.development";
-function Inserir_Nome(props){
+function InserirNome(props){
     const [nome, setNome] = useState('');
 
     function troca_de_tema(tema){
@@ -29,4 +29,4 @@ function Inserir_Nome(props){
         </div>
     )
 }
-export default Inserir_Nome;
+export default InserirNome;
