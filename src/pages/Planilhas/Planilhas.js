@@ -1,4 +1,4 @@
-import { Component } from "react/cjs/react.development";
+import { Component } from "react";
 import axios from "axios";
 import { apis } from "../../caminho_api.mjs";
 import '../Planilhas/Planilhas.css';
