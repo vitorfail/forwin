@@ -1,2 +1,2 @@
-const apis = 'http://mappbeack.x10.mx/mysql_con/';
+const apis = 'https://mapservicodigital.000webhostapp.com/';
 export {apis};

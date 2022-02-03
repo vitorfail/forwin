@@ -17,7 +17,9 @@ function Login(){
         })
         Axios.post('index.php?url=auth/login', {user: usuario, password: senha})
         .then(res =>{
+            console.log(res.data)
             if(res.data.data === 'Operação inválida' || res.data.data === 'Usuário não encontrado'){
+                console.log(res.data)
                 setmostrar('aviso mostrar');
             }
             else{
@@ -27,6 +29,7 @@ function Login(){
             }
         })
         .catch(error => {
+            console.log(error)
             setmostrar('aviso mostrar')
         })
     }
