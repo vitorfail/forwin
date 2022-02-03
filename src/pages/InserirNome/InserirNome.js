@@ -1,6 +1,6 @@
 import React from "react";
 import './InserirNome.css';
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 function InserirNome(props){
     const [nome, setNome] = useState('');
 
