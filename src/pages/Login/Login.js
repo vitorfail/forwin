@@ -15,7 +15,7 @@ function Login(){
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.post('http://localhost/public_html/mysql_con/index.php?url=auth/login', {user: usuario, password: senha})
+        Axios.post('index.php?url=auth/login', {user: usuario, password: senha})
         .then(res =>{
             if(res.data.data === 'Operação inválida' || res.data.data === 'Usuário não encontrado'){
                 setmostrar('aviso mostrar');

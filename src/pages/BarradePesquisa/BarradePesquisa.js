@@ -62,10 +62,10 @@ function BarradePesquisa(){
                 <div className="pesquisa">
                     <img  className='list' src={lista} alt="Lista"/>
                     <input type="text" onChange={(event) => setnomepesquisa(event.target.value)} name="c-pesquisa" placeholder="Pesquise...."/>
-                    <a href="/#" onClick={(event) => pesquisa()} className='p'><img src={lupa} alt=""/></a>
+                    <a onClick={(event) => pesquisa()} className='p'><img src={lupa} alt=""/></a>
                 </div>
                 <div className="user">
-                    <a  className="btn" href="/#"  onClick={() => setConta('modal-conta mostrar')} >Adicionar Conta</a>
+                    <a  className="btn"  onClick={() => setConta('modal-conta mostrar')} >Adicionar Conta</a>
                     <div className="usuario" onClick={() => setNome('nameclatura mostrar')}>
                         <h1 className='nome_de_usuario'>B</h1>
                     </div>
