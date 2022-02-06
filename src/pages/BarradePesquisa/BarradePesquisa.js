@@ -1,5 +1,10 @@
 import lista from '../../icones/list.png';
 import lupa from '../../icones/pesquisa.png';
+import Planilha from '../../icones/planilha.png'
+import Cadastro from '../../icones/instituicao.png'
+import DRE from '../../icones/reading-book _1_.png'
+import Ajuda from '../../icones/settings.png'
+import Sair from '../../icones/logout.png'
 import React, {useState} from "react";
 import InserirNome from '../InserirNome/InserirNome';
 import '../BarradePesquisa/BarradePesquisa.css';
@@ -8,6 +13,8 @@ import { apis } from '../../caminho_api.mjs';
 import axios from 'axios';
 import Conta  from '../../icones/divida.png'
 import { useNavigate } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+
 
 function BarradePesquisa(){
     const [abrirConta, setConta] = useState('modal-conta');
@@ -17,6 +24,7 @@ function BarradePesquisa(){
     const [Data, setData] = useState('');
     const [Valor, setValor] = useState('');
     const [Tipo, setTipo] = useState('');
+    const [menu, setmenu] = useState('balao');
 
     const troca = () => {
         const Axios = axios.create({
@@ -41,6 +49,14 @@ function BarradePesquisa(){
     function show(visivel){
         setNome(visivel);
     }
+    function mostrar_menu(){
+        if(menu === 'balao'){
+            setmenu('balao mostrar')
+        }
+        if(menu === 'balao mostrar'){
+            setmenu('balao')
+        }
+    }
     const mask = (e) =>{
         e = e.replace(/\D/g, "")
         e = e.replace(/(\d)(\d{2})$/, "$1,$2")
@@ -58,9 +74,17 @@ function BarradePesquisa(){
     }
     return(
         <div className="cabecalho">
+            <div className={menu}>
+                <Link className='link' to='/graficos' ><img src={Planilha}/>Planilha</Link>
+                <Link className='link'  to='/cadastro'><img src={Cadastro}/>Cadastro</Link>
+                <Link className='link'  to='/financeiro'><img src={DRE}/>DRE</Link>
+                <Link className='link'to='/'  ><img src={Ajuda}/>Ajuda</Link>
+                <Link className='link' to='/'  >Home</Link>
+                <Link className='link'  to='/' ><img src={Sair}/>Sair</Link>
+            </div>
             <div className="barra_de_pesquisa">
                 <div className="pesquisa">
-                    <img  className='list' src={lista} alt="Lista"/>
+                    <img  className='list' onClick={() => mostrar_menu()} src={lista} alt="Lista"/>
                     <input type="text" onChange={(event) => setnomepesquisa(event.target.value)} name="c-pesquisa" placeholder="Pesquise...."/>
                     <a onClick={(event) => pesquisa()} className='p'><img src={lupa} alt=""/></a>
                 </div>

@@ -1,2 +1,2 @@
-const apis = 'https://mapservicodigital.000webhostapp.com/';
+const apis = 'http://localhost/public_html/mysql_con/';
 export {apis};

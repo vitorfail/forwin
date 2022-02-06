@@ -89,6 +89,52 @@
     width: 100%;
     height: 100%;
 }
+.balao {
+    display:none;
+    z-index: 450000;
+    position: fixed;
+    margin-top: 260px;
+    padding: 2px;
+    margin-left: -230px;
+    padding-top: 25px;
+    color: #000;
+    background: var(--vermelho);
+    border-radius: 20px;
+    width: 240px;
+    height: 164px;
+    color: white;
+    flex-wrap: wrap;
+    -webkit-transition: 0.5s ease-out;
+    -moz-transition: 0.5s ease-out;
+    -o-transition: 0.5s ease-out;
+    transition: 0.5s ease-out;
+    box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.4);
+}
+.balao .link{
+    justify-content:center;
+    align-items: center;
+    color: var(--letra--padrao);
+    width: 100px;
+    display: flex;
+}
+.balao img{
+    width: 14px;
+    height: 14px;
+}
+.balao::before{
+    font-size: 30px;
+    position: absolute;
+    margin-left: 9px;
+    margin-top: -32px;
+    content: '40';
+    color: var(--vermelho);
+    background: var(--vermelho);
+    -webkit-transform: rotate(-50deg);
+
+}
+.balao.mostrar{
+    display: flex;
+}
 @media screen and (max-width:640px){
     .barra .cabecalho .barra_de_pesquisa .pesquisa .list{
         margin-left: -35px;

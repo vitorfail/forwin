@@ -33,18 +33,6 @@ function Login(){
             setmostrar('aviso mostrar')
         })
     }
-    function teste(){
-        const Axios = axios.create({
-            baseURL:apis
-        })
-        Axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
-        .then(res =>{
-            console.log(res.data)
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    }
     return(
         <div className='back'>
             <div className='form'>
@@ -57,7 +45,6 @@ function Login(){
                         <input nameName='usuario' onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
                         <input type='password' name='senha' onChange={(event) => setsenha(event.target.value)} placeholder='Senha'/>
                         <button name='entrar' onClick={(event) =>login_func() } >Entrar</button>
-                        <button name='entrar' onClick={(event) =>teste() } >Teste</button>
                     </div>
                 </div>
             <div className='direitos'>

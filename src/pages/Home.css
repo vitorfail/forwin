@@ -73,53 +73,7 @@ html
 	overflow-y: scroll;
 	margin-bottom: 25px;
 }
-.balao {
-    display:none;
-    z-index: 450000;
-    position: fixed;
-    margin-top: 70px;
-    padding: 2px;
-    margin-left: 5px;
-    padding-left: 17px;
-    padding-top: 25px;
-    color: #000;
-    background: var(--vermelho);
-    border-radius: 20px;
-    width: 240px;
-    height: 164px;
-    color: white;
-    flex-wrap: wrap;
-    -webkit-transition: 0.5s ease-out;
-    -moz-transition: 0.5s ease-out;
-    -o-transition: 0.5s ease-out;
-    transition: 0.5s ease-out;
-    box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.4);
-}
-.balao a{
-    justify-content:center;
-    align-items: center;
-    color: var(--letra--padrao);
-    width: 100px;
-    display: flex;
-}
-.balao img{
-    width: 14px;
-    height: 14px;
-}
-.balao::before{
-    font-size: 30px;
-    position: absolute;
-    margin-left: -5px;
-    margin-top: -32px;
-    content: '40';
-    color: var(--vermelho);
-    background: var(--vermelho);
-    -webkit-transform: rotate(-50deg);
 
-}
-.balao.mostrar{
-    display: flex;
-}
 .force-overflow
 {
 	min-height: 450px;

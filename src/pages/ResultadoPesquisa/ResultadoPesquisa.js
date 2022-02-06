@@ -79,6 +79,7 @@ export default class ResultadoPesquisa extends Component{
         Axios.post("index.php?url=pesquisa/pesquisa", {nome: this.props.nomepesquisa},{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
+            console.log('passou aqui')
             if(res.data.data === '1' || res.data.data === '2'){
                 this.setState({numero: 0})
             }
