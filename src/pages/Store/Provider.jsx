@@ -15,3 +15,4 @@ const StoreProvider = ({children}) => {
         </Context.Provider>
     )
 }
+export default StoreProvider
