@@ -10,6 +10,9 @@ function Login(){
     const [usuario, setusuario] = useState('');
     const [ mostrar, setmostrar] = useState('aviso');
     const history = useNavigate();
+    const setToken = (t) => {
+        localStorage.setItem('token_jwt', t);
+    }
 
     function login_func(){
         const Axios = axios.create({
@@ -24,7 +27,7 @@ function Login(){
             }
             else{
                 console.log(res.data);
-                localStorage.setItem('token_jwt', res.data.data);
+                setToken(res.data.data);
                 history('/');    
             }
         })
