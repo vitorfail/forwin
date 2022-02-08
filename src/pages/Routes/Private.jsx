@@ -1,17 +1,27 @@
 import React, {useContext} from 'react';
-import { Route, Navigate} from 'react-router-dom';
+import { Navigate, Outlet} from 'react-router-dom';
 import StoreContext from '../Store/Context';
+import axios from 'axios';
+import { apis } from '../../caminho_api.mjs';
 
-const RoutesPrivate = ({component: Component, ...rest}) => {
+const RoutesPrivate = () => {
     const {token} = useContext(StoreContext);
-    return(
-        <Route
-            {...rest}
-            render={()=> token
-            ? <Component{...rest}/> 
-            : <Navigate to='/login'/>
-        }
-        />
-    )
+    async function query(){
+        let valid = false
+        const Axios = axios.create({
+            baseURL:apis
+        })
+        Axios.post('index.php?url=auth/checkAuth', {}, {headers: {"Authorization": "Bearer "+ token}})
+        .then(res =>{
+
+        })
+        .catch(er =>{
+
+        })
+
+        return valid
+    }
+    console.log(query())
+    return query()? <Outlet/> : <Navigate to='/login'/>
 }
 export default RoutesPrivate;

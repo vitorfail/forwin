@@ -17,7 +17,9 @@ const Rout = () => (
       <Routes>
         <Route  exact path="/login" element={<Login/>}/>
         <Route  exact path="/" element={<Home/>}/>
-        <RoutesPrivate  exact path="/cadastro" element={<Cadastro/>}/>
+        <Route  exact path="/cadastro" element={<RoutesPrivate/>}>
+          <Route  exact path="/cadastro" element={<Cadastro/>}/>
+        </Route>
         <Route  exact path="/graficos" element={<Graficos/>}/>
         <Route  exact path="/financeiro" element={<Financeiro/>}/>
         <Route  exact path="/pagamentos" element={<Pagamentos/>}/>

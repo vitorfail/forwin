@@ -196,16 +196,16 @@ export default class CadastroCliente extends Component{
                         <img src={Pergunta} width="50px" height="50px" alt="Interrogação"/>
                         <h3>Quer cadastrar esse cliente?</h3>
                         <div className="botoes">
-                            <div class="botao-sim">
+                            <div className="botao-sim">
                                 <button className="sim" name="sim" value="Sim" onClick={this.cadastrar}>Sim</button>
                             </div>
-                            <div class="botao-nao">
+                            <div className="botao-nao">
                                 <button className="nao" name="nao" value="Não" onClick={this.fechar_pergunta}>Não</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="3" class={this.state.ModalSucess}>
+                <div id="3" className={this.state.ModalSucess}>
                     <div className="modal">
                         <img src={Sucesso} alt="Deu certo"/>
                         <h3>Cliente cadastrado</h3>
