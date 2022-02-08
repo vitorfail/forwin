@@ -7,18 +7,25 @@ import { apis } from '../../caminho_api.mjs';
 const RoutesPrivate = () => {
     const {token} = useContext(StoreContext);
     async function query(){
-        let valid = false
+        var valid = false
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.post('index.php?url=auth/checkAuth', {}, {headers: {"Authorization": "Bearer "+ token}})
+        await Axios.post('index.php?url=auth/checkAuth', {}, {headers: {"Authorization": "Bearer "+ token}})
         .then(res =>{
-
+            if(res.data.data === 'Operação inválida' || res.data.data === false){
+                valid = false
+            }
+            if(res.data.data === true){
+                valid = true
+            }
+            else{
+                valid = false
+            }
         })
         .catch(er =>{
-
+            valid =false
         })
-
         return valid
     }
     console.log(query())
