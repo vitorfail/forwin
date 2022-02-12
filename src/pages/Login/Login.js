@@ -45,7 +45,7 @@ function Login(){
                             <h1>Login</h1>
                         </div>
                         <h3 className={mostrar}>Usuário ou senha incorretos</h3>
-                        <input nameName='usuario' onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
+                        <input className='usuario' onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
                         <input type='password' name='senha' onChange={(event) => setsenha(event.target.value)} placeholder='Senha'/>
                         <button name='entrar' onClick={(event) =>login_func() } >Entrar</button>
                     </div>

@@ -4,6 +4,7 @@ import StoreContext from '../Store/Context';
 import axios from 'axios';
 import { apis } from '../../caminho_api.mjs';
 
+
 async function Query(){
     const token = localStorage.getItem('token_jwt')
     const Axios = axios.create({
@@ -13,18 +14,15 @@ async function Query(){
     return resolve.data
 }
 
-const RoutesPrivate = () => {
-    const [valid, setvalid] = useState(false)
+const  RoutesPrivate = () =>{
+    const [valid, setvalid] = useState(true)
     async function Resolver(){
-        const resolve = await Query();
-        setvalid(resolve.data)
-
-        var dados = resolve.data
-        if (dados === "Operação inválida" || dados === false){
+        const resolve = await Query()
+        if(resolve.data === 'Operação inválida' || resolve.data === false){
+            setvalid(false)
         }
-        if(dados === true){
-        }
-        else{
+        if(resolve.data === true){
+            setvalid(true)
         }
     }
     Resolver()

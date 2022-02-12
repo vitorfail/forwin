@@ -106,11 +106,11 @@ export default class CadastroCliente extends Component{
                         </div>
                         <div className="dados_data-nascimento">
                             <h3>Data de Nascimento</h3>
-                            <input id="data" value={this.state.data_nascimento} onChange={(event) => this.setState({data_nascimento: this.mask_data(event.target.value)})} maxlength="10" placeholder="00/00/0000"/>
+                            <input id="data" value={this.state.data_nascimento} onChange={(event) => this.setState({data_nascimento: this.mask_data(event.target.value)})} maxLength="10" placeholder="00/00/0000"/>
                         </div>
                         <div className="dados_cpf">
                             <h3>CPF</h3>
-                            <input id="cpf" value={this.state.cpf} onChange={(event) => this.setState({cpf: this.mask_cpf(event.target.value)})} maxlength="14" placeholder="000.000.000-00" className="cpf" />
+                            <input id="cpf" value={this.state.cpf} onChange={(event) => this.setState({cpf: this.mask_cpf(event.target.value)})} maxLength="14" placeholder="000.000.000-00" className="cpf" />
                         </div>
                         <div className="dados_estado-civil">
                             <h3>Estado civil</h3>
