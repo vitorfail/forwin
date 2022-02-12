@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import { Navigate, Outlet} from 'react-router-dom';
 import StoreContext from '../Store/Context';
 import axios from 'axios';
@@ -14,18 +14,26 @@ async function Query(){
     return resolve.data
 }
 
-const  RoutesPrivate = () =>{
-    const [valid, setvalid] = useState(true)
-    async function Resolver(){
-        const resolve = await Query()
-        if(resolve.data === 'Operação inválida' || resolve.data === false){
-            setvalid(false)
+const RoutesPrivate = () => {
+    const [valid, setvalid] = useState()
+
+    useEffect(() => {
+        try{
+            const Resolver = async() =>{
+                const resolve = await Query()
+                if(resolve.data === 'Operação inválida' || resolve.data === false){
+                    setvalid(false)
+                }
+                if(resolve.data === true){
+                    setvalid(true)
+                }
+            }
+            Resolver()
         }
-        if(resolve.data === true){
-            setvalid(true)
+        catch{
+
         }
-    }
-    Resolver()
+    }, [])
     return valid? <Outlet/> : <Navigate to='/login'/>
 }
 export default RoutesPrivate;
