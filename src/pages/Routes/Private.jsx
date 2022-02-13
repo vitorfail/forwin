@@ -14,22 +14,18 @@ async function Query(){
     return resolve
 }
 
+function Resolver(){
+    const [value, setvalue ]= useState()
+    Query().then(res => {
+        setvalue(res.data.data)
+    })
+    return value
+}
 
 function RoutesPrivate(){
     const [valid, setvalid] = useState(false)
 
-    useEffect(() => {
-        async function Resolver() {
-            let ummont = false
-            Query().then(res => {
-                if(!ummont){
-                    setvalid(res.data.data)
-                }
-            })
-        }
-    
-        Resolver()
-      }, [])
+    console.log(Resolver())
     return valid? <Outlet/> : <Navigate to='/login'/>
 }
 export default RoutesPrivate;
