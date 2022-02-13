@@ -11,29 +11,25 @@ async function Query(){
         baseURL:apis
     })
     const resolve = await Axios.post('index.php?url=auth/checkAuth', {}, {headers: {"Authorization": "Bearer "+ token}})
-    return resolve.data
+    return resolve
 }
 
-const RoutesPrivate = () => {
-    const [valid, setvalid] = useState()
+
+function RoutesPrivate(){
+    const [valid, setvalid] = useState(false)
 
     useEffect(() => {
-        try{
-            const Resolver = async() =>{
-                const resolve = await Query()
-                if(resolve.data === 'Operação inválida' || resolve.data === false){
-                    setvalid(false)
+        async function Resolver() {
+            let ummont = false
+            Query().then(res => {
+                if(!ummont){
+                    setvalid(res.data.data)
                 }
-                if(resolve.data === true){
-                    setvalid(true)
-                }
-            }
-            Resolver()
+            })
         }
-        catch{
-
-        }
-    }, [])
+    
+        Resolver()
+      }, [])
     return valid? <Outlet/> : <Navigate to='/login'/>
 }
 export default RoutesPrivate;
