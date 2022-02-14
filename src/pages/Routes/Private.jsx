@@ -4,28 +4,20 @@ import StoreContext from '../Store/Context';
 import axios from 'axios';
 import { apis } from '../../caminho_api.mjs';
 
-
-async function Query(){
+const Resolver = async() =>{
     const token = localStorage.getItem('token_jwt')
     const Axios = axios.create({
-        baseURL:apis
+            baseURL:apis
     })
     const resolve = await Axios.post('index.php?url=auth/checkAuth', {}, {headers: {"Authorization": "Bearer "+ token}})
-    return resolve
+
+    return resolve.data.data
 }
 
-function Resolver(){
-    const [value, setvalue ]= useState()
-    Query().then(res => {
-        setvalue(res.data.data)
-    })
-    return value
-}
 
-function RoutesPrivate(){
+
+export default function RoutesPrivate({Resolver}){
     const [valid, setvalid] = useState(false)
 
-    console.log(Resolver())
     return valid? <Outlet/> : <Navigate to='/login'/>
 }
-export default RoutesPrivate;
