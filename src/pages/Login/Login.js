@@ -2,14 +2,14 @@ import { useState} from 'react';
 import axios from 'axios';
 import {apis} from '../../caminho_api.mjs';
 import '../Login/Login.css';
-import { useNavigate} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 
 function Login(){
     const [senha, setsenha] = useState('');
     const [usuario, setusuario] = useState('');
     const [ mostrar, setmostrar] = useState('aviso');
-    const history = useNavigate();
+    const history = useHistory();
     const setToken = (t) => {
         localStorage.setItem('token_jwt', t);
     }
@@ -28,7 +28,7 @@ function Login(){
             else{
                 console.log(res.data);
                 setToken(res.data.data);
-                history('/');    
+                history.push('/');    
             }
         })
         .catch(error => {

@@ -12,7 +12,7 @@ import '../BarradePesquisa/Popup-conta.css';
 import { apis } from '../../caminho_api.mjs';
 import axios from 'axios';
 import Conta  from '../../icones/divida.png'
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
 
@@ -63,7 +63,7 @@ function BarradePesquisa(){
         e = 'R$ ' + e.replace(/(?=(\d{3})+(\D))\B/g, ".")
         setValor(e)
     }
-    const history = useNavigate();
+    const history = useHistory();
     const pesquisa = () =>{
         if(nomepesquisa === ''){
             history('/pesquisa/todos');

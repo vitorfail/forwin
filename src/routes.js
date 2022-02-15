@@ -9,22 +9,21 @@ import Home from './pages/Home';
 import { BrowserRouter, Route, Routes} from "react-router-dom";
 import StoreProvider from './pages/Store/Provider';
 import RoutesPrivate from "./pages/Routes/Private";
+import { Switch } from "react-router-dom";
 
 
 const Rout = () => (
   <BrowserRouter>
     <StoreProvider>
-      <Routes>
-        <Route  exact path="/login" element={<Login/>}/>
-        <Route  exact path="/" element={<Home/>}/>
-        <Route  exact path="/cadastro" element={<RoutesPrivate/>}>
-          <Route  exact path="/cadastro" element={<Cadastro/>}/>
-        </Route>
-        <Route  exact path="/graficos" element={<Graficos/>}/>
-        <Route  exact path="/financeiro" element={<Financeiro/>}/>
-        <Route  exact path="/pagamentos" element={<Pagamentos/>}/>
-        <Route  path="/pesquisa/:nome" element={<Pesquisa/>}/>
-      </Routes>
+      <Switch>
+        <Route  exact path="/login" component={Login}/>
+        <Route  exact path="/" component={Home}/>
+        <RoutesPrivate  exact path="/cadastro" component={Cadastro}/>
+        <Route  exact path="/graficos" component={Graficos}/>
+        <Route  exact path="/financeiro" component={Financeiro}/>
+        <Route  exact path="/pagamentos" component={Pagamentos}/>
+        <Route  path="/pesquisa/:nome" component={Pesquisa}/>
+      </Switch>
     </StoreProvider>
   </ BrowserRouter>
 );
