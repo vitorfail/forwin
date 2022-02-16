@@ -26,7 +26,6 @@ function Login(){
                 setmostrar('aviso mostrar');
             }
             else{
-                console.log(res.data);
                 setToken(res.data.data);
                 history.push('/');    
             }

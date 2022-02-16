@@ -1,15 +1,14 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react';
 import { Redirect, Route} from 'react-router-dom';
 import StoreContext from '../Store/Context';
-import Validation from './Auth'
+import Resolver from './Auth'
 
 const RoutesPrivate = ({component: Component, ...rest}) => {
-    
-    const [valid, setvalid] = useState(true)
-    console.log(Validation)
+
+    console.log(Resolver)
     return (<Route 
                 {...rest} 
-                render={( ) => valid?
+                render={( ) => Resolver?
                      <Component {...rest}/> : 
                      <Redirect to='/login'/>}/>)
 }

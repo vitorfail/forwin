@@ -1,28 +1,33 @@
+
 import React, { useState } from 'react'
 import axios from 'axios';
 import { apis } from '../../caminho_api.mjs';
 
-const Validation = () =>{
-    const [valid, setvalid] = useState(false)
-    async function Resolver(){
-        const token = localStorage.getItem('token_jwt')
-        const Axios = axios.create({
-                baseURL:apis
-        })
-        const resolve = await Axios.post('index.php?url=auth/checkAuth', {}, {headers: {"Authorization": "Bearer "+ token}})
-        if(resolve.data.data === "Operação inválida" || resolve.data.data === false){
-            setvalid(false)
+function Resolver(){
+    const token = localStorage.getItem('token_jwt')
+    const [v, setv] = useState(false)
+    var valid = null
+    async function parseJwt(token) {
+        try{
+            if(token != null){
+                const Axios = axios.create({
+                    baseURL:apis
+                })
+                Axios.post('index.php?url=auth/checkAuth', {}, {headers: {"Authorization": "Bearer "+ token}})
+                .then(res => {
+                    valid = res.data.data
+                })
+
+            }
+            else{
+                valid = null
+            }
         }
-        if(resolve.data.data === true){
-            
-            setvalid(true)
-        }
-        else{
-            setvalid(false)
-        }
+        catch{
+            valid = null
+        }  
     }
-    Resolver()
+    parseJwt(token)
     return valid
 }
-
-export default Validation
+export default Resolver()
