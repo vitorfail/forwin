@@ -3,21 +3,25 @@ import { Redirect, Route} from 'react-router-dom';
 import StoreContext from '../Store/Context';
 import Resolver from './Auth'
 
-const RoutesPrivate = ({component: Component, ...rest}) => {
+function RoutesPrivate({component: Component, ...rest}){
     const [v, setv] = useState(false)
     useEffect(() => {
+        let umont = true
         Resolver.then(res => {
             if(res === null){
-                setv(null)
+                if(umont){
+                    setv(null)
+                }
             }
             else{
-                console.log(res.data.data)
-                setv(true)
+                if(umont){
+                    setv(true)
+                }
             }
-        })
+        });
         return () => {
-            setv(false)
-        }
+            umont =false
+        };
     },[])
     return (
             <Route 
