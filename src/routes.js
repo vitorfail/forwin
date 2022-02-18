@@ -8,36 +8,9 @@ import Login from './pages/Login/Login';
 import Home from './pages/Home';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 import StoreProvider from './pages/Store/Provider';
-import Resolver from './pages/Routes/Auth'
 import { useEffect, useState } from 'react';
 import { Redirect} from 'react-router-dom';
-
-
-function RoutesPrivate({component: Component, ...rest}){
-  const [v, setv] = useState(false)
-  useEffect(() => {
-      let umont = true
-      Resolver.then(res => {
-          if(res === null){
-            setv(null)
-          }
-          else{
-            console.log(true)
-            setv(true)
-          }
-      });
-      return () => {
-          umont =false
-      };
-  },[])
-  return (
-          <Route 
-              {...rest} 
-              render={( ) => v?
-                   (<Component {...rest}/>) : 
-                   (<Redirect to='/login'/>)}/>)
-}
-
+import RoutesPrivate from "./pages/Routes/Private";
 
 const Rout = () => (
   <BrowserRouter>

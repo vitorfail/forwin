@@ -3,14 +3,11 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { apis } from '../../caminho_api.mjs';
 
-async function Resolver() {
+function Resolver() {
     try{
         const token = localStorage.getItem('token_jwt')
         if(token != null){
-            const Axios = axios.create({
-                baseURL:apis
-            })
-            return Axios.post('index.php?url=auth/checkAuth', {}, {headers: {"Authorization": "Bearer "+ token}})
+            return true
         }
         else{
             return null
