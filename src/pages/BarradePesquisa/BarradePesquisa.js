@@ -25,6 +25,8 @@ function BarradePesquisa(){
     const [Valor, setValor] = useState('');
     const [Tipo, setTipo] = useState('');
     const [menu, setmenu] = useState('balao');
+    const history = useHistory();
+
 
     const troca = () => {
         const Axios = axios.create({
@@ -57,13 +59,16 @@ function BarradePesquisa(){
             setmenu('balao')
         }
     }
+    function logout(){
+        localStorage.removeItem('token_jwt');
+        history.push("/login")
+    }
     const mask = (e) =>{
         e = e.replace(/\D/g, "")
         e = e.replace(/(\d)(\d{2})$/, "$1,$2")
         e = 'R$ ' + e.replace(/(?=(\d{3})+(\D))\B/g, ".")
         setValor(e)
     }
-    const history = useHistory();
     const pesquisa = () =>{
         if(nomepesquisa === ''){
             history('/pesquisa/todos');
@@ -80,7 +85,7 @@ function BarradePesquisa(){
                 <Link className='link'  to='/financeiro'><img src={DRE}/>DRE</Link>
                 <Link className='link'to='/'  ><img src={Ajuda}/>Ajuda</Link>
                 <Link className='link' to='/'  >Home</Link>
-                <Link className='link'  to='/' ><img src={Sair}/>Sair</Link>
+                <a className='link' onClick={() => logout()} alt="saida" to='/' ><img src={Sair}/>Sair</a>
             </div>
             <div className="barra_de_pesquisa">
                 <div className="pesquisa">
