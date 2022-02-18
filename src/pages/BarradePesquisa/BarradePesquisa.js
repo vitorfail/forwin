@@ -80,21 +80,21 @@ function BarradePesquisa(){
     return(
         <div className="cabecalho">
             <div className={menu}>
-                <Link className='link' to='/graficos' ><img src={Planilha}/>Planilha</Link>
-                <Link className='link'  to='/cadastro'><img src={Cadastro}/>Cadastro</Link>
-                <Link className='link'  to='/financeiro'><img src={DRE}/>DRE</Link>
-                <Link className='link'to='/'  ><img src={Ajuda}/>Ajuda</Link>
+                <Link className='link' to='/graficos' ><img src={Planilha} alt="planilha"/>Planilha</Link>
+                <Link className='link'  to='/cadastro'><img src={Cadastro} alt="cadastro"/>Cadastro</Link>
+                <Link className='link'  to='/financeiro'><img src={DRE} alt="dre"/>DRE</Link>
+                <Link className='link'to='/'  ><img src={Ajuda} alt="ajuda"/>Ajuda</Link>
                 <Link className='link' to='/'  >Home</Link>
-                <a className='link' onClick={() => logout()} alt="saida" to='/' ><img src={Sair}/>Sair</a>
+                <a className='link' onClick={() => logout()} to='/' href="/#"><img src={Sair}  alt="ajuda"/>Sair</a>
             </div>
             <div className="barra_de_pesquisa">
                 <div className="pesquisa">
                     <img  className='list' onClick={() => mostrar_menu()} src={lista} alt="Lista"/>
                     <input type="text" onChange={(event) => setnomepesquisa(event.target.value)} name="c-pesquisa" placeholder="Pesquise...."/>
-                    <a onClick={(event) => pesquisa()} className='p'><img src={lupa} alt=""/></a>
+                    <a onClick={(event) => pesquisa()} className='p' href="/#"><img src={lupa} alt=""/></a>
                 </div>
                 <div className="user">
-                    <a  className="btn"  onClick={() => setConta('modal-conta mostrar')} >Adicionar Conta</a>
+                    <a  className="btn" href="/#" onClick={() => setConta('modal-conta mostrar')} >Adicionar Conta</a>
                     <div className="usuario" onClick={() => setNome('nameclatura mostrar')}>
                         <h1 className='nome_de_usuario'>B</h1>
                     </div>

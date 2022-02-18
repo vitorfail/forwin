@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { Redirect, Route} from 'react-router-dom';
-import StoreContext from '../Store/Context';
 
 function Resolver() {
     try{
@@ -17,7 +15,7 @@ function Resolver() {
     }  
 }
 function RoutesPrivate({component: Component, ...rest}){
-    const [v, setv] = useState(Resolver())
+    const v = Resolver()
     return (
             <Route 
                 {...rest} 

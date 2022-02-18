@@ -2,7 +2,7 @@ import React from "react";
 import './InserirNome.css';
 import { useState } from "react";
 function InserirNome(props){
-    const [nome, setNome] = useState('');
+    const nome = useState('');
 
     function troca_de_tema(tema){
         var html = document.querySelector('html');
