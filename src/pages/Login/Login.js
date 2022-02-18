@@ -10,6 +10,9 @@ function Login(){
     const [usuario, setusuario] = useState('');
     const [ mostrar, setmostrar] = useState('aviso');
     const history = useHistory();
+    const settoken = (t) => {
+        localStorage.setItem('token_jwt', t);
+    }
 
     function login_func(){
         const Axios = axios.create({
@@ -17,14 +20,12 @@ function Login(){
         })
         Axios.post('index.php?url=auth/login', {user: usuario, password: senha})
         .then(res =>{
-            console.log(res.data)
             if(res.data.data === 'Operação inválida' || res.data.data === 'Usuário não encontrado'){
-                console.log(res.data)
                 setmostrar('aviso mostrar');
             }
             else{
-                localStorage.setItem('token_jwt', res.data.data);
-                history.push('/');    
+                settoken(res.data.data)
+                setTimeout(() => history.push('/'), 3000);
             }
         })
         .catch(error => {
