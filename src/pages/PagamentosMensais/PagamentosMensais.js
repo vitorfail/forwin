@@ -56,20 +56,19 @@ export default class PagamentosMensais extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('index?url=pagamentosmes/pesquisa', {mes: mes_, ano:ano_}, {headers: {
+        Axios.post('index.php?url=pagamentosmes/pesquisa', {mes: mes_, ano:ano_}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then( res => {
-            console.log(mes_)
-            console.log(ano_)
-            if(res.data === '1'){
+            console.log(res.data)
+            if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
 
             }
             else{
                 var repetidor = 0
-                this.setState({dados: res.data})
-                this.setState({numero: res.data[0].length})
+                this.setState({dados: res.data.data})
+                this.setState({numero: res.data.data[0].length})
                 this.setState({numerador: 1})
-                var verificador = res.data[0].length / 50
+                var verificador = res.data.data[0].length / 50
                 this.setState({pages: verificador})
                 if(this.state.numero> 50){
                     repetidor = 50
@@ -82,7 +81,7 @@ export default class PagamentosMensais extends Component{
                 }
                 this.lista = [] 
                 for(var i=this.state.indexador; i< repetidor; i++){
-                   this.lista.push(<div className='enc p'> <h3 className='n'>{(res.data[2])[i]}</h3> <h3 className='v'>R$ {(res.data[1])[i]}</h3> <h3 className='n'>{(res.data[0])[i]}</h3> </div>)
+                   this.lista.push(<div className='enc p'> <h3 className='n'>{(res.data.data[2])[i]}</h3> <h3 className='v'>R$ {(res.data.data[1])[i]}</h3> <h3 className='n'>{(res.data.data[0])[i]}</h3> </div>)
                 }
                 this.setState({resultado: this.lista})
             }

@@ -31,7 +31,7 @@ export default class RankingPagamentos extends Component{
                 this.setState({rank: lista});
             }
             else{
-                var lista = this.state.rank.concat(<div className="cad">
+                var lista = this.state.rank.concat(<div  className="cad">
                                                         <h3 className="n">{(res.data.data[0])[0]}</h3> 
                                                         <h3 className="t">R$ {(res.data.data[1])[0]}</h3>
                                                     </div>);
@@ -41,7 +41,7 @@ export default class RankingPagamentos extends Component{
                                                         <h3 className="t">R$ {(res.data.data[1])[1]}</h3>
                                                     </div>);
                 this.setState({rank: lista1});
-                var lista2 = this.state.rank.concat(<div className="cad">
+                var lista2 = this.state.rank.concat(<div  className="cad">
                                                         <h3 className="n">{(res.data.data[0])[2]}</h3>
                                                         <h3 className="t">R$ {(res.data.data[1])[2]}</h3>
                                                     </div>);
@@ -77,7 +77,7 @@ export default class RankingPagamentos extends Component{
                     <h3>Nomes</h3>
                     <h3>Valor</h3>
                 </div>
-                <div id='ranking_pagamentos'>
+                <div  id='ranking_pagamentos'>
                     {this.state.rank}
                 </div>
             </div>
