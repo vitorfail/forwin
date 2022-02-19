@@ -35,7 +35,7 @@
                 }
             }
             else{
-                return '1';
+                return 'Usuário não autenticado';
             }
         }
     }

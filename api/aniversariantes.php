@@ -45,7 +45,7 @@
                 }            
             }
             else{
-
+                return 'Usuário não autenticado';
             }
         }
     }

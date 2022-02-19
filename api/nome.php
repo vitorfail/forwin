@@ -25,7 +25,7 @@
                 return $array;            
             }
             else{
-                return '1'                
+                return 'Usuário não autenticado';              
             }
         }
     }

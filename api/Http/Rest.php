@@ -23,6 +23,9 @@
     require_once('./pagamentos.php');
     require_once('./pesquisa.php');
     require_once('./nome.php');
+    require_once('./contas_dre.php');
+    require_once('./inserir_contas.php');
+    require_once('./update_contas.php');
 
     class Rest{
         private $request;

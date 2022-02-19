@@ -40,7 +40,7 @@ function BarradePesquisa(){
             if(res.data.data === '1'){
                 setConta('modal-conta')
             }
-            if(res.data.data === '2'){
+            if(res.data.data === 'Usuário não autenticado'){
                 alert("Não foi possível inserir essa conta. Cheque sua conexão com a internet e tent novamente")
             }
         })

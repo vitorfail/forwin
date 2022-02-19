@@ -53,7 +53,7 @@
               }
             }
             else{
-              return '2';
+              return 'Usuário não autenticado';
             }
           }
       }

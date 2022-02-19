@@ -40,7 +40,7 @@
                 }
             }
             else{
-              return '0';
+              return 'Usuário não autenticado';
             }
         }
     }

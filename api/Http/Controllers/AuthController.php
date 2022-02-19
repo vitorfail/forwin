@@ -73,8 +73,8 @@
         }
         public static function checkAuth(){
             $http_header = apache_request_headers();
-            if(isset($http_header['Authorization']) && $http_header['Authorization'] != null){
-                $bearer = explode(' ', $http_header['Authorization']);
+            if(isset($http_header['authorization']) && $http_header['authorization'] != null){
+                $bearer = explode(' ', $http_header['authorization']);
                 $token = explode('.', $bearer[1]);
                 $header = $token[0];
                 $payload = $token[1];
@@ -95,7 +95,7 @@
         }
         public static function dados_de_sql(){
             $http_header = apache_request_headers();
-            $bearer = explode(' ', $http_header['Authorization']);
+            $bearer = explode(' ', $http_header['authorization']);
             $decode = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $bearer[1])[1]))));
             return $decode;
         }

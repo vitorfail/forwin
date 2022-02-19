@@ -90,15 +90,19 @@ export default class ContasdoMes extends Component{
         const Axios =axios.create({
             baseURL: apis
         })
-        Axios.post('update_conta.php', {
+        Axios.post('index.php?url=updateconta/pesquisa', {
             id: e,
             situacao: String(check)
-        }).then(res => {
-            if(res.data === '1'){
+        }, {headers: {
+            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res => {
+            if(res.data.data === '1'){
                 window.location.reload();
             }
-            if(res.data === '2'){
+            if(res.data.data === '2'){
                 alert('Não foi possível atualizar essa conta. Verifique sua internet e tente novamente')
+            }
+            if(res.data.data === 'Usuário não autenticado'){
+                alert('Esta usuário não está autenticado, faça login e tente novamente')
             }
         })
     }
