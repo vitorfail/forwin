@@ -71,10 +71,10 @@ function BarradePesquisa(){
     }
     const pesquisa = () =>{
         if(nomepesquisa === ''){
-            history('/pesquisa/todos');
+            history.push('/pesquisa/todos');
         }
         else{
-            history('/pesquisa/'+nomepesquisa);
+            history.push('/pesquisa/'+nomepesquisa);
         }
     }
     return(
@@ -91,10 +91,10 @@ function BarradePesquisa(){
                 <div className="pesquisa">
                     <img  className='list' onClick={() => mostrar_menu()} src={lista} alt="Lista"/>
                     <input type="text" onChange={(event) => setnomepesquisa(event.target.value)} name="c-pesquisa" placeholder="Pesquise...."/>
-                    <a onClick={(event) => pesquisa()} className='p' href="/#"><img src={lupa} alt=""/></a>
+                    <div onClick={(event) => pesquisa()} className='p' ><img src={lupa} alt=""/></div>
                 </div>
                 <div className="user">
-                    <a  className="btn" href="/#" onClick={() => setConta('modal-conta mostrar')} >Adicionar Conta</a>
+                    <div  className="btn"  onClick={() => setConta('modal-conta mostrar')} >Adicionar Conta</div>
                     <div className="usuario" onClick={() => setNome('nameclatura mostrar')}>
                         <h1 className='nome_de_usuario'>B</h1>
                     </div>

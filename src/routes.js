@@ -12,7 +12,7 @@ import RoutesPrivate from "./pages/Routes/Private";
 
 const Rout = () => (
   <BrowserRouter>
-    <StoreProvider basename="/index.html">
+    <StoreProvider>
       <Switch>
         <Route  exact path="/login" component={Login}/>
         <RoutesPrivate  exact path="/" component={Home}/>

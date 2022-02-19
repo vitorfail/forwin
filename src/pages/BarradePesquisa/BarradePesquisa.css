@@ -41,6 +41,7 @@
     width: 37px;
     height: 37px;
     border: none;
+    cursor: pointer;
     background: whitesmoke;
 
 }
