@@ -59,7 +59,6 @@ export default class PagamentosMensais extends Component{
         Axios.post('index.php?url=pagamentosmes/pesquisa', {mes: mes_, ano:ano_}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then( res => {
-            console.log(res.data)
             if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
 
             }
