@@ -40,7 +40,12 @@ export default class Blocos extends Component{
         })
         Axios.post('index.php?url=quantidadeclientes/pesquisa', {user: '1'}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res =>{
-            this.setState({numero_clientes: res.data.data})
+            if(res.data.data === 'Usuário não autenticado' || res.data.data === '1'){
+                this.setState({numero_clientes: "Sem clientes"})
+            }
+            else{
+                this.setState({numero_clientes: res.data.data})
+            }
         }).catch(error =>{
             alert(error.data)
         })
@@ -51,7 +56,7 @@ export default class Blocos extends Component{
         })
         Axios.post('index.php?url=aniversariantes/pesquisa', {user: '1'}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res => {
-            if(res.data.data === 'Nenhum' || res.data.data === '1'){
+            if(res.data.data === 'Usuário não encontrado' || res.data.data === '1'){
                 this.setState({aniversariantes: '0'})    
             }
             else{

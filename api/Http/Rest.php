@@ -25,7 +25,7 @@
     require_once('./nome.php');
     require_once('./contas_dre.php');
     require_once('./inserir_contas.php');
-    require_once('./update_contas.php');
+    require_once('./update_conta.php');
 
     class Rest{
         private $request;

@@ -4,6 +4,7 @@
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT");
     header("Access-Control-Allow-Headers: *");
+    $GLOBALS['a'] = 'Authorization';
     $_POST = json_decode(file_get_contents("php://input"), true);
     function Check_user($usuario, $senha){
         include_once("login_conect.php");
@@ -73,8 +74,8 @@
         }
         public static function checkAuth(){
             $http_header = apache_request_headers();
-            if(isset($http_header['authorization']) && $http_header['authorization'] != null){
-                $bearer = explode(' ', $http_header['authorization']);
+            if(isset($http_header[$GLOBALS['a']]) && $http_header[$GLOBALS['a']] != null){
+                $bearer = explode(' ', $http_header[$GLOBALS['a']]);
                 $token = explode('.', $bearer[1]);
                 $header = $token[0];
                 $payload = $token[1];
@@ -95,7 +96,7 @@
         }
         public static function dados_de_sql(){
             $http_header = apache_request_headers();
-            $bearer = explode(' ', $http_header['authorization']);
+            $bearer = explode(' ', $http_header[$GLOBALS['a']]);
             $decode = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $bearer[1])[1]))));
             return $decode;
         }
