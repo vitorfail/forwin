@@ -109,8 +109,8 @@ export default class Blocos extends Component{
         return(
             <div className="cards">
                 <div className="card" >
+                    <Link className='link' to='/pesquisa/todos'></Link>
                     <div className="box" >
-                        <Link className='link' to='/pesquisa/todos'></Link>
                         <h1 id='numero-clientes'>{this.state.numero_clientes}</h1>
                         <h3>Clientes</h3>
                     </div>

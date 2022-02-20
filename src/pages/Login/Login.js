@@ -6,8 +6,8 @@ import { useHistory} from 'react-router-dom';
 
 
 function Login(){
-    const [senha, setsenha] = useState('');
-    const [usuario, setusuario] = useState('');
+    const [senha, setsenha] = useState(null);
+    const [usuario, setusuario] = useState(null);
     const [ mostrar, setmostrar] = useState('aviso');
     const history = useHistory();
     const settoken = (t) => {
@@ -18,20 +18,33 @@ function Login(){
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.post('index.php?url=auth/login', {user: usuario, password: senha})
-        .then(res =>{
-            if(res.data.data === 'Operação inválida' || res.data.data === "Usuário não autenticado"){
-                setmostrar('aviso mostrar');
-            }
-            else{
-                settoken(res.data.data)
-                setTimeout(() => history.push('/'), 3000);
-            }
-        })
-        .catch(error => {
-            console.log(error)
-            setmostrar('aviso mostrar')
-        })
+        if(senha === null || usuario === null ){
+            setmostrar('aviso')
+            setTimeout(() =>  setmostrar('aviso mostrar'), 50);
+           
+        }
+        else{
+            setmostrar('aviso')
+            Axios.post('index.php?url=auth/login', {user: usuario, password: senha})
+            .then(res =>{
+                if(res.data.data === 'Operação inválida' || res.data.data === "Usuário não encontrado"){
+                    setmostrar('aviso mostrar');
+                }
+                else{
+                    console.log(res.data)
+                    settoken(res.data.data)
+                    setTimeout(() => history.push('/'), 3000);
+                }
+            })
+            .catch(error => {
+                setmostrar('aviso mostrar')
+            })    
+        }
+    }
+    function entrar(event){
+        if(event.key === "Enter" || event.key === 13){
+            login_func()
+        }
     }
     return(
         <div className='back'>
@@ -42,8 +55,8 @@ function Login(){
                             <h1>Login</h1>
                         </div>
                         <h3 className={mostrar}>Usuário ou senha incorretos</h3>
-                        <input className='usuario' onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
-                        <input type='password' name='senha' onChange={(event) => setsenha(event.target.value)} placeholder='Senha'/>
+                        <input className='usuario'  onKeyPress={entrar} onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
+                        <input type='password' name='senha' onKeyPress={entrar} onChange={(event) => setsenha(event.target.value)} placeholder='Senha'/>
                         <button name='entrar' onClick={(event) =>login_func() } >Entrar</button>
                     </div>
                 </div>
