@@ -23,6 +23,7 @@
     font-weight: bold;
 }
 .contas_do_mes .ver_todas{
+    text-align: center;
     height: 43px;
     width: 90px;
     font-size: 15px;
@@ -30,6 +31,9 @@
     background: var(--vermelho);
     color: white;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .contas_do_mes .meses:hover{
     cursor: pointer;

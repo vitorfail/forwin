@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from "axios";
 import {apis} from "../../caminho_api.mjs";
 import './ContasdoMes.css';
+import {Link}from 'react-router-dom';
 export default class ContasdoMes extends Component{
     constructor(){
         super()
@@ -125,7 +126,7 @@ export default class ContasdoMes extends Component{
                         <option value='Novembro'>Novembro</option>
                         <option value='Dezembro'>Dezembro</option>
                     </select>
-                    <button className="ver_todas">Ver Todas</button>
+                    <Link className="ver_todas" to='/contas'>Ver Todas</Link>
                 </div>
                 <div className="t_contas">
                                         

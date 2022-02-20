@@ -18,9 +18,9 @@ function Login(){
         const Axios = axios.create({
             baseURL:apis
         })
-        if(senha === null || usuario === null ){
+        if(senha === null || usuario === null || senha === '' || usuario === ''){
             setmostrar('aviso')
-            setTimeout(() =>  setmostrar('aviso mostrar'), 50);
+            setTimeout(() =>  setmostrar('aviso mostrar'), 4);
            
         }
         else{
@@ -37,7 +37,8 @@ function Login(){
                 }
             })
             .catch(error => {
-                setmostrar('aviso mostrar')
+                setmostrar('aviso')
+                setTimeout(() =>  setmostrar('aviso mostrar'), 30);    
             })    
         }
     }

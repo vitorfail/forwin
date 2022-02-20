@@ -4,6 +4,7 @@ import Pesquisa from './pages/Pesquisa';
 import Graficos from './pages/Graficos';
 import Financeiro from './pages/Financeiro';
 import Pagamentos from'./pages/Pagamentos';
+import Contas from './pages/Contas';
 import Login from './pages/Login/Login';
 import Home from './pages/Home';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
@@ -20,6 +21,7 @@ const Rout = () => (
         <RoutesPrivate  exact path="/graficos" component={Graficos}/>
         <RoutesPrivate  exact path="/financeiro" component={Financeiro}/>
         <RoutesPrivate  exact path="/pagamentos" component={Pagamentos}/>
+        <RoutesPrivate  exact path="/contas" component={Contas}/>
         <RoutesPrivate  path="/pesquisa/:nome" component={Pesquisa}/>
       </Switch>
     </StoreProvider>
