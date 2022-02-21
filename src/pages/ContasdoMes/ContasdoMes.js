@@ -32,6 +32,14 @@ export default class ContasdoMes extends Component{
         var meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
         seletor.value = meses[data.getMonth()];
     }
+    checar_mes(mes){
+        if(mes.length === 1){
+            return "0" + mes;
+        }
+        else{
+            return mes;
+        }
+    }
     mudar_mes(mes){
         const Axios = axios.create({
             baseURL: apis
@@ -41,16 +49,18 @@ export default class ContasdoMes extends Component{
         var data_hoje = data.getFullYear() + '-'+ (data.getMonth()+1) + '-' + data.getDate();
         var ano = data.getFullYear();
         Axios.post('index.php?url=atualizacontas/pesquisa', {   
-            mes_query:(1+ meses.indexOf(mes)), 
+            mes_query:this.checar_mes(1+ meses.indexOf(mes)), 
             dat: data_hoje,
             ano:String(ano),
             marcador: "Várias"}, {headers: {
                 "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}
         ).then(res => {
-            console.log(res.data)
-            if(res.data.data.length === 7){
+            if(res.data.data[0].length === 0 &&  res.data.data[1].length === 0 &&
+                res.data.data[2].length === 0 && res.data.data[3].length === 0 &&
+                res.data.data[4].length === 0 && res.data.data[5].length === 0 &&
+                res.data.data[6].length === 0){
                 console.log("passou aqui")
-                this.setState({ lista_contas: <div className="titulos_contas"><h3>Nenhuma conta este mês</h3></div> })
+                this.setState({ lista_contas:<div className="nenhum"><h3 className="negativo">Nenhuma conta este mês</h3></div> })
             }
             else{
                 console.log(res.data)

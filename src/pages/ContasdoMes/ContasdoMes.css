@@ -38,6 +38,23 @@
 .contas_do_mes .meses:hover{
     cursor: pointer;
 }
+.lista_contas .nenhum{
+    align-items: center;
+}
+.lista_contas {
+    display: flex;
+    align-items: center;
+}
+.nenhum .negativo{
+    height: 30px;
+    font-size: 18px;
+    color: rgb(59, 59, 59);
+    border: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .notific .contas_do_mes .lista_contas{
     -webkit-transition: 0.11s ease-in;
     -moz-transition: 0.11s ease-in;

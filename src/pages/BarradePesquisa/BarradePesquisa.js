@@ -126,7 +126,7 @@ function BarradePesquisa(){
                     </div>
                     <div className="botoes">
                         <div className="botao-sim">
-                            <button className="sim" name="sim" value="Sim" onClick={(event) => troca} >Salvar</button>
+                            <button className="sim" name="sim" value="Sim" onClick={(event) => troca()} >Salvar</button>
                         </div>
                         <div className="botao-nao">
                             <button className="nao" name="nao" value="Não" onClick={() => setConta('modal-conta')}>Cancelar</button>
