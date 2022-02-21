@@ -23,8 +23,9 @@ function BarradePesquisa(){
     const [Nome_conta, setNome_conta] = useState('');
     const [Data, setData] = useState('');
     const [Valor, setValor] = useState('');
-    const [Tipo, setTipo] = useState('');
+    const [Tipo, setTipo] = useState('impostos');
     const [menu, setmenu] = useState('balao');
+    const [preencha, setpreencha] = useState('preencha');
     const history = useHistory();
 
 
@@ -37,11 +38,16 @@ function BarradePesquisa(){
         conta:Nome_conta, tipo: Tipo} ,{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then( res => {
-            if(res.data.data === '1'){
-                setConta('modal-conta')
+            if(Nome_conta === '' ||  Data === '' ||    Valor === ''){
+                setpreencha("preencha mostrar")
             }
-            if(res.data.data === 'Usuário não autenticado'){
-                alert("Não foi possível inserir essa conta. Cheque sua conexão com a internet e tent novamente")
+            else{
+                if(res.data.data === '1'){
+                    setConta('modal-conta');
+                }
+                if(res.data.data === 'Usuário não autenticado'){
+                    alert("Não foi possível inserir essa conta. Cheque sua conexão com a internet e tent novamente")
+                }    
             }
         })
         .catch(error => {
@@ -106,7 +112,7 @@ function BarradePesquisa(){
                 <div className="modal">
                     <img src={Conta} width="50px" height="50px" alt='Conta'/>
                     <h2>Divida</h2>
-                    <p className="preencha">Preencha todos os dados</p>
+                    <p className={preencha}>Preencha todos os dados</p>
                     <div className="entrada">
                         <h3>Tipo de Conta</h3>
                         <input type="tex" className = "contas" onChange={(event) => setNome_conta(event.target.value)} placeholder="Água, luz, energia.."/>

@@ -59,11 +59,9 @@ export default class ContasdoMes extends Component{
                 res.data.data[2].length === 0 && res.data.data[3].length === 0 &&
                 res.data.data[4].length === 0 && res.data.data[5].length === 0 &&
                 res.data.data[6].length === 0){
-                console.log("passou aqui")
                 this.setState({ lista_contas:<div className="nenhum"><h3 className="negativo">Nenhuma conta este mês</h3></div> })
             }
             else{
-                console.log(res.data)
                 var ir = [];
                 this.setState({ lista_contas: ir })
                 for(var n =0; n < res.data.data[0].length; n++){

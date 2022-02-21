@@ -38,7 +38,7 @@
     color: rgb(114, 114, 114);
 }
 .modal-conta .modal .preencha{
-    display: flex;
+    display: none;
     padding: 2px 2px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: rgb(0, 0, 0);
@@ -46,6 +46,9 @@
     border: 2px solid var(--preencha--borda);
     -moz-border: 2px solid var(--preencha--borda);
 	-webkit-border:  2px solid var(--preencha--borda);
+}
+.modal-conta .modal .preencha.mostrar{
+    display: flex;
 }
 .modal-conta .modal h3{
     display: flex;
@@ -132,6 +135,13 @@
     font-size: 17px;
     width: 80px;
     height: 50px;
+}
+@keyframes tremer{
+    0% {margin-left: 0;}
+    25% {margin-left: 13px;}
+    50% {margin-left: 0;}
+    75% {margin-left: -13px;}
+    100% {margin-left: 0;}
 }
 @media screen and (max-width: 940px){
     .modal-conta .modal input{
