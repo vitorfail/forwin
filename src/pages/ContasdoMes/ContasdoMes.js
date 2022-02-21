@@ -39,49 +39,60 @@ export default class ContasdoMes extends Component{
         var meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
         var data = new Date();
         var data_hoje = data.getFullYear() + '-'+ (data.getMonth()+1) + '-' + data.getDate();
+        var ano = data.getFullYear();
         Axios.post('index.php?url=atualizacontas/pesquisa', {   
             mes_query:(1+ meses.indexOf(mes)), 
-            dat: data_hoje}, {headers: {
+            dat: data_hoje,
+            ano:String(ano),
+            marcador: "Várias"}, {headers: {
                 "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}
         ).then(res => {
-            var ir = [];
-            this.setState({ lista_contas: ir })
-            for(var n =0; n < res.data.data[0].length; n++){
-                if((res.data.data[4])[n] === 'Pago'){
-                    let joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
-                                                                    <h3>{(res.data.data[1])[n]}</h3> 
-                                                                    <h3>R$ {(res.data.data[2])[n]}</h3> 
-                                                                    <h3 id={(res.data.data[0])[n]} className="pago">Pago</h3> 
-                                                                    <input type="checkbox" defaultChecked='true' name="checkbox" onChange={(event) => this.atualizar_conta(event.currentTarget.id, event.target.checked)} id={(res.data.data[0])[n]} className="cm-toggle blue"/> 
-                                                                </div> );   
-                    this.setState({ lista_contas: joined })
-                }
-                else{
-                    if((res.data.data[6])[n] >0){
+            console.log(res.data)
+            if(res.data.data.length === 7){
+                console.log("passou aqui")
+                this.setState({ lista_contas: <div className="titulos_contas"><h3>Nenhuma conta este mês</h3></div> })
+            }
+            else{
+                console.log(res.data)
+                var ir = [];
+                this.setState({ lista_contas: ir })
+                for(var n =0; n < res.data.data[0].length; n++){
+                    if((res.data.data[4])[n] === 'Pago'){
                         let joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
                                                                         <h3>{(res.data.data[1])[n]}</h3> 
                                                                         <h3>R$ {(res.data.data[2])[n]}</h3> 
-                                                                        <h3 id={(res.data.data[0])[n]} className="em_dia"> {(res.data.data[6])[n]} Dias</h3> 
-                                                                        <input type="checkbox"  name="checkbox" onChange={(event) => this.atualizar_conta(event.currentTarget.id, event.target.checked)} id={(res.data.data[0])[n]} className="cm-toggle blue"/> 
+                                                                        <h3 id={(res.data.data[0])[n]} className="pago">Pago</h3> 
+                                                                        <input type="checkbox" defaultChecked='true' name="checkbox" onChange={(event) => this.atualizar_conta(event.currentTarget.id, event.target.checked)} id={(res.data.data[0])[n]} className="cm-toggle blue"/> 
                                                                     </div> );   
                         this.setState({ lista_contas: joined })
                     }
-                    if((res.data.data[6])[n] <0){
-                        let joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
-                                                                        <h3>{(res.data.data[1])[n]}</h3> <h3>R${(res.data.data[2])[n]}</h3> 
-                                                                        <h3 id={(res.data.data[0])[n]}  className="vencido">Vencida</h3> 
-                                                                        <input type="checkbox" name="checkbox" onChange={(event) => this.atualizar_conta(event.currentTarget.id, event.target.checked)} id={(res.data.data[0])[n]} className="cm-toggle blue"/>
-                                                                    </div>);   
-                        this.setState({ lista_contas: joined })
-                    }
-                    if((res.data.data[6])[n] === 0){
-                        var joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
-                                                                        <h3>{(res.data.data[1])[n]}</h3> 
-                                                                        <h3>R$ {(res.data.data[2])[n]}</h3> 
-                                                                        <h3 id={(res.data.data[0])[n]} className="prazo_final">Hoje</h3> 
-                                                                        <input type="checkbox" name="checkbox" onChange={(event) => this.atualizar_conta(event.currentTarget.id, event.target.checked)} id={(res.data.data[0])[n]} className="cm-toggle blue"/>
-                                                                    </div>);   
-                        this.setState({ lista_contas: joined })
+                    else{
+                        if((res.data.data[6])[n] >0){
+                            let joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
+                                                                            <h3>{(res.data.data[1])[n]}</h3> 
+                                                                            <h3>R$ {(res.data.data[2])[n]}</h3> 
+                                                                            <h3 id={(res.data.data[0])[n]} className="em_dia"> {(res.data.data[6])[n]} Dias</h3> 
+                                                                            <input type="checkbox"  name="checkbox" onChange={(event) => this.atualizar_conta(event.currentTarget.id, event.target.checked)} id={(res.data.data[0])[n]} className="cm-toggle blue"/> 
+                                                                        </div> );   
+                            this.setState({ lista_contas: joined })
+                        }
+                        if((res.data.data[6])[n] <0){
+                            let joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
+                                                                            <h3>{(res.data.data[1])[n]}</h3> <h3>R${(res.data.data[2])[n]}</h3> 
+                                                                            <h3 id={(res.data.data[0])[n]}  className="vencido">Vencida</h3> 
+                                                                            <input type="checkbox" name="checkbox" onChange={(event) => this.atualizar_conta(event.currentTarget.id, event.target.checked)} id={(res.data.data[0])[n]} className="cm-toggle blue"/>
+                                                                        </div>);   
+                            this.setState({ lista_contas: joined })
+                        }
+                        if((res.data.data[6])[n] === 0){
+                            var joined = this.state.lista_contas.concat(<div className="titulos_contas"> 
+                                                                            <h3>{(res.data.data[1])[n]}</h3> 
+                                                                            <h3>R$ {(res.data.data[2])[n]}</h3> 
+                                                                            <h3 id={(res.data.data[0])[n]} className="prazo_final">Hoje</h3> 
+                                                                            <input type="checkbox" name="checkbox" onChange={(event) => this.atualizar_conta(event.currentTarget.id, event.target.checked)} id={(res.data.data[0])[n]} className="cm-toggle blue"/>
+                                                                        </div>);   
+                            this.setState({ lista_contas: joined })
+                        }
                     }
                 }
             }

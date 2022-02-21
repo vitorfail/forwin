@@ -63,6 +63,7 @@ export default class ContasTotais extends Component{
 
             }
             else{
+                console.log(res.data)
                 var repetidor = 0
                 this.setState({dados: res.data.data})
                 this.setState({numero: res.data.data[0].length})

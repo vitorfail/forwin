@@ -28,7 +28,7 @@
                         foreach($puxar as $row){
                             $data_formatada = explode('-' ,$row['data']);
                             if(sizeof($data_formatada) == 3){
-                                if($data_formatada[1] == $_POST['mes_query']){
+                                if($_POST['marcador'] == "Todos"){
                                     $diferenca = floor((strtotime($row['data']) - strtotime($_POST['dat']) )  / (60 * 60 * 24)) ;
                                     array_push($id, $row['id']);
                                     array_push($conta, $row['conta']);
@@ -38,10 +38,22 @@
                                     array_push($tipo, $row['tipo']);
                                     array_push($validade, $diferenca); 
                                 }
-                            }           
+                                else{
+                                    if($data_formatada[1] == $_POST['mes_query'] && $data_formatada[0] == $_POST['ano'] ){
+                                        $diferenca = floor((strtotime($row['data']) - strtotime($_POST['dat']) )  / (60 * 60 * 24)) ;
+                                        array_push($id, $row['id']);
+                                        array_push($conta, $row['conta']);
+                                        array_push($valor, $row['valor']);
+                                        array_push($data, $row['data']);
+                                        array_push($situacao, $row['situacao']);
+                                        array_push($tipo, $row['tipo']);
+                                        array_push($validade, $diferenca); 
+                                    }
+                                }
+                            }
                         }
                         array_push($array, $id, $conta, $valor, $data , $situacao, $tipo, $validade);
-                        return $array;
+                        return $array;    
                     }
                     else{
                         return '1';
