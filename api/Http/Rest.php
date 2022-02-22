@@ -26,6 +26,8 @@
     require_once('./contas_dre.php');
     require_once('./inserir_contas.php');
     require_once('./update_conta.php');
+    require_once('./tipos_pagamento.php');
+    
 
     class Rest{
         private $request;

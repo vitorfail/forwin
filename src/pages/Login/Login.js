@@ -51,7 +51,7 @@ function Login(){
         <div className='back'>
             <div className='form'>
                 <div className='entrada'>
-                    <div className='input'>
+                    <div className= 'input'>
                         <div className='title'>
                             <h1>Login</h1>
                         </div>

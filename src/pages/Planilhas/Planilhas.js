@@ -55,14 +55,14 @@ export default class Planilhas extends Component{
         this.pesquisa_idades = this.pesquisa_idades.bind(this)
         this.pesquisa_estado_civil = this.pesquisa_estado_civil.bind(this)
         this.pesquisa_sexo = this.pesquisa_sexo.bind(this)
-        this.pesquisa_pagamentos =this.pesquisa_pagamentos.bind(this)
+        this.tipos_pagamento =this.tipos_pagamento.bind(this)
     }
     componentWillMount(){
         this.pesquisa_de_pagamentos()
         this.pesquisa_idades()
         this.pesquisa_estado_civil()
         this.pesquisa_sexo()
-        this.pesquisa_pagamentos()
+        this.tipos_pagamento()
     }
     pesquisa_idades(){
         const Axios = axios.create({
@@ -125,7 +125,7 @@ export default class Planilhas extends Component{
         Axios.post("index.php?url=pagamentosmes/pesquisa", {ano: data_query.getFullYear().toString(), mes: 'Todos'},{headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            if(res.data.data === '1' || res.data.data ==='2'){
+            if(res.data.data === '1' || res.data.data ==='Usuário não autenticado'){
                 this.setState({janeiro: 0});
                 this.setState({fevereiro: 0});
                 this.setState({marco: 0});
@@ -306,59 +306,39 @@ export default class Planilhas extends Component{
 
         })
     }
-    pesquisa_pagamentos(){
+    tipos_pagamento(){
         const Axios = axios.create({
             baseURL:apis
         })
-        Axios.get('index.php?url=pagamentostotais/pesquisa', {mes:'Todos'}, {headers: {
+        Axios.post('index.php?url=tipospagamento/pesquisa', {mes:'Todos'}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
             console.log(res.data)
-            if(res.data.data === '1'|| res.data.data === '2'){
-                this.setState({debito: 1})
-                this.setState({credito: 1})
-                this.setState({credito_parcelado: 1})
-                this.setState({a_vista: 1})
-                this.setState({boleto: 1})
-                this.setState({cheque: 1})
+            if(res.data.data === '1'|| res.data.data === '2'|| res.data.data === 'Usuário não autenticado'){
+                this.setState({debito: 0})
+                this.setState({credito: 0})
+                this.setState({credito_parcelado: 0})
+                this.setState({a_vista: 0})
+                this.setState({boleto: 0})
+                this.setState({cheque: 0})
             }
             else{
-                var debito_1 = 0
-                var credito_1 = 0
-                var credito_parcelado_1 = 0
-                var a_vista_1 = 0 
-                var boleto_1 = 0
-                var cheque_1 = 0
-                for(var i=0; i < res.data.data.length; i++){
-                    if(res.data.data[i] === 'debito'){
-                        debito_1 = debito_1 +1
-                    }
-                    if(res.data.data[i] === 'credito'){
-                        credito_1 = credito_1 +1
-                    }
-                    if(res.data.data[i] === 'credito-parcelado'){
-                        credito_parcelado_1 = credito_parcelado_1 +1
-                    }
-                    if(res.data.data[i] === 'a-vista'){
-                        a_vista_1 = a_vista_1 +1
-                    }
-                    if(res.data.data[i] === 'boleto'){
-                        boleto_1 = boleto_1 +1
-                    }
-                    if(res.data.data[i] === 'cheque'){
-                        cheque_1 = cheque_1 +1
-                    }
-                }
-                this.setState({debito: debito_1})
-                this.setState({credito: credito_1})
-                this.setState({credito_parcelado: credito_parcelado_1})
-                this.setState({a_vista: a_vista_1})
-                this.setState({boleto: boleto_1})
-                this.setState({cheque: cheque_1})
+                var dados = res.data.data
+                this.setState({debito: dados[0]})
+                this.setState({credito: dados[1]})
+                this.setState({credito_parcelado: dados[2]})
+                this.setState({a_vista: dados[3]})
+                this.setState({boleto: dados[4]})
+                this.setState({cheque: dados[5]})
             }
         })
         .catch(error => {
-
+            this.setState({debito: 0})
+            this.setState({credito: 0})
+            this.setState({credito_parcelado: 0})
+            this.setState({a_vista: 0})
+            this.setState({boleto: 0})
+            this.setState({cheque: 0})
         })
     }
     render(){
