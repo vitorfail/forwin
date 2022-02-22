@@ -48,6 +48,7 @@
 	-webkit-border:  2px solid var(--preencha--borda);
 }
 .modal-conta .modal .preencha.mostrar{
+    animation: tremer .4s;
     display: flex;
 }
 .modal-conta .modal h3{

@@ -69,6 +69,10 @@ function BarradePesquisa(){
         localStorage.removeItem('token_jwt');
         history.push("/login")
     }
+    function fechar(){
+        setpreencha('preencha')
+        setConta('modal-conta')
+    }
     const mask = (e) =>{
         e = e.replace(/\D/g, "")
         e = e.replace(/(\d)(\d{2})$/, "$1,$2")
@@ -135,7 +139,7 @@ function BarradePesquisa(){
                             <button className="sim" name="sim" value="Sim" onClick={(event) => troca()} >Salvar</button>
                         </div>
                         <div className="botao-nao">
-                            <button className="nao" name="nao" value="Não" onClick={() => setConta('modal-conta')}>Cancelar</button>
+                            <button className="nao" name="nao" value="Não" onClick={() => fechar()}>Cancelar</button>
                         </div>
                     </div>
                 </div>
