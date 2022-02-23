@@ -5,6 +5,7 @@ import Seta_direita from "../../icones/seta.png";
 import Seta_esquerda from "../../icones/seta-esquerda.png";
 import Seta_direita_dupla from "../../icones/seta-direita-dupla.png";
 import Seta_esquerda_dupla from "../../icones/seta-esquerda-dupla.png";
+import './ContasTotais.css';
 
 export default class ContasTotais extends Component{
     constructor(){
@@ -90,19 +91,28 @@ export default class ContasTotais extends Component{
                     if((res.data.data[6])[i] >0 ){
                         this.lista.push(<div className='enc p'> 
                                             <h3 className='n'>{(res.data.data[1])[i]}</h3> 
-                                            <h3 className='v'>R$ {(res.data.data[2])[i]}</h3> 
-                                            <h3 className='n'>{(res.data.data[4])[i]}</h3>
+                                            <h3 className='n'>R$ {(res.data.data[2])[i]}</h3> 
+                                            <h3 className={(res.data.data[4])[i]}>{(res.data.data[4])[i]}</h3>
                                             <h3 className='n'>{(res.data.data[5])[i]}</h3>
-                                            <h3 className='n'>{(res.data.data[6])[i]} Dias</h3>    
+                                            <h3 className='emdia'>{(res.data.data[6])[i]} Dias</h3>    
                                         </div>)
                     }
-                    else{
+                    if((res.data.data[6])[i] <0 ){
                         this.lista.push(<div className='enc p'> 
                                             <h3 className='n'>{(res.data.data[1])[i]}</h3> 
-                                            <h3 className='v'>R$ {(res.data.data[2])[i]}</h3> 
-                                            <h3 className='n'>{(res.data.data[4])[i]}</h3>
+                                            <h3 className='n'>R$ {(res.data.data[2])[i]}</h3> 
+                                            <h3 className={(res.data.data[4])[i]}>{(res.data.data[4])[i]}</h3>
                                             <h3 className='n'>{(res.data.data[5])[i]}</h3>
-                                            <h3 className='n'>{(res.data.data[6])[i]} Dias</h3>    
+                                            <h3 className={('vencido'+(res.data.data[4])[i])}>Vencido</h3>    
+                                        </div>)
+                    }
+                    if((res.data.data[6])[i] === 0 ){
+                        this.lista.push(<div className='enc p'> 
+                                            <h3 className='n'>{(res.data.data[1])[i]}</h3> 
+                                            <h3 className='n'>R$ {(res.data.data[2])[i]}</h3> 
+                                            <h3 className={(res.data.data[4])[i]}>{(res.data.data[4])[i]}</h3>
+                                            <h3 className='n'>{(res.data.data[5])[i]}</h3>
+                                            <h3 className='ultimo'>Último</h3>    
                                         </div>)
                     }
                 }
