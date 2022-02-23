@@ -15,8 +15,8 @@ const Rout = () => (
   <BrowserRouter>
     <StoreProvider>
       <Switch>
-        <Route  exact path="/" component={Login}/>
-        <RoutesPrivate  exact path="/home" component={Home}/>
+        <Route  exact path="/login" component={Login}/>
+        <RoutesPrivate  exact path="/" component={Home}/>
         <RoutesPrivate  exact path="/cadastro" component={Cadastro}/>
         <RoutesPrivate  exact path="/graficos" component={Graficos}/>
         <RoutesPrivate  exact path="/financeiro" component={Financeiro}/>
