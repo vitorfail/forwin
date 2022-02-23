@@ -33,7 +33,7 @@ function Login(){
                 else{
                     console.log(res.data)
                     settoken(res.data.data)
-                    setTimeout(() => history.push('/'), 3000);
+                    setTimeout(() => history.push('/home'), 3000);
                 }
             })
             .catch(error => {

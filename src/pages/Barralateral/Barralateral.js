@@ -10,12 +10,12 @@ export default function Barralateral(){
     const history = useHistory();
     function logout(){
         localStorage.removeItem('token_jwt');
-        history.push("/login")
+        history.push("/")
     }
     return(
         <div className="barralateral">
             <div className="nome_titulo">
-                <Link  className='link' to='/'>Forwin</Link>
+                <Link  className='link' to='/home'>Forwin</Link>
             </div>
             <ul>
                 <Link className="link" to='/graficos'><img src={Planilha} alt='Planilha'/>&nbsp;<span>Planilha</span></Link>

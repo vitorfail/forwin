@@ -67,7 +67,7 @@ function BarradePesquisa(){
     }
     function logout(){
         localStorage.removeItem('token_jwt');
-        history.push("/login")
+        history.push("/")
     }
     function fechar(){
         setpreencha('preencha')
@@ -93,8 +93,8 @@ function BarradePesquisa(){
                 <Link className='link' to='/graficos' ><img src={Planilha} alt="planilha"/>Planilha</Link>
                 <Link className='link'  to='/cadastro'><img src={Cadastro} alt="cadastro"/>Cadastro</Link>
                 <Link className='link'  to='/financeiro'><img src={DRE} alt="dre"/>DRE</Link>
-                <Link className='link'to='/'  ><img src={Ajuda} alt="ajuda"/>Ajuda</Link>
-                <Link className='link' to='/'  >Home</Link>
+                <Link className='link'to='/home'  ><img src={Ajuda} alt="ajuda"/>Ajuda</Link>
+                <Link className='link' to='/home'  >Home</Link>
                 <a className='link' onClick={() => logout()} to='/' href="/#"><img src={Sair}  alt="ajuda"/>Sair</a>
             </div>
             <div className="barra_de_pesquisa">

@@ -114,7 +114,6 @@ export default class Planilhas extends Component{
            }
         })
         .catch(error => {
-            console.log("Não foi possivel: "+ error)
         })
     }
     pesquisa_de_pagamentos(){
@@ -313,7 +312,6 @@ export default class Planilhas extends Component{
         Axios.post('index.php?url=tipospagamento/pesquisa', {mes:'Todos'}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
-            console.log(res.data)
             if(res.data.data === '1'|| res.data.data === '2'|| res.data.data === 'Usuário não autenticado'){
                 this.setState({debito: 0})
                 this.setState({credito: 0})
