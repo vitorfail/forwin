@@ -53,12 +53,19 @@ export default class ContasTotais extends Component{
         this.pesquisa_pagamentos(mes_, ano_)
     }
     pesquisa_pagamentos(mes_, ano_){
+        let data = new Date();
+        let data_hoje = data.getFullYear() + '-'+ (data.getMonth()+1) + '-' + data.getDate();
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('index.php?url=contasdre/pesquisa', {mes: mes_, ano:ano_}, {headers: {
+        Axios.post('index.php?url=contaspainel/pesquisa', 
+            {mes_query:mes_, 
+            dat: data_hoje,
+            ano:ano_,
+            marcador: "Várias"}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then( res => {
+            console.log(res.data)
             if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
 
             }
@@ -80,7 +87,24 @@ export default class ContasTotais extends Component{
                 }
                 this.lista = [] 
                 for(var i=this.state.indexador; i< repetidor; i++){
-                   this.lista.push(<div className='enc p'> <h3 className='n'>{(res.data.data[2])[i]}</h3> <h3 className='v'>R$ {(res.data.data[1])[i]}</h3> <h3 className='n'>{(res.data.data[0])[i]}</h3> </div>)
+                    if((res.data.data[6])[i] >0 ){
+                        this.lista.push(<div className='enc p'> 
+                                            <h3 className='n'>{(res.data.data[1])[i]}</h3> 
+                                            <h3 className='v'>R$ {(res.data.data[2])[i]}</h3> 
+                                            <h3 className='n'>{(res.data.data[4])[i]}</h3>
+                                            <h3 className='n'>{(res.data.data[5])[i]}</h3>
+                                            <h3 className='n'>{(res.data.data[6])[i]} Dias</h3>    
+                                        </div>)
+                    }
+                    else{
+                        this.lista.push(<div className='enc p'> 
+                                            <h3 className='n'>{(res.data.data[1])[i]}</h3> 
+                                            <h3 className='v'>R$ {(res.data.data[2])[i]}</h3> 
+                                            <h3 className='n'>{(res.data.data[4])[i]}</h3>
+                                            <h3 className='n'>{(res.data.data[5])[i]}</h3>
+                                            <h3 className='n'>{(res.data.data[6])[i]} Dias</h3>    
+                                        </div>)
+                    }
                 }
                 this.setState({resultado: this.lista})
             }

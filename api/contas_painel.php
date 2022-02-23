@@ -5,7 +5,7 @@
     header("Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT");
     header("Access-Control-Allow-Headers: *");
     
-    class AtualizacontasController{
+    class ContaspainelController{
         public function pesquisa(){
             if(AuthController::checkAuth()){
                 try{

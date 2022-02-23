@@ -8,7 +8,6 @@
     require_once('Controllers/AuthController.php');
     require_once('./idades.php');
     require_once('./atualiza.php');
-    require_once('./atualiza_contas.php');
     require_once('./rankings.php');
     require_once('./pagamentos_mes.php');
     require_once('./estado_civil.php');
@@ -27,7 +26,7 @@
     require_once('./inserir_contas.php');
     require_once('./update_conta.php');
     require_once('./tipos_pagamento.php');
-    
+    require_once('./contas_painel.php');    
 
     class Rest{
         private $request;
