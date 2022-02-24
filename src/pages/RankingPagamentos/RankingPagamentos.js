@@ -3,6 +3,7 @@ import { apis } from "../../caminho_api.mjs";
 import axios from "axios";
 import rank from '../../icones/rank.png';
 import './RankingPagamentos.css';
+import { Link } from "react-router-dom";
 export default class RankingPagamentos extends Component{
     
     constructor(props){
@@ -22,7 +23,7 @@ export default class RankingPagamentos extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('index.php?url=rankings/pesquisa', { passe: 'pagamento'}, {headers: {"Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
+        Axios.post('index.php?url=rankingstop/pesquisa', { passe: 'pagamento'}, {headers: {"Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
             if(res.data.data === '1' || res.data.data === '2'){
                 let lista = this.state.rank.concat(<div className="cad">
@@ -71,7 +72,7 @@ export default class RankingPagamentos extends Component{
                 <div className="clientes-recentes">
                     <h2>Ranking de pagamento</h2>
                     <img src={rank} alt="Ranking"/>
-                    <button className="ver_todos">Ver todos</button>
+                    <Link className="ver_todos" to="/rankings">Ver todos</Link>
                 </div>
                 <div className="titulos_tabela">
                     <h3>Nomes</h3>

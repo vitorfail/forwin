@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Rank from '../../icones/rank1.png';
 import axios from "axios";
 import { apis } from "../../caminho_api.mjs";
+import { Link } from "react-router-dom";
 import './RankingVisitas.css';
 export default class RankingVisitas extends Component{
     constructor(){
@@ -21,7 +22,7 @@ export default class RankingVisitas extends Component{
         const Axios = axios.create({
             baseURL: apis
         })
-        Axios.post('index.php?url=rankings/pesquisa', {
+        Axios.post('index.php?url=rankingstop/pesquisa', {
             passe: 'visita'
         }, {headers: {"Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then(res => {
@@ -69,7 +70,7 @@ export default class RankingVisitas extends Component{
                 <div className="clientes-recentes">
                     <h2>Ranking de visitas</h2>
                     <img src={Rank} alt="Rankings"/>
-                    <button className="ver_todos">Ver todos</button>
+                    <Link className="ver_todos" to="/rankings">Ver todos</Link>
                 </div>
                 <div className="titulos_tabela">
                     <h3>Nomes</h3>
