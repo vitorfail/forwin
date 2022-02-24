@@ -6,7 +6,7 @@
   header("Access-Control-Allow-Headers: *");
   $_POST = json_decode(file_get_contents("php://input"),true);
 
-  class RankingsController{
+  class RankingstopController{
     public function pesquisa(){
         if(AuthController::checkAuth()){
             include('conexao.php');
@@ -14,7 +14,7 @@
             $dados_de_usuario_sql = AuthController::dados_de_sql();
             if( $_POST['passe'] == 'visita'){
               try{
-                    $sql = "SELECT id, nome, visitas from acumulado_".$dados_de_usuario_sql->name."_".$dados_de_usuario_sql->id." order by visitas";
+                    $sql = "SELECT nome, visitas from acumulado_".$dados_de_usuario_sql->name."_".$dados_de_usuario_sql->id." ORDER BY visitas DESC LIMIT 5";
                     $pesquisa_id = $conexao->query($sql);
                     $visitantes = $pesquisa_id->fetchAll();
                     $array= array();
@@ -40,7 +40,7 @@
             if( $_POST['passe'] == 'pagamento'){
               try{
                   $dados_de_usuario_sql = AuthController::dados_de_sql();
-                  $sql = "SELECT * from acumulado_".$dados_de_usuario_sql->name."_".$dados_de_usuario_sql->id." order by valor";
+                  $sql = "SELECT * from acumulado_".$dados_de_usuario_sql->name."_".$dados_de_usuario_sql->id." order by valor DESC LIMIT 5";
                   $pesquisa = $conexao->query($sql);
                   $resultado = $pesquisa->fetchAll();
                   $nome = array();
