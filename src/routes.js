@@ -7,7 +7,7 @@ import Pagamentos from'./pages/Pagamentos';
 import Contas from './pages/Contas';
 import Login from './pages/Login/Login';
 import Home from './pages/Home';
-import Rankings from './pages/Rankings'
+import VisitaRanking from './pages/VisitaRanking'
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 import StoreProvider from './pages/Store/Provider';
 import RoutesPrivate from "./pages/Routes/Private";
@@ -23,7 +23,7 @@ const Rout = () => (
         <RoutesPrivate  exact path="/financeiro" component={Financeiro}/>
         <RoutesPrivate  exact path="/pagamentos" component={Pagamentos}/>
         <RoutesPrivate  exact path="/contas" component={Contas}/>
-        <RoutesPrivate  exact path="/rankings" component={Rankings}/>
+        <RoutesPrivate  exact path="/rankingsv" component={VisitaRanking}/>
         <RoutesPrivate  path="/pesquisa/:nome" component={Pesquisa}/>
       </Switch>
     </StoreProvider>

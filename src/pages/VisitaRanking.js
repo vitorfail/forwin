@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 import Barralateral from './Barralateral/Barralateral';
 import BarradePesquisa from './BarradePesquisa/BarradePesquisa';
 import Blocos from './Blocos/Blocos'
-import ContasTotais from './ContasTotais/ContasTotais';
 import Loading from './Loading/Loading';
-export default class Rankings extends Component{
+import Visitas from './Visitas/Visitas'
+export default class VisitaRanking extends Component{
     constructor(){
         super()
         this.state = {
@@ -20,7 +20,7 @@ export default class Rankings extends Component{
                     <div className="conteudo">
                         <Blocos></Blocos>
                         <div className="conteudo-2">
-                            <ContasTotais></ContasTotais>
+                            <Visitas></Visitas>
                         </div>
                     </div>
                 </div>

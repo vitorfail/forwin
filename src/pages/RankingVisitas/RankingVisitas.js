@@ -70,7 +70,7 @@ export default class RankingVisitas extends Component{
                 <div className="clientes-recentes">
                     <h2>Ranking de visitas</h2>
                     <img src={Rank} alt="Rankings"/>
-                    <Link className="ver_todos" to="/rankings">Ver todos</Link>
+                    <Link className="ver_todos" to="/rankingsv">Ver todos</Link>
                 </div>
                 <div className="titulos_tabela">
                     <h3>Nomes</h3>
