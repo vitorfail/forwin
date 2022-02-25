@@ -54,16 +54,11 @@ export default class ContasTotais extends Component{
         this.pesquisa_pagamentos(mes_, ano_)
     }
     pesquisa_pagamentos(mes_, ano_){
-        let data = new Date();
-        let data_hoje = data.getFullYear() + '-'+ (data.getMonth()+1) + '-' + data.getDate();
         const Axios = axios.create({
             baseURL: apis
         })
         Axios.post('index.php?url=rankings/pesquisa', 
-            {mes_query:mes_, 
-            dat: data_hoje,
-            ano:ano_,
-            marcador: "Várias"}, {headers: {
+            { passe: "visita"}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then( res => {
             console.log(res.data)
@@ -88,33 +83,10 @@ export default class ContasTotais extends Component{
                 }
                 this.lista = [] 
                 for(var i=this.state.indexador; i< repetidor; i++){
-                    if((res.data.data[6])[i] >0 ){
-                        this.lista.push(<div className='enc p'> 
-                                            <h3 className='n'>{(res.data.data[1])[i]}</h3> 
-                                            <h3 className='n'>R$ {(res.data.data[2])[i]}</h3> 
-                                            <h3 className={(res.data.data[4])[i]}>{(res.data.data[4])[i]}</h3>
-                                            <h3 className='n'>{(res.data.data[5])[i]}</h3>
-                                            <h3 className='emdia'>{(res.data.data[6])[i]} Dias</h3>    
-                                        </div>)
-                    }
-                    if((res.data.data[6])[i] <0 ){
-                        this.lista.push(<div className='enc p'> 
-                                            <h3 className='n'>{(res.data.data[1])[i]}</h3> 
-                                            <h3 className='n'>R$ {(res.data.data[2])[i]}</h3> 
-                                            <h3 className={(res.data.data[4])[i]}>{(res.data.data[4])[i]}</h3>
-                                            <h3 className='n'>{(res.data.data[5])[i]}</h3>
-                                            <h3 className={('vencido'+(res.data.data[4])[i])}>Vencido</h3>    
-                                        </div>)
-                    }
-                    if((res.data.data[6])[i] === 0 ){
-                        this.lista.push(<div className='enc p'> 
-                                            <h3 className='n'>{(res.data.data[1])[i]}</h3> 
-                                            <h3 className='n'>R$ {(res.data.data[2])[i]}</h3> 
-                                            <h3 className={(res.data.data[4])[i]}>{(res.data.data[4])[i]}</h3>
-                                            <h3 className='n'>{(res.data.data[5])[i]}</h3>
-                                            <h3 className='ultimo'>Último</h3>    
-                                        </div>)
-                    }
+                    this.lista.push(<div className='enc p'> 
+                                        <h3 className='n'>{(res.data.data[0])[i]}</h3> 
+                                        <h3 className='n'>{(res.data.data[1])[i]} Visitas</h3> 
+                                    </div>)
                 }
                 this.setState({resultado: this.lista})
             }
