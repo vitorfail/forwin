@@ -5,9 +5,9 @@ import Seta_direita from "../../icones/seta.png";
 import Seta_esquerda from "../../icones/seta-esquerda.png";
 import Seta_direita_dupla from "../../icones/seta-direita-dupla.png";
 import Seta_esquerda_dupla from "../../icones/seta-esquerda-dupla.png";
-import './Visitas.css';
+import './RPag.css';
 
-export default class ContasTotais extends Component{
+export default class RPag extends Component{
     constructor(){
         super()
         this.lista =[];
@@ -61,7 +61,7 @@ export default class ContasTotais extends Component{
             { passe: "visita"}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then( res => {
-            console.log(res.data)
+            console.log(res.data.data)
             if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
 
             }
@@ -82,8 +82,11 @@ export default class ContasTotais extends Component{
                     repetidor = this.state.numero
                 }
                 this.lista = [] 
+                var l =0;
                 for(var i=this.state.indexador; i< repetidor; i++){
+                    l++
                     this.lista.push(<div className='enc p'> 
+                                        <h3 className='i'>º{l}</h3> 
                                         <h3 className='n'>{(res.data.data[0])[i]}</h3> 
                                         <h3 className='n'>{(res.data.data[1])[i]} Visitas</h3> 
                                     </div>)
@@ -114,7 +117,11 @@ export default class ContasTotais extends Component{
                 this.setState({quantidade: quant})
                 var data = this.state.dados;
                 for(var i=index; i< quant ; i++){
-                    this.lista.push(<div className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
+                    this.lista.push(<div className='enc p'> 
+                        <h3 className='i'>º{i}</h3> 
+                        <h3 className='n'>{(data[0])[i]}</h3> 
+                        <h3 className='n'>{(data[1])[i]} Visitas</h3> 
+                    </div>)
                 }
                 this.setState({resultado: this.lista})
                 this.setState({voltar_final: true})
@@ -132,7 +139,11 @@ export default class ContasTotais extends Component{
             this.setState({quantidade: quant})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                this.lista.push(<div className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
+                this.lista.push(<div className='enc p'> 
+                    <h3 className='i'>º{i+1}</h3> 
+                    <h3 className='n'>{(data[0])[i]}</h3> 
+                    <h3 className='n'>{(data[1])[i]} Visitas</h3> 
+                </div>)
             }
             this.setState({resultado: this.lista}) 
             this.setState({passador_final: true})   
@@ -149,7 +160,11 @@ export default class ContasTotais extends Component{
             this.setState({quantidade: quant})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                this.lista.push(<div className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
+                this.lista.push(<div className='enc p'> 
+                    <h3 className='i'>º{i+1}</h3> 
+                    <h3 className='n'>{(data[0])[i]}</h3> 
+                    <h3 className='n'>{(data[1])[i]} Visitas</h3> 
+                </div>)
             }
             this.setState({resultado: this.lista})
             this.setState({passador_final: false})
@@ -166,7 +181,11 @@ export default class ContasTotais extends Component{
             this.setState({quantidade: 50})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                this.lista.push(<div className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
+                this.lista.push(<div className='enc p'> 
+                    <h3 className='i'>º{i+1}</h3> 
+                    <h3 className='n'>{(data[0])[i]}</h3> 
+                    <h3 className='n'>{(data[1])[i]} Visitas</h3> 
+                </div>)
             }
             this.setState({resultado: this.lista})
             this.setState({voltar_final: false})
