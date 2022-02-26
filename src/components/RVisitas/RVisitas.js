@@ -86,7 +86,7 @@ export default class RVisitas extends Component{
                 for(var i=this.state.indexador; i< repetidor; i++){
                     l++
                     this.lista.push(<div className='enc p'> 
-                                        <h3 className='i'>º{l}</h3> 
+                                        <h3 className='r'>º{l}</h3> 
                                         <h3 className='n'>{(res.data.data[0])[i]}</h3> 
                                         <h3 className='n'>{(res.data.data[1])[i]} Visitas</h3> 
                                     </div>)
@@ -118,7 +118,7 @@ export default class RVisitas extends Component{
                 var data = this.state.dados;
                 for(var i=index; i< quant ; i++){
                     this.lista.push(<div className='enc p'> 
-                        <h3 className='i'>º{i}</h3> 
+                        <h3 className='r'>º{i}</h3> 
                         <h3 className='n'>{(data[0])[i]}</h3> 
                         <h3 className='n'>{(data[1])[i]} Visitas</h3> 
                     </div>)
@@ -140,7 +140,7 @@ export default class RVisitas extends Component{
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
                 this.lista.push(<div className='enc p'> 
-                    <h3 className='i'>º{i+1}</h3> 
+                    <h3 className='r'>º{i+1}</h3> 
                     <h3 className='n'>{(data[0])[i]}</h3> 
                     <h3 className='n'>{(data[1])[i]} Visitas</h3> 
                 </div>)
@@ -161,7 +161,7 @@ export default class RVisitas extends Component{
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
                 this.lista.push(<div className='enc p'> 
-                    <h3 className='i'>º{i+1}</h3> 
+                    <h3 className='r'>º{i+1}</h3> 
                     <h3 className='n'>{(data[0])[i]}</h3> 
                     <h3 className='n'>{(data[1])[i]} Visitas</h3> 
                 </div>)
@@ -182,7 +182,7 @@ export default class RVisitas extends Component{
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
                 this.lista.push(<div className='enc p'> 
-                    <h3 className='i'>º{i+1}</h3> 
+                    <h3 className='r'>º{i+1}</h3> 
                     <h3 className='n'>{(data[0])[i]}</h3> 
                     <h3 className='n'>{(data[1])[i]} Visitas</h3> 
                 </div>)

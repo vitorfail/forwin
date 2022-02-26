@@ -58,7 +58,7 @@ export default class RPag extends Component{
             baseURL: apis
         })
         Axios.post('index.php?url=rankings/pesquisa', 
-            { passe: "visita"}, {headers: {
+            { passe: "pagamento"}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then( res => {
             console.log(res.data.data)
@@ -88,7 +88,7 @@ export default class RPag extends Component{
                     this.lista.push(<div className='enc p'> 
                                         <h3 className='i'>º{l}</h3> 
                                         <h3 className='n'>{(res.data.data[0])[i]}</h3> 
-                                        <h3 className='n'>{(res.data.data[1])[i]} Visitas</h3> 
+                                        <h3 className='v'>R$ {(res.data.data[1])[i]}</h3> 
                                     </div>)
                 }
                 this.setState({resultado: this.lista})
@@ -120,7 +120,7 @@ export default class RPag extends Component{
                     this.lista.push(<div className='enc p'> 
                         <h3 className='i'>º{i}</h3> 
                         <h3 className='n'>{(data[0])[i]}</h3> 
-                        <h3 className='n'>{(data[1])[i]} Visitas</h3> 
+                        <h3 className='v'>R$ {(data[1])[i]}</h3> 
                     </div>)
                 }
                 this.setState({resultado: this.lista})
@@ -142,7 +142,7 @@ export default class RPag extends Component{
                 this.lista.push(<div className='enc p'> 
                     <h3 className='i'>º{i+1}</h3> 
                     <h3 className='n'>{(data[0])[i]}</h3> 
-                    <h3 className='n'>{(data[1])[i]} Visitas</h3> 
+                    <h3 className='v'>R$ {(data[1])[i]}</h3> 
                 </div>)
             }
             this.setState({resultado: this.lista}) 
@@ -163,7 +163,7 @@ export default class RPag extends Component{
                 this.lista.push(<div className='enc p'> 
                     <h3 className='i'>º{i+1}</h3> 
                     <h3 className='n'>{(data[0])[i]}</h3> 
-                    <h3 className='n'>{(data[1])[i]} Visitas</h3> 
+                    <h3 className='v'>R$ {(data[1])[i]}</h3> 
                 </div>)
             }
             this.setState({resultado: this.lista})
@@ -184,7 +184,7 @@ export default class RPag extends Component{
                 this.lista.push(<div className='enc p'> 
                     <h3 className='i'>º{i+1}</h3> 
                     <h3 className='n'>{(data[0])[i]}</h3> 
-                    <h3 className='n'>{(data[1])[i]} Visitas</h3> 
+                    <h3 className='v'>R$ {(data[1])[i]}</h3> 
                 </div>)
             }
             this.setState({resultado: this.lista})
