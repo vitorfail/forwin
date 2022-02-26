@@ -1,13 +1,13 @@
 
 import React, {Component} from 'react';
-import Barralateral from './Barralateral/Barralateral';
-import BarradePesquisa from './BarradePesquisa/BarradePesquisa';
-import Blocos from './Blocos/Blocos';
-import ContasdoMes from './ContasdoMes/ContasdoMes';
-import ClientesRecentes from './ClientesRecentes/ClientesRecentes';
-import RankingPagamentos from './RankingPagamentos/RankingPagamentos';
-import RankingVisitas from './RankingVisitas/RankingVisitas';
-import Loading from './Loading/Loading';
+import Barralateral from '../components/Barralateral/Barralateral';
+import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
+import Blocos from '../components/Blocos/Blocos';
+import ContasdoMes from '../components/ContasdoMes/ContasdoMes';
+import ClientesRecentes from '../components/ClientesRecentes/ClientesRecentes';
+import RankingPagamentos from '../components/RankingPagamentos/RankingPagamentos';
+import RankingVisitas from '../components/RankingVisitas/RankingVisitas';
+import Loading from '../components/Loading/Loading';
 import './Home.css'
 export default class Home extends Component{
     render(){

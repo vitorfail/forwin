@@ -1,10 +1,10 @@
 
 import React, {Component} from 'react';
-import Barralateral from './Barralateral/Barralateral';
-import BarradePesquisa from './BarradePesquisa/BarradePesquisa';
-import Blocos from './Blocos/Blocos'
-import PagamentosMensais from './PagamentosMensais/PagamentosMensais';
-import Loading from './Loading/Loading';
+import Barralateral from '../components/Barralateral/Barralateral';
+import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
+import Blocos from '../components/Blocos/Blocos'
+import PagamentosMensais from '../components/PagamentosMensais/PagamentosMensais';
+import Loading from '../components/Loading/Loading';
 export default class Pagamentos extends Component{
     constructor(){
         super()

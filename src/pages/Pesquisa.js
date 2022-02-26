@@ -1,9 +1,9 @@
 import React from 'react';
-import Barralateral from './Barralateral/Barralateral';
-import BarradePesquisa from './BarradePesquisa/BarradePesquisa';
-import ResultadoPesquisa from './ResultadoPesquisa/ResultadoPesquisa';
-import Loading from './Loading/Loading';
-import Blocos from './Blocos/Blocos';
+import Barralateral from '../components/Barralateral/Barralateral';
+import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
+import ResultadoPesquisa from '../components/ResultadoPesquisa/ResultadoPesquisa';
+import Loading from '../components/Loading/Loading';
+import Blocos from '../components/Blocos/Blocos';
 import { useParams } from 'react-router-dom';
 function Pesquisa(props){ 
     const {nome} = useParams();

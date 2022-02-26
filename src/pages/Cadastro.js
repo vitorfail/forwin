@@ -1,9 +1,9 @@
 
 import React, {Component} from 'react';
-import Barralateral from './Barralateral/Barralateral';
-import BarradePesquisa from './BarradePesquisa/BarradePesquisa';
-import CadastroCliente from './CadastroCliente/CadastroCliente';
-import Loading from './Loading/Loading';
+import Barralateral from '../components/Barralateral/Barralateral';
+import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
+import CadastroCliente from '../components/CadastroCliente/CadastroCliente';
+import Loading from '../components/Loading/Loading';
 export default class Cadastro extends Component{
     constructor(){
         super()

@@ -10,8 +10,8 @@ import Home from './pages/Home';
 import VisitaRanking from './pages/VisitaRanking';
 import PagRanking from './pages/PagRanking'
 import { BrowserRouter, Route, Switch} from "react-router-dom";
-import StoreProvider from './pages/Store/Provider';
-import RoutesPrivate from "./pages/Routes/Private";
+import StoreProvider from './components/Store/Provider';
+import RoutesPrivate from "./components/Routes/Private";
 
 const Rout = () => (
   <BrowserRouter>

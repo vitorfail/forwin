@@ -1,10 +1,10 @@
 
 import React, {Component} from 'react';
-import Barralateral from './Barralateral/Barralateral';
-import BarradePesquisa from './BarradePesquisa/BarradePesquisa';
-import Planilhas from './Planilhas/Planilhas';
-import Loading from './Loading/Loading';
-import Blocos from './Blocos/Blocos'
+import Barralateral from '../components/Barralateral/Barralateral';
+import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
+import Planilhas from '../components/Planilhas/Planilhas';
+import Loading from '../components/Loading/Loading';
+import Blocos from '../components/Blocos/Blocos'
 export default class Graficos extends Component{
     constructor(){
         super()

@@ -1,10 +1,10 @@
 
 import React, {Component} from 'react';
-import Barralateral from './Barralateral/Barralateral';
-import BarradePesquisa from './BarradePesquisa/BarradePesquisa';
-import Blocos from './Blocos/Blocos'
-import Loading from './Loading/Loading';
-import RVisitas from './RVisitas/RVisitas'
+import Barralateral from '../components/Barralateral/Barralateral';
+import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
+import Blocos from '../components/Blocos/Blocos'
+import Loading from '../components/Loading/Loading';
+import RVisitas from '../components/RVisitas/RVisitas'
 export default class VisitaRanking extends Component{
     constructor(){
         super()

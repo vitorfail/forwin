@@ -1,7 +1,7 @@
 import { useState} from 'react';
 import axios from 'axios';
 import {apis} from '../../caminho_api.mjs';
-import '../Login/Login.css';
+import './Login.css';
 import { useHistory} from 'react-router-dom';
 
 
