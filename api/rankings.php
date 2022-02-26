@@ -14,7 +14,7 @@
             $dados_de_usuario_sql = AuthController::dados_de_sql();
             if( $_POST['passe'] == 'visita'){
               try{
-                    $sql = "SELECT id, nome, visitas from acumulado_".$dados_de_usuario_sql->name."_".$dados_de_usuario_sql->id." order by visitas";
+                    $sql = "SELECT id, nome, visitas from acumulado_".$dados_de_usuario_sql->name."_".$dados_de_usuario_sql->id." order by visitas DESC";
                     $pesquisa_id = $conexao->query($sql);
                     $visitantes = $pesquisa_id->fetchAll();
                     $array= array();
@@ -40,7 +40,7 @@
             if( $_POST['passe'] == 'pagamento'){
               try{
                   $dados_de_usuario_sql = AuthController::dados_de_sql();
-                  $sql = "SELECT * from acumulado_".$dados_de_usuario_sql->name."_".$dados_de_usuario_sql->id." order by valor";
+                  $sql = "SELECT * from acumulado_".$dados_de_usuario_sql->name."_".$dados_de_usuario_sql->id." order by valor DESC";
                   $pesquisa = $conexao->query($sql);
                   $resultado = $pesquisa->fetchAll();
                   $nome = array();

@@ -72,7 +72,7 @@ export default class RankingPagamentos extends Component{
                 <div className="clientes-recentes">
                     <h2>Ranking de pagamento</h2>
                     <img src={rank} alt="Ranking"/>
-                    <Link className="ver_todos" to="/rankings">Ver todos</Link>
+                    <Link className="ver_todos" to="/rankingsp">Ver todos</Link>
                 </div>
                 <div className="titulos_tabela">
                     <h3>Nomes</h3>
