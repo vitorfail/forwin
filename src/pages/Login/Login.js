@@ -48,21 +48,23 @@ function Login(){
         }
     }
     return(
-        <div className='back'>
-            <div className='form'>
-                <div className='entrada'>
-                    <div className= 'input'>
-                        <div className='title'>
-                            <h1>Login</h1>
+        <div>
+            <div className='back'>
+                <div className='form'>
+                    <div className='entrada'>
+                        <div className= 'input'>
+                            <div className='title'>
+                                <h1>Login</h1>
+                            </div>
+                            <h3 className={mostrar}>Usuário ou senha incorretos</h3>
+                            <input className='usuario'  onKeyPress={entrar} onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
+                            <input type='password' name='senha' onKeyPress={entrar} onChange={(event) => setsenha(event.target.value)} placeholder='Senha'/>
+                            <button name='entrar' onClick={(event) =>login_func() } >Entrar</button>
                         </div>
-                        <h3 className={mostrar}>Usuário ou senha incorretos</h3>
-                        <input className='usuario'  onKeyPress={entrar} onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
-                        <input type='password' name='senha' onKeyPress={entrar} onChange={(event) => setsenha(event.target.value)} placeholder='Senha'/>
-                        <button name='entrar' onClick={(event) =>login_func() } >Entrar</button>
                     </div>
-                </div>
-            <div className='direitos'>
-                <p>@Todos os direitos reservados a Vitor Manoel</p>
+                <div className='direitos'>
+                    <p>@Todos os direitos reservados a Vitor Manoel</p>
+                    </div>
                 </div>
             </div>
         </div>
