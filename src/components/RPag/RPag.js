@@ -61,7 +61,6 @@ export default class RPag extends Component{
             { passe: "pagamento"}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then( res => {
-            console.log(res.data.data)
             if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
 
             }

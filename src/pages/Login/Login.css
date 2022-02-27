@@ -26,6 +26,10 @@
     display:flex;
     color:crimson;
 }
+.title .logando{
+    color: rgba(220, 20, 60, 0.418);
+    border-bottom: 2px solid rgba(220, 20, 60, 0.418);
+}
 .back .direitos{
 	position:fixed;
 }
@@ -89,6 +93,12 @@
     border-color: #9ecaed;
     box-shadow: 0 0 10px #9ecaed;
 }
+.input input.logando{
+    cursor:unset;
+    pointer-events: none;
+    color:rgb(34, 34, 34);
+    background-color: #9ecaed;
+}
 .input .aviso{
     margin-top: 15px;
     display: none;
@@ -105,10 +115,20 @@
     animation: tremer .4s;
     display: flex;
 }
+
 @keyframes tremer{
     0% {margin-left: 0;}
     25% {margin-left: 13px;}
     50% {margin-left: 0;}
     75% {margin-left: -13px;}
     100% {margin-left: 0;}
+}
+@media screen and (max-width: 640px){
+    .form{
+        align-items: center;
+        justify-content: center;
+        background: white;
+        display:block;
+        border-radius: 10px;        
+    }
 }

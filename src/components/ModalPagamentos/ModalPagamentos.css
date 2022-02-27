@@ -12,9 +12,10 @@
     align-items: center;
     justify-content: center;
     display: none;
-}.modal-pag .modal{
+}
+.modal-pag .modal{
     top: 0px;
-    width: 610px;
+    width: 590px;
     height: 500px;
     background: white;
     justify-content: center;
@@ -257,4 +258,9 @@
     height:30px;
     width: 6vw;
     display:flex;
+}
+@media  screen and (max-width: 640px) {
+    .modal-pag .modal{
+        width: 100%;
+    }
 }

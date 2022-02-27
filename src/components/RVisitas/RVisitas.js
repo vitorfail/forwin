@@ -61,7 +61,6 @@ export default class RVisitas extends Component{
             { passe: "visita"}, {headers: {
             "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
         .then( res => {
-            console.log(res.data.data)
             if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
 
             }

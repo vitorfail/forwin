@@ -8,7 +8,7 @@ import Contas from './pages/Contas';
 import Login from './pages/Login/Login';
 import Home from './pages/Home';
 import VisitaRanking from './pages/VisitaRanking';
-import PagRanking from './pages/PagRanking'
+import PagRanking from './pages/PagRanking';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 import StoreProvider from './components/Store/Provider';
 import RoutesPrivate from "./components/Routes/Private";
@@ -31,5 +31,4 @@ const Rout = () => (
     </StoreProvider>
   </ BrowserRouter>
 );
-
 export default Rout;

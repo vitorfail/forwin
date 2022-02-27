@@ -2,6 +2,7 @@ import { useState} from 'react';
 import axios from 'axios';
 import {apis} from '../../caminho_api.mjs';
 import './Login.css';
+import './Login.scss';
 import { useHistory} from 'react-router-dom';
 
 
@@ -10,6 +11,8 @@ function Login(){
     const [usuario, setusuario] = useState(null);
     const [ mostrar, setmostrar] = useState('aviso');
     const history = useHistory();
+    const [ logando, setlogando] = useState('');
+    const [darespaco, setdarespaco] = useState('');
     const settoken = (t) => {
         localStorage.setItem('token_jwt', t);
     }
@@ -21,19 +24,21 @@ function Login(){
         if(senha === null || usuario === null || senha === '' || usuario === ''){
             setmostrar('aviso')
             setTimeout(() =>  setmostrar('aviso mostrar'), 4);
-           
         }
         else{
             setmostrar('aviso')
             Axios.post('index.php?url=auth/login', {user: usuario, password: senha})
             .then(res =>{
                 if(res.data.data === 'Operação inválida' || res.data.data === "Usuário não encontrado"){
+                    setdarespaco('espaco');
                     setmostrar('aviso mostrar');
                 }
                 else{
-                    console.log(res.data)
                     settoken(res.data.data)
-                    setTimeout(() => history.push('/'), 3000);
+                    setlogando('logando');
+                    setTimeout(() =>{ 
+                                        history.push('/')
+                                    }, 3000);
                 }
             })
             .catch(error => {
@@ -54,11 +59,25 @@ function Login(){
                     <div className='entrada'>
                         <div className= 'input'>
                             <div className='title'>
-                                <h1>Login</h1>
+                                <h1 className={logando}>Login</h1>
+                            </div>
+                            <div className={'loader '+darespaco} >
+                                <di className={'dot '+logando}></di>
+                                <di className={'dot '+logando}></di>
+                                <di className={'dot '+logando}></di>
+                                <di className={'dot '+logando}></di>
+                                <di className={'dot '+logando}></di>
+                                <di className={'dot '+logando}></di>
+                                <di className={'dot '+logando}></di>
+                                <di className={'dot '+logando}></di>
+                                <di className={'dot '+logando}></di>
+                                <di className={'dot '+logando}></di>
+                                <di className={'dot '+logando}></di>
+                                <di className={'dot '+logando}></di>
                             </div>
                             <h3 className={mostrar}>Usuário ou senha incorretos</h3>
-                            <input className='usuario'  onKeyPress={entrar} onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
-                            <input type='password' name='senha' onKeyPress={entrar} onChange={(event) => setsenha(event.target.value)} placeholder='Senha'/>
+                            <input className={logando} onKeyPress={entrar} onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
+                            <input type='password' className={logando} name='senha' onKeyPress={entrar} onChange={(event) => setsenha(event.target.value)} placeholder='Senha'/>
                             <button name='entrar' onClick={(event) =>login_func() } >Entrar</button>
                         </div>
                     </div>
