@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import axios from "axios";
 import './ModalPagamentos.css'
 import { apis } from "../../caminho_api.mjs";
+import pdf from '../../icones/pdf.png'
+import jsPDF from "jspdf"; 
 export default class ModalPagamentos extends Component{
     constructor(props){
         super(props)
@@ -86,6 +88,7 @@ export default class ModalPagamentos extends Component{
                                                     <h3 className='pag-nome'>{(res.data.data[4])[i]}</h3>
                                                     <h3>{(res.data.data[1])[i]}</h3>
                                                     <h3>R$ {(res.data.data[2])[i]}</h3>
+                                                    <img onClick={() => this.gerar_nota()} alt="Nota" src={pdf}/>
                                                 </div>)
                     this.setState({resultado: list})
                 }
@@ -135,6 +138,22 @@ export default class ModalPagamentos extends Component{
                 }
             })
         }
+    }
+    gerar_nota(){
+        let doc = new jsPDF()
+        let d = new Date()
+        let data = d.getDay()+'-'+(d.getMonth()+1)+'-'+d.getFullYear()
+        doc.setFontSize(30);
+        doc.text(75, 20, "NOTA FISCAL");
+        doc.setFontSize(12);
+        doc.text(15, 40, "Vitor");
+        doc.setLineWidth(1.3); 
+        doc.line(0.5, 0.6, 220, 0.6);
+        doc.setLineWidth(1.3); 
+        doc.line(209.3, 1, 209.3, 350);
+        doc.setLineWidth(1.3); 
+        doc.line(0.5, 296.3, 320, 296.3);
+        doc.save("notafiscal-"+data+".pdf")
     }
     render(){
         return(<div className={this.props.exibir}  >

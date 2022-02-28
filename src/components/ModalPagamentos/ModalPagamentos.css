@@ -32,12 +32,6 @@
     color: rgb(255, 255, 255);
     background-color: var(--preferencia--de--pagamento);
 }
-.modal-pag .modal img{
-    align-items: center;
-    width: 100px;
-    margin-left: 140px;
-    height: 100px;
-}
 .modal-pag .modal h2{
     display: flex;
     padding: 5px 5px;
@@ -201,6 +195,15 @@
 .modal-pag .modal .pag-list .pag-enc h3{
     justify-content: center;
     width: 178px;
+}
+.modal-pag .modal .pag-list .pag-enc img{
+    justify-content: center;
+    width: 28px;
+    height: 32px;
+    align-items: center;
+}
+.modal-pag .modal .pag-list .pag-enc img:hover{
+    cursor: pointer;
 }
 .novo-input{
     border-radius: 4px;

@@ -1,2 +1,2 @@
-const apis = 'https://forwin.000webhostapp.com/mysql_con/';
+const apis = 'http://localhost/public_html/mysql_con/';
 export {apis};

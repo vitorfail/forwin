@@ -10,6 +10,7 @@ function Login(){
     const [senha, setsenha] = useState(null);
     const [usuario, setusuario] = useState(null);
     const [ mostrar, setmostrar] = useState('aviso');
+    const [conteudoError, setconteudoError] = useState('Usuário ou senha incorretos')
     const history = useHistory();
     const [ logando, setlogando] = useState('');
     const [darespaco, setdarespaco] = useState('');
@@ -22,6 +23,9 @@ function Login(){
             baseURL:apis
         })
         if(senha === null || usuario === null || senha === '' || usuario === ''){
+            setconteudoError('Preencha a senha e o usuário')
+            setdarespaco('espaco')
+            setlogando('');
             setmostrar('aviso')
             setTimeout(() =>  setmostrar('aviso mostrar'), 4);
         }
@@ -32,18 +36,21 @@ function Login(){
             Axios.post('index.php?url=auth/login', {user: usuario, password: senha})
             .then(res =>{
                 if(res.data.data === 'Operação inválida' || res.data.data === "Usuário não encontrado"){
-                    setdarespaco('espaco');
-                    setmostrar('aviso mostrar');
+                    setdarespaco('espaco')
+                    setlogando('');
+                    setmostrar('aviso')
+                    setTimeout(() =>  setmostrar('aviso mostrar'), 30);        
                 }
                 else{
                     settoken(res.data.data)
-                    setlogando('logando');
                     setTimeout(() =>{ 
                                         history.push('/')
                                     }, 3000);
                 }
             })
             .catch(error => {
+                setconteudoError('Verifique sua internet e tente novamente')
+                console.log(error)
                 setdarespaco('espaco')
                 setlogando('');
                 setmostrar('aviso')
@@ -79,7 +86,7 @@ function Login(){
                                 <di className={'dot '+logando}></di>
                                 <di className={'dot '+logando}></di>
                             </div>
-                            <h3 className={mostrar}>Usuário ou senha incorretos</h3>
+                            <h3 className={mostrar}>{conteudoError}</h3>
                             <input className={logando} onKeyPress={entrar} onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
                             <input type='password' className={logando} name='senha' onKeyPress={entrar} onChange={(event) => setsenha(event.target.value)} placeholder='Senha'/>
                             <button name='entrar' onClick={(event) =>login_func() } >Entrar</button>
