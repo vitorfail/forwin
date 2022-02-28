@@ -26,6 +26,8 @@ function Login(){
             setTimeout(() =>  setmostrar('aviso mostrar'), 4);
         }
         else{
+            setdarespaco('')
+            setlogando('logando');
             setmostrar('aviso')
             Axios.post('index.php?url=auth/login', {user: usuario, password: senha})
             .then(res =>{
@@ -42,6 +44,8 @@ function Login(){
                 }
             })
             .catch(error => {
+                setdarespaco('espaco')
+                setlogando('');
                 setmostrar('aviso')
                 setTimeout(() =>  setmostrar('aviso mostrar'), 30);    
             })    
