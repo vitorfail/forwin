@@ -140,20 +140,73 @@ export default class ModalPagamentos extends Component{
         }
     }
     gerar_nota(){
+        let cnpj_vendedor = "000.0000.00000"
+        let cnpj_pagador = "000.0000.00000"
+        let nome_vendedor = "TRIPLEX DE NILFIGARD"
+        let nome_pagador = "JOÃO DA SILVA"
+
         let doc = new jsPDF()
         let d = new Date()
-        let data = d.getDay()+'-'+(d.getMonth()+1)+'-'+d.getFullYear()
+        let mes = (d.getMonth()+1).toString() 
+        let mesf = (mes.length == 1) ? '0'+mes : mes;
+        let data = d.getDate()+'/'+mesf+'/'+d.getFullYear()
+        let hora = d.getHours()
+        let minutos = d.getMinutes()
+        let segundos = d.getSeconds()
+        let horario = hora+':'+minutos+':'+segundos
+        doc.setFont("Times-Bold")
         doc.setFontSize(30);
         doc.text(75, 20, "NOTA FISCAL");
-        doc.setFontSize(12);
-        doc.text(15, 40, "Vitor");
-        doc.setLineWidth(1.3); 
+        ///Barra superior//////////////////////////////////////
+        doc.setLineWidth(1); 
         doc.line(0.5, 0.6, 220, 0.6);
-        doc.setLineWidth(1.3); 
+        ///Barra superior-2//////////////////////////////////////
+        doc.setLineWidth(1); 
+        doc.line(0.5, 30, 220, 30);
+        ///Barra direita//////////////////////////////////////
+        doc.setLineWidth(1); 
         doc.line(209.3, 1, 209.3, 350);
-        doc.setLineWidth(1.3); 
+        ///Barra inferior//////////////////////////////////////
+        doc.setLineWidth(1); 
         doc.line(0.5, 296.3, 320, 296.3);
+        ///Barra esquerda//////////////////////////////////////
+        doc.setLineWidth(1); 
+        doc.line(0.7, 0.1, 0.7, 350);
+        ///Barra esquerda data//////////////////////////////////////
+        doc.setLineWidth(0.5); 
+        doc.line(160, 1, 160, 30);
+        ///Data//////////////////////////////////////////////////
+        doc.setFontSize(12);
+        doc.text(170, 16, "Data de emissão");
+        doc.setFont("Times-Bold", 'bold')
+        doc.setFontSize(12);
+        doc.text(170, 20, data);
+        doc.setFontSize(12);
+        doc.text(190, 20, horario);
+        ///Vendedor///////////////////////////////////////////
+        doc.setFontSize(14);
+        doc.text(100, 35, "VENDEDOR");
+        ///CNPJ Vendedor///////////////////////////////////////////
+        doc.setFont("Times-Bold", 'normal')
+        doc.setFontSize(12);
+        doc.text(10, 40, "CPF/CNPJ:");
+        doc.setFont("Times-Bold", 'bold')
+        doc.setFontSize(12);
+        doc.text(30, 40, cnpj_vendedor);
+        ///Nome vendedor/////////////////////////////////////////
+        doc.setFont("Times-Bold", 'normal')
+        doc.setFontSize(12);
+        doc.text(10, 46, "Nome/Razão social:");
+        doc.setFont("Times-Bold", 'bold')
+        doc.setFontSize(12);
+        doc.text(45, 46, nome_vendedor);
+
+
+
+
+
         doc.save("notafiscal-"+data+".pdf")
+
     }
     render(){
         return(<div className={this.props.exibir}  >
