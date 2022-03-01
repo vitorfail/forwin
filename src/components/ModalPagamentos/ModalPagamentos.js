@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import './ModalPagamentos.css'
+import './loading.scss'
 import { apis } from "../../caminho_api.mjs";
 import pdf from '../../icones/pdf.png'
 import jsPDF from "jspdf"; 
@@ -20,7 +21,8 @@ export default class ModalPagamentos extends Component{
             valor_novo_input: '',
             data_novo_input: '',
             tipo_novo_input: '',
-            procedimento_novo_input:''
+            procedimento_novo_input:'',
+            loading:'loading'
         }
         this.pesquisar_pagamentos = this.pesquisar_pagamentos.bind(this)
         this.modal_novo_pagamento = this.modal_novo_pagamento.bind(this)
@@ -88,7 +90,7 @@ export default class ModalPagamentos extends Component{
                                                     <h3 className='pag-nome'>{(res.data.data[4])[i]}</h3>
                                                     <h3>{(res.data.data[1])[i]}</h3>
                                                     <h3>R$ {(res.data.data[2])[i]}</h3>
-                                                    <img onClick={() => this.gerar_nota()} alt="Nota" src={pdf}/>
+                                                    <img id={(res.data.data[2])[i]} onClick={(event) => this.gerar_nota(ident, event.target.id)} alt="Nota" src={pdf}/>
                                                 </div>)
                     this.setState({resultado: list})
                 }
@@ -139,23 +141,24 @@ export default class ModalPagamentos extends Component{
             })
         }
     }
-    gerar_nota(){
+    gerar_nota(id, valor_){
         let cnpj_vendedor = "000.0000.00000"
-        let cnpj_pagador = "000.0000.00000"
+        let cnpj_comprador = "000.0000.00000"
         let nome_vendedor = "TRIPLEX DE NILFIGARD"
-        let nome_pagador = "JOÃO DA SILVA"
+        let nome_comprador = "JOÃO DA SILVA"
         let endereco_vendedor = "Rua aparecida araujo bezerra"
         let endereco_comprador = "Rua aparecida araujo bezerra"
         let municipio_vendedor = "Recife"
         let municipio_comprador = "Recife"
         let uf_vendedor = "CE"
         let uf_comprador = "CE"
-
+        let descriminacao = "Criação de uma calopsita, que tentou matar um dono com a bicada no saco"
+        let valor = String(valor_)
 
         let doc = new jsPDF()
         let d = new Date()
         let mes = (d.getMonth()+1).toString() 
-        let mesf = (mes.length == 1) ? '0'+mes : mes;
+        let mesf = (mes.length === 1) ? '0'+mes : mes;
         let data = d.getDate()+'/'+mesf+'/'+d.getFullYear()
         let hora = d.getHours()
         let minutos = d.getMinutes()
@@ -171,8 +174,17 @@ export default class ModalPagamentos extends Component{
         doc.setLineWidth(1); 
         doc.line(0.5, 30, 220, 30);
         ///Barra superior-3//////////////////////////////////////
-        doc.setLineWidth(0.7); 
+        doc.setLineWidth(1); 
         doc.line(0.5, 71, 220, 71);
+        ///Barra superior-4//////////////////////////////////////
+        doc.setLineWidth(0.5); 
+        doc.line(0.5, 108, 220, 108);
+        ///Barra superior-5//////////////////////////////////////
+        doc.setLineWidth(0.5); 
+        doc.line(0.5, 220, 220, 220);
+        ///Barra superior-6//////////////////////////////////////
+        doc.setLineWidth(0.5); 
+        doc.line(0.5, 229, 220, 229);        
         ///Barra direita//////////////////////////////////////
         doc.setLineWidth(1); 
         doc.line(209.3, 1, 209.3, 350);
@@ -195,7 +207,7 @@ export default class ModalPagamentos extends Component{
         doc.text(190, 20, horario);
         ///Vendedor///////////////////////////////////////////
         doc.setFontSize(14);
-        doc.text(100, 35, "VENDEDOR");
+        doc.text(95, 35, "VENDEDOR");
         ///CNPJ Vendedor///////////////////////////////////////////
         doc.setFont("Times-Bold", 'normal')
         doc.setFontSize(12);
@@ -231,9 +243,55 @@ export default class ModalPagamentos extends Component{
         doc.setFont("Times-Bold", 'bold')
         doc.setFontSize(12);
         doc.text(158, 58, uf_vendedor);
-
-
-
+        ///Comprador///////////////////////////////////////////
+        doc.setFontSize(14);
+        doc.text(92, 80, "COMPRADOR");
+        ///CNPJ comprador///////////////////////////////////////////
+        doc.setFont("Times-Bold", 'normal')
+        doc.setFontSize(12);
+        doc.text(10, 86, "CPF/CNPJ:");
+        doc.setFont("Times-Bold", 'bold')
+        doc.setFontSize(12);
+        doc.text(30, 86, cnpj_comprador);
+        ///Nome comprador/////////////////////////////////////////
+        doc.setFont("Times-Bold", 'normal')
+        doc.setFontSize(12);
+        doc.text(10, 92, "Nome/Razão social:");
+        doc.setFont("Times-Bold", 'bold')
+        doc.setFontSize(12);
+        doc.text(45, 92, nome_comprador);
+        ///Endereço comprador/////////////////////////////////////////
+        doc.setFont("Times-Bold", 'normal')
+        doc.setFontSize(12);
+        doc.text(10, 98, "Endereço:");
+        doc.setFont("Times-Bold", 'bold')
+        doc.setFontSize(12);
+        doc.text(30, 98, endereco_comprador);
+        ///Municipio comprador/////////////////////////////////////////
+        doc.setFont("Times-Bold", 'normal')
+        doc.setFontSize(12);
+        doc.text(10, 104, "Município:");
+        doc.setFont("Times-Bold", 'bold')
+        doc.setFontSize(12);
+        doc.text(30, 104, municipio_comprador);
+        ///UF comprador/////////////////////////////////////////
+        doc.setFont("Times-Bold", 'normal')
+        doc.setFontSize(12);
+        doc.text(150, 104, "UF:");
+        doc.setFont("Times-Bold", 'bold')
+        doc.setFontSize(12);
+        doc.text(158, 104, uf_comprador);
+        ///Discriminação os serviços///////////////////////////////////////////
+        doc.setFontSize(14);
+        doc.text(70, 113, "DISCRIMINAÇÃO DOS SERVIÇOS")
+        doc.setFont("Times-Bold", 'normal')
+        doc.setFontSize(14);
+        doc.text(10, 121, descriminacao)
+        ///Valor da nota///////////////////////////////////////////
+        doc.setFont("Times-Bold", 'bold')
+        doc.setFontSize(14);
+        doc.text(72, 225, "VALOR TOTAL DA NOTA = R$ "+valor);
+        console.log(id)
         doc.save("notafiscal-"+data+".pdf")
 
     }
@@ -282,6 +340,9 @@ export default class ModalPagamentos extends Component{
                                 <button className="nao" name="nao" value="Não" onClick={(event) =>this.fecharmodal()}>Fechar</button>
                             </div>
                         </div>
+                    </div>
+                    <div className={this.state.loading}>
+                        <div className="c-loader"></div>
                     </div>
                 </div>)
     }
