@@ -148,8 +148,8 @@ export default class ModalPagamentos extends Component{
         let endereco_comprador = "Rua aparecida araujo bezerra"
         let municipio_vendedor = "Recife"
         let municipio_comprador = "Recife"
-        let uf_vendedor = "Recife"
-        let uf_comprador = "Recife"
+        let uf_vendedor = "CE"
+        let uf_comprador = "CE"
 
 
         let doc = new jsPDF()
@@ -170,6 +170,9 @@ export default class ModalPagamentos extends Component{
         ///Barra superior-2//////////////////////////////////////
         doc.setLineWidth(1); 
         doc.line(0.5, 30, 220, 30);
+        ///Barra superior-3//////////////////////////////////////
+        doc.setLineWidth(0.7); 
+        doc.line(0.5, 71, 220, 71);
         ///Barra direita//////////////////////////////////////
         doc.setLineWidth(1); 
         doc.line(209.3, 1, 209.3, 350);
@@ -227,7 +230,7 @@ export default class ModalPagamentos extends Component{
         doc.text(150, 58, "UF:");
         doc.setFont("Times-Bold", 'bold')
         doc.setFontSize(12);
-        doc.text(157, 58, uf_vendedor);
+        doc.text(158, 58, uf_vendedor);
 
 
 
