@@ -144,6 +144,13 @@ export default class ModalPagamentos extends Component{
         let cnpj_pagador = "000.0000.00000"
         let nome_vendedor = "TRIPLEX DE NILFIGARD"
         let nome_pagador = "JOÃO DA SILVA"
+        let endereco_vendedor = "Rua aparecida araujo bezerra"
+        let endereco_comprador = "Rua aparecida araujo bezerra"
+        let municipio_vendedor = "Recife"
+        let municipio_comprador = "Recife"
+        let uf_vendedor = "Recife"
+        let uf_comprador = "Recife"
+
 
         let doc = new jsPDF()
         let d = new Date()
@@ -200,8 +207,27 @@ export default class ModalPagamentos extends Component{
         doc.setFont("Times-Bold", 'bold')
         doc.setFontSize(12);
         doc.text(45, 46, nome_vendedor);
-
-
+        ///Endereço vendedor/////////////////////////////////////////
+        doc.setFont("Times-Bold", 'normal')
+        doc.setFontSize(12);
+        doc.text(10, 52, "Endereço:");
+        doc.setFont("Times-Bold", 'bold')
+        doc.setFontSize(12);
+        doc.text(30, 52, endereco_vendedor);
+        ///Municipio vendedor/////////////////////////////////////////
+        doc.setFont("Times-Bold", 'normal')
+        doc.setFontSize(12);
+        doc.text(10, 58, "Município:");
+        doc.setFont("Times-Bold", 'bold')
+        doc.setFontSize(12);
+        doc.text(30, 58, municipio_vendedor);
+        ///UF vendedor/////////////////////////////////////////
+        doc.setFont("Times-Bold", 'normal')
+        doc.setFontSize(12);
+        doc.text(150, 58, "UF:");
+        doc.setFont("Times-Bold", 'bold')
+        doc.setFontSize(12);
+        doc.text(157, 58, uf_vendedor);
 
 
 
