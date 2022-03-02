@@ -1,21 +1,26 @@
 .modal-pag .loading{
     top: 0px;
-    width: 590px;
-    height: 500px;
-    background: rgba(255, 255, 255, 0.336);
+    z-index: 4000;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.397);
     justify-content: center;
     align-items: center;
-    display: block;
+    display: none;
     padding: 15px;
     border-radius: 15px;
 }
 .modal-pag .loading .c-loader {
     animation: is-rotating 1s infinite;
-    border: 6px solid #e5e5e5;
+    border: 17px solid #e5e5e5;
     border-radius: 50%;
     border-top-color: #51d4db;
-    height: 50px;
-    width: 50px;
+    height: 150px;
+    width: 150px;
+}
+.modal-pag .loading.mostrar{
+    display: flex;
 }
 @keyframes is-rotating {
     to {

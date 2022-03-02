@@ -27,7 +27,8 @@
     require_once('./inserir_contas.php');
     require_once('./update_conta.php');
     require_once('./tipos_pagamento.php');
-    require_once('./contas_painel.php');    
+    require_once('./contas_painel.php');
+    require_once('./dadosuser.php');    
 
     class Rest{
         private $request;
