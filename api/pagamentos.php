@@ -47,9 +47,6 @@
                     else{
                         $rank = array_search($acumulado, $ranking) +1;
                     }
-                
-            
-            
                     $conexao = null;
                     if( count($pesquisa) > 0){
                         foreach($pesquisa as $row){

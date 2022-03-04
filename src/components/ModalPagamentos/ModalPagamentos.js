@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import axios from "axios";
 import './ModalPagamentos.css'
 import './loading.scss'
-import { Redirect } from "react-router-dom";
 import { apis } from "../../caminho_api.mjs";
 import pdf from '../../icones/pdf.png'
 import jsPDF from "jspdf"; 
@@ -167,7 +166,7 @@ export default class ModalPagamentos extends Component{
         let minutos = d.getMinutes()
         let segundos = d.getSeconds()
         let horario = hora+':'+minutos+':'+segundos
-        doc.setFont("Times-Bold")
+        doc.setFont("times")
         doc.setFontSize(30);
         doc.text(75, 20, "NOTA FISCAL");
         const Axios = axios.create({
@@ -187,148 +186,166 @@ export default class ModalPagamentos extends Component{
                 endereco_vendedor = res.data.data[2]
                 municipio_vendedor = res.data.data[3]
                 uf_vendedor = res.data.data[4]
-                 ///Barra superior//////////////////////////////////////
-                doc.setLineWidth(1); 
-                doc.line(0.5, 0.6, 220, 0.6);
-                ///Barra superior-2//////////////////////////////////////
-                doc.setLineWidth(1); 
-                doc.line(0.5, 30, 220, 30);
-                ///Barra superior-3//////////////////////////////////////
-                doc.setLineWidth(1); 
-                doc.line(0.5, 71, 220, 71);
-                ///Barra superior-4//////////////////////////////////////
-                doc.setLineWidth(0.5); 
-                doc.line(0.5, 108, 220, 108);
-                ///Barra superior-5//////////////////////////////////////
-                doc.setLineWidth(0.5); 
-                doc.line(0.5, 220, 220, 220);
-                ///Barra superior-6//////////////////////////////////////
-                doc.setLineWidth(0.5); 
-                doc.line(0.5, 229, 220, 229);        
-                ///Barra direita//////////////////////////////////////
-                doc.setLineWidth(1); 
-                doc.line(209.3, 1, 209.3, 350);
-                ///Barra inferior//////////////////////////////////////
-                doc.setLineWidth(1); 
-                doc.line(0.5, 296.3, 320, 296.3);
-                ///Barra esquerda//////////////////////////////////////
-                doc.setLineWidth(1); 
-                doc.line(0.7, 0.1, 0.7, 350);
-                ///Barra esquerda data//////////////////////////////////////
-                doc.setLineWidth(0.5); 
-                doc.line(160, 1, 160, 30);
-                ///Data//////////////////////////////////////////////////
-                doc.setFontSize(12);
-                doc.text(170, 16, "Data de emissão");
-                doc.setFont("Times-Bold", 'bold')
-                doc.setFontSize(12);
-                doc.text(170, 20, data);
-                doc.setFontSize(12);
-                doc.text(190, 20, horario);
-                ///Vendedor///////////////////////////////////////////
-                doc.setFontSize(14);
-                doc.text(95, 35, "VENDEDOR");
-                ///CNPJ Vendedor///////////////////////////////////////////
-                doc.setFont("Times-Bold", 'normal')
-                doc.setFontSize(12);
-                doc.text(10, 40, "CPF/CNPJ:");
-                doc.setFont("Times-Bold", 'bold')
-                doc.setFontSize(12);
-                doc.text(30, 40, cnpj_vendedor);
-                ///Nome vendedor/////////////////////////////////////////
-                doc.setFont("Times-Bold", 'normal')
-                doc.setFontSize(12);
-                doc.text(10, 46, "Nome/Razão social:");
-                doc.setFont("Times-Bold", 'bold')
-                doc.setFontSize(12);
-                doc.text(45, 46, nome_vendedor);
-                ///Endereço vendedor/////////////////////////////////////////
-                doc.setFont("Times-Bold", 'normal')
-                doc.setFontSize(12);
-                doc.text(10, 52, "Endereço:");
-                doc.setFont("Times-Bold", 'bold')
-                doc.setFontSize(12);
-                doc.text(30, 52, endereco_vendedor);
-                ///Municipio vendedor/////////////////////////////////////////
-                doc.setFont("Times-Bold", 'normal')
-                doc.setFontSize(12);
-                doc.text(10, 58, "Município:");
-                doc.setFont("Times-Bold", 'bold')
-                doc.setFontSize(12);
-                doc.text(30, 58, municipio_vendedor);
-                ///UF vendedor/////////////////////////////////////////
-                doc.setFont("Times-Bold", 'normal')
-                doc.setFontSize(12);
-                doc.text(150, 58, "UF:");
-                doc.setFont("Times-Bold", 'bold')
-                doc.setFontSize(12);
-                doc.text(158, 58, uf_vendedor);
-                ///Comprador///////////////////////////////////////////
-                doc.setFontSize(14);
-                doc.text(92, 80, "COMPRADOR");
-                ///CNPJ comprador///////////////////////////////////////////
-                doc.setFont("Times-Bold", 'normal')
-                doc.setFontSize(12);
-                doc.text(10, 86, "CPF/CNPJ:");
-                doc.setFont("Times-Bold", 'bold')
-                doc.setFontSize(12);
-                doc.text(30, 86, cnpj_comprador);
-                ///Nome comprador/////////////////////////////////////////
-                doc.setFont("Times-Bold", 'normal')
-                doc.setFontSize(12);
-                doc.text(10, 92, "Nome/Razão social:");
-                doc.setFont("Times-Bold", 'bold')
-                doc.setFontSize(12);
-                doc.text(45, 92, nome_comprador);
-                ///Endereço comprador/////////////////////////////////////////
-                doc.setFont("Times-Bold", 'normal')
-                doc.setFontSize(12);
-                doc.text(10, 98, "Endereço:");
-                doc.setFont("Times-Bold", 'bold')
-                doc.setFontSize(12);
-                doc.text(30, 98, endereco_comprador);
-                ///Municipio comprador/////////////////////////////////////////
-                doc.setFont("Times-Bold", 'normal')
-                doc.setFontSize(12);
-                doc.text(10, 104, "Município:");
-                doc.setFont("Times-Bold", 'bold')
-                doc.setFontSize(12);
-                doc.text(30, 104, municipio_comprador);
-                ///UF comprador/////////////////////////////////////////
-                doc.setFont("Times-Bold", 'normal')
-                doc.setFontSize(12);
-                doc.text(150, 104, "UF:");
-                doc.setFont("Times-Bold", 'bold')
-                doc.setFontSize(12);
-                doc.text(158, 104, uf_comprador);
-                ///Discriminação os serviços///////////////////////////////////////////
-                doc.setFontSize(14);
-                doc.text(70, 113, "DISCRIMINAÇÃO DOS SERVIÇOS")
-                doc.setFont("Times-Bold", 'normal')
-                doc.setFontSize(14);
-                doc.text(10, 121, descriminacao)
-                ///Valor da nota///////////////////////////////////////////
-                doc.setFont("Times-Bold", 'bold')
-                doc.setFontSize(14);
-                doc.text(72, 225, "VALOR TOTAL DA NOTA = R$ "+valor);
-                doc.save("notafiscal-"+data+".pdf")
-                setTimeout(() =>  this.setState({loading: 'loading'}), 800)
+                Axios.post('index.php?url=pesquisainfo/pesquisa', {id: id}, {headers: {
+                    "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
+                .then(res => {
+                    if(res.data.data === 'Usuário não autenticado' || res.data.data === '1'){
+                        localStorage.removeItem('token_jwt');
+                        alert("seu usuário não está autenticado. Estamos redirecionando você para que possa fazer o login novamente")
+                        window.location.reload()
+                    }
+                    else{
+                        cnpj_comprador= res.data.data[3]
+                        nome_comprador= String(res.data.data[1]).toUpperCase()
+                        endereco_comprador= res.data.data[7]
+                        municipio_comprador= res.data.data[8]
+                        uf_comprador= String(res.data.data[6]).toUpperCase()
+                        ///Barra superior//////////////////////////////////////
+                        doc.setLineWidth(1); 
+                        doc.line(0.5, 0.6, 209, 0.6);
+                        ///Barra superior-2//////////////////////////////////////
+                        doc.setLineWidth(1); 
+                        doc.line(0.5, 30, 209, 30);
+                        ///Barra superior-3//////////////////////////////////////
+                        doc.setLineWidth(1); 
+                        doc.line(0.5, 71, 209, 71);
+                        ///Barra superior-4//////////////////////////////////////
+                        doc.setLineWidth(0.5); 
+                        doc.line(0.5, 108, 209, 108);
+                        ///Barra superior-5//////////////////////////////////////
+                        doc.setLineWidth(0.5); 
+                        doc.line(0.5, 220, 209, 220);
+                        ///Barra superior-6//////////////////////////////////////
+                        doc.setLineWidth(0.5); 
+                        doc.line(0.5, 229, 209, 229);        
+                        ///Barra direita//////////////////////////////////////
+                        doc.setLineWidth(1); 
+                        doc.line(209.3, 0.2, 209.3, 350);
+                        ///Barra inferior//////////////////////////////////////
+                        doc.setLineWidth(1); 
+                        doc.line(0.5, 296.3, 320, 296.3);
+                        ///Barra esquerda//////////////////////////////////////
+                        doc.setLineWidth(1); 
+                        doc.line(0.7, 0.1, 0.7, 350);
+                        ///Barra esquerda data//////////////////////////////////////
+                        doc.setLineWidth(0.5); 
+                        doc.line(160, 1, 160, 30);
+                        ///Data//////////////////////////////////////////////////
+                        doc.setFontSize(12);
+                        doc.text(170, 16, "Data de emissão");
+                        doc.setFont("times", 'bold')
+                        doc.setFontSize(12);
+                        doc.text(170, 20, data);
+                        doc.setFontSize(12);
+                        doc.text(190, 20, horario);
+                        ///Vendedor///////////////////////////////////////////
+                        doc.setFontSize(14);
+                        doc.text(95, 35, "VENDEDOR");
+                        ///CNPJ Vendedor///////////////////////////////////////////
+                        doc.setFont("times", 'normal')
+                        doc.setFontSize(12);
+                        doc.text(10, 40, "CPF/CNPJ:");
+                        doc.setFont("times", 'bold')
+                        doc.setFontSize(12);
+                        doc.text(30, 40, cnpj_vendedor);
+                        ///Nome vendedor/////////////////////////////////////////
+                        doc.setFont("times", 'normal')
+                        doc.setFontSize(12);
+                        doc.text(10, 46, "Nome/Razão social:");
+                        doc.setFont("times", 'bold')
+                        doc.setFontSize(12);
+                        doc.text(45, 46, nome_vendedor);
+                        ///Endereço vendedor/////////////////////////////////////////
+                        doc.setFont("times", 'normal')
+                        doc.setFontSize(12);
+                        doc.text(10, 52, "Endereço:");
+                        doc.setFont("times", 'bold')
+                        doc.setFontSize(12);
+                        doc.text(30, 52, endereco_vendedor);
+                        ///Municipio vendedor/////////////////////////////////////////
+                        doc.setFont("times", 'normal')
+                        doc.setFontSize(12);
+                        doc.text(10, 58, "Município:");
+                        doc.setFont("times", 'bold')
+                        doc.setFontSize(12);
+                        doc.text(30, 58, municipio_vendedor);
+                        ///UF vendedor/////////////////////////////////////////
+                        doc.setFont("times", 'normal')
+                        doc.setFontSize(12);
+                        doc.text(150, 58, "UF:");
+                        doc.setFont("times", 'bold')
+                        doc.setFontSize(12);
+                        doc.text(158, 58, uf_vendedor);
+                        ///Comprador///////////////////////////////////////////
+                        doc.setFontSize(14);
+                        doc.text(92, 80, "COMPRADOR");
+                        ///CNPJ comprador///////////////////////////////////////////
+                        doc.setFont("times", 'normal')
+                        doc.setFontSize(12);
+                        doc.text(10, 86, "CPF/CNPJ:");
+                        doc.setFont("times", 'bold')
+                        doc.setFontSize(12);
+                        doc.text(30, 86, cnpj_comprador);
+                        ///Nome comprador/////////////////////////////////////////
+                        doc.setFont("times", 'normal')
+                        doc.setFontSize(12);
+                        doc.text(10, 92, "Nome/Razão social:");
+                        doc.setFont("times", 'bold')
+                        doc.setFontSize(12);
+                        doc.text(45, 92, nome_comprador);
+                        ///Endereço comprador/////////////////////////////////////////
+                        doc.setFont("times", 'normal')
+                        doc.setFontSize(12);
+                        doc.text(10, 98, "Endereço:");
+                        doc.setFont("times", 'bold')
+                        doc.setFontSize(12);
+                        doc.text(30, 98, endereco_comprador);
+                        ///Municipio comprador/////////////////////////////////////////
+                        doc.setFont("times", 'normal')
+                        doc.setFontSize(12);
+                        doc.text(10, 104, "Município:");
+                        doc.setFont("times", 'bold')
+                        doc.setFontSize(12);
+                        doc.text(30, 104, municipio_comprador);
+                        ///UF comprador/////////////////////////////////////////
+                        doc.setFont("times", 'normal')
+                        doc.setFontSize(12);
+                        doc.text(150, 104, "UF:");
+                        doc.setFont("times", 'bold')
+                        doc.setFontSize(12);
+                        doc.text(158, 104, uf_comprador);
+                        ///Discriminação os serviços///////////////////////////////////////////
+                        doc.setFontSize(14);
+                        doc.text(70, 113, "DISCRIMINAÇÃO DOS SERVIÇOS")
+                        doc.setFont("times", 'normal')
+                        doc.setFontSize(14);
+                        doc.text(10, 121, descriminacao)
+                        ///Valor da nota///////////////////////////////////////////
+                        doc.setFont("times", 'bold')
+                        doc.setFontSize(14);
+                        doc.text(68, 225, "VALOR TOTAL DA NOTA = R$ "+valor);
+                        doc.setFontSize(14);
+                        doc.text(72, 235, "OUTRAS INFORMAÇÕES");
+                        doc.setFont("times", 'normal')
+                        doc.setFontSize(12);
+                        doc.text(10, 245, "Esse documento serve apenas para controle. Não tem valor jurídico ou legal.");
 
+
+                        doc.save("notafiscal-"+data+".pdf")
+                        setTimeout(() =>  this.setState({loading: 'loading'}), 800)
+                    }
+                })
+                .catch(error => {
+                    console.log(error)                   
+                    setTimeout(() =>  this.setState({loading: 'loading'}), 500)
+                    alert("Não possível gerar o pdf verifique sua internet e tente denovo")        
+                })        
             }
         })
         .catch(error => {
             setTimeout(() =>  this.setState({loading: 'loading'}), 500)
             alert("Não possível gerar o pdf verifique sua internet e tente denovo")
         })
-        /*Axios.post('index.php?url=pesquisainfo/pesquisa', {id: ident}, {headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then(res => {
-
-        })
-        .catch(error => {
-            setTimeout(() =>  this.setState({loading: 'loading'}), 500)
-            alert("Não possível gerar o pdf verifique sua internet e tente denovo")
-        })*/
     }
     render(){
         return(<div className={this.props.exibir}  >
