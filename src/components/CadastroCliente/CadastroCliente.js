@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import '.././CadastroCliente/CadastroCliente.css'
-import {apis} from '../../caminho_api.mjs';
+import Axios from '../../Axios.js';
 import Pergunta from "../../icones/pergunta.png";
 import Sucesso from '../../icones/correto.png';
 import './Popup-sucesso.css';
@@ -33,9 +32,6 @@ export default class CadastroCliente extends Component{
         this.mask_telefone = this.mask_telefone.bind(this);
     }
     cadastrar(){
-        const Axios = axios.create({
-            baseURL:apis
-        })
         Axios.post('index.php?url=cadastrar/pesquisa', {
             nome_input :this.state.nome,
             data_input: this.state.data_nascimento,
@@ -48,8 +44,7 @@ export default class CadastroCliente extends Component{
             telefone_input: this.state.telefone,
             email_input: this.state.email,
             notific_input: this.state.notific
-        },{headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res => {
+        }).then(res => {
             if(res.data.data === '1'){
                 this.fechar_pergunta();
                 this.abrir_sucess();

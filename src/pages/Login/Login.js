@@ -1,6 +1,5 @@
 import { useState} from 'react';
-import axios from 'axios';
-import {apis} from '../../caminho_api.mjs';
+import Axios from '../../Axios.js';
 import './Login.css';
 import './Login.scss';
 import { useHistory} from 'react-router-dom';
@@ -19,9 +18,6 @@ function Login(){
     }
 
     function login_func(){
-        const Axios = axios.create({
-            baseURL:apis
-        })
         if(senha === null || usuario === null || senha === '' || usuario === ''){
             setconteudoError('Preencha a senha e o usuário')
             setdarespaco('espaco')

@@ -9,8 +9,7 @@ import React, {useState} from "react";
 import InserirNome from '../InserirNome/InserirNome';
 import '../BarradePesquisa/BarradePesquisa.css';
 import '../BarradePesquisa/Popup-conta.css';
-import { apis } from '../../caminho_api.mjs';
-import axios from 'axios';
+import Axios from '../../Axios.js';
 import Conta  from '../../icones/divida.png'
 import { useHistory } from 'react-router-dom';
 import {Link} from 'react-router-dom';
@@ -30,13 +29,10 @@ function BarradePesquisa(){
 
 
     const troca = () => {
-        const Axios = axios.create({
-            baseURL:apis
-        })
-        Axios.post('index.php?url=inserircontas/pesquisa', {val: parseFloat((Valor.replace('R$', '')).replace('.', '').replace(',', '.')), 
-        vencimento: Data, 
-        conta:Nome_conta, tipo: Tipo} ,{headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
+        Axios.post('index.php?url=inserircontas/pesquisa', 
+        {   val: parseFloat((Valor.replace('R$', '')).replace('.', '').replace(',', '.')), 
+            vencimento: Data, 
+            conta:Nome_conta, tipo: Tipo})
         .then( res => {
             if(Nome_conta === '' ||  Data === '' ||    Valor === ''){
                 setpreencha("preencha mostrar")

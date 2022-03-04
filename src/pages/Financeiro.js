@@ -5,6 +5,7 @@ import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
 import Blocos from '../components/Blocos/Blocos'
 import DRE from '../components/DRE/DRE';
 import Loading from '../components/Loading/Loading';
+import Coockie from '../components/Coockie/Coockie';
 export default class Financeiro extends Component{
     constructor(){
         super()
@@ -25,6 +26,7 @@ export default class Financeiro extends Component{
                     </div>
                 </div>
                 <Loading></Loading>
+                <Coockie></Coockie>
             </div>
         )
     }

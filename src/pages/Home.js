@@ -8,6 +8,7 @@ import ClientesRecentes from '../components/ClientesRecentes/ClientesRecentes';
 import RankingPagamentos from '../components/RankingPagamentos/RankingPagamentos';
 import RankingVisitas from '../components/RankingVisitas/RankingVisitas';
 import Loading from '../components/Loading/Loading';
+import Coockie from '../components/Coockie/Coockie';
 import './Home.css'
 export default class Home extends Component{
     render(){
@@ -27,6 +28,7 @@ export default class Home extends Component{
                     </div>
                 </div>
                 <Loading></Loading>
+                <Coockie></Coockie>
             </div>
         )
     }

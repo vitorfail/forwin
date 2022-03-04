@@ -1,6 +1,6 @@
 import { Component } from "react";
-import axios from "axios";
-import { apis } from "../../caminho_api.mjs";
+import Axios from "../../Axios.js";
+import Exit from "../../Exit.js";
 import '../Planilhas/Planilhas.css';
 import { Bar, PolarArea, Doughnut } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
@@ -65,14 +65,10 @@ export default class Planilhas extends Component{
         this.tipos_pagamento()
     }
     pesquisa_idades(){
-        const Axios = axios.create({
-            baseURL:apis
-        })
-        Axios.post('index.php?url=idades/pesquisa', {user: '1', password: '1'},{headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}
+        Axios.post('index.php?url=idades/pesquisa', {user: '1', password: '1'}
         ).then(res =>{
-           if(res.data.data === '1'){
-
+           if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
+                Exit()
            }
            else{
                 var idade = res.data.data;
@@ -118,13 +114,10 @@ export default class Planilhas extends Component{
     }
     pesquisa_de_pagamentos(){
         var data_query = new Date()
-        const Axios = axios.create({
-            baseURL:apis
-        })
-        Axios.post("index.php?url=pagamentosmes/pesquisa", {ano: data_query.getFullYear().toString(), mes: 'Todos'},{headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then(res => {
-            if(res.data.data === '1' || res.data.data ==='Usuário não autenticado'){
+        Axios.post("index.php?url=pagamentosmes/pesquisa", 
+        {ano: data_query.getFullYear().toString(), mes: 'Todos'}
+        ).then(res => {
+            if(res.data.data === '1' ){
                 this.setState({janeiro: 0});
                 this.setState({fevereiro: 0});
                 this.setState({marco: 0});
@@ -233,11 +226,7 @@ export default class Planilhas extends Component{
         })
     }
     pesquisa_estado_civil(){
-        const Axios = axios.create({
-            baseURL:apis
-        })
-        Axios.post("index.php?url=estadocivil/pesquisa", {id: '1'},{headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
+        Axios.post("index.php?url=estadocivil/pesquisa", {id: '1'})
         .then(res => {
             if(res.data.data === '1'){
                 this.setState({viuva:0})
@@ -273,11 +262,8 @@ export default class Planilhas extends Component{
         })
     }
     pesquisa_sexo(){
-        const Axios = axios.create({
-            baseURL:apis
-        })
-        Axios.post('index.php?url=sexo/pesquisa', {id:'1'}, {headers: {"Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then(res => {
+        Axios.post('index.php?url=sexo/pesquisa', {id:'1'}
+        ).then(res => {
             if(res.data.data === '1'){
 
             }
@@ -306,12 +292,8 @@ export default class Planilhas extends Component{
         })
     }
     tipos_pagamento(){
-        const Axios = axios.create({
-            baseURL:apis
-        })
-        Axios.post('index.php?url=tipospagamento/pesquisa', {mes:'Todos'}, {headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then(res => {
+        Axios.post('index.php?url=tipospagamento/pesquisa', {mes:'Todos'}
+        ).then(res => {
             if(res.data.data === '1'|| res.data.data === '2'|| res.data.data === 'Usuário não autenticado'){
                 this.setState({debito: 0})
                 this.setState({credito: 0})

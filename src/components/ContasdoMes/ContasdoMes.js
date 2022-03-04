@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import axios from "axios";
-import {apis} from "../../caminho_api.mjs";
+import Axios from "../../Axios.js";
 import './ContasdoMes.css';
 import {Link}from 'react-router-dom';
 export default class ContasdoMes extends Component{
@@ -41,9 +40,6 @@ export default class ContasdoMes extends Component{
         }
     }
     mudar_mes(mes){
-        const Axios = axios.create({
-            baseURL: apis
-        })
         var meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
         var data = new Date();
         var data_hoje = data.getFullYear() + '-'+ (data.getMonth()+1) + '-' + data.getDate();
@@ -52,8 +48,7 @@ export default class ContasdoMes extends Component{
             mes_query:this.checar_mes(1+ meses.indexOf(mes)), 
             dat: data_hoje,
             ano:String(ano),
-            marcador: "Várias"}, {headers: {
-                "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}
+            marcador: "Várias"}
         ).then(res => {
             if(res.data.data[0].length === 0 &&  res.data.data[1].length === 0 &&
                 res.data.data[2].length === 0 && res.data.data[3].length === 0 &&
@@ -107,14 +102,10 @@ export default class ContasdoMes extends Component{
         })
     }
     atualizar_conta(e, check){
-        const Axios =axios.create({
-            baseURL: apis
-        })
         Axios.post('index.php?url=updateconta/pesquisa', {
             id: e,
             situacao: String(check)
-        }, {headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res => {
+        }).then(res => {
             if(res.data.data === '1'){
                 window.location.reload();
             }

@@ -5,6 +5,7 @@ import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
 import Blocos from '../components/Blocos/Blocos'
 import ContasTotais from '../components/ContasTotais/ContasTotais';
 import Loading from '../components/Loading/Loading';
+import Coockie from '../components/Coockie/Coockie';
 export default class Contas extends Component{
     constructor(){
         super()
@@ -25,6 +26,7 @@ export default class Contas extends Component{
                     </div>
                 </div>
                 <Loading></Loading>
+                <Coockie></Coockie>
             </div>
         )
     }

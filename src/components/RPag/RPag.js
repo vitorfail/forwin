@@ -1,6 +1,5 @@
 import {Component} from 'react';
-import axios from 'axios';
-import {apis} from '../../caminho_api.mjs';
+import Axios from '../../Axios.js';
 import Seta_direita from "../../icones/seta.png";
 import Seta_esquerda from "../../icones/seta-esquerda.png";
 import Seta_direita_dupla from "../../icones/seta-direita-dupla.png";
@@ -54,13 +53,9 @@ export default class RPag extends Component{
         this.pesquisa_pagamentos(mes_, ano_)
     }
     pesquisa_pagamentos(mes_, ano_){
-        const Axios = axios.create({
-            baseURL: apis
-        })
         Axios.post('index.php?url=rankings/pesquisa', 
-            { passe: "pagamento"}, {headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then( res => {
+            { passe: "pagamento"}
+        ).then( res => {
             if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
 
             }

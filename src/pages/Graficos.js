@@ -5,6 +5,7 @@ import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
 import Planilhas from '../components/Planilhas/Planilhas';
 import Loading from '../components/Loading/Loading';
 import Blocos from '../components/Blocos/Blocos'
+import Coockie from '../components/Coockie/Coockie';
 export default class Graficos extends Component{
     constructor(){
         super()
@@ -26,6 +27,7 @@ export default class Graficos extends Component{
                     </div>
                 </div>
                 <Loading></Loading>
+                <Coockie></Coockie>
             </div>
         )
     }

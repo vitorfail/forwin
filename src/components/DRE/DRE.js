@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import axios from "axios";
-import {apis} from '../../caminho_api.mjs';
+import Axios from '../../Axios.js';
 import '../DRE/DRE.css';
+import Exit from "../../Exit.js";
 export default class DRE extends Component{
     constructor(){
         super()
@@ -46,14 +46,10 @@ export default class DRE extends Component{
         this.pesquisa_financeira(mes, ano)
     }
     pesquisa_financeira(m, a){
-        const Axios = axios.create({
-            baseURL: apis
-        })
-        Axios.post('index.php?url=pagamentosmes/pesquisa', {mes:m, ano:a},{headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then(res => {
-            if(res.data.data === '1'){
-
+        Axios.post('index.php?url=pagamentosmes/pesquisa', {mes:m, ano:a}
+        ).then(res => {
+            if(res.data.data === 'Usuário não autenticado'){
+                Exit()
             }
             else{
                 var pag =0
@@ -63,11 +59,10 @@ export default class DRE extends Component{
                 this.setState({receita: pag})
             }
         })
-        Axios.post("index.php?url=contasdre/pesquisa", {mes:m, ano:a} ,{headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then(res =>{
-            if(res.data.data === '1'){
-                
+        Axios.post("index.php?url=contasdre/pesquisa", {mes:m, ano:a}
+        ).then(res =>{
+            if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
+                Exit()
             }
             else{
                 this.setState({imposto_dre: res.data.data[0]})

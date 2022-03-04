@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import { apis } from "../../caminho_api.mjs";
-import axios from "axios";
+import Axios from "../../Axios.js";
 import rank from '../../icones/rank.png';
 import './RankingPagamentos.css';
 import { Link } from "react-router-dom";
@@ -20,10 +19,7 @@ export default class RankingPagamentos extends Component{
         this.ranking_1()
     }
     ranking_1(){
-        const Axios = axios.create({
-            baseURL: apis
-        })
-        Axios.post('index.php?url=rankingstop/pesquisa', { passe: 'pagamento'}, {headers: {"Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
+        Axios.post('index.php?url=rankingstop/pesquisa', { passe: 'pagamento'})
         .then(res => {
             if(res.data.data === '1' || res.data.data === '2'){
                 let lista = this.state.rank.concat(<div className="cad">

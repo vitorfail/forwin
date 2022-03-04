@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import Rank from '../../icones/rank1.png';
-import axios from "axios";
-import { apis } from "../../caminho_api.mjs";
+import Axios from "../../Axios.js";
 import { Link } from "react-router-dom";
 import './RankingVisitas.css';
 export default class RankingVisitas extends Component{
@@ -19,13 +18,9 @@ export default class RankingVisitas extends Component{
         this.atualizar_visitas();
     }
     atualizar_visitas(){
-        const Axios = axios.create({
-            baseURL: apis
-        })
         Axios.post('index.php?url=rankingstop/pesquisa', {
             passe: 'visita'
-        }, {headers: {"Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then(res => {
+        }).then(res => {
             if(res.data.data ==='1' || res.data.data ==='2'){
                 let lista = this.state.visitas.concat(<div className="cad">
                                                             <h3 className="n">Sem clientes</h3>

@@ -4,16 +4,13 @@ import Barralateral from '../components/Barralateral/Barralateral';
 import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
 import CadastroCliente from '../components/CadastroCliente/CadastroCliente';
 import Loading from '../components/Loading/Loading';
+import Coockie from '../components/Coockie/Coockie';
 export default class Cadastro extends Component{
     constructor(){
         super()
         this.state = {
-            showModalPopup: false  
         }
     }
-    isShowPopup = (status) => {  
-        this.setState({ showModalPopup: status });  
-    }; 
     render(){
         return(
             <div>
@@ -27,6 +24,7 @@ export default class Cadastro extends Component{
                     </div>
                 </div>
                 <Loading></Loading>
+                <Coockie></Coockie>
             </div>
         )
     }

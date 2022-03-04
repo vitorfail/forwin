@@ -1,11 +1,11 @@
 import React, {Component} from "react";
-import axios from 'axios';
 import { Link } from "react-router-dom";
-import {apis} from '../../caminho_api.mjs';
+import Axios from '../../Axios.js';
 import Clientes from '../../icones/students.png';
 import Aniversariantes from '../../icones/instituicao2.png';
 import Pagamentos_do_mes from '../../icones/pagamento2.png';
 import '../Blocos/Blocos.css';
+import Exit from "../../Exit.js";
 export default class Blocos extends Component{
     constructor(){
         super()
@@ -35,11 +35,7 @@ export default class Blocos extends Component{
         this.query_receita();
     }   
     query_numero(){
-        const Axios = axios.create({
-            baseURL: apis
-        })
-        Axios.post('index.php?url=quantidadeclientes/pesquisa', {user: '1'}, {headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res =>{
+        Axios.post('index.php?url=quantidadeclientes/pesquisa', {user: '1'}).then(res =>{
             if(res.data.data === 'Usuário não autenticado' || res.data.data === '1'){
                 this.setState({numero_clientes: "Sem clientes"})
             }
@@ -51,11 +47,11 @@ export default class Blocos extends Component{
         })
     }
     query_aniversariantes(){
-        const Axios = axios.create({
-            baseURL: apis
-        })
-        Axios.post('index.php?url=aniversariantes/pesquisa', {user: '1'}, {headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res => {
+        Axios.post('index.php?url=aniversariantes/pesquisa', {user: '1'}
+        ).then(res => {
+            if(res.data.data === 'Usuário não autenticado'){
+                Exit()
+            }
             if(res.data.data === 'Usuário não encontrado' || res.data.data === '1'){
                 this.setState({aniversariantes: '0'})    
             }
@@ -66,11 +62,8 @@ export default class Blocos extends Component{
         })
     }
     query_receita(){
-        const Axios = axios.create({
-            baseURL: apis
-        })
-        Axios.post('index.php?url=pagamentosmes/pesquisa', { mes:'12', ano:'2021'}, {headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res =>{
+        Axios.post('index.php?url=pagamentosmes/pesquisa', { mes:'12', ano:'2021'}
+        ).then(res =>{
             if(res.data.data === '1'|| res.data.data === '2'){
                 this.setState({valor_do_mes: 'R$ 0,00'})
             }

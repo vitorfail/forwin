@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import axios from "axios";
-import { apis } from "../../caminho_api.mjs";
+import Axios from "../../Axios.js";
 import '../ResultadoPesquisa/ResultadoPesquisa.css'
 import Zap from "../../icones/whats_branco.png";
 import ModalPagamentos from "../ModalPagamentos/ModalPagamentos.js";
@@ -73,12 +72,9 @@ export default class ResultadoPesquisa extends Component{
         window.open(link)
     }
     resultado(){
-        const Axios = axios.create({
-            baseURL: apis
-        })
-        Axios.post("index.php?url=pesquisa/pesquisa", {nome: this.props.nomepesquisa},{headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then(res => {
+        Axios.post("index.php?url=pesquisa/pesquisa", 
+        {nome: this.props.nomepesquisa}
+        ).then(res => {
             if(res.data.data === '1' || res.data.data === '2'){
                 this.setState({numero: 0})
             }

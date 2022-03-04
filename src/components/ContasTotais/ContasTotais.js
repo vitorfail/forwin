@@ -1,10 +1,10 @@
 import {Component} from 'react';
-import axios from 'axios';
-import {apis} from '../../caminho_api.mjs';
+import Axios from '../../Axios.js';
 import Seta_direita from "../../icones/seta.png";
 import Seta_esquerda from "../../icones/seta-esquerda.png";
 import Seta_direita_dupla from "../../icones/seta-direita-dupla.png";
 import Seta_esquerda_dupla from "../../icones/seta-esquerda-dupla.png";
+import Exit from '../../Exit.js';
 import './ContasTotais.css';
 
 export default class ContasTotais extends Component{
@@ -56,18 +56,14 @@ export default class ContasTotais extends Component{
     pesquisa_pagamentos(mes_, ano_){
         let data = new Date();
         let data_hoje = data.getFullYear() + '-'+ (data.getMonth()+1) + '-' + data.getDate();
-        const Axios = axios.create({
-            baseURL: apis
-        })
         Axios.post('index.php?url=contaspainel/pesquisa', 
             {mes_query:mes_, 
             dat: data_hoje,
             ano:ano_,
-            marcador: "Várias"}, {headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then( res => {
+            marcador: "Várias"}
+        ).then( res => {
             if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
-
+                Exit()
             }
             else{
                 var repetidor = 0

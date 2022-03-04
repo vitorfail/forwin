@@ -5,6 +5,7 @@ import ResultadoPesquisa from '../components/ResultadoPesquisa/ResultadoPesquisa
 import Loading from '../components/Loading/Loading';
 import Blocos from '../components/Blocos/Blocos';
 import { useParams } from 'react-router-dom';
+import Coockie from '../components/Coockie/Coockie';
 function Pesquisa(props){ 
     const {nome} = useParams();
     return(
@@ -20,6 +21,7 @@ function Pesquisa(props){
                 </div>
             </div>
             <Loading></Loading>
+            <Coockie></Coockie>
         </div>
     )
 }

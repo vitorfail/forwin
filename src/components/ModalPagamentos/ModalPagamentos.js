@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import axios from "axios";
 import './ModalPagamentos.css'
 import './loading.scss'
-import { apis } from "../../caminho_api.mjs";
+import Axios from "../../Axios.js";
 import pdf from '../../icones/pdf.png'
-import jsPDF from "jspdf"; 
+import jsPDF from "jspdf";
+import Exit from "../../Exit"; 
 export default class ModalPagamentos extends Component{
     constructor(props){
         super(props)
@@ -45,12 +45,11 @@ export default class ModalPagamentos extends Component{
         this.setState({novo_pag:'novo-input mostrar'})
     }
     pesquisar_pagamentos(ident){
-        const Axios = axios.create({
-            baseURL: apis
-        })
-        Axios.post('index.php?url=pagamentos/pesquisa', {id: ident} ,{headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then(res => {
+        Axios.post('index.php?url=pagamentos/pesquisa', {id: ident}
+        ).then(res => {
+            if(res.data.data === 'Usuário não autenticado'){
+                Exit()
+            }
             if(res.data.data === '1' || res.data.data === '2'){
                 this.setState({resultado: <h3 className="s-pag">Sem pagamentos encontrados</h3>})
                 this.setState({preferido: "Nenhum"})
@@ -121,17 +120,17 @@ export default class ModalPagamentos extends Component{
             this.setState({preencha: "preencha mostrar"})
         }
         else{
-            const Axios = axios.create({
-                baseURL:apis
-            })
-            Axios.post('index.php?url=adicionarpagamento/pesquisa', {id: i,  
-                                                    data: this.state.data_novo_input,
-                                                    valor: val,  
-                                                    tipo: this.state.tipo_novo_input,
-                                                    nome: name,
-                                                    procedimento: this.state.procedimento_novo_input} ,{headers: {
-                                                        "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-            .then(res => {
+            Axios.post('index.php?url=adicionarpagamento/pesquisa', 
+            { id: i,  
+            data: this.state.data_novo_input,
+            valor: val,  
+            tipo: this.state.tipo_novo_input,
+            nome: name,
+            procedimento: this.state.procedimento_novo_input}
+            ).then(res => {
+                if(res.data.data === 'Usuário não autenticado'){
+                    Exit()
+                }
                 if(res.data.data === '1'){
                     this.setState({novo_pag: 'novo-input'})
                     this.pesquisar_pagamentos(i)
@@ -169,16 +168,11 @@ export default class ModalPagamentos extends Component{
         doc.setFont("times")
         doc.setFontSize(30);
         doc.text(75, 20, "NOTA FISCAL");
-        const Axios = axios.create({
-            baseURL:apis
-        })
-        Axios.post('index.php?url=dadosuser/pesquisa', {id: id}, {headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then(res => {
+        Axios.post('index.php?url=dadosuser/pesquisa', {id: id}
+        ).then(res => {
             if(res.data.data === 'Usuário não autenticado' || res.data.data === '2'){
-                localStorage.removeItem('token_jwt');
-                alert("seu usuário não está autenticado. Estamos redirecionando você para que possa fazer o login novamente")
-                window.location.reload()
+                console.log("Passou aqui")
+                Exit()
             }
             else{
                 cnpj_vendedor = res.data.data[0]
@@ -186,13 +180,10 @@ export default class ModalPagamentos extends Component{
                 endereco_vendedor = res.data.data[2]
                 municipio_vendedor = res.data.data[3]
                 uf_vendedor = res.data.data[4]
-                Axios.post('index.php?url=pesquisainfo/pesquisa', {id: id}, {headers: {
-                    "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-                .then(res => {
+                Axios.post('index.php?url=pesquisainfo/pesquisa', {id: id}
+                ).then(res => {
                     if(res.data.data === 'Usuário não autenticado' || res.data.data === '1'){
-                        localStorage.removeItem('token_jwt');
-                        alert("seu usuário não está autenticado. Estamos redirecionando você para que possa fazer o login novamente")
-                        window.location.reload()
+                        Exit()
                     }
                     else{
                         cnpj_comprador= res.data.data[3]

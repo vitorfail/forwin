@@ -1,7 +1,7 @@
 import React,{Component} from "react";
-import axios from "axios";
 import './ModalEditar.css'
-import {apis} from '../../caminho_api.mjs'
+import Axios from '../../Axios.js';
+import Exit from "../../Exit";
 export default class ModalEditar extends Component{
     constructor(props){
         super(props)
@@ -25,32 +25,30 @@ export default class ModalEditar extends Component{
         this.pesquisar_cadastro = this.pesquisar_cadastro.bind(this)
     }
     pesquisar_cadastro(ident){
-        const Axios = axios.create({
-            baseURL: apis
-        })
-        Axios.post('index.php?url=pesquisainfo/pesquisa', {id: ident}, {headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then(res => {
-            this.setState({nome: res.data.data[1]})
-            this.setState({data: res.data.data[2]})
-            this.setState({cpf: res.data.data[3]})
-            this.setState({estado_civil: res.data.data[4]})
-            this.setState({genero: res.data.data[5]})
-            this.setState({uf: res.data.data[6]})
-            this.setState({endereco: res.data.data[7]})
-            this.setState({cidade: res.data.data[8]})
-            this.setState({telefone: res.data.data[9]})
-            this.setState({email: res.data.data[10]})
-            this.setState({notific: res.data.data[11]})
+        Axios.post('index.php?url=pesquisainfo/pesquisa', {id: ident}
+        ).then(res => {
+            if(res.data.data === "Usuário não autenticado"){
+                Exit()
+            }
+            else{
+                this.setState({nome: res.data.data[1]})
+                this.setState({data: res.data.data[2]})
+                this.setState({cpf: res.data.data[3]})
+                this.setState({estado_civil: res.data.data[4]})
+                this.setState({genero: res.data.data[5]})
+                this.setState({uf: res.data.data[6]})
+                this.setState({endereco: res.data.data[7]})
+                this.setState({cidade: res.data.data[8]})
+                this.setState({telefone: res.data.data[9]})
+                this.setState({email: res.data.data[10]})
+                this.setState({notific: res.data.data[11]})    
+            }
         })
         .catch(error => {
             alert("Não foi possível pesquisar o cadastro desse cliente. Por favor tente denovo mais tarde")
         })
     }
     atualizar_cadastro(ident){       
-        const Axios = axios.create({
-            baseURL:apis
-        })
         Axios.post('index.php?url=atualizarcadastro/pesquisa', {id: ident, 
             nome:this.state.nome.toString(),
             data:this.state.data.toString(),
@@ -62,9 +60,11 @@ export default class ModalEditar extends Component{
             cidade:this.state.cidade.toString(),
             telefone:this.state.telefone.toString(),
             email:this.state.email.toString(),
-            notific:this.state.notific.toString()}, {headers: {
-                "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}})
-        .then(res =>{
+            notific:this.state.notific.toString()}
+        ).then(res =>{
+            if(res.data.data === 'Usuário não autenticado'){
+                Exit()
+            }
             if(res.data.data === '1'){
                 this.props.executar("modal-editar")
             }

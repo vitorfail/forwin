@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import axios from "axios";
-import {apis} from "../../caminho_api.mjs";
+import Axios from "../../Axios.js";
 import './ClientesRecentes.css';
 import {Link} from 'react-router-dom'
 export default class ClientesRecentes extends Component{
@@ -15,11 +14,8 @@ export default class ClientesRecentes extends Component{
         window.addEventListener('load', this.atualiza_clientes)
     }
     atualiza_clientes(){
-        const Axios = axios.create({
-            baseURL: apis
-        })
-        Axios.post('index.php?url=atualiza/pesquisa', {name: '0', id:'1'}, {headers: {
-            "Authorization": "Bearer "+ localStorage.getItem('token_jwt')}}).then(res =>{
+        Axios.post('index.php?url=atualiza/pesquisa', {name: '0', id:'1'}
+        ).then(res =>{
             if(res.data.data === 2 || res.data.data === 0){
                 let ir = [];
                 this.setState({ lista: ir })

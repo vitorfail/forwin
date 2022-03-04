@@ -28,7 +28,8 @@
     require_once('./update_conta.php');
     require_once('./tipos_pagamento.php');
     require_once('./contas_painel.php');
-    require_once('./dadosuser.php');    
+    require_once('./dadosuser.php');
+    require_once('./politicasprivacidade.php');    
 
     class Rest{
         private $request;
