@@ -29,7 +29,8 @@
     require_once('./tipos_pagamento.php');
     require_once('./contas_painel.php');
     require_once('./dadosuser.php');
-    require_once('./politicasprivacidade.php');    
+    require_once('./politicasprivacidade.php');
+    require_once('./cederprivacidade.php');        
 
     class Rest{
         private $request;
