@@ -24,7 +24,12 @@
                         foreach($resultado as $row){
                             array_push($politicas, $row['politicas']);
                         }
-                        return $politicas[0];
+                        if($politicas[0] === '0'){
+                            return false;
+                        }
+                        if($politicas[0] === '1'){
+                            return true;
+                        }
                     }
                     else{
                         return '2';

@@ -4,12 +4,34 @@ import Barralateral from '../components/Barralateral/Barralateral';
 import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
 import CadastroCliente from '../components/CadastroCliente/CadastroCliente';
 import Loading from '../components/Loading/Loading';
+import Axios from '../Axios';
 import Coockie from '../components/Coockie/Coockie';
 export default class Cadastro extends Component{
     constructor(){
         super()
         this.state = {
+            politicas:false
         }
+        this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
+    }
+    componentWillMount(){
+       this.pesquisar_politicas()
+    }
+    pesquisar_politicas(){
+        Axios.post('index.php?url=politicasprivacidade/pesquisa')
+        .then(res => {
+            if(res.data.data === '2'){
+                
+            }
+            else{
+                if(res.data.data === true){
+                    this.setState({politicas: true})
+                }
+                if(res.data.data === false){
+                    this.setState({politicas: false})
+                }
+            }
+        })
     }
     render(){
         return(
@@ -24,7 +46,7 @@ export default class Cadastro extends Component{
                     </div>
                 </div>
                 <Loading></Loading>
-                <Coockie></Coockie>
+                <Coockie politicas={this.state.politicas}></Coockie>
             </div>
         )
     }

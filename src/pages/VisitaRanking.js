@@ -48,7 +48,7 @@ export default class VisitaRanking extends Component{
                     </div>
                 </div>
                 <Loading></Loading>
-                <Coockie>{this.state.politicas}</Coockie>
+                <Coockie politicas={this.state.politicas}></Coockie>
             </div>
         )
     }

@@ -7,6 +7,9 @@
     z-index: 50000;
     height: 170px;
     width: 550px;
+    display: none;
+}
+.coockie.mostrar{
     display: block;
 }
 .coockie .politica{
@@ -85,6 +88,37 @@
     font-weight: 500;
     background: rgb(255, 255, 255);
     color: rgb(8, 12, 253);
+}
+@media screen and (max-width:640px) {
+    .coockie{
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+    }
+    .coockie .politica{
+        padding: 0;
+    }
+    .coockie .opcoes{
+        padding: 0;
+    }
+    .coockie .texto p{
+        font-size: 16px;
+    }
+    .coockie .politica p{
+        padding-left: 8px;
+        font-size: 16px
+    }
+    .coockie .opcoes .link .l{
+        padding: 7px;
+        font-size: 16px;
+    }
+    .coockie .politica img{
+        margin-left: 7px;
+        margin-top: 7px;
+    }
+    .coockie .politica p{
+        margin-top: 7px;
+    }
 }
 
 
