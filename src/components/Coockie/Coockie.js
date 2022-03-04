@@ -3,9 +3,10 @@ import './Coockie.css'
 import { Link } from "react-router-dom";
 import Biscoito from '../.././icones/coockie.png'
 
-function Coockie(){
-    
-    return(<div className="coockie">
+const  Coockie = ({props}) => {
+    function Apertar(){}
+    console.log(props)
+    return( props? <div className="coockie">
                 <div className="politica">
                     <img src={Biscoito} alt="Coockies" />
                     <p>Esse site usa cookies</p>
@@ -19,10 +20,11 @@ function Coockie(){
                         <Link className="l" to='/politicas'>Políticas de Privacidade</Link>
                     </div>
                     <div className="botoes">
-                        <button className="recusar" >Recusar</button>
+                        <button className="recusar" onClick={() => Apertar()} >Recusar</button>
                         <button className="aceitar">Aceitar</button>
                     </div>
                 </div>
-            </div>)
+            </div>: null)
+    
 }
 export default Coockie;

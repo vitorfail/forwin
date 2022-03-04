@@ -16,7 +16,7 @@ export default class VisitaRanking extends Component{
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
     componentWillMount(){
-        window.addEventListener('load',this.pesquisar_politicas)
+       this.pesquisar_politicas()
     }
     pesquisar_politicas(){
         Axios.post('index.php?url=politicasprivacidade/pesquisa')
@@ -25,7 +25,6 @@ export default class VisitaRanking extends Component{
                 
             }
             else{
-                console.log(res.data.data)
                 if(res.data.data === true){
                     this.setState({politicas: true})
                 }
