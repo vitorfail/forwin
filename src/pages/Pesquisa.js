@@ -9,7 +9,7 @@ import Coockie from '../components/Coockie/Coockie';
 import Axios from '../Axios';
 function Pesquisa(props){ 
     const {nome} = useParams();
-    const [poli, setpoliticas] = useState(false);
+    const [poli, setpoliticas] = useState(true);
     useEffect(() => 
         pesquisar_politicas()
     )

@@ -2,10 +2,30 @@ import React, {useState} from "react"
 import './Coockie.css'
 import { Link } from "react-router-dom";
 import Biscoito from '../.././icones/coockie.png'
+import Axios from '../../Axios';
+import Exit from '../../Exit';
 
 const  Coockie = (props) => {
     const [mostrar, setmostrar] = useState("coockie mostrar")
     function Apertar(){
+        Axios.post('index.php?url=cederprivacidade/pesquisa', {key: '1'})
+        .then(res => {
+            if(res.data.data === '2'){
+                alert("Não foi possível confirmar. Verifique a internet e tente denovo")
+            }
+            if(res.data.data === 'Usuário não autenticado'){
+                Exit()
+            }
+            if(res.data.data === '1'){
+                setmostrar("coockie")
+            }
+            else{
+                alert("Não foi possível confirmar. Verifique a internet e tente denovo")
+            }
+        })
+        .catch(error => {
+            alert("Não foi possível confirmar. Verifique a internet e tente denovo")
+        })
     }
     function Fechar(){
         setmostrar("coockie")

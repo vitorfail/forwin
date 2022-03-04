@@ -10,7 +10,7 @@ export default class Cadastro extends Component{
     constructor(){
         super()
         this.state = {
-            politicas:false
+            politicas:true
         }
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
