@@ -233,7 +233,6 @@ export default class Planilhas extends Component{
                 this.setState({casada:0})
                 this.setState({solteira:0})
                 this.setState({divorciada:0}) 
-
             }
             else{
                 var solteiro =0

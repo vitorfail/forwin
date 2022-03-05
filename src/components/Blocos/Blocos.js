@@ -52,13 +52,19 @@ export default class Blocos extends Component{
             if(res.data.data === 'Usuário não autenticado'){
                 Exit()
             }
-            if(res.data.data === 'Usuário não encontrado' || res.data.data === '1'){
+            if(res.data.data === 'Error'){
+                this.setState({aniversariantes: '0'})    
+            }
+            if(res.data.data === '1'){
                 this.setState({aniversariantes: '0'})    
             }
             else{
-                var num = res.data.data;
+                var num = res.data.data[0];
                 this.setState({aniversariantes: num[0].length})
             }
+        })
+        .catch(error =>{
+            this.setState({aniversariantes: '0'})    
         })
     }
     query_receita(){
@@ -112,6 +118,7 @@ export default class Blocos extends Component{
                     </div>
                 </div>
                 <div className="card">
+                    <Link className='link' to='/aniversariantes'></Link>
                     <div className="box">
                         <h1 id="aniver">{this.state.aniversariantes}</h1>
                         <h3>Aniversariantes</h3>

@@ -13,7 +13,9 @@
                     include_once('conexao.php');
                     $data = strval(date('Y/m/d'));
                     $data_formatada = str_replace('/', '-', $data);
-                    $sql = "SELECT * FROM clientes_".$dados_de_usuario_sql->name."_".$dados_de_usuario_sql->id." WHERE data_nascimento = '$data_formatada'";
+                    $data_formatada2 = explode("-", $data_formatada);
+
+                    $sql = "SELECT * FROM clientes_".$dados_de_usuario_sql->name."_".$dados_de_usuario_sql->id." WHERE DAY(data_nascimento) = ".$data_formatada2[2]." AND MONTH(data_nascimento) =  ".$data_formatada2[1];
                     $pesquisa = $conexao->query($sql);
                     $row_usuario = $pesquisa->fetchAll();
                     $array = array();
@@ -37,11 +39,11 @@
                         return $array;
                     }
                     else{
-                        return "Nenhum";
+                        return '2';
                     }
                 }
                 catch(Exception $e){
-                    return "1";
+                    return "Error";
                 }            
             }
             else{
