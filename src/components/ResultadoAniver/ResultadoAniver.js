@@ -341,7 +341,7 @@ export default class ResultadoAniver extends Component{
         return(
             <div className="clientes_achados">
                 <div className="titulo_pesquisa">
-                    <h1 id="list">{this.state.numero} Clientes Encontrados</h1>
+                    <h1 id="list">{this.state.numero} aniversariantes Encontrados</h1>
                 </div>
                 <div className="encontrados">
                     {this.lista}
