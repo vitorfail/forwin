@@ -167,7 +167,7 @@ export default class PagamentosMensais extends Component{
             <div className="clientes_achados">
                 <div className="titulo_pesquisa">
                     <h1 id="list">Pagamentos de</h1>
-                    <select className='meses' onChange={(event) => this.trocar1(event.target.value)}>
+                    <select className='meses' value={this.state.mes} onChange={(event) => this.trocar1(event.target.value)}>
                         <option value='01'>Janeiro</option>
                         <option value='02'>Fevereiro</option>
                         <option value='03'>Março</option>
@@ -181,7 +181,7 @@ export default class PagamentosMensais extends Component{
                         <option value='11'>Novembro</option>
                         <option value='12'>Dezembro</option>
                     </select>
-                    <select className='ano' onChange={(event) => this.trocar2(event.target.value)}>
+                    <select className='ano' value={this.state.ano} onChange={(event) => this.trocar2(event.target.value)}>
                         <option value='2030'>2030</option>
                         <option value='2029'>2029</option>
                         <option value='2028'>2028</option>

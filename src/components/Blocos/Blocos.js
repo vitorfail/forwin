@@ -59,7 +59,7 @@ export default class Blocos extends Component{
                 this.setState({aniversariantes: '0'})    
             }
             else{
-                var num = res.data.data[0];
+                var num = res.data.data;
                 this.setState({aniversariantes: num[0].length})
             }
         })

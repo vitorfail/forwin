@@ -36,6 +36,11 @@
     width: 50%;
     padding: 10px;
 }
+.barra .cabecalho .barra_de_pesquisa .pesquisa input[type=text]:focus{
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
 .barra .cabecalho .barra_de_pesquisa .pesquisa .p{
     z-index: 45000;
     width: 37px;

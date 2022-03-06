@@ -16,6 +16,7 @@ export default class ClientesRecentes extends Component{
     atualiza_clientes(){
         Axios.post('index.php?url=atualiza/pesquisa', {name: '0', id:'1'}
         ).then(res =>{
+            console.log(res.data.data)
             if(res.data.data === 2 || res.data.data === 0){
                 let ir = [];
                 this.setState({ lista: ir })

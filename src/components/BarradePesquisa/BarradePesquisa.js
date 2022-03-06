@@ -50,6 +50,11 @@ function BarradePesquisa(){
             alert('Não foi possível inserir essa conta. Cheque sua conexão com a internet e tent novamente')
         })
     }
+    function entrar(event){
+        if(event.key === "Enter" || event.key === 13){
+            pesquisa()
+        }
+    }
     function show(visivel){
         setNome(visivel);
     }
@@ -96,7 +101,7 @@ function BarradePesquisa(){
             <div className="barra_de_pesquisa">
                 <div className="pesquisa">
                     <img  className='list' onClick={() => mostrar_menu()} src={lista} alt="Lista"/>
-                    <input type="text" onChange={(event) => setnomepesquisa(event.target.value)} name="c-pesquisa" placeholder="Pesquise...."/>
+                    <input type="text" onKeyPress={(event) => entrar(event)} onChange={(event) => setnomepesquisa(event.target.value)} name="c-pesquisa" placeholder="Pesquise...."/>
                     <div onClick={(event) => pesquisa()} className='p' ><img src={lupa} alt=""/></div>
                 </div>
                 <div className="user">

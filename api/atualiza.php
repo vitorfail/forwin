@@ -23,7 +23,12 @@
                     if(count($pesquisa) > 0){
                         foreach($pesquisa as $row){
                            array_push($nome, $row['nome']);
-                           array_push($telefone, $row['telefone']);
+                           if($row['telefone'] == null){
+                                array_push($telefone, "Sem telefone");
+                           }
+                           else{
+                                array_push($telefone, $row['telefone']);
+                           }
                            array_push($genero, $row['genero']);            
                         }
                         $conexao=null;

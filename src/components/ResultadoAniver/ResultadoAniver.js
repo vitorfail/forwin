@@ -9,6 +9,7 @@ import Seta_direita from "../../icones/seta.png";
 import Seta_esquerda from "../../icones/seta-esquerda.png";
 import Seta_direita_dupla from "../../icones/seta-direita-dupla.png";
 import Seta_esquerda_dupla from "../../icones/seta-esquerda-dupla.png";
+import Exit from "../../Exit.js";
 export default class ResultadoAniver extends Component{
     constructor(){
         super()
@@ -75,7 +76,9 @@ export default class ResultadoAniver extends Component{
         Axios.post("index.php?url=aniversariantes/pesquisa", 
         {user:'1'}
         ).then(res => {
-            console.log(res.data)
+            if(res.data.data === "Usuário nãu autenticado"){
+                Exit()
+            }
             if(res.data.data === '1' || res.data.data === '2'){
                 this.setState({numero: 0})
             }
