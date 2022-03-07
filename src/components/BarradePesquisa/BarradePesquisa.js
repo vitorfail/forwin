@@ -94,7 +94,7 @@ function BarradePesquisa(){
                 <Link className='link' to='/graficos' ><img src={Planilha} alt="planilha"/>Planilha</Link>
                 <Link className='link'  to='/cadastro'><img src={Cadastro} alt="cadastro"/>Cadastro</Link>
                 <Link className='link'  to='/financeiro'><img src={DRE} alt="dre"/>DRE</Link>
-                <Link className='link'to='/'  ><img src={Ajuda} alt="ajuda"/>Ajuda</Link>
+                <Link className='link'to='/ajuda'  ><img src={Ajuda} alt="ajuda"/>Ajuda</Link>
                 <Link className='link' to='/'  >Home</Link>
                 <a className='link' onClick={() => logout()} to='/' href="/#"><img src={Sair}  alt="ajuda"/>Sair</a>
             </div>

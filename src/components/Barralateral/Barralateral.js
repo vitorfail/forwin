@@ -21,7 +21,7 @@ export default function Barralateral(){
                 <Link className="link" to='/graficos'><img src={Planilha} alt='Planilha'/>&nbsp;<span>Planilha</span></Link>
                 <Link  className="link" to='/cadastro' ><img src={Instituicao} alt='Instituição'/>&nbsp;<span>Cadastro</span></Link>
                 <Link className='link' to='/financeiro' ><img src={DRE} alt='DRE'/>&nbsp;<span>DRE</span></Link>
-                <Link className='link' to='/cadastro' ><img src={Config} alt='Config'/>&nbsp;<span>Ajuda</span></Link>
+                <Link className='link' to='/ajuda' ><img src={Config} alt='Config'/>&nbsp;<span>Ajuda</span></Link>
                 <a className='link' href="/#" onClick={() => logout()} ><img src={Saida} alt='Saida'/>&nbsp;<span>Sair</span></a>
             </ul>
         </div>
