@@ -33,15 +33,14 @@
     background-color: var(--preferencia--de--pagamento);
 }
 .modal-pag .modal h2{
+    font-weight:700;
     display: flex;
     padding: 5px 5px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(114, 114, 114);
 }
 .modal-pag .modal .preencha{
     display: none;
     padding: 2px 2px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: rgb(0, 0, 0);
     background: var(--preencha--cor);
     border: 2px solid var(--preencha--borda);
@@ -54,7 +53,6 @@
 .modal-pag .modal h3{
     display: flex;
     padding: 2px 2px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(110, 110, 110);
     font-size: 15px;
 }
@@ -75,7 +73,6 @@
     font-size: 12px;
     height: 30px;
     padding: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(114, 114, 114);;
 }
 .modal-pag .modal select{
@@ -84,7 +81,6 @@
     border-radius: 4px;
     font-size: 12px;
     height: 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(114, 114, 114);
 }
 .modal-pag .modal input:focus{
@@ -104,7 +100,6 @@
     padding: 5px 15px;
 }
 .modal-pag .modal .botoes .botao-sim .add{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--botao--sim--popup);
     color: white;
     padding: 5px 5px;
@@ -124,7 +119,6 @@
 }
 
 .modal-pag .modal .botoes .botao-fechar .nao{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .modal-pag .modal .botoes .botao-fechar .nao:hover{
     background-color: ivory;
@@ -139,7 +133,6 @@
     cursor: pointer;
 }
 .modal-pag .modal .botoes .botao-sim .sim{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--botao--sim--popup);
     color: white;
 }
@@ -156,7 +149,6 @@
     cursor: pointer;
 }
 .modal-pag .modal .botoes .botao-nao .nao{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .modal-pag .modal .botoes .botao-nao .nao:hover{
     background-color: ivory;

@@ -141,6 +141,7 @@ html::-webkit-scrollbar-thumb
 }
 
 .mostrar .modal{
+    overflow-y: auto;
     animation: modal 0.1s;
 }
 /* Fim adicionar conta*/

@@ -7,26 +7,30 @@ export default class SumarioAjuda extends Component{
         return(<div className='sumario'>
             <h3 className='titulo'>Ajuda</h3>
             <h3>Sumário</h3>
-            <h3 className='primeiro'>1. Barra de Pesquisa........................................</h3>
-            <h3 className='segundo'>1.1 Pesquisa por nome........................................</h3>
-            <h3 className='segundo'>1.2 Adicionar conta..........................................</h3>
-            <h3 className='segundo'>1.3 Mudar nome...............................................</h3>
-            <h3 className='segundo'>1.4 Mudar tema...............................................</h3>
-            <h3 className='primeiro'>2. Barra lateral............................................</h3>
-            <h3 className='primeiro'>3. Página - Home............................................</h3>
-            <h3 className='segundo'>3.1 Painel de clientes recentes..............................</h3>
-            <h3 className='segundo'>3.2 Painel de contas.........................................</h3>
-            <h3 className='segundo'>3.3 Painel de Ranking de pagamento...........................</h3>
-            <h3 className='segundo'>3.4 Painel de Ranking de visitas.............................</h3>
-            <h3 className='primeiro'>4. Página - Planilhas.......................................</h3>
-            <h3 className='primeiro'>5. Página - Cadastro........................................</h3>
-            <h3 className='primeiro'>6. Página - DRE.............................................</h3>
-            <h3 className='primeiro'>7. Página - Pesquisa........................................</h3>
-            <h3 className='primeiro'>8. Página - Aniversariantes.................................</h3>
-            <h3 className='primeiro'>9. Página - Pagamentos do mês..............................</h3>
-            <h3 className='primeiro'>10. Página - Contas.........................................</h3>
-            <h3 className='primeiro'>11. Página - Ranking pagamento..............................</h3>
-            <h3 className='primeiro'>12. Página - Ranking visitas................................</h3>
+            <h3 className='primeiro'>1. Barra de Pesquisa................................</h3>
+            <h3 className='segundo'>1.1 Pesquisa por nome................................</h3>
+            <h3 className='segundo'>1.2 Adicionar conta..................................</h3>
+            <h3 className='segundo'>1.3 Mudar nome.......................................</h3>
+            <h3 className='segundo'>1.4 Mudar tema.......................................</h3>
+            <h3 className='primeiro'>2. Barra lateral....................................</h3>
+            <h3 className='primeiro'>3. Página - Home....................................</h3>
+            <h3 className='segundo'>3.1 Painel de clientes recentes......................</h3>
+            <h3 className='segundo'>3.2 Painel de contas.................................</h3>
+            <h3 className='segundo'>3.3 Painel de Ranking de pagamento...................</h3>
+            <h3 className='segundo'>3.4 Painel de Ranking de visitas.....................</h3>
+            <h3 className='primeiro'>4. Página - Planilhas...............................</h3>
+            <h3 className='primeiro'>5. Página - Cadastro................................</h3>
+            <h3 className='primeiro'>6. Página - DRE.....................................</h3>
+            <h3 className='primeiro'>7. Página - Pesquisa................................</h3>
+            <h3 className='segundo'>7.1 Janela de pagamentos.............................</h3>
+            <h3 className='segundo'>7.2 Janela de editar.................................</h3>
+            <h3 className='segundo'>7.3 Janela de exclusão...............................</h3>
+            <h3 className='segundo'>7.3 Falar com o cliente..............................</h3>
+            <h3 className='primeiro'>8. Página - Aniversariantes.........................</h3>
+            <h3 className='primeiro'>9. Página - Pagamentos do mês.......................</h3>
+            <h3 className='primeiro'>10. Página - Contas.................................</h3>
+            <h3 className='primeiro'>11. Página - Ranking pagamento......................</h3>
+            <h3 className='primeiro'>12. Página - Ranking visitas........................</h3>
             <h3 className='primeiro'>1. Barra de Pesquisa</h3>
             <p>A barra de pesquisa é um item que contém 4 funções. <strong>Pesquisa de clientes</strong>, 
             <strong>Lançamentos de contas</strong>, <strong>troca de informações do usuário</strong> 
@@ -53,7 +57,9 @@ export default class SumarioAjuda extends Component{
                  pequeno menu que pode ser acessado clicando em três linhas no canto superior esquerdo</p>
             <h3 className='primeiro'>3. Página - Home</h3>
             <p>Essa é a primeira página que aparece quando o usuário efetua o login. Ela possui três painéis para controle. É possivel acessar 
-                a Home clicando em "Forwin" no canto superior da barra lateral </p>
+                a Home clicando em "Forwin" no canto superior da barra lateral. A página home possuiu 4 painéis e 3 blocos superiores. O bloco clientes mostra o total de 
+                clientes que estão cadastrados, clicando nele você é encaminhado para a <strong>7. Página - Pesquisa</strong>. O Bloco aniversariantes mostra a quantidadde de clientes que fazem aniversário
+                 no dia atual, clicando nela você é encaminhado para <strong>8. Página - Aniversariantes</strong>. O terceiro bloco mostra os pagamento recebidos no mês, clicando nele você direcionado para <strong>8. Página - Pagamentos do mês</strong>  </p>
             <h3 className='primeiro'>3.1 Painel de clientes recentes</h3>
             <p>Esse painel não pode ser usado para alterar informações. Ele ser apenas para visualização. 
                 Ele mostra os clientes cadastrados recentemente. Clicando em "Ver mais", você é direcionado para <strong>8. Página - Pesquisa</strong> onde lá poderá 
@@ -79,8 +85,33 @@ export default class SumarioAjuda extends Component{
             <h3 className='primeiro'>6. Página - DRE</h3>
             <p>A Dre é a demonstração de resultado do mês. Porém você pode ver as demonstrações de outros meses e de outros anos. An contas são separadas em contas operacionais, administrativas e impostos. Os número 
                 dessas demonstrações são tirados das contas lançadas no sistema, portanto é importante preecher as informações de maneira correta antes de lançar.</p>
-
-
+            <h3 className='primeiro'>7. Página - Pesquisa</h3>
+            <p>A página de pesquisa aparece quando se clica em "Ver mais" no painel de clientes recentes ou na barra de pesquisas. Essa página mostra os clientes cadastrados do mais antigo ao mais recente dividios 
+                em grupos de 50. Você pode ver grupo por grupo clicando nas setinhas embaixo. Cada cliente possuiu 3 janelas.</p>
+            <h3 className='primeiro'>7.1 Janela de pagamentos</h3>
+            <p> É uma janela que se abre quando se clica no botão azul. Ela mostra os pagamentos efetuados pelo cliente, do mais antigo ao mais recente.
+                É possivel lançar novos pagamento dentro dessa janela. Ainda dentro dela é possivel ver qual o ranking dessa pessoa em relação as visitas e aos pagamentos.
+                Clicando nos ícones em formato de folha você consegue emitir "notas ficais". Elas  <strong>não tem valor jurídicos e/ou contábil.</strong> Servem apenas para controle. 
+                O usuário gera elas e repassa para a contabilidade, e lá por sua vez é emitdia a nota válida.</p>
+            <h3 className='primeiro'>7.2 Janela de editar</h3>
+            <p>Essa janela serve para editar as informações do cliente.</p>
+            <h3 className='primeiro'>7.3 Janela de exclusão</h3>
+            <p>Quando se clica no botão "Excluir" ela abre perguntado se o usuário realmente deseja isso. <strong>Cuidado: Quando se clica em "Sim" os dados desse cliente serão apagados 
+                permanentemente sobrando apenas seus pagamento. Os dados não poderão ser restaurados, só se você cadastrá-lo novamente</strong> </p>
+            <h3 className='primeiro'>7.3 Falar com o cliente</h3>
+            <p>Quando se clica no botão falar o usuário é direcionado para um nova do whatsapp web(se estiver no computador), ja no celular ele redireciona diretamente para o aplicativo. É importante saber que 
+                o contado para qual o usuário será encaminhado depende do número cadastrado, então deve estar atento no momento do cadastro. O usuário só será encaminhado caso haja um número de telefone cadastrado. </p>
+            <h3 className='primeiro'>8. Página - Aniversariantes</h3>
+            <p>Essa é uma derivação da <strong>7. Página - Pesquisa</strong> portanto tem as mesmas funções, porém ao invés de listar todos os clientes ela lista apenas os que fazem aniversário no dia atual. </p>
+            <h3 className='primeiro'>9. Página - Pagamentos do mês</h3>
+            <p>É possivel acessar essa página clicando no terceiro bloco superior. Nessa página se pode olhar os pagamentos mês a mês e ano a ano.</p>
+            <h3 className='primeiro'>10. Página - Contas</h3>
+            <p>Essa página é acessada clicando em "Ver mais" no painel de contas da <string>1. Página - Home</string>. Ela mostra as contas mês a mês e ano a ano.</p>
+            <h3 className='primeiro'>11. Página - Ranking pagamento</h3>
+            <p>Pode ser acessado clicando em "Ver mais" no painel de Ranking da <string>1. Página - Home</string></p>
+            <h3 className='primeiro'>12. Página - Ranking de visitas</h3>
+            <p>Pode ser acessado clicando em "Ver mais" no painel de Ranking da <string>1. Página - Home</string></p>
+            <p className='sug'>Para dúvidas, sugestões ou problemas entre em contado com o nosso email <a href='mailto:map.marketing7@gmail.com'>map.marketing7@gmail.com</a> </p>
         </div>)
     }
 }

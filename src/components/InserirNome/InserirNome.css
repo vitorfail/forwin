@@ -5,7 +5,7 @@
     position: fixed;
     top: 0px;
     left: 0px;
-    z-index: 2000;
+    z-index: 4500;
     align-items: center;
     justify-content: center;
     display: none;
@@ -23,6 +23,7 @@
     display: flex;
 }
 .nameclatura .modal .caixa{
+    height: 209px;
     padding: 19px;
     align-items: center;
     justify-content: center;
@@ -107,7 +108,7 @@
     border-color: #9ecaed;
     box-shadow: 0 0 10px #9ecaed;
 }
-.nameclatura .modal h1{
+.nameclatura .modal .nickname{
     font-size: 45px;
     display: flex;
     justify-content: center;
@@ -118,6 +119,20 @@
     color: white;
     border-radius: 50px;
 }
+.nameclatura .modal::-webkit-scrollbar{
+    border-radius: 10px;
+  width: 7px;
+  background-color: #F5F5F5;
+}
+.nameclatura .modal::-webkit-scrollbar-thumb{
+    -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+  background-color: var(--vermelho);
+}
+.nameclatura .modal::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+  background-color: #F5F5F5;
+}
+
 @media screen and (max-width: 640px) {
     .nameclatura .modal{
         width: 109vw;

@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("../../fonts/Roboto-Light.ttf") format("truetype");
+    
+}
 .clientes_achados{
     min-height: 100vh;
     background: white;
@@ -12,7 +17,7 @@
 }
 .titulo_pesquisa h1{
     font-size: 25px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Roboto";
     color: #ffffff;
     padding: 5px 39.5px;
 }
@@ -215,7 +220,7 @@
 }
 .enc h3{
     font-style: inherit;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto";
     font-size: 16px;
     font-weight: 400;
     display: flex;

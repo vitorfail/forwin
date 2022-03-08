@@ -42,7 +42,7 @@
     box-shadow: 0 0 10px #9ecaed;
 }
 .barra .cabecalho .barra_de_pesquisa .pesquisa .p{
-    z-index: 45000;
+    z-index: 4000;
     width: 37px;
     height: 37px;
     border: none;
