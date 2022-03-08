@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Axios from "../../Axios";
 import Exit from "../../Exit";
 function InserirNome(props){
+    const [titulo, settitulo] = useState("")
     const [nome, setnome] = useState('');
     const [cnpj, setcnpj] = useState('');
     const [endereco, setendereco] = useState('');
@@ -27,6 +28,8 @@ function InserirNome(props){
                     Exit()
                 }
                 else{
+                    let v = String(res.data.data[1]).toUpperCase()
+                    settitulo(v.substring(0, 1))
                     setnome(res.data.data[1])
                     setcnpj(res.data.data[0])
                     setendereco(res.data.data[2])
@@ -40,7 +43,7 @@ function InserirNome(props){
         <div className={props.mostrar}>
             <div className='modal'>
                 <div className='caixa'>
-                    <h1 className='nickname'>{nome}</h1>
+                    <h1 className='nickname'>{titulo}</h1>
                     <h3>Nome</h3>
                     <input className='mudar-nome' value={nome} type='text'/>
                     <h3>CNPJ</h3>
