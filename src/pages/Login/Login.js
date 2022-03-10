@@ -16,38 +16,6 @@ function Login(){
     const settoken = (t) => {
         localStorage.setItem('token_jwt', t);
     }
-
-    function puxar_nome(){
-        Axios.post('index.php?url=dadosuser/pesquisa', )
-        .then(res =>{
-            if(res.data.data === '1'){
-
-            }
-            if(res.data.data === "Usuário não autenticado"){
-            }
-            else{
-                if((res.data.data[5])[0] === 'temapadrao'){
-                    let html = document.querySelector('html');
-                    html.className = "tema-padrao";
-                }
-                if((res.data.data[5])[0] === 'temaazul'){
-                    let html = document.querySelector('html');
-                    html.className = "tema-azul";
-                }
-                if((res.data.data[5])[0] === 'temalaranja'){
-                    let html = document.querySelector('html');
-                    html.className = "tema-laranja";
-                }
-                if((res.data.data[5])[0] === 'temaroxo'){
-
-                    let html = document.querySelector('html');
-                    html.className = "tema-roxo";
-                }
-            } 
-        })
-        .catch(error => {
-        })
-    }
     function login_func(){
         if(senha === null || usuario === null || senha === '' || usuario === ''){
             setconteudoError('Preencha a senha e o usuário')
@@ -70,7 +38,6 @@ function Login(){
                 }
                 else{
                     settoken(res.data.data)
-                    puxar_nome()
                     setTimeout(() =>{ 
                                         history.push('/')
                                     }, 3000);

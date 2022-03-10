@@ -7,11 +7,14 @@ import Blocos from '../components/Blocos/Blocos';
 import { useParams } from 'react-router-dom';
 import Coockie from '../components/Coockie/Coockie';
 import Axios from '../Axios';
+import Tema from '.././Tema'
+
 function Pesquisa(props){ 
     const {nome} = useParams();
     const [poli, setpoliticas] = useState(true);
-    useEffect(() => 
-        pesquisar_politicas()
+    useEffect(() => {
+        Tema()
+        pesquisar_politicas()}
     )
     function pesquisar_politicas(){
         Axios.post('index.php?url=politicasprivacidade/pesquisa')

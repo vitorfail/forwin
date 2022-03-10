@@ -6,6 +6,7 @@ import Loading from '../components/Loading/Loading';
 import Axios from '../Axios';
 import Coockie from '../components/Coockie/Coockie';
 import SumarioAjuda from '../components/SumarioAjuda/SumarioAjuda';
+import Tema from ".././Tema"
 export default class Ajuda extends Component{
     constructor(){
         super()
@@ -15,6 +16,7 @@ export default class Ajuda extends Component{
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
     componentWillMount(){
+        Tema();
        this.pesquisar_politicas()
     }
     pesquisar_politicas(){

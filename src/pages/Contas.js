@@ -7,6 +7,8 @@ import ContasTotais from '../components/ContasTotais/ContasTotais';
 import Loading from '../components/Loading/Loading';
 import Coockie from '../components/Coockie/Coockie';
 import Axios from '../Axios';
+import Tema from '.././Tema'
+
 export default class Contas extends Component{
     constructor(){
         super()
@@ -16,6 +18,7 @@ export default class Contas extends Component{
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
     componentWillMount(){
+        Tema()
        this.pesquisar_politicas()
     }
     pesquisar_politicas(){

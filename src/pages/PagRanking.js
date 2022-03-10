@@ -7,6 +7,8 @@ import Loading from '../components/Loading/Loading';
 import RPag from '../components/RPag/RPag';
 import Coockie from '../components/Coockie/Coockie';
 import Axios from '../Axios';
+import Tema from '.././Tema'
+
 export default class PagRanking extends Component{
     constructor(){
         super()
@@ -16,6 +18,7 @@ export default class PagRanking extends Component{
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
     componentWillMount(){
+        Tema()
        this.pesquisar_politicas()
     }
     pesquisar_politicas(){

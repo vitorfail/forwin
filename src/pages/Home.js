@@ -11,6 +11,8 @@ import Loading from '../components/Loading/Loading';
 import Coockie from '../components/Coockie/Coockie';
 import Axios from '../Axios';
 import './Home.css'
+import Tema from '.././Tema'
+
 export default class Home extends Component{
     constructor(){
         super()
@@ -20,6 +22,7 @@ export default class Home extends Component{
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
     componentWillMount(){
+        Tema()
        this.pesquisar_politicas()
     }
     pesquisar_politicas(){

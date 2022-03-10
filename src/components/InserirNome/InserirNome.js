@@ -1,18 +1,48 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import Axios from "../../Axios";
 import './InserirNome.css';
 import Exit from '../../Exit'
 
 function InserirNome(props){
-    const [nome_, setnome] = useState(props.data[0]);
-    const [cnpj_, setcnpj] = useState('');
-    const [endereco_, setendereco] = useState('');
-    const [municipio_, setmunicipio] = useState('');
-    const [uf_, setuf] = useState('');
-    const [tema_, settema] = useState('');
+    const [nome_, setnome] = useState();
+    const [cnpj_, setcnpj] = useState();
+    const [endereco_, setendereco] = useState();
+    const [municipio_, setmunicipio] = useState();
+    const [uf_, setuf] = useState();
+    const [tema_, settema] = useState();
+    const [ titulo, settitulo] = useState()
 
+    function pegar_nome(){
+        Axios.post("index.php?url=dadosuser/pesquisa")
+        .then(res =>{
+                if(res.data.data === '1'){
+
+                }
+                if(res.data.data === "Usuário não autenticado"){
+                }
+                else{
+                    let v = String((res.data.data[1])[0]).toUpperCase()
+                    settitulo(v.substring(0, 1))
+                    setnome(String((res.data.data[1])[0]))
+                    setcnpj(String((res.data.data[0])[0]))
+                    setendereco(String((res.data.data[2])[0]))
+                    setmunicipio(String((res.data.data[3])[0]))
+                    setuf(String((res.data.data[4])[0]))
+                    settema(String((res.data.data[5])[0]))
+                    console.log((res.data.data[5])[0])
+                } 
+            }
+        )
+        .catch(error => {
+        })
+    }
+    useEffect(() => {
+        pegar_nome()
+
+    }, [])
 
     function troca_de_tema(tema){
+        console.log(nome_)
         if(tema === 'temapadrao'){
             let html = document.querySelector('html');
             html.className = "tema-padrao";
@@ -31,7 +61,7 @@ function InserirNome(props){
         }
     }
     function update(){
-        Axios.post('index.php?url=atualizarusuario/pesquisa', { nome:nome_[0],  
+        Axios.post('index.php?url=atualizarusuario/pesquisa', { nome:nome_,  
             cnpj:cnpj_, endereco:endereco_, municipio:municipio_, uf:uf_, tema:tema_})
         .then(res => {
             if(res.data.data === '1'){
@@ -54,7 +84,7 @@ function InserirNome(props){
         <div className={props.mostrar}>
             <div className='modal'>
                 <div className='caixa'>
-                    <h1 className='nickname'>{props.data[0]}</h1>
+                    <h1 className='nickname'>{titulo}</h1>
                     <h3>Nome</h3>
                     <input className='mudar-nome' value={nome_} onChange={(event) => setnome(event.target.value)} type='text'/>
                     <h3>CNPJ</h3>

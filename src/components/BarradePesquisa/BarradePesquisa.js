@@ -27,38 +27,7 @@ function BarradePesquisa(){
     const [preencha, setpreencha] = useState('preencha');
     const history = useHistory();
 
-    const [titulo, settitulo] = useState("")
-    const [nome, setnome] = useState('');
-    const [cnpj, setcnpj] = useState('');
-    const [endereco, setendereco] = useState('');
-    const [municipio, setmunicipio] = useState('');
-    const [uf, setuf] = useState('');
-    const [tema, settema] = useState('');
 
-    function pegar_nome(){
-        Axios.post("index.php?url=dadosuser/pesquisa")
-        .then(res =>{
-                if(res.data.data === '1'){
-
-                }
-                if(res.data.data === "Usuário não autenticado"){
-                }
-                else{
-                    console.log(res.data.data)
-                    let v = String((res.data.data[1])[0]).toUpperCase()
-                    settitulo(v.substring(0, 1))
-                    setnome(String((res.data.data[1])[0]))
-                    setcnpj(String((res.data.data[0])[0]))
-                    setendereco(String((res.data.data[2])[0]))
-                    setmunicipio(String((res.data.data[3])[0]))
-                    setuf(String((res.data.data[4])[0]))
-                    settema(String((res.data.data[5])[0]))
-                } 
-            }
-        )
-        .catch(error => {
-        })
-    }
     const troca = () => {
         Axios.post('index.php?url=inserircontas/pesquisa', 
         {   val: parseFloat((Valor.replace('R$', '')).replace('.', '').replace(',', '.')), 
@@ -98,7 +67,6 @@ function BarradePesquisa(){
         }
     }
     function mostrar_inserirnome(){
-        pegar_nome()
         setNome('nameclatura mostrar')
     }
     function logout(){
@@ -146,7 +114,7 @@ function BarradePesquisa(){
                     </div>
                 </div>
             </div>
-            <InserirNome mostrar = {abrirNome} data = {[titulo, nome, cnpj, endereco, municipio, uf, tema ]}  executar={show.bind(this)}>
+            <InserirNome mostrar = {abrirNome}  executar={show.bind(this)}>
             </InserirNome>
             <div className={abrirConta}>
                 <div className="modal">

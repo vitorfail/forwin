@@ -6,10 +6,12 @@ import Loading from '../components/Loading/Loading';
 import Blocos from '../components/Blocos/Blocos';
 import Coockie from '../components/Coockie/Coockie';
 import Axios from '../Axios';
+import Tema from '.././Tema'
 function Aniversariantes(){ 
     const [poli, setpoliticas] = useState(true);
-    useEffect(() => 
-        pesquisar_politicas()
+    useEffect(() => {
+        Tema();
+        pesquisar_politicas()}
     )
     function pesquisar_politicas(){
         Axios.post('index.php?url=politicasprivacidade/pesquisa')
