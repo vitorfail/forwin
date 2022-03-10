@@ -44,14 +44,15 @@ function BarradePesquisa(){
                 if(res.data.data === "Usuário não autenticado"){
                 }
                 else{
-                    let v = String(res.data.data[1]).toUpperCase()
+                    console.log(res.data.data)
+                    let v = String((res.data.data[1])[0]).toUpperCase()
                     settitulo(v.substring(0, 1))
-                    setnome((res.data.data[1])[0])
-                    setcnpj((res.data.data[0])[0])
-                    setendereco((res.data.data[2])[0])
-                    setmunicipio((res.data.data[3])[0])
-                    setuf((res.data.data[4])[0])
-                    settema(res.data.data[5])
+                    setnome(String((res.data.data[1])[0]))
+                    setcnpj(String((res.data.data[0])[0]))
+                    setendereco(String((res.data.data[2])[0]))
+                    setmunicipio(String((res.data.data[3])[0]))
+                    setuf(String((res.data.data[4])[0]))
+                    settema(String((res.data.data[5])[0]))
                 } 
             }
         )

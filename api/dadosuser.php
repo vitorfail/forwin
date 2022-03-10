@@ -24,6 +24,7 @@
                     $endereco = array();
                     $municipio = array();
                     $uf = array();
+                    $tema = array();
                     $resultado = $inserir->fetchAll();
                     if(count($resultado) > 0){
                         foreach($resultado as $row){
@@ -32,8 +33,9 @@
                             array_push($endereco, $row['endereco']);
                             array_push($municipio, $row['municipio']);
                             array_push($uf, $row['uf']);
+                            array_push($tema, $row['tema']);
                         }
-                        array_push($array, $cnpj,  $nome,  $endereco,  $municipio,  $uf);
+                        array_push($array, $cnpj,  $nome,  $endereco,  $municipio,  $uf, $tema);
                         return $array;
                     }
                     else{

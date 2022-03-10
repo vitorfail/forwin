@@ -4,16 +4,15 @@ import './InserirNome.css';
 import Exit from '../../Exit'
 
 function InserirNome(props){
-    const [nome_, setnome] = useState(props.data[1]);
-    const [cnpj_, setcnpj] = useState(props.data[2]);
-    const [endereco_, setendereco] = useState(props.data[3]);
-    const [municipio_, setmunicipio] = useState(props.data[4]);
-    const [uf_, setuf] = useState(props.data[5]);
-    const [tema_, settema] = useState(props.data[5]);
+    const [nome_, setnome] = useState(props.data[0]);
+    const [cnpj_, setcnpj] = useState('');
+    const [endereco_, setendereco] = useState('');
+    const [municipio_, setmunicipio] = useState('');
+    const [uf_, setuf] = useState('');
+    const [tema_, settema] = useState('');
 
 
     function troca_de_tema(tema){
-        console.log(nome_)
         if(tema === 'temapadrao'){
             let html = document.querySelector('html');
             html.className = "tema-padrao";

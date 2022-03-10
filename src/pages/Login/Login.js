@@ -13,7 +13,6 @@ function Login(){
     const history = useHistory();
     const [ logando, setlogando] = useState('');
     const [darespaco, setdarespaco] = useState('');
-    const [ tema, settema] = useState('temapadrao')
     const settoken = (t) => {
         localStorage.setItem('token_jwt', t);
     }
@@ -27,20 +26,20 @@ function Login(){
             if(res.data.data === "Usuário não autenticado"){
             }
             else{
-                settema(res.data.data[5])
-                if(tema === 'temapadrao'){
+                if((res.data.data[5])[0] === 'temapadrao'){
                     let html = document.querySelector('html');
                     html.className = "tema-padrao";
                 }
-                if(tema === 'temaazul'){
+                if((res.data.data[5])[0] === 'temaazul'){
                     let html = document.querySelector('html');
                     html.className = "tema-azul";
                 }
-                if(tema === 'temalaranja'){
+                if((res.data.data[5])[0] === 'temalaranja'){
                     let html = document.querySelector('html');
                     html.className = "tema-laranja";
                 }
-                if(tema === 'temaroxo'){
+                if((res.data.data[5])[0] === 'temaroxo'){
+
                     let html = document.querySelector('html');
                     html.className = "tema-roxo";
                 }
