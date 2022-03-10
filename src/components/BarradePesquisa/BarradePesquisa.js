@@ -27,7 +27,33 @@ function BarradePesquisa(){
     const [preencha, setpreencha] = useState('preencha');
     const history = useHistory();
 
+    const [titulo, settitulo] = useState("")
+    const [nome, setnome] = useState('');
+    const [cnpj, setcnpj] = useState('');
+    const [endereco, setendereco] = useState('');
+    const [municipio, setmunicipio] = useState('');
+    const [uf, setuf] = useState('');
 
+    function pegar_nome(){
+        Axios.post("index.php?url=dadosuser/pesquisa")
+        .then(res =>{
+                if(res.data.data === '1'){
+
+                }
+                if(res.data.data === "Usuário não autenticado"){
+                }
+                else{
+                    let v = String(res.data.data[1]).toUpperCase()
+                    settitulo(v.substring(0, 1))
+                    setnome(res.data.data[1])
+                    setcnpj(res.data.data[0])
+                    setendereco(res.data.data[2])
+                    setmunicipio(res.data.data[3])
+                    setuf(res.data.data[4])
+                } 
+            }
+        )
+    }
     const troca = () => {
         Axios.post('index.php?url=inserircontas/pesquisa', 
         {   val: parseFloat((Valor.replace('R$', '')).replace('.', '').replace(',', '.')), 
@@ -65,6 +91,10 @@ function BarradePesquisa(){
         if(menu === 'balao mostrar'){
             setmenu('balao')
         }
+    }
+    function mostrar_inserirnome(){
+        pegar_nome()
+        setNome('nameclatura mostrar')
     }
     function logout(){
         localStorage.removeItem('token_jwt');
@@ -106,12 +136,12 @@ function BarradePesquisa(){
                 </div>
                 <div className="user">
                     <div  className="btn"  onClick={() => setConta('modal-conta mostrar')} >Adicionar Conta</div>
-                    <div className="usuario" onClick={() => setNome('nameclatura mostrar')}>
+                    <div className="usuario" onClick={() => mostrar_inserirnome()}>
                         <h1 className='nome_de_usuario'>B</h1>
                     </div>
                 </div>
             </div>
-            <InserirNome mostrar = {abrirNome} executar={show.bind(this)}>
+            <InserirNome mostrar = {abrirNome} data = {[titulo, nome, cnpj, endereco, municipio, uf ]}  executar={show.bind(this)}>
             </InserirNome>
             <div className={abrirConta}>
                 <div className="modal">
