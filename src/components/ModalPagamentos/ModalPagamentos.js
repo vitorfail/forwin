@@ -171,7 +171,6 @@ export default class ModalPagamentos extends Component{
         Axios.post('index.php?url=dadosuser/pesquisa', {id: id}
         ).then(res => {
             if(res.data.data === 'Usuário não autenticado' || res.data.data === '2'){
-                console.log("Passou aqui")
                 Exit()
             }
             else{
@@ -327,7 +326,6 @@ export default class ModalPagamentos extends Component{
                     }
                 })
                 .catch(error => {
-                    console.log(error)                   
                     setTimeout(() =>  this.setState({loading: 'loading'}), 500)
                     alert("Não possível gerar o pdf verifique sua internet e tente denovo")        
                 })        

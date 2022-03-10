@@ -89,7 +89,6 @@ export default class RPag extends Component{
             }
         })
         .catch( error  => {
-            console.log(error)
         })
     }
     trocar1(m){

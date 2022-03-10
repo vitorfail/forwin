@@ -89,7 +89,6 @@ export default class RVisitas extends Component{
             }
         })
         .catch( error  => {
-            console.log(error)
         })
     }
     trocar1(m){

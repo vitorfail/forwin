@@ -33,6 +33,7 @@ function BarradePesquisa(){
     const [endereco, setendereco] = useState('');
     const [municipio, setmunicipio] = useState('');
     const [uf, setuf] = useState('');
+    const [tema, settema] = useState('');
 
     function pegar_nome(){
         Axios.post("index.php?url=dadosuser/pesquisa")
@@ -45,14 +46,17 @@ function BarradePesquisa(){
                 else{
                     let v = String(res.data.data[1]).toUpperCase()
                     settitulo(v.substring(0, 1))
-                    setnome(res.data.data[1])
-                    setcnpj(res.data.data[0])
-                    setendereco(res.data.data[2])
-                    setmunicipio(res.data.data[3])
-                    setuf(res.data.data[4])
+                    setnome((res.data.data[1])[0])
+                    setcnpj((res.data.data[0])[0])
+                    setendereco((res.data.data[2])[0])
+                    setmunicipio((res.data.data[3])[0])
+                    setuf((res.data.data[4])[0])
+                    settema(res.data.data[5])
                 } 
             }
         )
+        .catch(error => {
+        })
     }
     const troca = () => {
         Axios.post('index.php?url=inserircontas/pesquisa', 
@@ -141,7 +145,7 @@ function BarradePesquisa(){
                     </div>
                 </div>
             </div>
-            <InserirNome mostrar = {abrirNome} data = {[titulo, nome, cnpj, endereco, municipio, uf ]}  executar={show.bind(this)}>
+            <InserirNome mostrar = {abrirNome} data = {[titulo, nome, cnpj, endereco, municipio, uf, tema ]}  executar={show.bind(this)}>
             </InserirNome>
             <div className={abrirConta}>
                 <div className="modal">

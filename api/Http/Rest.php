@@ -30,7 +30,8 @@
     require_once('./contas_painel.php');
     require_once('./dadosuser.php');
     require_once('./politicasprivacidade.php');
-    require_once('./cederprivacidade.php');        
+    require_once('./cederprivacidade.php');
+    require_once('./atualizar_usuario.php');                
 
     class Rest{
         private $request;

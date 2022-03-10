@@ -13,10 +13,42 @@ function Login(){
     const history = useHistory();
     const [ logando, setlogando] = useState('');
     const [darespaco, setdarespaco] = useState('');
+    const [ tema, settema] = useState('temapadrao')
     const settoken = (t) => {
         localStorage.setItem('token_jwt', t);
     }
 
+    function puxar_nome(){
+        Axios.post('index.php?url=dadosuser/pesquisa', )
+        .then(res =>{
+            if(res.data.data === '1'){
+
+            }
+            if(res.data.data === "Usuário não autenticado"){
+            }
+            else{
+                settema(res.data.data[5])
+                if(tema === 'temapadrao'){
+                    let html = document.querySelector('html');
+                    html.className = "tema-padrao";
+                }
+                if(tema === 'temaazul'){
+                    let html = document.querySelector('html');
+                    html.className = "tema-azul";
+                }
+                if(tema === 'temalaranja'){
+                    let html = document.querySelector('html');
+                    html.className = "tema-laranja";
+                }
+                if(tema === 'temaroxo'){
+                    let html = document.querySelector('html');
+                    html.className = "tema-roxo";
+                }
+            } 
+        })
+        .catch(error => {
+        })
+    }
     function login_func(){
         if(senha === null || usuario === null || senha === '' || usuario === ''){
             setconteudoError('Preencha a senha e o usuário')
@@ -39,6 +71,7 @@ function Login(){
                 }
                 else{
                     settoken(res.data.data)
+                    puxar_nome()
                     setTimeout(() =>{ 
                                         history.push('/')
                                     }, 3000);
@@ -46,7 +79,6 @@ function Login(){
             })
             .catch(error => {
                 setconteudoError('Verifique sua internet e tente novamente')
-                console.log(error)
                 setdarespaco('espaco')
                 setlogando('');
                 setmostrar('aviso')
