@@ -29,7 +29,6 @@ function InserirNome(props){
                     setmunicipio(String((res.data.data[3])[0]))
                     setuf(String((res.data.data[4])[0]))
                     settema(String((res.data.data[5])[0]))
-                    console.log((res.data.data[5])[0])
                 } 
             }
         )
@@ -42,7 +41,6 @@ function InserirNome(props){
     }, [])
 
     function troca_de_tema(tema){
-        console.log(nome_)
         if(tema === 'temapadrao'){
             let html = document.querySelector('html');
             html.className = "tema-padrao";
@@ -94,7 +92,35 @@ function InserirNome(props){
                     <h3>Município</h3>
                     <input className='mudar-nome' value={municipio_} onChange={(event) => setmunicipio(event.target.value)} type='text'/>
                     <h3>UF</h3>
-                    <input className='mudar-nome' value={uf_} onChange={(event) => setuf(event.target.value)} type='text'/>
+                    <select className='mudar-nome' value={municipio_} onChange={(event) => setmunicipio(event.target.value)}>
+                        <option value="ac">AC</option>
+                        <option value="al">AL</option>
+                        <option value="am">AM</option>
+                        <option value="ap">AP</option>
+                        <option value="ba">BA</option>
+                        <option value="ce">CE</option>
+                        <option value="df">DF</option>
+                        <option value="es">ES</option>
+                        <option value="go">GO</option>
+                        <option value="ma">MA</option>
+                        <option value="mg">MG</option>
+                        <option value="ms">MS</option>
+                        <option value="mt">MT</option>
+                        <option value="pa">PA</option>
+                        <option value="pb">PB</option>
+                        <option value="pe">PE</option>
+                        <option value="pi">PI</option>
+                        <option value="pr">PR</option>
+                        <option value="rj">RJ</option>
+                        <option value="rn">RN</option>
+                        <option value="ro">RO</option>
+                        <option value="rr">RR</option>
+                        <option value="rs">RS</option>
+                        <option value="sc">SC</option>
+                        <option value="se">SE</option>
+                        <option value="sp">SP</option>
+                        <option value="to">TO</option>
+                    </select>
                     <div className='escolha-tema' value={tema_} onChange={(event) => settema(event.target.value)}>
                         <input type='radio' name='tema'  id='tema-padrao' value='temapadrao' onClick={(event) => troca_de_tema(event.target.value)}/><h2 className='padrao'>11</h2><p>Tema padrao</p>
                         <input type='radio' name='tema' id='tema-azul' value='temaazul' onClick={(event) => troca_de_tema(event.target.value)}/><h2 className='azul'>11</h2><p>Tema azul</p>

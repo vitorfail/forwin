@@ -43,7 +43,7 @@ export default class Blocos extends Component{
                 this.setState({numero_clientes: res.data.data})
             }
         }).catch(error =>{
-            alert(error.data)
+            this.setState({numero_clientes: "Sem clientes"})
         })
     }
     query_aniversariantes(){
