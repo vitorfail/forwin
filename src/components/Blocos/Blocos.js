@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import Axios from '../../Axios.js';
-import Clientes from '../../icones/students.png';
-import Aniversariantes from '../../icones/instituicao2.png';
-import Pagamentos_do_mes from '../../icones/pagamento2.png';
+import Clientes from '../../icones/blocos/students.png';
+import Aniversariantes from '../../icones/blocos/instituicao2.png';
+import Pagamentos_do_mes from '../../icones/blocos/pagamento2.png';
 import '../Blocos/Blocos.css';
 import Exit from "../../Exit.js";
 export default class Blocos extends Component{
