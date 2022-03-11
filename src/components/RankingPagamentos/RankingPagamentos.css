@@ -68,7 +68,9 @@
 }
 @media screen and (max-width: 640px){
     .barra .conteudo .conteudo-2 #ranking_pagamentos h3 {
-        font-size: 8px;
+        width: 105;
+        font-size: 14px;
+
     }
     .barra .conteudo .conteudo-2 #ranking_pagamentos .t {
         margin-left: 0px;
