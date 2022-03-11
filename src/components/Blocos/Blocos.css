@@ -46,10 +46,24 @@
     padding: 10px;
 }
 .barra .conteudo .cards .card .icone{
-    width:60px;
-    height:60px;
-    padding: 0px 0px;
+    width:72px;
+    height:64px;
     margin-right:10px;
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+}
+.icone.clientes{
+    background-image: var(--icone--clientes);
+    background-repeat: no-repeat;
+}
+.icone.aniver{
+    background-image: var(--icone--aniversariantes);
+    background-repeat: no-repeat;
+}
+.icone.pagamentos{
+    background-image: var(--icone--pagamentos);
+    background-repeat: no-repeat;
 }
 .barra .conteudo .cards .card .box h3{
     color: rgb(131, 131, 131);

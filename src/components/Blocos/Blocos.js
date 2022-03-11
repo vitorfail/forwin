@@ -1,9 +1,6 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import Axios from '../../Axios.js';
-import Clientes from '../../icones/blocos/students.png';
-import Aniversariantes from '../../icones/blocos/instituicao2.png';
-import Pagamentos_do_mes from '../../icones/blocos/pagamento2.png';
 import '../Blocos/Blocos.css';
 import Exit from "../../Exit.js";
 export default class Blocos extends Component{
@@ -113,8 +110,7 @@ export default class Blocos extends Component{
                         <h1 id='numero-clientes'>{this.state.numero_clientes}</h1>
                         <h3>Clientes</h3>
                     </div>
-                    <div className="icone">
-                        <img src={Clientes} alt=""/>
+                    <div className="icone clientes">
                     </div>
                 </div>
                 <div className="card">
@@ -123,8 +119,7 @@ export default class Blocos extends Component{
                         <h1 id="aniver">{this.state.aniversariantes}</h1>
                         <h3>Aniversariantes</h3>
                     </div>
-                    <div className="icone">
-                        <img src={Aniversariantes} alt=""/>
+                    <div className="icone aniver">
                     </div>
                 </div>
                 <div className="card"  >
@@ -133,8 +128,7 @@ export default class Blocos extends Component{
                         <h1 className='valormes'>{this.state.valor_do_mes}</h1>
                         <h3>Pagamentos no mês</h3>
                     </div>
-                    <div className="icone">
-                        <img src={Pagamentos_do_mes} alt=""/>
+                    <div className="icone pagamentos">
                     </div>
                 </div>
                 <div className="card-hora">
