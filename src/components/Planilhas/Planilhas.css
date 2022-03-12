@@ -59,9 +59,11 @@
         display: block;
     }
     .graphbox .box {
+        width: 321px;
         margin-bottom: 15px;
     }
     .graphbox2 .box {
+        width: 321px;
         margin-bottom: 15px;
     }
 }
