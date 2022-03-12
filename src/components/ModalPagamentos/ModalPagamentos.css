@@ -255,7 +255,13 @@
     display:flex;
 }
 @media  screen and (max-width: 640px) {
+    .modal-pag .modal input {
+        width: 41vw;
+    }
     .modal-pag .modal{
         width: 100%;
+    }
+    .modal-pag .modal select {
+        width: 41vw;
     }
 }

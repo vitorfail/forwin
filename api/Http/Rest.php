@@ -8,6 +8,7 @@
     require_once('Controllers/AuthController.php');
     require_once('./idades.php');
     require_once('./atualiza.php');
+    require_once('./adicionar_pagamento.php');
     require_once('./rankings_top.php');
     require_once('./rankings.php');
     require_once('./pagamentos_mes.php');

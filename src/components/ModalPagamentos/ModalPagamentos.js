@@ -90,7 +90,7 @@ export default class ModalPagamentos extends Component{
                                                     <h3 className='pag-nome'>{(res.data.data[4])[i]}</h3>
                                                     <h3>{(res.data.data[1])[i]}</h3>
                                                     <h3>R$ {(res.data.data[2])[i]}</h3>
-                                                    <img id={(res.data.data[2])[i]} onClick={(event) => this.gerar_nota(ident, event.target.id)} alt="Nota" src={pdf}/>
+                                                    <img id={(res.data.data[2])[i]} name={(res.data.data[4])[i]} onClick={(event) => this.gerar_nota(ident, event.target.id, event.target.name)} alt="Nota" src={pdf}/>
                                                 </div>)
                     this.setState({resultado: list})
                 }
@@ -141,7 +141,7 @@ export default class ModalPagamentos extends Component{
             })
         }
     }
-    gerar_nota(id, valor_){
+    gerar_nota(id, valor_, procedimento_){
         this.setState({loading: 'loading mostrar'})
         let cnpj_vendedor = "000.0000.00000"
         let cnpj_comprador = "000.0000.00000"
@@ -153,7 +153,7 @@ export default class ModalPagamentos extends Component{
         let municipio_comprador = "Recife"
         let uf_vendedor = "CE"
         let uf_comprador = "CE"
-        let descriminacao = "Criação de uma calopsita, que tentou matar um dono com a bicada no saco"
+        let descriminacao = procedimento_
         let valor = String(valor_)
 
         let doc = new jsPDF()
