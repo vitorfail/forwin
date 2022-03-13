@@ -31,7 +31,7 @@ export default class ModalPagamentos extends Component{
         this.fecharmodal = this.fecharmodal.bind(this)
         this.gerar_nota = this.gerar_nota.bind(this)
     }
-    componentDidUpdate(props){
+    componentWillReceiveProps(props){
         this.pesquisar_pagamentos(props.id)
     }
     fecharmodal(){

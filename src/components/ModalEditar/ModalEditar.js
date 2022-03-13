@@ -31,7 +31,6 @@ export default class ModalEditar extends Component{
                 Exit()
             }
             else{
-                console.log("Sol")
                 this.setState({nome: res.data.data[1]})
                 this.setState({data: res.data.data[2]})
                 this.setState({cpf: res.data.data[3]})
@@ -77,13 +76,14 @@ export default class ModalEditar extends Component{
 
         })
     }
-    componentDidUpdate(props){
-        if(props.exibir === "modal-editar mostrar" ){
-            console.log(props.exibir)
+    componentWillReceiveProps(props){
+        if(props.exibir === "modal-editar"){
+
+        }
+        if(props.exibir === "modal-editar mostrar"){
             this.pesquisar_cadastro(props.id)
         }
-        else{
-        }
+        
     }
     render(){
         return(
