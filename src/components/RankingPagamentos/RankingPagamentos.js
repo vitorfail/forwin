@@ -13,9 +13,6 @@ export default class RankingPagamentos extends Component{
         this.ranking_1 = this.ranking_1.bind(this);
     }
     componentDidMount(){
-        window.addEventListener('load', this.ranking_1)
-    }
-    componentWillMount(){
         this.ranking_1()
     }
     ranking_1(){
@@ -28,27 +25,27 @@ export default class RankingPagamentos extends Component{
                 this.setState({rank: lista});
             }
             else{
-                var lista = this.state.rank.concat(<div  className="cad">
+                var lista = this.state.rank.concat(<div key={(res.data.data[0])[0]+1+(res.data.data[1])[0]}  className="cad">
                                                         <h3 className="n">{(res.data.data[0])[0]}</h3> 
                                                         <h3 className="t">R$ {(res.data.data[1])[0]}</h3>
                                                     </div>);
                 this.setState({rank: lista});
-                var lista1 = this.state.rank.concat(<div className="cad">
+                var lista1 = this.state.rank.concat(<div key={(res.data.data[0])[1]+1+(res.data.data[1])[1]} className="cad">
                                                         <h3 className="n">{(res.data.data[0])[1]}</h3>
                                                         <h3 className="t">R$ {(res.data.data[1])[1]}</h3>
                                                     </div>);
                 this.setState({rank: lista1});
-                var lista2 = this.state.rank.concat(<div  className="cad">
+                var lista2 = this.state.rank.concat(<div key={(res.data.data[0])[2]+1+(res.data.data[1])[2]} className="cad">
                                                         <h3 className="n">{(res.data.data[0])[2]}</h3>
                                                         <h3 className="t">R$ {(res.data.data[1])[2]}</h3>
                                                     </div>);
                 this.setState({rank: lista2});
-                var lista3 = this.state.rank.concat(<div className="cad">
+                var lista3 = this.state.rank.concat(<div key={(res.data.data[0])[3]+1+(res.data.data[1])[3]} className="cad">
                                                         <h3 className="n">{(res.data.data[0])[3]}</h3>
                                                         <h3 className="t">R$ {(res.data.data[1])[3]}</h3>
                                                     </div>);
                 this.setState({rank: lista3});
-                var lista4 = this.state.rank.concat(<div className="cad">
+                var lista4 = this.state.rank.concat(<div key={(res.data.data[0])[4]+1+(res.data.data[1])[4]} className="cad">
                                                         <h3 className="n">{(res.data.data[0])[4]}</h3> 
                                                         <h3 className="t">R$ {(res.data.data[1])[4]}</h3>
                                                     </div>);

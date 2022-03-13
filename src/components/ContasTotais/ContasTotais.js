@@ -39,7 +39,7 @@ export default class ContasTotais extends Component{
         this.adiantar = this.adiantar.bind(this)
         this.voltar_final = this.voltar_final.bind(this)
     }
-    componentWillMount(){
+    componentDidMount(){
         var data = new Date()
         var mes_ = 0
         var ano_ = data.getFullYear().toString()

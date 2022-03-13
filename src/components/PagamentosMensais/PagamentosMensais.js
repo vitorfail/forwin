@@ -38,7 +38,7 @@ export default class PagamentosMensais extends Component{
         this.adiantar = this.adiantar.bind(this)
         this.voltar_final = this.voltar_final.bind(this)
     }
-    componentWillMount(){
+    componentDidMount(){
         var data = new Date()
         var mes_ = 0
         var ano_ = data.getFullYear().toString()
@@ -76,7 +76,7 @@ export default class PagamentosMensais extends Component{
                 }
                 this.lista = [] 
                 for(var i=this.state.indexador; i< repetidor; i++){
-                   this.lista.push(<div className='enc p'> <h3 className='n'>{(res.data.data[2])[i]}</h3> <h3 className='v'>R$ {(res.data.data[1])[i]}</h3> <h3 className='n'>{(res.data.data[0])[i]}</h3> </div>)
+                   this.lista.push(<div key={(res.data.data[2])[i]+(res.data.data[0])[i]} className='enc p'> <h3 className='n'>{(res.data.data[2])[i]}</h3> <h3 className='v'>R$ {(res.data.data[1])[i]}</h3> <h3 className='n'>{(res.data.data[0])[i]}</h3> </div>)
                 }
                 this.setState({resultado: this.lista})
             }
@@ -104,7 +104,7 @@ export default class PagamentosMensais extends Component{
                 this.setState({quantidade: quant})
                 var data = this.state.dados;
                 for(var i=index; i< quant ; i++){
-                    this.lista.push(<div className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
+                    this.lista.push(<div key={(data[2])[i]+i} className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
                 }
                 this.setState({resultado: this.lista})
                 this.setState({voltar_final: true})
@@ -122,7 +122,7 @@ export default class PagamentosMensais extends Component{
             this.setState({quantidade: quant})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                this.lista.push(<div className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
+                this.lista.push(<div key={(data[2])[i]+i} className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
             }
             this.setState({resultado: this.lista}) 
             this.setState({passador_final: true})   
@@ -139,7 +139,7 @@ export default class PagamentosMensais extends Component{
             this.setState({quantidade: quant})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                this.lista.push(<div className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
+                this.lista.push(<div key={(data[2])[i]+i} className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
             }
             this.setState({resultado: this.lista})
             this.setState({passador_final: false})
@@ -156,7 +156,7 @@ export default class PagamentosMensais extends Component{
             this.setState({quantidade: 50})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                this.lista.push(<div className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
+                this.lista.push(<div key={(data[2])[i]+i} className='enc p'> <h3 className='n'>{(data[2])[i]}</h3> <h3 className='v'>R$ {(data[1])[i]}</h3> <h3 className='n'>{(data[0])[i]}</h3> </div>)
             }
             this.setState({resultado: this.lista})
             this.setState({voltar_final: false})

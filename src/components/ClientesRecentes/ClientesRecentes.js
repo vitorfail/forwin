@@ -10,9 +10,6 @@ export default class ClientesRecentes extends Component{
         }
         this.atualiza_clientes = this.atualiza_clientes.bind(this);
     }
-    componentDidMount(){
-        window.addEventListener('load', this.atualiza_clientes)
-    }
     atualiza_clientes(){
         Axios.post('index.php?url=atualiza/pesquisa', {name: '0', id:'1'}
         ).then(res =>{
@@ -26,7 +23,7 @@ export default class ClientesRecentes extends Component{
                 let ir = [];
                 this.setState({ lista: ir })
                 for(var i=0; i< res.data.data[0].length ; i++){
-                    var list1 = this.state.lista.concat(<div className="cad">
+                    var list1 = this.state.lista.concat(<div key={(res.data.data[0])[i]+(res.data.data[2])[i]+i} className="cad">
                                                             <h3 className="n">{(res.data.data[0])[i]}</h3> 
                                                             <h3 className="t">{(res.data.data[1])[i]}</h3> 
                                                             <h3 className="s">{(res.data.data[2])[i]}</h3>
@@ -36,7 +33,7 @@ export default class ClientesRecentes extends Component{
             }
         })
     }
-    componentWillMount(){
+    componentDidMount(){
         this.atualiza_clientes()
     }
     render(){

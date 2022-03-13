@@ -31,7 +31,7 @@ export default class DRE extends Component{
         this.trocar2 = this.trocar2.bind(this)
 
     }
-    componentWillMount(){
+    componentDidMount(){
         var data = new Date();
         var mes =''
         var ano = data.getFullYear().toString()
@@ -91,10 +91,10 @@ export default class DRE extends Component{
     }
     render(){
         return(
-            <div class="dre">
-                <div class="titulo_pesquisa">
-                    <h1 id="list"class="tooltip-multiline" data-tooltip="Clique para selecionar o mês e o ano" >D.R.E</h1>
-                    <select id='meses' value={this.state.mes} onChange={(event) => this.trocar1(event.target.value)} class="tooltip-multiline" data-tooltip="Clique para selecionar o mês">
+            <div className="dre">
+                <div className="titulo_pesquisa">
+                    <h1 id="list"className="tooltip-multiline" data-tooltip="Clique para selecionar o mês e o ano" >D.R.E</h1>
+                    <select id='meses' value={this.state.mes} onChange={(event) => this.trocar1(event.target.value)} className="tooltip-multiline" data-tooltip="Clique para selecionar o mês">
                         <option value='01'>JANEIRO</option>
                         <option value='02'>FEVEREIRO</option>
                         <option value='03'>MARÇO</option>
@@ -151,53 +151,53 @@ export default class DRE extends Component{
                         <option value='1989'>1989</option>
                         <option value='1988'>1988</option>
                     </select>
-                    <div class="valor_rs">
+                    <div className="valor_rs">
                         <h1>VALOR EM R$</h1>
                     </div>
                 </div>
-                <div class='titulo_dre'>
-                    <h1 class="entrada_rs">Receita bruta</h1>
-                    <h1 class="entrada_rs2 r">R$ {this.state.receita}</h1>
+                <div className='titulo_dre'>
+                    <h1 className="entrada_rs">Receita bruta</h1>
+                    <h1 className="entrada_rs2 r">R$ {this.state.receita}</h1>
                 </div>
-                <div class='titulo_dre2'>
-                    <h1 class="saida_rs i">Impostos sobre serviço / mercadoria</h1>
-                    <h1 class="saida_rs2 imp">R$ {this.state.imposto_dre}</h1>
+                <div className='titulo_dre2'>
+                    <h1 className="saida_rs i">Impostos sobre serviço / mercadoria</h1>
+                    <h1 className="saida_rs2 imp">R$ {this.state.imposto_dre}</h1>
                 </div>
-                <div class='titulo_dre'>
-                    <h1 class="entrada_rs">Receita líquida</h1>
-                    <h1 class="entrada_rs2 rl">R$ 00,00</h1>
+                <div className='titulo_dre'>
+                    <h1 className="entrada_rs">Receita líquida</h1>
+                    <h1 className="entrada_rs2 rl">R$ 00,00</h1>
                 </div>
-                <div class='titulo_dre2'>
-                    <h1 class="saida_rs">Custo das mercadorias / Serviços</h1>
-                    <h1 class="saida_rs2 c">R$ {this.state.custo_dre}</h1>
+                <div className='titulo_dre2'>
+                    <h1 className="saida_rs">Custo das mercadorias / Serviços</h1>
+                    <h1 className="saida_rs2 c">R$ {this.state.custo_dre}</h1>
                 </div>
-                <div class='titulo_dre'>
-                    <h1 class="entrada_rs">Lucro bruto</h1>
-                    <h1 class="entrada_rs2 lb">R$ 00,00</h1>
+                <div className='titulo_dre'>
+                    <h1 className="entrada_rs">Lucro bruto</h1>
+                    <h1 className="entrada_rs2 lb">R$ 00,00</h1>
                 </div>
-                <div class='titulo_dre2'>
-                    <h1 class="saida_rs">Despesas operaionais</h1>
-                    <h1 class="saida_rs2 do">R$ {this.state.despesas_operacionais_dre}</h1>
+                <div className='titulo_dre2'>
+                    <h1 className="saida_rs">Despesas operaionais</h1>
+                    <h1 className="saida_rs2 do">R$ {this.state.despesas_operacionais_dre}</h1>
                 </div>
-                <div class='titulo_dre2'>
-                    <h1 class="saida_rs">Despesas com vendas</h1>
-                    <h1 class="saida_rs2 dv">R$ {this.state.despesas_venda_dre}</h1>
+                <div className='titulo_dre2'>
+                    <h1 className="saida_rs">Despesas com vendas</h1>
+                    <h1 className="saida_rs2 dv">R$ {this.state.despesas_venda_dre}</h1>
                 </div>
-                <div class='titulo_dre2'>
-                    <h1 class="saida_rs">Despesas financeiras</h1>
-                    <h1 class="saida_rs2 df">R$ {this.state.depesas_financeiras_dre}</h1>
+                <div className='titulo_dre2'>
+                    <h1 className="saida_rs">Despesas financeiras</h1>
+                    <h1 className="saida_rs2 df">R$ {this.state.depesas_financeiras_dre}</h1>
                 </div>
-                <div class='titulo_dre'>
-                    <h1 class="entrada_rs">Receita financeira</h1>
-                    <h1 class="entrada_rs2 rf">R$ 00,00</h1>
+                <div className='titulo_dre'>
+                    <h1 className="entrada_rs">Receita financeira</h1>
+                    <h1 className="entrada_rs2 rf">R$ 00,00</h1>
                 </div>
-                <div class='titulo_dre2'>
-                    <h1 class="saida_rs">Despesas de administração</h1>
-                    <h1 class="saida_rs2 da">R$ {this.state.despesas_administracao_dre}</h1>
+                <div className='titulo_dre2'>
+                    <h1 className="saida_rs">Despesas de administração</h1>
+                    <h1 className="saida_rs2 da">R$ {this.state.despesas_administracao_dre}</h1>
                 </div>
-                <div class='resultado_positivo_dre'>
-                    <h1 class="resultado_rs">Lucro líquido</h1>
-                    <h1 class="resultado_rs2 ll">R$ {this.state.resultado_dre}</h1>
+                <div className='resultado_positivo_dre'>
+                    <h1 className="resultado_rs">Lucro líquido</h1>
+                    <h1 className="resultado_rs2 ll">R$ {this.state.resultado_dre}</h1>
                 </div>
             </div>
         )

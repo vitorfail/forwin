@@ -106,11 +106,11 @@ export default class SumarioAjuda extends Component{
             <h3 className='primeiro'>9. Página - Pagamentos do mês</h3>
             <p>É possivel acessar essa página clicando no terceiro bloco superior. Nessa página se pode olhar os pagamentos mês a mês e ano a ano.</p>
             <h3 className='primeiro'>10. Página - Contas</h3>
-            <p>Essa página é acessada clicando em "Ver mais" no painel de contas da <string>1. Página - Home</string>. Ela mostra as contas mês a mês e ano a ano.</p>
+            <p>Essa página é acessada clicando em "Ver mais" no painel de contas da <strong>1. Página - Home</strong>. Ela mostra as contas mês a mês e ano a ano.</p>
             <h3 className='primeiro'>11. Página - Ranking pagamento</h3>
-            <p>Pode ser acessado clicando em "Ver mais" no painel de Ranking da <string>1. Página - Home</string></p>
+            <p>Pode ser acessado clicando em "Ver mais" no painel de Ranking da <strong>1. Página - Home</strong></p>
             <h3 className='primeiro'>12. Página - Ranking de visitas</h3>
-            <p>Pode ser acessado clicando em "Ver mais" no painel de Ranking da <string>1. Página - Home</string></p>
+            <p>Pode ser acessado clicando em "Ver mais" no painel de Ranking da <strong>1. Página - Home</strong></p>
             <p className='sug'>Para dúvidas, sugestões ou problemas entre em contado com o nosso email <a href='mailto:map.marketing7@gmail.com'>map.marketing7@gmail.com</a> </p>
         </div>)
     }

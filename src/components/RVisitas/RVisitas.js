@@ -38,7 +38,7 @@ export default class RVisitas extends Component{
         this.adiantar = this.adiantar.bind(this)
         this.voltar_final = this.voltar_final.bind(this)
     }
-    componentWillMount(){
+    componentDidMount(){
         var data = new Date()
         var mes_ = 0
         var ano_ = data.getFullYear().toString()
@@ -51,6 +51,14 @@ export default class RVisitas extends Component{
         this.setState({ano: ano_})
         this.setState({mes: mes_})
         this.pesquisa_pagamentos(mes_, ano_)
+    }
+    trocar1(m){
+        this.setState({mes: m})
+        this.pesquisa_pagamentos(m, this.state.ano)
+    }
+    trocar2(a){
+        this.setState({ano: a})
+        this.pesquisa_pagamentos(this.state.mes, a)
     }
     pesquisa_pagamentos(mes_, ano_){
         Axios.post('index.php?url=rankings/pesquisa', 
@@ -79,7 +87,7 @@ export default class RVisitas extends Component{
                 var l =0;
                 for(var i=this.state.indexador; i< repetidor; i++){
                     l++
-                    this.lista.push(<div className='enc p'> 
+                    this.lista.push(<div key={(res.data.data[0])[i]+i} className='enc p'> 
                                         <h3 className='r'>º{l}</h3> 
                                         <h3 className='n'>{(res.data.data[0])[i]}</h3> 
                                         <h3 className='n'>{(res.data.data[1])[i]} Visitas</h3> 
@@ -90,14 +98,6 @@ export default class RVisitas extends Component{
         })
         .catch( error  => {
         })
-    }
-    trocar1(m){
-        this.setState({mes: m})
-        this.pesquisa_pagamentos(m, this.state.ano)
-    }
-    trocar2(a){
-        this.setState({ano: a})
-        this.pesquisa_pagamentos(this.state.mes, a)
     }
     adiantar(){
         if( this.state.passador === true){
@@ -110,7 +110,7 @@ export default class RVisitas extends Component{
                 this.setState({quantidade: quant})
                 var data = this.state.dados;
                 for(var i=index; i< quant ; i++){
-                    this.lista.push(<div className='enc p'> 
+                    this.lista.push(<div key={(data[0])[i]+i} className='enc p'> 
                         <h3 className='r'>º{i}</h3> 
                         <h3 className='n'>{(data[0])[i]}</h3> 
                         <h3 className='n'>{(data[1])[i]} Visitas</h3> 
@@ -132,7 +132,7 @@ export default class RVisitas extends Component{
             this.setState({quantidade: quant})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                this.lista.push(<div className='enc p'> 
+                this.lista.push(<div key={(data[0])[i]+i} className='enc p'> 
                     <h3 className='r'>º{i+1}</h3> 
                     <h3 className='n'>{(data[0])[i]}</h3> 
                     <h3 className='n'>{(data[1])[i]} Visitas</h3> 
@@ -153,7 +153,7 @@ export default class RVisitas extends Component{
             this.setState({quantidade: quant})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                this.lista.push(<div className='enc p'> 
+                this.lista.push(<div key={(data[0])[i]+i} className='enc p'> 
                     <h3 className='r'>º{i+1}</h3> 
                     <h3 className='n'>{(data[0])[i]}</h3> 
                     <h3 className='n'>{(data[1])[i]} Visitas</h3> 
@@ -174,7 +174,7 @@ export default class RVisitas extends Component{
             this.setState({quantidade: 50})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                this.lista.push(<div className='enc p'> 
+                this.lista.push(<div key={(data[0])[i]+i}  className='enc p'> 
                     <h3 className='r'>º{i+1}</h3> 
                     <h3 className='n'>{(data[0])[i]}</h3> 
                     <h3 className='n'>{(data[1])[i]} Visitas</h3> 

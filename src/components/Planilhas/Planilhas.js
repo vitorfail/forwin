@@ -57,7 +57,7 @@ export default class Planilhas extends Component{
         this.pesquisa_sexo = this.pesquisa_sexo.bind(this)
         this.tipos_pagamento =this.tipos_pagamento.bind(this)
     }
-    componentWillMount(){
+    componentDidMount(){
         this.pesquisa_de_pagamentos()
         this.pesquisa_idades()
         this.pesquisa_estado_civil()

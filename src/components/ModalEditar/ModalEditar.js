@@ -76,8 +76,26 @@ export default class ModalEditar extends Component{
 
         })
     }
+    componentDidMount(){
+        this.setState({nome: ''})
+        this.setState({data: ''})
+        this.setState({cpf: ''})
+        this.setState({estado_civil: ''})
+        this.setState({genero: ''})
+        this.setState({uf: ''})
+        this.setState({endereco: ''})
+        this.setState({cidade: ''})
+        this.setState({telefone: ''})
+        this.setState({email: ''})
+        this.setState({notific: ''})    
+    }
     componentDidUpdate(props){
-        this.pesquisar_cadastro(props.id)
+        if(props.exibir === "modal-editar mostrar" ){
+            console.log(props.exibir)
+            this.pesquisar_cadastro(props.id)
+        }
+        else{
+        }
     }
     render(){
         return(

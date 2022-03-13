@@ -38,7 +38,7 @@ export default class RPag extends Component{
         this.adiantar = this.adiantar.bind(this)
         this.voltar_final = this.voltar_final.bind(this)
     }
-    componentWillMount(){
+    componentDidMount(){
         var data = new Date()
         var mes_ = 0
         var ano_ = data.getFullYear().toString()
@@ -79,7 +79,7 @@ export default class RPag extends Component{
                 var l =0;
                 for(var i=this.state.indexador; i< repetidor; i++){
                     l++
-                    this.lista.push(<div className='enc p'> 
+                    this.lista.push(<div key={(res.data.data[0])[i]+i} className='enc p'> 
                                         <h3 className='i'>º{l}</h3> 
                                         <h3 className='n'>{(res.data.data[0])[i]}</h3> 
                                         <h3 className='v'>R$ {(res.data.data[1])[i]}</h3> 
@@ -110,7 +110,7 @@ export default class RPag extends Component{
                 this.setState({quantidade: quant})
                 var data = this.state.dados;
                 for(var i=index; i< quant ; i++){
-                    this.lista.push(<div className='enc p'> 
+                    this.lista.push(<div key={(data[0])[i]+i}  className='enc p'> 
                         <h3 className='i'>º{i}</h3> 
                         <h3 className='n'>{(data[0])[i]}</h3> 
                         <h3 className='v'>R$ {(data[1])[i]}</h3> 
@@ -132,7 +132,7 @@ export default class RPag extends Component{
             this.setState({quantidade: quant})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                this.lista.push(<div className='enc p'> 
+                this.lista.push(<div key={(data[0])[i]+i}  className='enc p'> 
                     <h3 className='i'>º{i+1}</h3> 
                     <h3 className='n'>{(data[0])[i]}</h3> 
                     <h3 className='v'>R$ {(data[1])[i]}</h3> 
@@ -153,7 +153,7 @@ export default class RPag extends Component{
             this.setState({quantidade: quant})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                this.lista.push(<div className='enc p'> 
+                this.lista.push(<div key={(data[0])[i]+i}  className='enc p'> 
                     <h3 className='i'>º{i+1}</h3> 
                     <h3 className='n'>{(data[0])[i]}</h3> 
                     <h3 className='v'>R$ {(data[1])[i]}</h3> 
@@ -174,7 +174,7 @@ export default class RPag extends Component{
             this.setState({quantidade: 50})
             var data = this.state.dados;
             for(var i=index; i< quant ; i++){
-                this.lista.push(<div className='enc p'> 
+                this.lista.push(<div key={(data[0])[i]+i}  className='enc p'> 
                     <h3 className='i'>º{i+1}</h3> 
                     <h3 className='n'>{(data[0])[i]}</h3> 
                     <h3 className='v'>R$ {(data[1])[i]}</h3> 

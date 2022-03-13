@@ -12,9 +12,6 @@ export default class RankingVisitas extends Component{
         this.atualizar_visitas = this.atualizar_visitas.bind(this);
     }
     componentDidMount(){
-        window.addEventListener('load', this.atualizar_visitas);
-    }
-    componentWillMount(){
         this.atualizar_visitas();
     }
     atualizar_visitas(){
@@ -28,27 +25,27 @@ export default class RankingVisitas extends Component{
                 this.setState({visitas: lista});
             }
             else{
-                var lista = this.state.visitas.concat(<div className="cad">
+                var lista = this.state.visitas.concat(<div key={(res.data.data[0])[0]+1} className="cad">
                                                         <h3 className="n">{(res.data.data[0])[0]}</h3> 
                                                         <h3 className="t">{(res.data.data[1])[0]} Visitas</h3>
                                                     </div>);
                 this.setState({visitas: lista});
-                var lista1 = this.state.visitas.concat(<div className="cad">
+                var lista1 = this.state.visitas.concat(<div key={(res.data.data[0])[1]+1} className="cad">
                                                             <h3 className="n">{(res.data.data[0])[1]}</h3> 
                                                             <h3 className="t">{(res.data.data[1])[1]} Visitas </h3>
                                                         </div>);
                 this.setState({visitas: lista1});
-                var lista2 = this.state.visitas.concat(<div className="cad">
+                var lista2 = this.state.visitas.concat(<div key={(res.data.data[0])[2]+1} className="cad">
                                                             <h3 className="n">{(res.data.data[0])[2]}</h3> 
                                                             <h3 className="t">{(res.data.data[1])[2]} Visitas</h3>
                                                         </div>);
                 this.setState({visitas: lista2});
-                var lista3 = this.state.visitas.concat(<div className="cad">
+                var lista3 = this.state.visitas.concat(<div key={(res.data.data[0])[3]+1} className="cad">
                                                             <h3 className="n">{(res.data.data[0])[3]}</h3> 
                                                             <h3 className="t">{(res.data.data[1])[3]} Visitas</h3>
                                                     </div>);
                 this.setState({visitas: lista3});
-                var lista4 = this.state.visitas.concat(<div className="cad">
+                var lista4 = this.state.visitas.concat(<div key={(res.data.data[0])[4]+1} className="cad">
                                                             <h3 className="n">{(res.data.data[0])[4]}</h3> 
                                                             <h3 className="t">{(res.data.data[1])[4]} Visitas</h3>
                                                         </div>);

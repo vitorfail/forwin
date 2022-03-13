@@ -17,7 +17,7 @@ export default class Pagamentos extends Component{
         }
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
-    componentWillMount(){
+    componentDidMount(){
         Tema()
        this.pesquisar_politicas()
     }

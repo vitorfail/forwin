@@ -19,12 +19,6 @@ export default class ContasdoMes extends Component{
         var meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
         window.addEventListener('load', this.mudar_mes(meses[data.getMonth()]));
     }
-    componentWillMount() {
-        window.addEventListener('load', this.atualiza);
-        var data= new Date();
-        var meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-        window.addEventListener('load', this.mudar_mes(meses[data.getMonth()]));
-    }
     atualiza(){
         var seletor = document.querySelector('.meses');
         var data= new Date();
