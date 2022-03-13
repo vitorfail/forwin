@@ -4,13 +4,13 @@ import './InserirNome.css';
 import Exit from '../../Exit'
 
 function InserirNome(props){
-    const [nome_, setnome] = useState();
-    const [cnpj_, setcnpj] = useState();
-    const [endereco_, setendereco] = useState();
-    const [municipio_, setmunicipio] = useState();
-    const [uf_, setuf] = useState();
-    const [tema_, settema] = useState();
-    const [ titulo, settitulo] = useState()
+    const [nome_, setnome] = useState("");
+    const [cnpj_, setcnpj] = useState("");
+    const [endereco_, setendereco] = useState("");
+    const [municipio_, setmunicipio] = useState("");
+    const [uf_, setuf] = useState("");
+    const [tema_, settema] = useState("");
+    const [ titulo, settitulo] = useState("")
 
     function pegar_nome(){
         Axios.post("index.php?url=dadosuser/pesquisa")

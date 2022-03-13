@@ -1,6 +1,7 @@
 @font-face {
     font-family: "Roboto";
     src: url("../../fonts/Roboto-Light.ttf") format("truetype");
+    font-display: block;
 }
 .ranking{
     max-width: 570px;

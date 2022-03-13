@@ -76,7 +76,7 @@ export default class ModalEditar extends Component{
 
         })
     }
-    componentWillReceiveProps(props){
+    componentDidUpdate(props){
         this.pesquisar_cadastro(props.id)
     }
     render(){
@@ -91,7 +91,7 @@ export default class ModalEditar extends Component{
                         </div>
                         <div className= "bloco">
                             <h3>Data de Nascimento</h3>
-                            <input type="date" value={this.state.data} onChange={(event) => this.setState({data: event.target.value})}class = "info-data"/>
+                            <input type="date" value={this.state.data} onChange={(event) => this.setState({data: event.target.value})}className = "info-data"/>
                         </div>
                         <div className= "bloco">
                             <h3>CPF</h3>

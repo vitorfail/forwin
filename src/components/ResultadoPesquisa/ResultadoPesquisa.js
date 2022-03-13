@@ -98,34 +98,35 @@ export default class ResultadoPesquisa extends Component{
                 for(var i=this.state.indexador; i< repetidor ; i++){
                     var ident = (res.data.data[0])[i]
                     if((res.data.data[2])[i].length > 31){
-                        this.lista.push(<div className='enc'> 
-                                                                    <h3 className='n'>{(res.data.data[1])[i]}</h3>
-                                                                    <div className='email_caixa'> 
-                                                                        <h3 id='e'>{(res.data.data[2])[i].substr(0, 29)}</h3> 
-                                                                        <h3  id='e'>{(res.data.data[2])[i].substr(29, (res.data.data[2])[i].length-29)} </h3> 
-                                                                    </div> 
-                                                                    <h3 className='tel'>{(res.data.data[3])[i]}</h3> 
-                                                                    <h3 className='sex'>{(res.data.data[4])[i]}</h3> 
-                                                                    <div className='quadro_botoes'> 
-                                                                        <button className='pag' id={ident} name={(res.data.data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
-                                                                        <button id={(res.data.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
-                                                                        <button id={(res.data.data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
-                                                                        <button className='falar' id={(res.data.data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img className='zap' src={Zap} alt="Imagem de whatsapp"/></button>
-                                                                    </div></div>)
+                        this.lista.push(<div key={(res.data.data[1])[i]+i} className='enc'> 
+                                            <h3 className='n'>{(res.data.data[1])[i]}</h3>
+                                            <div className='email_caixa'> 
+                                                <h3 id='e'>{(res.data.data[2])[i].substr(0, 29)}</h3> 
+                                                <h3  id='e'>{(res.data.data[2])[i].substr(29, (res.data.data[2])[i].length-29)} </h3> 
+                                            </div> 
+                                            <h3 className='tel'>{(res.data.data[3])[i]}</h3> 
+                                            <h3 className='sex'>{(res.data.data[4])[i]}</h3> 
+                                            <div className='quadro_botoes'> 
+                                                <button className='pag' id={ident} name={(res.data.data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
+                                                <button id={(res.data.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
+                                                <button id={(res.data.data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
+                                                <button className='falar' id={(res.data.data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img className='zap' src={Zap} alt="Imagem de whatsapp"/></button>
+                                            </div>
+                                        </div>)
                     }
                     else{
-                        this.lista.push(<div className='enc'> 
-                                                                    <h3 className='n'>{(res.data.data[1])[i]}</h3> 
-                                                                    <h3 id='e'>{(res.data.data[2])[i]}</h3> 
-                                                                    <h3 className='tel'>{(res.data.data[3])[i]}</h3> 
-                                                                    <h3 className='sex'>{(res.data.data[4])[i]}</h3> 
-                                                                    <div className='quadro_botoes'>
-                                                                        <button className='pag' id={ident} name={(res.data.data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
-                                                                        <button id={(res.data.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
-                                                                        <button id={(res.data.data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
-                                                                        <button className='falar' id={(res.data.data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img class='zap' src={Zap} alt="Imagem de whatsapp"/></button>
-                                                                    </div>
-                                                                </div>)
+                        this.lista.push(<div key={(res.data.data[1])[i]+i} className='enc'> 
+                                            <h3 className='n'>{(res.data.data[1])[i]}</h3> 
+                                            <h3 id='e'>{(res.data.data[2])[i]}</h3> 
+                                            <h3 className='tel'>{(res.data.data[3])[i]}</h3> 
+                                            <h3 className='sex'>{(res.data.data[4])[i]}</h3> 
+                                            <div className='quadro_botoes'>
+                                                <button className='pag' id={ident} name={(res.data.data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
+                                                <button id={(res.data.data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
+                                                <button id={(res.data.data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
+                                                <button className='falar' id={(res.data.data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img className='zap' src={Zap} alt="Imagem de whatsapp"/></button>
+                                            </div>
+                                        </div>)
                                                 
                     }
 
@@ -137,7 +138,7 @@ export default class ResultadoPesquisa extends Component{
 
         })
     }  
-    componentWillMount(){
+    componentDidMount(){
         this.resultado();
     }
     adiantar(){
@@ -153,7 +154,7 @@ export default class ResultadoPesquisa extends Component{
                 for(var i=index; i< quant ; i++){
                     var ident = (data[0])[i]            
                     if((data[2])[i].length> 31){
-                        this.lista.push(<div className='enc'> 
+                        this.lista.push(<div key={(data[1])[i]+i} className='enc'> 
                                             <h3 className='n'>{(data[1])[i]}</h3>
                                             <div className='email_caixa'> 
                                                 <h3 id='e'>{(data[2])[i].substr(0, 29)}</h3> 
@@ -169,7 +170,7 @@ export default class ResultadoPesquisa extends Component{
                                             </div></div>)
                     }
                     else{
-                        this.lista.push(<div className='enc'> 
+                        this.lista.push(<div key={(data[1])[i]+i} className='enc'> 
                                                 <h3 className='n'>{(data[1])[i]}</h3> 
                                                 <h3 id='e'>{(data[2])[i]}</h3> 
                                                 <h3 className='tel'>{(data[3])[i]}</h3> 
@@ -178,7 +179,7 @@ export default class ResultadoPesquisa extends Component{
                                                     <button className='pag' id={ident} name={(data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
                                                     <button id={(data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
                                                     <button id={(data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
-                                                    <button className='falar' id={(data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img class='zap' src={Zap} alt="Imagem de whatsapp"/></button>
+                                                    <button className='falar' id={(data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img className='zap' src={Zap} alt="Imagem de whatsapp"/></button>
                                                 </div>
                                             </div>)
                     }
@@ -202,7 +203,7 @@ export default class ResultadoPesquisa extends Component{
             for(var i=index; i< quant ; i++){
                 var ident = (data[0])[i]            
                 if((data[2])[i].length> 31){
-                    this.lista.push(<div className='enc'> 
+                    this.lista.push(<div key={(data[1])[i]+i} className='enc'> 
                                         <h3 className='n'>{(data[1])[i]}</h3>
                                         <div className='email_caixa'> 
                                             <h3 id='e'>{(data[2])[i].substr(0, 29)}</h3> 
@@ -218,7 +219,7 @@ export default class ResultadoPesquisa extends Component{
                                         </div></div>)
                 }
                 else{
-                        this.lista.push(<div className='enc'> 
+                        this.lista.push(<div key={(data[1])[i]+i} className='enc'> 
                                             <h3 className='n'>{(data[1])[i]}</h3> 
                                             <h3 id='e'>{(data[2])[i]}</h3> 
                                             <h3 className='tel'>{(data[3])[i]}</h3> 
@@ -227,7 +228,7 @@ export default class ResultadoPesquisa extends Component{
                                                 <button className='pag' id={ident} name={(data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
                                                 <button id={(data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
                                                 <button id={(data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
-                                                <button className='falar' id={(data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img class='zap' src={Zap} alt="Imagem de whatsapp"/></button>
+                                                <button className='falar' id={(data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img className='zap' src={Zap} alt="Imagem de whatsapp"/></button>
                                             </div>
                                         </div>)
                 }
@@ -250,7 +251,7 @@ export default class ResultadoPesquisa extends Component{
             for(var i=index; i< quant ; i++){
                 var ident = (data[0])[i]            
                 if((data[2])[i].length> 31){
-                    this.lista.push(<div className='enc'> 
+                    this.lista.push(<div key={(data[1])[i]+i} className='enc'> 
                                         <h3 className='n'>{(data[1])[i]}</h3>
                                         <div className='email_caixa'> 
                                             <h3 id='e'>{(data[2])[i].substr(0, 29)}</h3> 
@@ -266,7 +267,7 @@ export default class ResultadoPesquisa extends Component{
                                         </div></div>)
                 }
                 else{
-                    this.lista.push(<div className='enc'> 
+                    this.lista.push(<div key={(data[1])[i]+i} className='enc'> 
                                             <h3 className='n'>{(data[1])[i]}</h3> 
                                             <h3 id='e'>{(data[2])[i]}</h3> 
                                             <h3 className='tel'>{(data[3])[i]}</h3> 
@@ -275,7 +276,7 @@ export default class ResultadoPesquisa extends Component{
                                                 <button className='pag' id={ident} name={(data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
                                                 <button id={(data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
                                                 <button id={(data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
-                                                <button className='falar' id={(data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img class='zap' src={Zap} alt="Imagem de whatsapp"/></button>
+                                                <button className='falar' id={(data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img className='zap' src={Zap} alt="Imagem de whatsapp"/></button>
                                             </div>
                                         </div>)
                 }
@@ -298,7 +299,7 @@ export default class ResultadoPesquisa extends Component{
             for(var i=index; i< quant ; i++){
                 var ident = (data[0])[i]            
                 if((data[2])[i].length > 31){
-                    this.lista.push(<div className='enc'> 
+                    this.lista.push(<div key={(data[1])[i]+i} className='enc'> 
                                         <h3 className='n'>{(data[1])[i]}</h3>
                                         <div className='email_caixa'> 
                                             <h3 id='e'>{(data[2])[i].substr(0, 29)}</h3> 
@@ -314,7 +315,7 @@ export default class ResultadoPesquisa extends Component{
                                         </div></div>)
                 }
                 else{
-                    this.lista.push(<div className='enc'> 
+                    this.lista.push(<div key={(data[1])[i]+i} className='enc'> 
                                             <h3 className='n'>{(data[1])[i]}</h3> 
                                             <h3 id='e'>{(data[2])[i]}</h3> 
                                             <h3 className='tel'>{(data[3])[i]}</h3> 
@@ -323,7 +324,7 @@ export default class ResultadoPesquisa extends Component{
                                                 <button className='pag' id={ident} name={(data[1])[i]} onClick={(event) => this.abrir_pagamentos(event.target.id, event.target.name)}>Pagamentos</button> 
                                                 <button id={(data[0])[i]} onClick={(event) => this.abrir_editar(event.target.id)} className='editar'>Editar</button> 
                                                 <button id={(data[0])[i]} className='excluir' onClick={(event) => this.abrir_excluir(event.target.id)}>Excluir</button> 
-                                                <button className='falar' id={(data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img class='zap' src={Zap} alt="Imagem de whatsapp" /></button>
+                                                <button className='falar' id={(data[3])[i]} onClick={(event) => this.falar_whats(event.target.id)}>Falar<img className='zap' src={Zap} alt="Imagem de whatsapp" /></button>
                                             </div>
                                         </div>)
                 }

@@ -38,7 +38,7 @@ export default class ModalExcluir extends Component{
                         <div className="botao-sim">
                             <button id='confirmar-exclusao' onClick={(event) => this.excluir_cadastro()} className="sim" name="sim" value="Sim">Sim</button>
                         </div>
-                        <div class="botao-nao">
+                        <div className="botao-nao">
                             <button className="nao" name="nao" value="Não" onClick={(event) => this.props.executar("modal-excluir")}>Não</button>
                         </div>
                     </div>

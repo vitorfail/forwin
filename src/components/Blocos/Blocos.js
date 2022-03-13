@@ -20,17 +20,12 @@ export default class Blocos extends Component{
         this.hora = this.hora.bind(this);
     }
     componentDidMount() {
-        window.addEventListener('load', this.query_numero);
-        window.addEventListener('load',  this.query_aniversariantes);
-        window.addEventListener('load', this.query_receita);
-        window.addEventListener('load', this.data);
-        window.addEventListener('load', this.hora);
-    } 
-    componentWillMount() {
         this.query_numero()
         this.query_aniversariantes();
         this.query_receita();
-    }   
+        this.data();
+        this.hora();
+    } 
     query_numero(){
         Axios.post('index.php?url=quantidadeclientes/pesquisa', {user: '1'}).then(res =>{
             if(res.data.data === 'Usuário não autenticado' || res.data.data === '1'){
