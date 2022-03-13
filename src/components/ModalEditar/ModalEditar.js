@@ -31,6 +31,7 @@ export default class ModalEditar extends Component{
                 Exit()
             }
             else{
+                console.log("Sol")
                 this.setState({nome: res.data.data[1]})
                 this.setState({data: res.data.data[2]})
                 this.setState({cpf: res.data.data[3]})
@@ -75,19 +76,6 @@ export default class ModalEditar extends Component{
         .catch( error => {
 
         })
-    }
-    componentDidMount(){
-        this.setState({nome: ''})
-        this.setState({data: ''})
-        this.setState({cpf: ''})
-        this.setState({estado_civil: ''})
-        this.setState({genero: ''})
-        this.setState({uf: ''})
-        this.setState({endereco: ''})
-        this.setState({cidade: ''})
-        this.setState({telefone: ''})
-        this.setState({email: ''})
-        this.setState({notific: ''})    
     }
     componentDidUpdate(props){
         if(props.exibir === "modal-editar mostrar" ){
