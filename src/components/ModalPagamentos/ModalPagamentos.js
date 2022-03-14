@@ -361,8 +361,7 @@ export default class ModalPagamentos extends Component{
                         </div>
                         <div className={this.state.novo_pag}>
                             <input className="submit" type='text' value={this.state.valor_novo_input}  onChange={(event) => this.mascara_valor(event.target.value)} placeholder="Valor"/>
-                            <input className="submit-data" onChange={(event) => this.setState({data_novo_input:event.target.value})} type="date"/>
-                            <input className='pro'  onChange={(event) => this.setState({procedimento_novo_input:event.target.value})}placeholder="Nome do procedimento"/>
+                            <input className="submit-data" type='text' onChange={(event) => this.setState({data_novo_input:event.target.value})} type="date"/>
                             <select id="tipo" onChange={(event) => this.setState({tipo_novo_input:event.target.value})} className="from_pag">
                                 <option value="debito">Débito</option>
                                 <option value="credito">Crédito</option>
@@ -371,6 +370,7 @@ export default class ModalPagamentos extends Component{
                                 <option value="boleto">Boleto</option>
                                 <option value="cheque">Cheque</option>
                             </select>
+                            <input className='pro'  type="text" onChange={(event) => this.setState({procedimento_novo_input:event.target.value})}placeholder="Nome do procedimento"/>
                             <button className="" onClick={(event) => this.inserir_novoPagamento(this.props.id, this.props.nome)}>Inserir</button>
                         </div>
                         <div className="botoes">

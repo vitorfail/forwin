@@ -66,21 +66,31 @@
     height: 85px;
     width: 503px;
 }
-.modal-pag .modal input{
+.modal-pag .modal input[type=text]{
     border: 1px solid #cccccc;
+    height: 25px;
     margin-top: 10px;
     border-radius: 4px;
     font-size: 12px;
-    height: 30px;
     padding: 10px;
     color: rgb(114, 114, 114);;
 }
+.modal-pag .modal input[type=date]{
+    border: 1px solid #cccccc;
+    height: 25px;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 10px;
+    color: rgb(114, 114, 114);;
+}
+
 .modal-pag .modal select{
     border: 1px solid #cccccc;
     margin-top: 10px;
     border-radius: 4px;
     font-size: 12px;
-    height: 30px;
+    height: 25px;
     color: rgb(114, 114, 114);
 }
 .modal-pag .modal input:focus{
@@ -257,6 +267,10 @@
 @media  screen and (max-width: 640px) {
     .modal-pag .modal input {
         width: 41vw;
+    }
+    .novo-input .pro {
+        height: 145px;
+        width: 49vw;
     }
     .modal-pag .modal{
         width: 100%;
