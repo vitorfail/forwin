@@ -57,6 +57,10 @@ function InserirNome(props){
             let html = document.querySelector('html');
             html.className = "tema-roxo";
         }
+        if(tema === 'temaverde'){
+            let html = document.querySelector('html');
+            html.className = "tema-verde";
+        }
     }
     function update(){
         Axios.post('index.php?url=atualizarusuario/pesquisa', { nome:nome_,  
@@ -126,6 +130,7 @@ function InserirNome(props){
                         <input type='radio' name='tema' id='tema-azul' value='temaazul' onClick={(event) => troca_de_tema(event.target.value)}/><h2 className='azul'>11</h2><p>Tema azul</p>
                         <input type='radio' name='tema' id='tema-roxo' value='temaroxo' onClick={(event) => troca_de_tema(event.target.value)}/><h2 className='roxo'>11</h2><p>Tema roxo</p>
                         <input type='radio' name='tema' id='tema-laranja'value='temalaranja' onClick={(event) => troca_de_tema(event.target.value)}/><h2 className='laranja'>11</h2><p>Tema laranja</p>
+                        <input type='radio' name='tema' id='tema-vede'value='temaverde' onClick={(event) => troca_de_tema(event.target.value)}/><h2 className='verde'>11</h2><p>Tema verde</p>
                     </div>
                     <div className='menu_nome'>
                         <button className='mudar' onClick={() => update()}>Mudar</button>

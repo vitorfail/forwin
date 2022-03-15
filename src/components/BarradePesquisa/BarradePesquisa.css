@@ -81,7 +81,7 @@
     align-items: center;
     font-size: 30px;
     border-radius: 50px;
-    background: var(--pagamentos);
+    background: var(--vermelho);
     color: white;
     width: 40px;
     height: 40px;
@@ -160,4 +160,9 @@
     .barra .cabecalho .barra_de_pesquisa{
         width: 90%;   
     }
+    .barra .cabecalho .barra_de_pesquisa .user h1{
+        background: white;
+        color:var(--vermelho)
+    }
+
 }

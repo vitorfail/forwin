@@ -5,7 +5,7 @@ import Cadastro from '../../icones/instituicao.png'
 import DRE from '../../icones/reading-book _1_.png'
 import Ajuda from '../../icones/settings.png'
 import Sair from '../../icones/logout.png'
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import InserirNome from '../InserirNome/InserirNome';
 import '../BarradePesquisa/BarradePesquisa.css';
 import '../BarradePesquisa/Popup-conta.css';
@@ -25,9 +25,27 @@ function BarradePesquisa(){
     const [Tipo, setTipo] = useState('impostos');
     const [menu, setmenu] = useState('balao');
     const [preencha, setpreencha] = useState('preencha');
+    const [titulo, settitulo] = useState("");
     const history = useHistory();
 
 
+    function pegar_nome(){
+        Axios.post("index.php?url=dadosuser/pesquisa")
+        .then(res =>{
+                if(res.data.data === '1'){
+
+                }
+                if(res.data.data === "Usuário não autenticado"){
+                }
+                else{
+                    let v = String((res.data.data[1])[0]).toUpperCase()
+                    settitulo(v.substring(0, 1))
+                } 
+            }
+        )
+        .catch(error => {
+        })
+    }
     const troca = () => {
         Axios.post('index.php?url=inserircontas/pesquisa', 
         {   val: parseFloat((Valor.replace('R$', '')).replace('.', '').replace(',', '.')), 
@@ -91,6 +109,10 @@ function BarradePesquisa(){
             history.push('/pesquisa/'+nomepesquisa);
         }
     }
+    useEffect(() => {
+        pegar_nome()
+
+    }, [])
     return(
         <div className="cabecalho">
             <div className={menu}>
@@ -110,7 +132,7 @@ function BarradePesquisa(){
                 <div className="user">
                     <div  className="btn"  onClick={() => setConta('modal-conta mostrar')} >Adicionar Conta</div>
                     <div className="usuario" onClick={() => mostrar_inserirnome()}>
-                        <h1 className='nome_de_usuario'>B</h1>
+                        <h1 className='nome_de_usuario'>{titulo}</h1>
                     </div>
                 </div>
             </div>

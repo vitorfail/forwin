@@ -86,7 +86,7 @@ export default class ModalPagamentos extends Component{
                     if((res.data.data[3])[i] ==="cheque"){
                         cheque++;
                     }
-                    list = this.state.resultado.concat(<div key={(res.data.data[2])[i]+(res.data.data[4])[i]} className='pag-enc' >
+                    list = this.state.resultado.concat(<div key={(res.data.data[2])[i]+(res.data.data[4])[i]+i} className='pag-enc' >
                                                     <h3 className='pag-nome'>{(res.data.data[4])[i]}</h3>
                                                     <h3>{(res.data.data[1])[i]}</h3>
                                                     <h3>R$ {(res.data.data[2])[i]}</h3>

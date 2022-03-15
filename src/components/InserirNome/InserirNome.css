@@ -132,6 +132,48 @@
     -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
   background-color: #F5F5F5;
 }
+.escolha-tema{
+    margin-top: 10px;
+    display: flex;
+    min-width: 277px;
+    width: 287px;
+    flex-wrap: wrap;
+}
+.escolha-tema h2{
+    width: 30px;
+    height: 30px;
+}
+.escolha-tema .padrao{
+    display: flex;
+    background: crimson;
+    color: crimson;
+}
+.escolha-tema .azul{
+    display: flex;
+    background: rgb(37, 52, 255);
+    color: rgb(37, 52, 255);
+}
+.escolha-tema .roxo{
+    display: flex;
+    background: rgb(66, 0, 219);
+    color: rgb(66, 0, 219);
+}
+.escolha-tema .laranja{
+    display: flex;
+    background: rgb(219, 117, 0);
+    color: rgb(219, 117, 0);
+}
+.escolha-tema .verde{
+    display: flex;
+    background: rgb(3, 138, 26);
+    color: rgb(3, 138, 26);
+}
+.escolha-tema p{
+    margin-left: 5px;
+    margin-right: -5px;
+    width: 79px;
+    display: flex;
+}
 
 @media screen and (max-width: 640px) {
     .nameclatura .modal{

@@ -25,6 +25,11 @@ function Tema(){
                 let html = document.querySelector('html');
                 html.className = "tema-roxo";
             }
+            if((res.data.data[5])[0] === 'temaverde'){
+
+                let html = document.querySelector('html');
+                html.className = "tema-verde";
+            }
         } 
     })
     .catch(error => {
