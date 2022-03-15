@@ -181,7 +181,7 @@ export default class Planilhas extends Component{
                                 agosto_mes = agosto_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() === 8){
-                                setembro_mes = setembro_mes+parseFloat((res.data[1])[i]);
+                                setembro_mes = setembro_mes+parseFloat((res.data.data[1])[i]);
                             }
                             if(newd.getMonth() === 9){
                                 outubro_mes = outubro_mes+parseFloat((res.data.data[1])[i]);
@@ -194,7 +194,6 @@ export default class Planilhas extends Component{
                             }
                         }
                     }
-                    
                 }
                 this.setState({janeiro: janeiro_mes});
                 this.setState({fevereiro: fevereiro_mes});

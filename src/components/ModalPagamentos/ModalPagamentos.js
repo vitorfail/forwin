@@ -348,7 +348,7 @@ export default class ModalPagamentos extends Component{
                             <h3>Ranking de pagamento: </h3>
                             <h3 className='ranking_pagamento'>{this.state.ranking_pag} </h3>
                         </div>
-                        <p className={this.state.preencha}>Lista de pagamentos</p>
+                        <p className={this.state.preencha}>Preencha todos os dados</p>
                         <div className="pag-conteiner">
                             <div className="pag-titulo">
                                 <h3>Procedimento</h3>
@@ -361,7 +361,7 @@ export default class ModalPagamentos extends Component{
                         </div>
                         <div className={this.state.novo_pag}>
                             <input className="submit" type='text' value={this.state.valor_novo_input}  onChange={(event) => this.mascara_valor(event.target.value)} placeholder="Valor"/>
-                            <input className="submit-data" type='text' onChange={(event) => this.setState({data_novo_input:event.target.value})} type="date"/>
+                            <input className="submit-data" onChange={(event) => this.setState({data_novo_input:event.target.value})} type="date"/>
                             <select id="tipo" onChange={(event) => this.setState({tipo_novo_input:event.target.value})} className="from_pag">
                                 <option value="debito">Débito</option>
                                 <option value="credito">Crédito</option>

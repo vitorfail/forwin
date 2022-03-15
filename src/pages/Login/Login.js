@@ -67,18 +67,18 @@ function Login(){
                                 <h1 className={logando}>Login</h1>
                             </div>
                             <div className={'loader '+darespaco} >
-                                <di className={'dot '+logando}></di>
-                                <di className={'dot '+logando}></di>
-                                <di className={'dot '+logando}></di>
-                                <di className={'dot '+logando}></di>
-                                <di className={'dot '+logando}></di>
-                                <di className={'dot '+logando}></di>
-                                <di className={'dot '+logando}></di>
-                                <di className={'dot '+logando}></di>
-                                <di className={'dot '+logando}></di>
-                                <di className={'dot '+logando}></di>
-                                <di className={'dot '+logando}></di>
-                                <di className={'dot '+logando}></di>
+                                <div className={'dot '+logando}></div>
+                                <div className={'dot '+logando}></div>
+                                <div className={'dot '+logando}></div>
+                                <div className={'dot '+logando}></div>
+                                <div className={'dot '+logando}></div>
+                                <div className={'dot '+logando}></div>
+                                <div className={'dot '+logando}></div>
+                                <div className={'dot '+logando}></div>
+                                <div className={'dot '+logando}></div>
+                                <div className={'dot '+logando}></div>
+                                <div className={'dot '+logando}></div>
+                                <div className={'dot '+logando}></div>
                             </div>
                             <h3 className={mostrar}>{conteudoError}</h3>
                             <input className={logando} onKeyPress={entrar} onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
