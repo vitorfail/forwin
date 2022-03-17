@@ -38,7 +38,7 @@ export default class Cadastro extends Component{
     render(){
         return(
             <div>
-                <Barralateral></Barralateral>
+                <Barralateral focus={'label2'}></Barralateral>
                 <div className="barra">
                     <BarradePesquisa></BarradePesquisa>
                     <div className="conteudo">

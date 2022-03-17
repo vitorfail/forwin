@@ -20,7 +20,7 @@
     --preencha--cor:rgba(236, 21, 21, 0.322);
     --salvar--info:rgb(2, 158, 10);
     --botao--sim--popup: rgb(36, 63, 216);
-    --barra--lateral: rgb(226, 55, 83);
+    --barra--lateral: rgba(196, 6, 38, 0.445);
     --preferencia--de--pagamento: rgb(1, 153, 52);
     --cor--da--barra: white;
     --pagamentos:rgb(2, 124, 172);
@@ -38,7 +38,7 @@
     --preencha--cor:rgba(236, 21, 21, 0.322);
     --salvar--info:rgb(172, 126, 0);
     --botao--sim--popup: rgb(36, 63, 216);
-    --barra--lateral: rgb(58, 55, 226);
+    --barra--lateral: rgb(47, 45, 184. 0.5);
     --preferencia--de--pagamento: rgb(1, 153, 52);
     --cor--da--barra: white;
     --pagamentos:rgb(2, 124, 172);
@@ -56,7 +56,7 @@
     --preencha--cor:rgba(236, 21, 21, 0.322);
     --salvar--info:rgb(0, 166, 172);
     --botao--sim--popup: rgb(12, 144, 177);
-    --barra--lateral: rgb(115, 12, 199);
+    --barra--lateral: rgb(98, 23, 160, 0.5);
     --preferencia--de--pagamento: rgb(2, 167, 57);
     --cor--da--barra: white;
     --pagamentos:rgb(2, 124, 172);
@@ -74,7 +74,7 @@
     --preencha--cor:rgba(236, 21, 21, 0.322);
     --salvar--info:rgb(172, 0, 14);
     --botao--sim--popup: rgb(177, 12, 40);
-    --barra--lateral: rgb(199, 96, 12);
+    --barra--lateral: rgba(177, 104, 45, 0.5);
     --preferencia--de--pagamento: rgb(2, 167, 57);
     --cor--da--barra: white;
     --pagamentos:rgb(2, 124, 172);
@@ -92,7 +92,7 @@
     --preencha--cor:rgba(236, 21, 21, 0.322);
     --salvar--info:rgb(0, 172, 14);
     --botao--sim--popup: rgb(177, 12, 40);
-    --barra--lateral: rgb(18, 151, 13);
+    --barra--lateral: rgba(14, 109, 10, 0.5);
     --preferencia--de--pagamento: rgb(2, 167, 57);
     --cor--da--barra: white;
     --pagamentos:rgb(7, 116, 206);

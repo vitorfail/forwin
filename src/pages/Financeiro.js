@@ -40,7 +40,7 @@ export default class Financeiro extends Component{
     render(){
         return(
             <div>
-                <Barralateral></Barralateral>
+                <Barralateral focus={'label3'}></Barralateral>
                 <div className="barra">
                     <BarradePesquisa></BarradePesquisa>
                     <div className="conteudo">

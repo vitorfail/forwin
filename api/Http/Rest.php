@@ -26,13 +26,13 @@
     require_once('./nome.php');
     require_once('./contas_dre.php');
     require_once('./inserir_contas.php');
-    require_once('./update_conta.php');
     require_once('./tipos_pagamento.php');
     require_once('./contas_painel.php');
     require_once('./dadosuser.php');
     require_once('./politicasprivacidade.php');
     require_once('./cederprivacidade.php');
-    require_once('./atualizar_usuario.php');                
+    require_once('./atualizar_usuario.php');
+    require_once('./atualizar_conta.php');                 
 
     class Rest{
         private $request;

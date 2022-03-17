@@ -3,7 +3,9 @@
 }
 .barralateral{
     position: fixed;
-    background-color: var(--barra--lateral);
+    background: linear-gradient(var(--barra--lateral), var(--barra--lateral)), url('../../icones/download.jpg');
+    background-repeat: no-repeat;
+    background-size: 1020px 100%;
     width: 15vw;
     min-height: 100vh;
 }
@@ -26,9 +28,12 @@
     font-size: 40px;
 }
 .barralateral ul .link{
+    width: 100%;
+    border: none;
+    background: none;
     font-size: 18px;
     font-style:inherit;
-    padding: 5px 19px;
+    padding: 10px 19px;
     display: flex;
     align-items: center;
     color: ivory;
@@ -36,6 +41,17 @@
 }
 .barralateral ul .link:hover{
     background-color: ivory;
+    color: var(--vermelho);
+    -webkit-transition: 0.11s ease-in;
+    -moz-transition: 0.11s ease-in;
+    -o-transition: 0.11 ease-in;
+    transition: 0.11s ease-in;
+    border-radius: 24px 0px 0px 24px;
+	-moz-border-radius: 24px 0px 0px 24px;
+	-webkit-border-radius: 24px 0px 0px 24px;
+}
+.barralateral ul .link.focus{
+    background: rgb(224, 224, 224);
     color: var(--vermelho);
     -webkit-transition: 0.11s ease-in;
     -moz-transition: 0.11s ease-in;

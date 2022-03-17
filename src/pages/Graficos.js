@@ -40,7 +40,7 @@ export default class Graficos extends Component{
     render(){
         return(
             <div>
-                <Barralateral></Barralateral>
+                <Barralateral focus={'label1'}></Barralateral>
                 <div className="barra">
                     <BarradePesquisa></BarradePesquisa>
                     <div className="conteudo">

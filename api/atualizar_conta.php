@@ -1,11 +1,12 @@
 <?php
+    namespace Map\Http\Controllers;
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT");
     header("Access-Control-Allow-Headers: *");
 
     $_POST = json_decode(file_get_contents("php://input"),true);
-    class UpdatecontaController{
+    class AtualizarcontaController{
         public function pesquisa(){
             if(AuthController::checkAuth()){
                 include('conexao.php');

@@ -31,7 +31,7 @@ function Aniversariantes(){
     }
     return(
         <div>
-            <Barralateral></Barralateral>
+            <Barralateral ></Barralateral>
             <div className="barra">
                 <BarradePesquisa></BarradePesquisa>
                 <div className="conteudo">

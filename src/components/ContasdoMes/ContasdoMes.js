@@ -96,7 +96,7 @@ export default class ContasdoMes extends Component{
         })
     }
     atualizar_conta(e, check){
-        Axios.post('index.php?url=updateconta/pesquisa', {
+        Axios.post('index.php?url=atualizarconta/pesquisa', {
             id: e,
             situacao: String(check)
         }).then(res => {

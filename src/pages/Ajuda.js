@@ -38,7 +38,7 @@ export default class Ajuda extends Component{
     render(){
         return(
             <div>
-                <Barralateral></Barralateral>
+                <Barralateral focus={'label4'}></Barralateral>
                 <div className="barra">
                     <BarradePesquisa></BarradePesquisa>
                     <div className="conteudo">
