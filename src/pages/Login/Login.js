@@ -81,7 +81,7 @@ function Login(){
                                 <div className={'dot '+logando}></div>
                             </div>
                             <h3 className={mostrar}>{conteudoError}</h3>
-                            <input className={logando} onKeyPress={entrar} onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
+                            <input name= 'usuario' className={logando} onKeyPress={entrar} onChange={(event) => setusuario(event.target.value)} placeholder='Usuario'/>
                             <input type='password' className={logando} name='senha' onKeyPress={entrar} onChange={(event) => setsenha(event.target.value)} placeholder='Senha'/>
                             <button name='entrar' onClick={(event) =>login_func() } >Entrar</button>
                         </div>
