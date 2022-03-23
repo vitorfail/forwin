@@ -4,19 +4,15 @@ export default class Loading extends Component{
     constructor(){
         super()
         this.state= {
-            fade: ''
+            fade: 'fade-out'
         }
-        this.carregar = this.carregar.bind(this);
     }
     componentDidMount(){
-        window.addEventListener('load', this.carregar)
-    }
-    carregar(){
-        this.setState({fade: 'fade'});
+       this.setState({fade: "fade"})
     }
     render(){
         return(
-            <div className="spinner-box" id='fade'>
+            <div className="spinner-box" id={this.state.fade}>
                 <div className="configure-border-1">  
                     <div className="configure-core"></div>
                 </div>  

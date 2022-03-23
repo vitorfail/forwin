@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     position: fixed;
-    z-index: 8000;
+    z-index: 400000;
     visibility: visible;
     opacity: 1;
 }
@@ -39,7 +39,6 @@
     background-color: #1d2630;
 }
 #fade-out {
-  visibility: hidden;
   transition: visibility 0.2s, opacity 0.2s linear;
 }
 #fade{
