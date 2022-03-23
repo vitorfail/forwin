@@ -32,8 +32,11 @@ export default class Blocos extends Component{
                 this.setState({numero_clientes: "Sem clientes"})
             }
             else{
-                if(res.data.data ===! 0){
+                if(res.data.data === 0){
                     this.setState({numero_clientes: res.data.data})
+                }
+                else{
+                    this.setState({numero_clientes: "Sem clientes"})
                 }
             }
         }).catch(error =>{

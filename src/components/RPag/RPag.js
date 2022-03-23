@@ -57,7 +57,7 @@ export default class RPag extends Component{
             { passe: "pagamento"}
         ).then( res => {
             if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
-
+                this.setState({resultado: ''})
             }
             else{
                 var repetidor = 0
@@ -188,7 +188,7 @@ export default class RPag extends Component{
         return(
             <div className="clientes_achados">
                 <div className="titulo_pesquisa">
-                    <h1 id="list">Ranking de visitas</h1>
+                    <h1 id="list">Ranking de pagamentos</h1>
                 </div>
                 <div className="encontrados">
                     {this.state.resultado}
