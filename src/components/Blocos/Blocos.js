@@ -32,7 +32,9 @@ export default class Blocos extends Component{
                 this.setState({numero_clientes: "Sem clientes"})
             }
             else{
-                this.setState({numero_clientes: res.data.data})
+                if(res.data.data ===! 0){
+                    this.setState({numero_clientes: res.data.data})
+                }
             }
         }).catch(error =>{
             this.setState({numero_clientes: "Sem clientes"})
@@ -47,8 +49,8 @@ export default class Blocos extends Component{
             if(res.data.data === 'Error'){
                 this.setState({aniversariantes: '0'})    
             }
-            if(res.data.data === '1'){
-                this.setState({aniversariantes: '0'})    
+            if(res.data.data === '0'){
+                this.setState({aniversariantes: 'Sem clientes'})    
             }
             else{
                 var num = res.data.data;

@@ -64,10 +64,12 @@ export default class RVisitas extends Component{
         Axios.post('index.php?url=rankings/pesquisa', 
             { passe: "visita"}
         ).then( res => {
+            console.log(res.data)
             if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
-
+                console.log('ph')
             }
             else{
+                
                 var repetidor = 0
                 this.setState({dados: res.data.data})
                 this.setState({numero: res.data.data[0].length})
@@ -97,6 +99,7 @@ export default class RVisitas extends Component{
             }
         })
         .catch( error  => {
+            console.log("error")
         })
     }
     adiantar(){
