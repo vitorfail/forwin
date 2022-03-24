@@ -14,13 +14,13 @@ export default class ModalExcluir extends Component{
     excluir_cadastro(){
         Axios.post('index.php?url=deletarcliente/pesquisa', {id: this.props.id})
         .then(res => {
-            if(res.data.data === '1'){
+            if(res.data.data === '1' || res.data.data === 1){
                 this.props.executar("modal-excluir")
             }
             if(res.data.data === 'Usuário não autenticado'){
                 Exit()
             }
-            else{
+            if(res.data.data !== '1'){
                 alert("Não foi possível excluir esse cliente. Verifique sua internet e tente novamente")
             }
         })

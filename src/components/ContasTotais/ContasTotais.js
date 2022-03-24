@@ -63,7 +63,6 @@ export default class ContasTotais extends Component{
             marcador: "Várias"}
         ).then( res => {
             if(res.data.data === '1'){
-                console.log('um')
             }
             if(res.data.data === 'Usuário não autenticado'){
                 Exit()
@@ -73,7 +72,6 @@ export default class ContasTotais extends Component{
                     this.setState({resultado: ''})
                 }
                 else{
-                    console.log("dois")
                     var repetidor = 0
                     this.setState({dados: res.data.data})
                     this.setState({numero: res.data.data[0].length})

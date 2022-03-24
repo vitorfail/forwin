@@ -61,7 +61,6 @@ export default class DRE extends Component{
         })
         Axios.post("index.php?url=contasdre/pesquisa", {mes:m, ano:a}
         ).then(res =>{
-            console.log(res.data.data)
             if(res.data.data === 'Usuário não autenticado'){
                 Exit()
             }
