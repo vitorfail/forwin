@@ -62,56 +62,63 @@ export default class ContasTotais extends Component{
             ano:ano_,
             marcador: "Várias"}
         ).then( res => {
-            if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
+            if(res.data.data === '1'){
+            }
+            if(res.data.data === 'Usuário não autenticado'){
                 Exit()
             }
             else{
-                var repetidor = 0
-                this.setState({dados: res.data.data})
-                this.setState({numero: res.data.data[0].length})
-                this.setState({numerador: 1})
-                var verificador = res.data.data[0].length / 50
-                this.setState({pages: verificador})
-                if(this.state.numero> 50){
-                    repetidor = 50
-                    this.setState({passador: true})
-                    this.setState({passador_final: true})
-                    this.setState({voltar_final: true})
+                if(res.data.data === '1'){
+                    this.setState({resultado: ''})
                 }
                 else{
-                    repetidor = this.state.numero
-                }
-                this.lista = [] 
-                for(var i=this.state.indexador; i< repetidor; i++){
-                    if((res.data.data[6])[i] >0 ){
-                        this.lista.push(<div className='enc p'> 
-                                            <h3 className='n'>{(res.data.data[1])[i]}</h3> 
-                                            <h3 className='n'>R$ {(res.data.data[2])[i]}</h3> 
-                                            <h3 className={(res.data.data[4])[i]}>{(res.data.data[4])[i]}</h3>
-                                            <h3 className='n'>{(res.data.data[5])[i]}</h3>
-                                            <h3 className='emdia'>{(res.data.data[6])[i]} Dias</h3>    
-                                        </div>)
+                    var repetidor = 0
+                    this.setState({dados: res.data.data})
+                    this.setState({numero: res.data.data[0].length})
+                    this.setState({numerador: 1})
+                    var verificador = res.data.data[0].length / 50
+                    this.setState({pages: verificador})
+                    if(this.state.numero> 50){
+                        repetidor = 50
+                        this.setState({passador: true})
+                        this.setState({passador_final: true})
+                        this.setState({voltar_final: true})
                     }
-                    if((res.data.data[6])[i] <0 ){
-                        this.lista.push(<div className='enc p'> 
-                                            <h3 className='n'>{(res.data.data[1])[i]}</h3> 
-                                            <h3 className='n'>R$ {(res.data.data[2])[i]}</h3> 
-                                            <h3 className={(res.data.data[4])[i]}>{(res.data.data[4])[i]}</h3>
-                                            <h3 className='n'>{(res.data.data[5])[i]}</h3>
-                                            <h3 className={('vencido'+(res.data.data[4])[i])}>Vencido</h3>    
-                                        </div>)
+                    else{
+                        repetidor = this.state.numero
                     }
-                    if((res.data.data[6])[i] === 0 ){
-                        this.lista.push(<div className='enc p'> 
-                                            <h3 className='n'>{(res.data.data[1])[i]}</h3> 
-                                            <h3 className='n'>R$ {(res.data.data[2])[i]}</h3> 
-                                            <h3 className={(res.data.data[4])[i]}>{(res.data.data[4])[i]}</h3>
-                                            <h3 className='n'>{(res.data.data[5])[i]}</h3>
-                                            <h3 className='ultimo'>Último</h3>    
-                                        </div>)
+                    this.lista = [] 
+                    for(var i=this.state.indexador; i< repetidor; i++){
+                        if((res.data.data[6])[i] >0 ){
+                            this.lista.push(<div className='enc p'> 
+                                                <h3 className='n'>{(res.data.data[1])[i]}</h3> 
+                                                <h3 className='n'>R$ {(res.data.data[2])[i]}</h3> 
+                                                <h3 className={(res.data.data[4])[i]}>{(res.data.data[4])[i]}</h3>
+                                                <h3 className='n'>{(res.data.data[5])[i]}</h3>
+                                                <h3 className='emdia'>{(res.data.data[6])[i]} Dias</h3>    
+                                            </div>)
+                        }
+                        if((res.data.data[6])[i] <0 ){
+                            this.lista.push(<div className='enc p'> 
+                                                <h3 className='n'>{(res.data.data[1])[i]}</h3> 
+                                                <h3 className='n'>R$ {(res.data.data[2])[i]}</h3> 
+                                                <h3 className={(res.data.data[4])[i]}>{(res.data.data[4])[i]}</h3>
+                                                <h3 className='n'>{(res.data.data[5])[i]}</h3>
+                                                <h3 className={('vencido'+(res.data.data[4])[i])}>Vencido</h3>    
+                                            </div>)
+                        }
+                        if((res.data.data[6])[i] === 0 ){
+                            this.lista.push(<div className='enc p'> 
+                                                <h3 className='n'>{(res.data.data[1])[i]}</h3> 
+                                                <h3 className='n'>R$ {(res.data.data[2])[i]}</h3> 
+                                                <h3 className={(res.data.data[4])[i]}>{(res.data.data[4])[i]}</h3>
+                                                <h3 className='n'>{(res.data.data[5])[i]}</h3>
+                                                <h3 className='ultimo'>Último</h3>    
+                                            </div>)
+                        }
                     }
-                }
-                this.setState({resultado: this.lista})
+                    this.setState({resultado: this.lista})
+                    }
             }
         })
         .catch( error  => {

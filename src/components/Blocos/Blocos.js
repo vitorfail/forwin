@@ -28,11 +28,16 @@ export default class Blocos extends Component{
     } 
     query_numero(){
         Axios.post('index.php?url=quantidadeclientes/pesquisa', {user: '1'}).then(res =>{
-            if(res.data.data === 'Usuário não autenticado' || res.data.data === '1'){
+            if(res.data.data === 'Usuário não autenticado'){
                 this.setState({numero_clientes: "Sem clientes"})
             }
             else{
-                this.setState({numero_clientes: res.data.data})
+                if(res.data.data === 0 || res.data.data === "0"){
+                    this.setState({numero_clientes: "Sem clientes"})
+                }
+                else{
+                    this.setState({numero_clientes: res.data.data})
+                }
             }
         }).catch(error =>{
             this.setState({numero_clientes: "Sem clientes"})
@@ -47,8 +52,8 @@ export default class Blocos extends Component{
             if(res.data.data === 'Error'){
                 this.setState({aniversariantes: '0'})    
             }
-            if(res.data.data === '1'){
-                this.setState({aniversariantes: '0'})    
+            if(res.data.data === '0'){
+                this.setState({aniversariantes: 'Sem clientes'})    
             }
             else{
                 var num = res.data.data;

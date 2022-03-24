@@ -67,7 +67,7 @@ export default class Planilhas extends Component{
     pesquisa_idades(){
         Axios.post('index.php?url=idades/pesquisa', {user: '1', password: '1'}
         ).then(res =>{
-           if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
+           if(res.data.data === 'Usuário não autenticado'){
                 Exit()
            }
            else{

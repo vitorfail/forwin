@@ -61,8 +61,22 @@ export default class DRE extends Component{
         })
         Axios.post("index.php?url=contasdre/pesquisa", {mes:m, ano:a}
         ).then(res =>{
-            if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
+            if(res.data.data === 'Usuário não autenticado'){
                 Exit()
+            }
+            if(res.data.data === '1'){
+                this.setState({imposto_dre: 0})
+                this.setState({custo_dre: 0})
+                this.setState({despesas_operacionais_dre: 0})
+                this.setState({despesas_venda_dre: 0})
+                this.setState({depesas_financeiras_dre: 0})
+                this.setState({despesas_administracao_dre: 0})
+
+                this.setState({receita_liquida_dre: 0})
+                this.setState({lucro_bruto_dre: 0})
+                this.setState({receita_financeira: 0})
+                this.setState({resultado_dre: 0})
+
             }
             else{
                 this.setState({imposto_dre: res.data.data[0]})

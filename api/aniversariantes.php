@@ -39,7 +39,7 @@
                         return $array;
                     }
                     else{
-                        return '2';
+                        return '0';
                     }
                 }
                 catch(Exception $e){

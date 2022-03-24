@@ -82,7 +82,7 @@ export default class ResultadoAniver extends Component{
             if(res.data.data === "Usuário nãu autenticado"){
                 Exit()
             }
-            if(res.data.data === '1' || res.data.data === '2'){
+            if(res.data.data === '0' || res.data.data === '2'){
                 this.setState({numero: 0})
             }
             else{
