@@ -12,7 +12,7 @@ export default class Loading extends Component{
     }
     render(){
         return(
-            <div className="spinner-box" id={this.state.fade}>
+            <div className="spinner-box">
                 <div className="configure-border-1">  
                     <div className="configure-core"></div>
                 </div>  

@@ -2,17 +2,18 @@ import React, { useState, useEffect } from 'react';
 import Barralateral from '../components/Barralateral/Barralateral';
 import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
 import ResultadoAniver from '../components/ResultadoAniver/ResultadoAniver';
-import Loading from '../components/Loading/Loading';
 import Blocos from '../components/Blocos/Blocos';
+import Loading from '../components/Loading/Loading';
 import Coockie from '../components/Coockie/Coockie';
 import Axios from '../Axios';
 import Tema from '.././Tema'
 function Aniversariantes(){ 
     const [poli, setpoliticas] = useState(true);
+    const [isLoading, setisLoading] = useState(true);
     useEffect(() => {
         Tema();
-        pesquisar_politicas()}
-    )
+        pesquisar_politicas();
+    }, [])
     function pesquisar_politicas(){
         Axios.post('index.php?url=politicasprivacidade/pesquisa')
         .then(res => {
@@ -26,11 +27,11 @@ function Aniversariantes(){
                 if(res.data.data === false){
                     setpoliticas(false)
                 }
+                setisLoading(false)
             }
         })
     }
-    return(
-        <div>
+    return(isLoading ? <Loading></Loading>: <div>
             <Barralateral ></Barralateral>
             <div className="barra">
                 <BarradePesquisa></BarradePesquisa>
@@ -41,7 +42,6 @@ function Aniversariantes(){
                     </div>
                 </div>
             </div>
-            <Loading></Loading>
             <Coockie politicas={poli}></Coockie>
         </div>
     )

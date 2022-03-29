@@ -13,13 +13,15 @@ export default class Financeiro extends Component{
     constructor(){
         super()
         this.state = {
-            politicas:true
+            politicas:true,
+            isLoading: true
         }
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
     componentDidMount(){
         Tema()
        this.pesquisar_politicas()
+       this.setState({isLoading: false})
     }
     pesquisar_politicas(){
         Axios.post('index.php?url=politicasprivacidade/pesquisa')
@@ -38,8 +40,7 @@ export default class Financeiro extends Component{
         })
     }
     render(){
-        return(
-            <div>
+        return(this.state.isLoading? <Loading></Loading>: <div>
                 <Barralateral focus={'label3'}></Barralateral>
                 <div className="barra">
                     <BarradePesquisa></BarradePesquisa>
@@ -50,7 +51,6 @@ export default class Financeiro extends Component{
                         </div>
                     </div>
                 </div>
-                <Loading></Loading>
                 <Coockie politicas={this.state.politicas} ></Coockie>
             </div>
         )

@@ -3,15 +3,16 @@ import React, {Component} from 'react';
 import Barralateral from '../components/Barralateral/Barralateral';
 import BarradePesquisa from '../components/BarradePesquisa/BarradePesquisa';
 import CadastroCliente from '../components/CadastroCliente/CadastroCliente';
-import Loading from '../components/Loading/Loading';
 import Axios from '../Axios';
+import Loading from '../components/Loading/Loading';
 import Coockie from '../components/Coockie/Coockie';
 import Tema from '.././Tema'
 export default class Cadastro extends Component{
     constructor(){
         super()
         this.state = {
-            politicas:true
+            politicas:true,
+            isLoading: true
         }
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
@@ -32,12 +33,12 @@ export default class Cadastro extends Component{
                 if(res.data.data === false){
                     this.setState({politicas: false})
                 }
+                this.setState({isLoading: false})
             }
         })
     }
     render(){
-        return(
-            <div>
+        return(this.state.isLoading ? <Loading></Loading>: <div>
                 <Barralateral focus={'label2'}></Barralateral>
                 <div className="barra">
                     <BarradePesquisa></BarradePesquisa>
@@ -47,7 +48,6 @@ export default class Cadastro extends Component{
                         </div>
                     </div>
                 </div>
-                <Loading></Loading>
                 <Coockie politicas={this.state.politicas}></Coockie>
             </div>
         )

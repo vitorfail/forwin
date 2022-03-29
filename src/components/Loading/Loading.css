@@ -8,6 +8,7 @@
     position: fixed;
     z-index: 400000;
     visibility: visible;
+    transition: visibility 0.2s, opacity 0.2s linear;
     opacity: 1;
 }
 .configure-border-1 {
@@ -38,12 +39,7 @@
     height: 100%;
     background-color: #1d2630;
 }
-#fade-out {
-  transition: visibility 0.2s, opacity 0.2s linear;
-}
-#fade{
-  display: none;
-}
+
 @keyframes spin {
     from {
       transform: rotate(0);
