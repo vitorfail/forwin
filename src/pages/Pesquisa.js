@@ -16,8 +16,7 @@ function Pesquisa(props){
     useEffect(() => {
         Tema()
         pesquisar_politicas();
-        setisLoading(false)    
-    },[setisLoading])
+    },[])
     function pesquisar_politicas(){
         Axios.post('index.php?url=politicasprivacidade/pesquisa')
         .then(res => {
@@ -31,6 +30,7 @@ function Pesquisa(props){
                 if(res.data.data === false){
                     setpoliticas(false)
                 }
+                setisLoading(false)
             }
         })
     }

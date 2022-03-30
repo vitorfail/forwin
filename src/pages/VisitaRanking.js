@@ -21,7 +21,6 @@ export default class VisitaRanking extends Component{
     componentDidMount(){
         Tema()
        this.pesquisar_politicas()
-       this.setState({isLoading: false})
     }
     pesquisar_politicas(){
         Axios.post('index.php?url=politicasprivacidade/pesquisa')
@@ -36,6 +35,7 @@ export default class VisitaRanking extends Component{
                 if(res.data.data === false){
                     this.setState({politicas: false})
                 }
+                this.setState({isLoading: false})
             }
         })
     }
