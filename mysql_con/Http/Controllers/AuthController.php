@@ -96,7 +96,7 @@
         }
         public static function dados_de_sql(){
             $http_header = apache_request_headers();
-            $bearer = explode(' ', $http_header[$GLOBALS['a']]);
+            $bearer = explode(' ', $http_header["Authorization"]);
             $decode = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $bearer[1])[1]))));
             return $decode;
         }

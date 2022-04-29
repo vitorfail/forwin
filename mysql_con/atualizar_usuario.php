@@ -9,7 +9,7 @@
         public function pesquisa(){
             if(AuthController::checkAuth()){
                 $dados_de_usuario_sql = AuthController::dados_de_sql(); 
-                include_once('Http/Controllers/conexao_login.php');
+                include_once('Http/Controllers/login_conect.php');
                 $nome = preg_replace('/[^[:alpha:]_]/', '', $_POST['nome']);
                 $cnpj =  $_POST['cnpj'];
                 $endereco = preg_replace('/[^[:alpha:]_]/', '', $_POST['endereco']);

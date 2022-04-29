@@ -23,6 +23,7 @@ export default class ModalEditar extends Component{
         }
         this.atualizar_cadastro = this.atualizar_cadastro.bind(this)
         this.pesquisar_cadastro = this.pesquisar_cadastro.bind(this)
+        this.mask_cpf = this.mask_cpf.bind(this)
     }
     pesquisar_cadastro(ident){
         Axios.post('index.php?url=pesquisainfo/pesquisa', {id: ident}
@@ -85,6 +86,12 @@ export default class ModalEditar extends Component{
         }
         
     }
+    mask_cpf(e){
+        e = e.replace(/\D/g, '');
+        e = e.replace(/(\d)(\d{2})$/, '$1-$2');
+        e = e.replace(/(?=(\d{3})+(\D))\B/g,  ".")
+        return e;
+    }
     render(){
         return(
             <div className={this.props.exibir}>
@@ -101,7 +108,7 @@ export default class ModalEditar extends Component{
                         </div>
                         <div className= "bloco">
                             <h3>CPF</h3>
-                            <input type="tex" value={this.state.cpf} placeholder="000.000.000-00" onChange={(event) => this.setState({cpf: event.target.value})} className= "info-cpf"/>
+                            <input type="tex" value={this.state.cpf} placeholder="000.000.000-00" onChange={(event) => this.setState({cpf: this.mask_cpf(event.target.value)})}  className= "info-cpf"/>
                         </div>
                         <div className= "bloco">
                             <h3>Estado Civil</h3>

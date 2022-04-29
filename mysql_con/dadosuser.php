@@ -10,7 +10,7 @@
         public function pesquisa(){
             if(AuthController::checkAuth()){
                 try{
-                    include_once('Http/Controllers/conexao_login.php');
+                    include_once('Http/Controllers/login_conect.php');
                     $dados_de_usuario_sql = AuthController::dados_de_sql(); 
                     $sql = "SELECT * FROM `user` WHERE id = :id AND usuario= :user ";
                     $inserir = $conexao->prepare($sql);
