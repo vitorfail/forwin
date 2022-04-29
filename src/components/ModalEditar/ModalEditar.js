@@ -108,7 +108,7 @@ export default class ModalEditar extends Component{
                         </div>
                         <div className= "bloco">
                             <h3>CPF</h3>
-                            <input type="tex" value={this.state.cpf} placeholder="000.000.000-00" onChange={(event) => this.setState({cpf: this.mask_cpf(event.target.value)})}  className= "info-cpf"/>
+                            <input type="tex" value={this.state.cpf} placeholder="000.000.000-00" onChange={(event) => this.setState({cpf: this.mask_cpf(event.target.value)})} maxLength='14'  className= "info-cpf"/>
                         </div>
                         <div className= "bloco">
                             <h3>Estado Civil</h3>
