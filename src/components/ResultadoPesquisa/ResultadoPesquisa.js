@@ -68,8 +68,13 @@ export default class ResultadoPesquisa extends Component{
         this.setState({excluir_mostrar: visivel})
     }
     falar_whats(telefone){
-        var link = "http://api.whatsapp.com/send?1=pt_BR&phone=55"+telefone.replace("(", '').replace(")", '').replace(" ", '').replace("-", '')
-        window.open(link)
+        if(telefone === "Sem número" || telefone === "Semnúmero"){
+            alert("Esse cliente não possui número cadastrado. Adicione um número ao cadastro do cliente e tente denovo")
+        }
+        else{
+            var link = "http://api.whatsapp.com/send?1=pt_BR&phone=55"+telefone.replace("(", '').replace(")", '').replace(" ", '').replace("-", '')
+            window.open(link)    
+        }
     }
     resultado(){
         Axios.post("index.php?url=pesquisa/pesquisa", 
