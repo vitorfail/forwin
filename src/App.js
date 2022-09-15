@@ -1,5 +1,12 @@
 import React from "react";
 import Rout from "./routes";
-
-const App = () => <Rout />;
+import Chat from "./components/Chat/Chat";
+function App(){
+    return(
+        <div>
+            <Chat></Chat>
+            <Rout/>
+        </div>
+    )
+} 
 export default App;
