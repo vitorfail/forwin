@@ -57,7 +57,7 @@ export default class Blocos extends Component{
             }
             else{
                 var num = res.data.data;
-                this.setState({aniversariantes: num[0].length})
+                this.setState({aniversariantes: num})
             }
         })
         .catch(error =>{
@@ -67,17 +67,7 @@ export default class Blocos extends Component{
     query_receita(){
         Axios.post('index.php?url=pagamentosmes/pesquisa', { mes:'12', ano:'2021'}
         ).then(res =>{
-            if(res.data.data === '1'|| res.data.data === '2'){
-                this.setState({valor_do_mes: 'R$ 0,00'})
-            }
-            else{
-                var receita = 0;
-
-                for(var i =0; i< (res.data.data)[1].length; i++){
-                    receita = receita + parseFloat(((res.data.data)[1])[i]);
-                }
-                this.setState({valor_do_mes: 'R$ '+receita.toFixed(2)})
-            }
+            this.setState({valor_do_mes: 'R$ '+res.data.toFixed(2)})
         })
     }
     data(){
