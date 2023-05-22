@@ -1,6 +1,6 @@
 import Axios from "./Axios";
 function Tema(){
-    Axios.post('index.php?url=dadosuser/pesquisa', )
+    Axios.post('api/dadosuser', )
     .then(res =>{
         if(res.data.data === '1'){
 

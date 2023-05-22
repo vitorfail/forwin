@@ -27,7 +27,7 @@ export default class Blocos extends Component{
         this.hora();
     } 
     query_numero(){
-        Axios.post('index.php?url=quantidadeclientes/pesquisa', {user: '1'}).then(res =>{
+        Axios.post('api/quantidadeclientes', {user: '1'}).then(res =>{
             if(res.data.data === 'Usuário não autenticado'){
                 this.setState({numero_clientes: "Sem clientes"})
             }
@@ -44,7 +44,7 @@ export default class Blocos extends Component{
         })
     }
     query_aniversariantes(){
-        Axios.post('index.php?url=aniversariantes/pesquisa', {user: '1'}
+        Axios.post('api/aniversariantes', {user: '1'}
         ).then(res => {
             if(res.data.data === 'Usuário não autenticado'){
                 Exit()
@@ -65,7 +65,7 @@ export default class Blocos extends Component{
         })
     }
     query_receita(){
-        Axios.post('index.php?url=pagamentosmes/pesquisa', { mes:'12', ano:'2021'}
+        Axios.post('api/pagamentosmes', { mes:'12', ano:'2021'}
         ).then(res =>{
             this.setState({valor_do_mes: 'R$ '+res.data.toFixed(2)})
         })

@@ -61,7 +61,7 @@ export default class RVisitas extends Component{
         this.pesquisa_pagamentos(this.state.mes, a)
     }
     pesquisa_pagamentos(mes_, ano_){
-        Axios.post('index.php?url=rankings/pesquisa', 
+        Axios.post('api/rankings', 
             { passe: "visita"}
         ).then( res => {
             if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){

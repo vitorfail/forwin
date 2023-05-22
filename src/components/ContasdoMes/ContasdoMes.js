@@ -38,7 +38,7 @@ export default class ContasdoMes extends Component{
         var data = new Date();
         var data_hoje = data.getFullYear() + '-'+ (data.getMonth()+1) + '-' + data.getDate();
         var ano = data.getFullYear();
-        Axios.post('index.php?url=contaspainel/pesquisa', {   
+        Axios.post('api/contaspainel', {   
             mes_query:this.checar_mes(1+ meses.indexOf(mes)), 
             dat: data_hoje,
             ano:String(ano),
@@ -96,7 +96,7 @@ export default class ContasdoMes extends Component{
         })
     }
     atualizar_conta(e, check){
-        Axios.post('index.php?url=atualizarconta/pesquisa', {
+        Axios.post('api/atualizarconta', {
             id: e,
             situacao: String(check)
         }).then(res => {

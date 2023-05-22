@@ -13,7 +13,7 @@ function InserirNome(props){
     const [ titulo, settitulo] = useState("")
 
     function pegar_nome(){
-        Axios.post("index.php?url=dadosuser/pesquisa")
+        Axios.post("api/dadosuser")
         .then(res =>{
                 if(res.data.data === '1'){
 
@@ -63,7 +63,7 @@ function InserirNome(props){
         }
     }
     function update(){
-        Axios.post('index.php?url=atualizarusuario/pesquisa', { nome:nome_,  
+        Axios.post('api/atualizarusuario', { nome:nome_,  
             cnpj:cnpj_, endereco:endereco_, municipio:municipio_, uf:uf_, tema:tema_})
         .then(res => {
             if(res.data.data === '1'){

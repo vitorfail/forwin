@@ -16,7 +16,7 @@ export default class RankingPagamentos extends Component{
         this.ranking_1()
     }
     ranking_1(){
-        Axios.post('index.php?url=rankingstop/pesquisa', { passe: 'pagamento'})
+        Axios.post('api/rankingstop', { passe: 'pagamento'})
         .then(res => {
             if(res.data.data === '1' || res.data.data === '2'){
                 let lista = this.state.rank.concat(<div className="cad">

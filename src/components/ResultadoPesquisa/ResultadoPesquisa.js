@@ -77,7 +77,7 @@ export default class ResultadoPesquisa extends Component{
         }
     }
     resultado(){
-        Axios.post("index.php?url=pesquisa/pesquisa", 
+        Axios.post("api/pesquisa", 
         {nome: this.props.nomepesquisa}
         ).then(res => {
             if(res.data.data === '0' || res.data.data === '2' || res.data.data === '1'){

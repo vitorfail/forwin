@@ -26,7 +26,7 @@ export default class ModalEditar extends Component{
         this.mask_cpf = this.mask_cpf.bind(this)
     }
     pesquisar_cadastro(ident){
-        Axios.post('index.php?url=pesquisainfo/pesquisa', {id: ident}
+        Axios.post('api/pesquisainfo', {id: ident}
         ).then(res => {
             if(res.data.data === "Usuário não autenticado"){
                 Exit()
@@ -50,7 +50,7 @@ export default class ModalEditar extends Component{
         })
     }
     atualizar_cadastro(ident){       
-        Axios.post('index.php?url=atualizarcadastro/pesquisa', {id: ident, 
+        Axios.post('api/atualizarcadastro', {id: ident, 
             nome:this.state.nome.toString(),
             data:this.state.data.toString(),
             cpf:this.state.cpf.toString(),

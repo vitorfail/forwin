@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Axios = axios.create({
-  baseURL: 'http://localhost/mysql_con'
+  baseURL: 'http://localhost:8080'
 });
 
 Axios.interceptors.request.use(async config => {

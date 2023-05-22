@@ -32,7 +32,7 @@ export default class CadastroCliente extends Component{
         this.mask_telefone = this.mask_telefone.bind(this);
     }
     cadastrar(){
-        Axios.post('index.php?url=cadastrar/pesquisa', {
+        Axios.post('api/cadastrar', {
             nome_input :this.state.nome,
             data_input: this.state.data_nascimento,
             cpf_input: this.state.cpf,

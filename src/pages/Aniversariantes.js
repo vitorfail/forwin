@@ -15,7 +15,7 @@ function Aniversariantes(){
         pesquisar_politicas();
     }, [])
     function pesquisar_politicas(){
-        Axios.post('index.php?url=politicasprivacidade/pesquisa')
+        Axios.post('api/politicasprivacidade')
         .then(res => {
             if(res.data.data === '2'){
                 

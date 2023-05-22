@@ -22,8 +22,6 @@
                     $tipo = array();
                     $procedimento = array();
                     $array = array();
-            
-            
                     $sql2 = "SELECT id, valor FROM acumulado_".$dados_de_usuario_sql->name."_".$dados_de_usuario_sql->id;
                     $resultado2 = $conexao->query($sql2);
                     $pesquisa2 = $resultado2->fetchAll();

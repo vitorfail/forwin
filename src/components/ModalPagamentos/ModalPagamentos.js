@@ -45,7 +45,7 @@ export default class ModalPagamentos extends Component{
         this.setState({novo_pag:'novo-input mostrar'})
     }
     pesquisar_pagamentos(ident){
-        Axios.post('index.php?url=pagamentos/pesquisa', {id: ident}
+        Axios.post('api/pagamentos', {id: ident}
         ).then(res => {
             if(res.data.data === 'Usuário não autenticado'){
                 Exit()
@@ -120,7 +120,7 @@ export default class ModalPagamentos extends Component{
             this.setState({preencha: "preencha mostrar"})
         }
         else{
-            Axios.post('index.php?url=adicionarpagamento/pesquisa', 
+            Axios.post('api/adicionarpagamento', 
             { id: i,  
             data: this.state.data_novo_input,
             valor: val,  
@@ -168,7 +168,7 @@ export default class ModalPagamentos extends Component{
         doc.setFont("times")
         doc.setFontSize(30);
         doc.text(75, 20, "NOTA FISCAL");
-        Axios.post('index.php?url=dadosuser/pesquisa', {id: id}
+        Axios.post('api/dadosuser', {id: id}
         ).then(res => {
             if(res.data.data === 'Usuário não autenticado' || res.data.data === '2'){
                 Exit()
@@ -179,7 +179,7 @@ export default class ModalPagamentos extends Component{
                 endereco_vendedor = res.data.data[2]
                 municipio_vendedor = res.data.data[3]
                 uf_vendedor = res.data.data[4]
-                Axios.post('index.php?url=pesquisainfo/pesquisa', {id: id}
+                Axios.post('api/pesquisainfo', {id: id}
                 ).then(res => {
                     if(res.data.data === 'Usuário não autenticado' || res.data.data === '1'){
                         Exit()

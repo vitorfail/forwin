@@ -53,7 +53,7 @@ export default class PagamentosMensais extends Component{
         this.pesquisa_pagamentos(mes_, ano_)
     }
     pesquisa_pagamentos(mes_, ano_){
-        Axios.post('index.php?url=pagamentosmes/pesquisa', {mes: mes_, ano:ano_}
+        Axios.post('api/pagamentosmes', {mes: mes_, ano:ano_}
         ).then( res => {
             if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){
                 Exit()

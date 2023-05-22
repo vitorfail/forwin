@@ -15,7 +15,7 @@ export default class RankingVisitas extends Component{
         this.atualizar_visitas();
     }
     atualizar_visitas(){
-        Axios.post('index.php?url=rankingstop/pesquisa', {
+        Axios.post('api/rankingstop', {
             passe: 'visita'
         }).then(res => {
             if(res.data.data ==='1' || res.data.data ==='2'){

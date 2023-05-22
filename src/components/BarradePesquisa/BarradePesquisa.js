@@ -30,7 +30,7 @@ function BarradePesquisa(){
 
 
     function pegar_nome(){
-        Axios.post("index.php?url=dadosuser/pesquisa")
+        Axios.post("api/dadosuser")
         .then(res =>{
                 if(res.data.data === '1'){
 
@@ -47,7 +47,7 @@ function BarradePesquisa(){
         })
     }
     const troca = () => {
-        Axios.post('index.php?url=inserircontas/pesquisa', 
+        Axios.post('api/inserircontas', 
         {   val: parseFloat((Valor.replace('R$', '')).replace('.', '').replace(',', '.')), 
             vencimento: Data, 
             conta:Nome_conta, tipo: Tipo})

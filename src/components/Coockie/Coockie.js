@@ -8,7 +8,7 @@ import Exit from '../../Exit';
 const  Coockie = (props) => {
     const [mostrar, setmostrar] = useState("coockie mostrar")
     function Apertar(){
-        Axios.post('index.php?url=cederprivacidade/pesquisa', {key: '1'})
+        Axios.post('api/cederprivacidade', {key: '1'})
         .then(res => {
             if(res.data.data === '2'){
                 alert("Não foi possível confirmar. Verifique a internet e tente denovo")

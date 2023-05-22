@@ -56,7 +56,7 @@ export default class ContasTotais extends Component{
     pesquisa_pagamentos(mes_, ano_){
         let data = new Date();
         let data_hoje = data.getFullYear() + '-'+ (data.getMonth()+1) + '-' + data.getDate();
-        Axios.post('index.php?url=contaspainel/pesquisa', 
+        Axios.post('api/contaspainel', 
             {mes_query:mes_, 
             dat: data_hoje,
             ano:ano_,

@@ -11,7 +11,7 @@ export default class ClientesRecentes extends Component{
         this.atualiza_clientes = this.atualiza_clientes.bind(this);
     }
     atualiza_clientes(){
-        Axios.post('index.php?url=atualiza/pesquisa', {name: '0', id:'1'}
+        Axios.post('api/atualiza', {name: '0', id:'1'}
         ).then(res =>{
             if(res.data.data === 2 || res.data.data === 0){
                 let ir = [];

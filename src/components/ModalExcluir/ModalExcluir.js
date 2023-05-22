@@ -12,7 +12,7 @@ export default class ModalExcluir extends Component{
         this.excluir_cadastro = this.excluir_cadastro.bind(this);    
     }
     excluir_cadastro(){
-        Axios.post('index.php?url=deletarcliente/pesquisa', {id: this.props.id})
+        Axios.post('api/deletarcliente', {id: this.props.id})
         .then(res => {
             if(res.data.data === '1' || res.data.data === 1){
                 this.props.executar("modal-excluir")

@@ -65,7 +65,7 @@ export default class Planilhas extends Component{
         this.tipos_pagamento()
     }
     pesquisa_idades(){
-        Axios.post('index.php?url=idades/pesquisa', {user: '1', password: '1'}
+        Axios.post('api/idades', {user: '1', password: '1'}
         ).then(res =>{
            if(res.data.data === 'Usuário não autenticado'){
                 Exit()
@@ -114,7 +114,7 @@ export default class Planilhas extends Component{
     }
     pesquisa_de_pagamentos(){
         var data_query = new Date()
-        Axios.post("index.php?url=pagamentosmes/pesquisa", 
+        Axios.post("api/pagamentosmes", 
         {ano: data_query.getFullYear().toString(), mes: 'Todos'}
         ).then(res => {
             if(res.data.data === '1' ){
@@ -225,7 +225,7 @@ export default class Planilhas extends Component{
         })
     }
     pesquisa_estado_civil(){
-        Axios.post("index.php?url=estadocivil/pesquisa", {id: '1'})
+        Axios.post("api/estadocivil", {id: '1'})
         .then(res => {
             if(res.data.data === '1'){
                 this.setState({viuva:0})
@@ -260,7 +260,7 @@ export default class Planilhas extends Component{
         })
     }
     pesquisa_sexo(){
-        Axios.post('index.php?url=sexo/pesquisa', {id:'1'}
+        Axios.post('api/sexo', {id:'1'}
         ).then(res => {
             if(res.data.data === '1'){
 
@@ -290,7 +290,7 @@ export default class Planilhas extends Component{
         })
     }
     tipos_pagamento(){
-        Axios.post('index.php?url=tipospagamento/pesquisa', {mes:'Todos'}
+        Axios.post('api/tipospagamento', {mes:'Todos'}
         ).then(res => {
             if(res.data.data === '1'|| res.data.data === '2'|| res.data.data === 'Usuário não autenticado'){
                 this.setState({debito: 0})

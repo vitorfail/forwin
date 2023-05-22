@@ -28,7 +28,7 @@ function Login(){
             setdarespaco('')
             setlogando('logando');
             setmostrar('aviso')
-            Axios.post('index.php?url=auth/login', {user: usuario, password: senha})
+            Axios.post('api/auth/login', {user: usuario, password: senha})
             .then(res =>{
                 if(res.data.data === 'Operação inválida' || res.data.data === "Usuário não encontrado"){
                     setdarespaco('espaco')

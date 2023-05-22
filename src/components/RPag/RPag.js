@@ -53,7 +53,7 @@ export default class RPag extends Component{
         this.pesquisa_pagamentos(mes_, ano_)
     }
     pesquisa_pagamentos(mes_, ano_){
-        Axios.post('index.php?url=rankings/pesquisa', 
+        Axios.post('api/rankings', 
             { passe: "pagamento"}
         ).then( res => {
             if(res.data.data === '1' || res.data.data === 'Usuário não autenticado'){

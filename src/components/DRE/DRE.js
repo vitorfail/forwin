@@ -46,7 +46,7 @@ export default class DRE extends Component{
         this.pesquisa_financeira(mes, ano)
     }
     pesquisa_financeira(m, a){
-        Axios.post('index.php?url=pagamentosmes/pesquisa', {mes:m, ano:a}
+        Axios.post('api/pagamentosmes', {mes:m, ano:a}
         ).then(res => {
             if(res.data.data === 'Usuário não autenticado'){
                 Exit()
@@ -59,7 +59,7 @@ export default class DRE extends Component{
                 this.setState({receita: pag})
             }
         })
-        Axios.post("index.php?url=contasdre/pesquisa", {mes:m, ano:a}
+        Axios.post("api/contasdre", {mes:m, ano:a}
         ).then(res =>{
             if(res.data.data === 'Usuário não autenticado'){
                 Exit()

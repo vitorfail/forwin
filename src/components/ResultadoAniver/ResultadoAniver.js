@@ -76,7 +76,7 @@ export default class ResultadoAniver extends Component{
         window.open(link)
     }
     resultado(){
-        Axios.post("index.php?url=aniversariantes/pesquisa", 
+        Axios.post("api/aniversariantes", 
         {user:'1'}
         ).then(res => {
             if(res.data.data === "Usuário nãu autenticado"){
