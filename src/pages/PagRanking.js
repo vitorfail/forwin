@@ -7,19 +7,22 @@ import Loading from '../components/Loading/Loading';
 import RPag from '../components/RPag/RPag';
 import Coockie from '../components/Coockie/Coockie';
 import Axios from '../Axios';
-import Tema from '.././Tema'
+
 
 export default class PagRanking extends Component{
     constructor(){
         super()
         this.state = {
             politicas:true,
-            isLoading: true
+            isLoading: true,
+            numero_clientes:  'Sem clientes',
+            aniversariantes: '0',
+            valor_do_mes: 'R$ 0,00',
         }
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
     componentDidMount(){
-        Tema()
+        
        this.pesquisar_politicas()
     }
     pesquisar_politicas(){
@@ -45,7 +48,7 @@ export default class PagRanking extends Component{
                 <div className="barra">
                     <BarradePesquisa></BarradePesquisa>
                     <div className="conteudo">
-                        <Blocos></Blocos>
+                        <Blocos numero_clientes={this.state.numero_clientes} aniversariantes={this.state.aniversariantes} valor_do_mes={this.state.valor_do_mes}></Blocos>
                         <div className="conteudo-2">
                             <RPag></RPag>
                         </div>

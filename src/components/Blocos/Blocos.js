@@ -4,18 +4,15 @@ import Axios from '../../Axios.js';
 import '../Blocos/Blocos.css';
 import Exit from "../../Exit.js";
 export default class Blocos extends Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
-            numero_clientes: 'Sem clientes',
-            aniversariantes: '0',
-            valor_do_mes: 'R$ 0,00',
+            numero_clientes: this.props.numero_clientes,
+            aniversariantes: this.props.aniversariantes,
+            valor_do_mes: this.props.valor_do_mes,
             dia: 'dia, mês, Ano',
             hora: '00:00'
         }
-        this.query_numero = this.query_numero.bind(this);
-        this.query_aniversariantes = this.query_aniversariantes.bind(this);
-        this.query_receita = this.query_receita.bind(this);
         this.data = this.data.bind(this);
         this.hora = this.hora.bind(this);
     }
@@ -26,50 +23,6 @@ export default class Blocos extends Component{
         this.data();
         this.hora();
     } 
-    query_numero(){
-        Axios.post('api/quantidadeclientes', {user: '1'}).then(res =>{
-            if(res.data.data === 'Usuário não autenticado'){
-                this.setState({numero_clientes: "Sem clientes"})
-            }
-            else{
-                if(res.data.data === 0 || res.data.data === "0"){
-                    this.setState({numero_clientes: "Sem clientes"})
-                }
-                else{
-                    this.setState({numero_clientes: res.data.data})
-                }
-            }
-        }).catch(error =>{
-            this.setState({numero_clientes: "Sem clientes"})
-        })
-    }
-    query_aniversariantes(){
-        Axios.post('api/aniversariantes', {user: '1'}
-        ).then(res => {
-            if(res.data.data === 'Usuário não autenticado'){
-                Exit()
-            }
-            if(res.data.data === 'Error'){
-                this.setState({aniversariantes: '0'})    
-            }
-            if(res.data.data === '0'){
-                this.setState({aniversariantes: 'Sem clientes'})    
-            }
-            else{
-                var num = res.data.data;
-                this.setState({aniversariantes: num})
-            }
-        })
-        .catch(error =>{
-            this.setState({aniversariantes: '0'})    
-        })
-    }
-    query_receita(){
-        Axios.post('api/pagamentosmes', { mes:'12', ano:'2021'}
-        ).then(res =>{
-            this.setState({valor_do_mes: 'R$ '+res.data.toFixed(2)})
-        })
-    }
     data(){
         var data = new Date();
         var meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']

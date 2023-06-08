@@ -17,7 +17,7 @@ export default class Ajuda extends Component{
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
     componentDidMount(){
-        Tema();
+        ;
        this.pesquisar_politicas()
     }
     pesquisar_politicas(){

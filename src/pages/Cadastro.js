@@ -6,18 +6,18 @@ import CadastroCliente from '../components/CadastroCliente/CadastroCliente';
 import Axios from '../Axios';
 import Loading from '../components/Loading/Loading';
 import Coockie from '../components/Coockie/Coockie';
-import Tema from '.././Tema'
+
 export default class Cadastro extends Component{
     constructor(){
         super()
         this.state = {
             politicas:true,
-            isLoading: true
+            isLoading: true,
         }
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
     componentDidMount(){
-        Tema()
+        
        this.pesquisar_politicas()
     }
     pesquisar_politicas(){

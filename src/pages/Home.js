@@ -11,32 +11,38 @@ import Loading from '../components/Loading/Loading';
 import Coockie from '../components/Coockie/Coockie';
 import Axios from '../Axios';
 import './Home.css'
-import Tema from '.././Tema'
+
 
 export default class Home extends Component{
     constructor(){
         super()
         this.state = {
+            politicasprivacidade:false,
             politicas:true,
-            isLoading: true
+            isLoading: true,
+            numero_clientes:  'Sem clientes',
+            aniversariantes: '0',
+            valor_do_mes: 'R$ 0,00',
         }
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
     componentDidMount(){
-        Tema()
        this.pesquisar_politicas()
     }
     pesquisar_politicas(){
-        Axios.post('api/politicasprivacidade')
+        Axios.post('api/home')
         .then(res => {
-            if(res.data.data === '2'){
+            if(res.data === '2'){
                 
             }
             else{
-                if(res.data.data === true){
+                this.setState({numero_clientes:res.data.qtd})
+                this.setState({aniversariantes:res.data.aniver})
+                this.setState({valor_do_mes:res.dat.pagamentosmes})
+                if(res.data.politicasprivacidade === true){
                     this.setState({politicas: true})
                 }
-                if(res.data.data === false){
+                if(res.data.politicasprivacidade === false){
                     this.setState({politicas: false})
                 }
                 this.setState({isLoading: false})
@@ -49,7 +55,7 @@ export default class Home extends Component{
                 <div className="barra">
                     <BarradePesquisa></BarradePesquisa>
                     <div className="conteudo">
-                        <Blocos></Blocos>
+                        <Blocos numero_clientes={this.state.numero_clientes} aniversariantes={this.state.aniversariantes} valor_do_mes={this.state.valor_do_mes}></Blocos>
                         <div className="conteudo-2">
                             <ClientesRecentes></ClientesRecentes>
                             <ContasdoMes></ContasdoMes>
