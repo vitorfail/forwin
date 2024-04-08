@@ -28,10 +28,13 @@ function Pesquisa(props){
                 
             }
             else{
-                if(res.data.data === true){
+                setnumero_clientes(res.data.qtd)
+                setaniversariantes(res.data.aniver)
+                setvalor_do_mes(res.dat.pagamentosmes)
+                if(res.data.politicasprivacidade === true){
                     setpoliticas(true)
                 }
-                if(res.data.data === false){
+                if(res.data.politicasprivacidade === false){
                     setpoliticas(false)
                 }
                 setisLoading(false)

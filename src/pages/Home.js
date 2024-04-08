@@ -23,6 +23,7 @@ export default class Home extends Component{
             numero_clientes:  'Sem clientes',
             aniversariantes: '0',
             valor_do_mes: 'R$ 0,00',
+            lista: '2'
         }
         this.pesquisar_politicas = this.pesquisar_politicas.bind(this)
     }
@@ -57,7 +58,7 @@ export default class Home extends Component{
                     <div className="conteudo">
                         <Blocos numero_clientes={this.state.numero_clientes} aniversariantes={this.state.aniversariantes} valor_do_mes={this.state.valor_do_mes}></Blocos>
                         <div className="conteudo-2">
-                            <ClientesRecentes></ClientesRecentes>
+                            <ClientesRecentes lista={this.state.lista} ></ClientesRecentes>
                             <ContasdoMes></ContasdoMes>
                             <RankingPagamentos></RankingPagamentos>
                             <RankingVisitas></RankingVisitas>

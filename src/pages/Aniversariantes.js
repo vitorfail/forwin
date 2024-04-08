@@ -23,11 +23,14 @@ function Aniversariantes(){
                 
             }
             else{
-                if(res.data.data === true){
-                    setpoliticas(true)
+                this.setState({numero_clientes:res.data.qtd})
+                this.setState({aniversariantes:res.data.aniver})
+                this.setState({valor_do_mes:res.dat.pagamentosmes})
+                if(res.data.politicasprivacidade === true){
+                    this.setState({politicas: true})
                 }
-                if(res.data.data === false){
-                    setpoliticas(false)
+                if(res.data.politicasprivacidade === false){
+                    this.setState({politicas: false})
                 }
                 setisLoading(false)
             }

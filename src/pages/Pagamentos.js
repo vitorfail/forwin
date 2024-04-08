@@ -32,10 +32,13 @@ export default class Pagamentos extends Component{
                 
             }
             else{
-                if(res.data.data === true){
+                this.setState({numero_clientes:res.data.qtd})
+                this.setState({aniversariantes:res.data.aniver})
+                this.setState({valor_do_mes:res.dat.pagamentosmes})
+                if(res.data.politicasprivacidade === true){
                     this.setState({politicas: true})
                 }
-                if(res.data.data === false){
+                if(res.data.politicasprivacidade === false){
                     this.setState({politicas: false})
                 }
                 this.setState({isLoading: false})
